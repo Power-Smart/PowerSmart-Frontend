@@ -3,7 +3,6 @@ PowerSmart-Frontend
 To run the package.json file : npm run dev
 
 
-
 1.	npm create vite@latest: This command initializes a new project using the latest version of Vite, a build tool and development server for modern web applications.
 
 2.	npm i react-icons: This command installs the React Icons library, which provides a collection of customizable icons for React applications.
