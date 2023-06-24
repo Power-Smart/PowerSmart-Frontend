@@ -3,6 +3,7 @@ PowerSmart-Frontend
 Run the front-end, following the steps
 
 1.Install the node modeules packages : npm install
+<br>
 2.To run the package.json file : npm run dev
 
 
