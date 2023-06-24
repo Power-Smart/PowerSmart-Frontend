@@ -19,4 +19,5 @@ To run the package.json file : npm run dev
 
 8.	npm install react-redux: This command installs the React Redux library, which integrates React components with the Redux state management library, allowing you to connect your React components to the Redux store.
 
-9.	By running these commands, you'll have a basic setup for a modern web application using Vite, React, React Router, Tailwind CSS, Axios for HTTP requests, and Redux for state management.
+
+By running these commands, you'll have a basic setup for a modern web application using Vite, React, React Router, Tailwind CSS, Axios for HTTP requests, and Redux for state management.
