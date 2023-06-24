@@ -1,8 +1,8 @@
 PowerSmart-Frontend
 
 Run the front-end, following the steps
-  1.Install the node modeules packages : npm install
-  2.To run the package.json file : npm run dev
+1.Install the node modeules packages : npm install
+2.To run the package.json file : npm run dev
 
 
 1.	npm create vite@latest: This command initializes a new project using the latest version of Vite, a build tool and development server for modern web applications.
