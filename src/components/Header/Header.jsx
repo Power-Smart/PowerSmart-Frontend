@@ -1,11 +1,10 @@
 // to check, tailwind is properly install or not
 
+import React from 'react'
 import './header.css';
 
 
-
-
-export default function Header () {
+const Header = () => {
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -80,3 +79,5 @@ export default function Header () {
         </div>
     )
 }
+
+export default Header;
