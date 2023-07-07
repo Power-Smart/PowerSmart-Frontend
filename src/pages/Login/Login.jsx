@@ -3,11 +3,22 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import './login.css';
 import loginPageImage from '../../assets/images/login.png';
 import { FcGoogle } from 'react-icons/fc';
-
+import { redirect } from "react-router-dom";
+import { userLogin } from '../../api/apiUser';
+import { login } from '../../redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const dispatch = useDispatch();
+
+    const onFinish = async (values) => {
+        try {
+            const response = await userLogin(values.email, values.password);
+            dispatch(login(response));
+            // redirect("/user");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -32,7 +43,7 @@ const Login = () => {
                 >
                     <label htmlFor="">Email</label>
                     <Form.Item
-                        name="username"
+                        name="email"
                         rules={[
                             {
                                 required: true,
