@@ -1,8 +1,8 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
-import './login.css';
 import loginPageImage from '../../assets/images/login.png';
 import { FcGoogle } from 'react-icons/fc';
+import './login.css';
 
 
 const Login = () => {
