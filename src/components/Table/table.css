@@ -1,0 +1,55 @@
+body {
+    background-color: #0E0E1A;
+}
+
+.table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 50px auto;
+    background-color: #151528;
+}
+
+.table .ant-table {
+    background-color: #151528;
+    color: #333333;
+    border-color: #cccccc;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.table .ant-table thead th {
+    background-color: #83BCFF;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    border-color: #cccccc;
+    padding: 10px;
+}
+
+.table .ant-table tbody td {
+    background-color: #151528;
+    color: #ffffff;
+}
+
+
+.table .ant-table .table-row tbody td:hover td {
+    background-color: #ca0d0d;
+}
+
+
+.table .ant-pagination-item a {
+    color: #1890ff;
+}
+
+.table .ant-pagination-prev .ant-pagination-item-link,
+.table .ant-pagination-next .ant-pagination-item-link {
+    color: #ffffff;
+}
+
+
+.anticon{
+    color: white;
+    font-size: 20px;
+}
