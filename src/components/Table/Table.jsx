@@ -1,6 +1,7 @@
 import { Table, Input } from 'antd';
 import { useEffect, useState } from 'react';
 import './table.css';
+import { IoSearchCircleSharp } from 'react-icons/io5';
 
 const TableCom = () => {
     const [data, setData] = useState([]);
@@ -37,26 +38,18 @@ const TableCom = () => {
             key: '1',
             title: 'Name',
             dataIndex: 'name',
-            filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
-                <div style={{ padding: 8 }}>
+            filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => (
+                <div className='search__btn'>
                     <Input
                         placeholder="Search name"
                         value={selectedKeys[0]}
                         onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-                        onPressEnter={confirm}
-                        style={{ width: 188, marginBottom: 8, display: 'block' }}
+                        onKeyUp={confirm}
                     />
-                    <button type="button" onClick={clearFilters} style={{ width: '100%' }}>
-                        Reset
-                    </button>
                 </div>
             ),
-            filterIcon: (filtered) => (
-                <i className="ant-table-filter-icon anticon">
-                    <svg viewBox="64 64 896 896" className="" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
-                        <path d="M884 810.7L693.9 620.6a358.2 358.2 0 0034.1-150.4C728 258 563.5 96 372.4 96S16.8 258 16.8 470.2 179.3 844.4 370.4 844.4c62.8 0 123-16.2 176-46.9l190.1 190.1c9.6 9.6 25.2 9.6 34.8 0l49.7-49.7c9.6-9.6 9.6-25.2 0-34.8zM370.4 770.8c-141.6 0-256-114.4-256-256s114.4-256 256-256 256 114.4 256 256-114.4 256-256 256z"></path>
-                    </svg>
-                </i>
+            filterIcon: () => (
+                <i className="ant-table-filter-icon search-icon"><IoSearchCircleSharp /></i>
             ),
             onFilter: (value, record) => record.name.toLowerCase().includes(value.toLowerCase()),
             onFilterDropdownVisibleChange: (visible) => {
@@ -89,7 +82,6 @@ const TableCom = () => {
             filters: [
                 { text: 'Male', value: 'male' },
                 { text: 'Female', value: 'female' },
-                { text: 'Other', value: 'other' },
             ],
             onFilter: (value, record) => record.gender === value,
         },
@@ -99,7 +91,7 @@ const TableCom = () => {
         <Table
             className="table"
             columns={columns}
-            rowClassName={() => 'table-row'}
+            rowClassName={() => 'hover-row'}
             dataSource={filteredData}
             pagination={{
                 current: page,
