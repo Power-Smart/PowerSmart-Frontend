@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+body {
+    background-color: #0E0E1A;
+}
+
+.table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 50px auto;
+    background-color: #151528;
+}
+
+
+.table .ant-table thead th {
+    background-color: #0693F3;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border-color: #cccccc;
+    padding: 10px;
+    font-family: 'Poppins';
+}
+
+
+.table .ant-table tbody td {
+    background-color: #151528;
+    color: #ffffff;
+    text-align: left;
+    font-family: 'Poppins';
+    font-size: 13px;
+    padding: 20px 10px;
+}
+
+
+.table .ant-table tbody td:hover {
+    background-color: #ca0d0d;
+}
+
+
+.table .ant-pagination-item a {
+    color: #1890ff;
+}
+
+.table .ant-pagination-prev .ant-pagination-item-link,
+.table .ant-pagination-next .ant-pagination-item-link {
+    color: #ffffff;
+}
+
+
+.anticon {
+    color: white;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.search-icon {
+    color: white;
+    font-size: 30px;
+    padding: 5px;
+}
+
+.hover-row:hover td {
+    background: #83BCFF !important;
+}
+
+.ant-table-filter-dropdown-btns .ant-btn-primary {
+    background-color: #006DFF;
+    color: white;
+}
+
+
