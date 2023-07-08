@@ -1,4 +1,4 @@
-import { Table, Input } from 'antd';
+import { Table, Input, Button } from 'antd';
 import { useEffect, useState } from 'react';
 import './table.css';
 import { IoSearchCircleSharp } from 'react-icons/io5';
@@ -38,7 +38,7 @@ const TableCom = () => {
             key: '1',
             title: 'Name',
             dataIndex: 'name',
-            filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => (
+            filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
                 <div className='search__btn'>
                     <Input
                         placeholder="Search name"

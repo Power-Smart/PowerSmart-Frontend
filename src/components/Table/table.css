@@ -6,7 +6,7 @@ body {
 }
 
 .table {
-    width: 80%;
+    width: 90%;
     border-collapse: collapse;
     margin: 50px auto;
     background-color: #151528;
@@ -21,8 +21,8 @@ body {
     border-color: #cccccc;
     padding: 10px;
     font-family: 'Poppins';
-
 }
+
 
 .table .ant-table tbody td {
     background-color: #151528;
@@ -30,6 +30,7 @@ body {
     text-align: left;
     font-family: 'Poppins';
     font-size: 13px;
+    padding: 20px 10px;
 }
 
 
@@ -69,8 +70,4 @@ body {
     color: white;
 }
 
-.search__btn Input{
-    padding: 5px;
-    position: relative;
-}
 
