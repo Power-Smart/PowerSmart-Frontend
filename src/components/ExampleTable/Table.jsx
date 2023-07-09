@@ -1,4 +1,4 @@
-import { Table, Input, Button } from 'antd';
+import { Table, Input } from 'antd';
 import { useEffect, useState } from 'react';
 import './table.css';
 import { IoSearchCircleSharp } from 'react-icons/io5';
@@ -7,7 +7,6 @@ const TableCom = () => {
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(5);
-    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         fetch('https://randomuser.me/api/?results=10')
@@ -24,21 +23,13 @@ const TableCom = () => {
             });
     }, []);
 
-    const handleSearch = e => {
-        const value = e.target.value;
-        setSearchTerm(value);
-    };
-
-    const filteredData = data.filter(item => {
-        return item.name.toLowerCase().includes(searchTerm.toLowerCase());
-    });
 
     const columns = [
         {
             key: '1',
             title: 'Name',
             dataIndex: 'name',
-            filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+            filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => (
                 <div className='search__btn'>
                     <Input
                         placeholder="Search name"
@@ -92,7 +83,7 @@ const TableCom = () => {
             className="table"
             columns={columns}
             rowClassName={() => 'hover-row'}
-            dataSource={filteredData}
+            dataSource={data}
             pagination={{
                 current: page,
                 pageSize: pageSize,
