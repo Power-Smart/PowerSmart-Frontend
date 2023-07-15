@@ -79,22 +79,24 @@ const TableCom = () => {
     ];
 
     return (
-        <Table
-            className="table"
-            columns={columns}
-            rowClassName={() => 'hover-row'}
-            dataSource={data}
-            pagination={{
-                current: page,
-                pageSize: pageSize,
-                showSizeChanger: false,
-                showTotal: false,
-                onChange: (page, pageSize) => {
-                    setPage(page);
-                    setPageSize(pageSize);
-                },
-            }}
-        />
+        <div className='flex w-4/5 mx-auto justify-center items-center py-3 px-2 bg-gradient-to-b from-black'>
+            <Table
+                className="table"
+                columns={columns}
+                rowClassName={() => 'hover-row'}
+                dataSource={data}
+                pagination={{
+                    current: page,
+                    pageSize: pageSize,
+                    showSizeChanger: false,
+                    showTotal: false,
+                    onChange: (page, pageSize) => {
+                        setPage(page);
+                        setPageSize(pageSize);
+                    },
+                }}
+            />
+        </div>
     );
 };
 
