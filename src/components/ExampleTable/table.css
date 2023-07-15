@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-
 .table {
     width: 90%;
     border-collapse: collapse;
@@ -66,8 +65,8 @@
 }
 
 .ant-table-filter-dropdown-btns .ant-btn-primary {
-    background-color: #011c3f;
-    color: rgb(0, 0, 0);
+    background-color: #006DFF;
+    color: white;
 }
 
 .ant-table-row-level-0 {

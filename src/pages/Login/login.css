@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-body {
+/* body {
     background-color: #0E0E1A;
     font-family: 'Poppins', sans-serif;
-}
+} */
 
 .login-form-forgot {
     float: right;
@@ -53,7 +53,7 @@ body {
     margin-top: 30px;
 }
 
-label{
+label {
     color: white;
 }
 
@@ -80,8 +80,8 @@ label{
     color: white;
 }
 
-.login__page .login__form .form__submission .google__login{
-    margin-top: 50px;   
+.login__page .login__form .form__submission .google__login {
+    margin-top: 50px;
     letter-spacing: 1px;
 }
 
