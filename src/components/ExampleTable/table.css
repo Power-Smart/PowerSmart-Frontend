@@ -1,20 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-/* 
-body {
-    background-color: #0E0E1A;
-} */
-
 .table {
     width: 90%;
     border-collapse: collapse;
     margin: 50px auto;
-    background-color: #151528;
+    background-color: transparent;
 }
 
 
 .table .ant-table thead th {
-    background-color: #0693F3;
+    background-color: #01101b;
     color: #ffffff;
     font-size: 16px;
     font-weight: 600;
@@ -23,9 +18,12 @@ body {
     font-family: 'Poppins';
 }
 
+.table .ant-table table {
+    background-color: transparent;
+}
 
 .table .ant-table tbody td {
-    background-color: #151528;
+    background: linear-gradient(180deg, #000000 0%, #000000 100%);
     color: #ffffff;
     text-align: left;
     font-family: 'Poppins';
@@ -40,7 +38,7 @@ body {
 
 
 .table .ant-pagination-item a {
-    color: #1890ff;
+    color: #000;
 }
 
 .table .ant-pagination-prev .ant-pagination-item-link,
@@ -61,11 +59,32 @@ body {
     padding: 5px;
 }
 
-.hover-row:hover td {
-    background: #83BCFF !important;
+
+.hover-row:hover .ant-table-cell:hover {
+    background-color: #1b1b1b00 !important;
 }
 
 .ant-table-filter-dropdown-btns .ant-btn-primary {
     background-color: #006DFF;
     color: white;
+}
+
+.ant-table-row-level-0 {
+    background-color: transparent !important;
+}
+
+.ant-table-row-level-0 :hover {
+    background-color: transparent !important;
+}
+
+.ant-table-row:hover {
+    background-color: transparent !important;
+}
+
+.ant-table-body {
+    background-color: transparent !important;
+}
+
+.amt-table-content {
+    background-color: transparent !important;
 }
