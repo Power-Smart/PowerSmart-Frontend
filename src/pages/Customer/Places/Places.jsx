@@ -1,47 +1,47 @@
 import React from 'react'
 import Sidebar from '../../../components/Sidebar/Sidebar'
 import PlaceCard from '../../../components/Cards/PlaceCard'
+import TopBar from '../../../components/smallComps/TopBar'
+import PageContent from '../../../components/Wrappers/PageContent'
+import PageWrapper from '../../../components/Wrappers/PageWrapper'
+import ButtonBar from '../../../components/Wrappers/ButtonBar'
+
+const dataSet = [
+  {
+    status: 'Online',
+    name: 'Home',
+    roomCount: 3,
+    devices: 5
+  },
+  {
+    status: 'Offline',
+    name: 'Workplace',
+    roomCount: 8,
+    devices: 7
+  },
+]
 
 const Places = () => {
   return (
-    <section className='flex w-full'>
+    <PageWrapper >
       <Sidebar />
-
-      {/* Page Content */}
-      <div className='flex flex-col flex-grow bg-[#0E0E1A] text-white'>
-        {/* Top Bar */}
-        <div className='px-16 py-5 flex justify-between items-center'>
-          <div className='flex items-center justify-center'>
-            <h2 className='text-3xl font-bold'>Places</h2>
-          </div>
-          <div className='flex items-center justify-center'>
-            {/* Profile Pic */}
-            <div>
-              Profile
-            </div>
-          </div>
-        </div>
+      <PageContent >
+        <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Places" />
 
         {/* Content Area */}
-        <div className='px-16 py-4 flex flex-col flex-grow mx-auto'>
-          {/* Button Bar */}
-          <div className='flex items-center justify-end my-4 text-sm'>
-            <button className='px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Place</button>
-          </div>
+        <div className='px-16 py-4 w-full flex flex-col flex-grow mx-auto'>
 
-          {/* Card Section */}
+          <ButtonBar>
+            <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Place</button>
+          </ButtonBar>
+
           <div className='flex flex-wrap px-8 py-2 mx-auto'>
             {/* Cards */}
-            <PlaceCard />
-            <PlaceCard />
-            <PlaceCard />
-            <PlaceCard />
-            <PlaceCard />
-            <PlaceCard />
+            {dataSet.map((data, index) => (<PlaceCard key={index} {...data} />))}
           </div>
         </div>
-      </div>
-    </section>
+      </PageContent>
+    </PageWrapper>
   )
 }
 

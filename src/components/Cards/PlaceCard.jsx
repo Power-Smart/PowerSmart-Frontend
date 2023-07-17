@@ -1,27 +1,27 @@
 import React from 'react'
 
-const PlaceCard = () => {
+const PlaceCard = ({ status, name, roomCount, devices }) => {
     return (
-        <div className='text-sm flex flex-col w-[230px] h-[230px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-3 justify-evenly'>
+        <div className='text-sm flex flex-col w-[200px] h-[230px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
 
             <div className='flex flex-col flex-grow'>
                 <div className=' text-xs text-green-300 flex justify-start items-center'>
                     <div className='w-[8px] h-[8px] bg-green-300 mr-2 rounded-full'>
                     </div>
-                    Status
+                    {status}
                 </div>
-                <label>Place Name</label>
+                <label>{name}</label>
             </div>
 
             <hr className='border-gray-600' />
 
             <div className='flex flex-col flex-grow justify-center items-end'>
-                <div>Room Count</div>
-                <div>Address</div>
+                <div>{roomCount} Rooms</div>
+                <div>{devices} Devices</div>
             </div>
 
             <div className='flex flex-col flex-grow justify-end items-center'>
-                <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Add Place</button>
+                <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
             </div>
 
         </div>
