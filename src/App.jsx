@@ -6,6 +6,7 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Table from './components/ExampleTable/Table2'
 import Places from './pages/Customer/Places/Places'
+import Rooms from './pages/Customer/Rooms/Rooms'
 
 
 
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<Table />} />
           <Route path='/login' element={<Login />} />
           <Route path='/places' element={<Places />} />
+          <Route path='/rooms' element={<Rooms />} />
         </Routes>
       </div>
     </Router>
