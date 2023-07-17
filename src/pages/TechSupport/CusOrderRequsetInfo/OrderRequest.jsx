@@ -1,4 +1,3 @@
-import React from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './OrderRequest.css'
 
@@ -37,12 +36,12 @@ const OrderRequest = () => {
 
                     <div className="data__field">
                         <label htmlFor="">Order Description: </label>
-                        <textarea value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+                        <textarea value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
                     </div>
 
-                    <div className="flex justify-around mt-3">
-                        <button className='p-2 bg-red-700 rounded-md'>Reject</button>
-                        <button className='p-2 bg-blue-700 rounded-md'>Accept</button>
+                    <div className="flex justify-center mt-3">
+                        <button className='px-4 py-1 bg-red-700 rounded-lg mr-5'>Reject</button>
+                        <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
                     </div>
 
                 </div>
