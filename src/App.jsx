@@ -6,6 +6,7 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Table from './components/ExampleTable/Table2'
 import Cutomer from './pages/TechSupport/CusOrderRequsetInfo/OrderRequest'
+import Tech from './pages/TechSupport/UserInquires/UserInquires'
 
 
 
@@ -15,7 +16,7 @@ function App() {
     <Router>
       <div className='flex h-screen items-center justify-center w-full'>
         <Routes>
-          <Route path='/' element={<Cutomer />} />
+          <Route path='/' element={<Tech />} />
           <Route path='/login' element={<Login />} />
         </Routes>
       </div>
