@@ -1,4 +1,5 @@
 import React from 'react'
+import Indicator from '../smallComps/Indicator'
 
 const RoomCard = ({ status, name, devices, measures }) => {
     return (
@@ -6,8 +7,8 @@ const RoomCard = ({ status, name, devices, measures }) => {
 
             <div className='flex flex-col flex-grow'>
                 <div className=' text-xs text-green-300 flex justify-start items-center'>
-                    {status === "Online" && <div className='w-[8px] h-[8px] bg-green-300 mr-2 rounded-full'></div>}
-                    {status === "Offline" && <div className='w-[8px] h-[8px] bg-red-300 mr-2 rounded-full'></div>}
+                    {status === "Online" && <Indicator color="bg-green-400" />}
+                    {status === "Offline" && <Indicator color="bg-red-400" />}
                     {status}
                 </div>
                 <label>{name}</label>

@@ -7,6 +7,7 @@ import Register from './pages/Register/Register'
 import Table from './components/ExampleTable/Table2'
 import Places from './pages/Customer/Places/Places'
 import Rooms from './pages/Customer/Rooms/Rooms'
+import InsideRoom from './pages/Customer/Rooms/InsideRoom'
 
 
 
@@ -19,6 +20,8 @@ function App() {
           <Route path='/' element={<Table />} />
           <Route path='/login' element={<Login />} />
           <Route path='/places' element={<Places />} />
+          <Route path='/rooms' element={<Rooms />} />
+          <Route path='/rooms/insideroom' element={<InsideRoom />} />
           <Route path='/rooms' element={<Rooms />} />
         </Routes>
       </div>

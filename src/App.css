@@ -19,3 +19,22 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #b30000;
 }
+
+.ant-switch-inner {
+    background: rgb(39, 39, 39);
+    background: radial-gradient(circle, rgb(41, 41, 41) 0%, rgb(0, 0, 0) 100%);
+}
+
+.ant-switch-checked .ant-switch-inner {
+    background: rgb(237, 186, 255);
+    background: linear-gradient(rgb(127, 116, 253) 0%, rgb(48, 140, 245) 100%);
+    color: black !important;
+}
+
+.ant-switch-handle::before {
+    background: rgba(131, 188, 255, 1);
+}
+
+.ant-switch-handle::after {
+    color: rgba(131, 188, 255, 1);
+}
