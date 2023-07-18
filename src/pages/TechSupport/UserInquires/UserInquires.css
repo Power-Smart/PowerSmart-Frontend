@@ -1,35 +1,67 @@
-.page__body .not__available_sensor__kit{
+.userInquiries{
     color: white;
-    background-color: #151528;
     width: 50%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+}
+
+
+.userInquiries .chat {
+    text-align: right;
+}
+
+.userInquiries .chat .chat__btn{
+    padding: 10px;
+}
+
+.userInquiries .chat button{
+    border: none;
+    outline: none;
+    color: white;
+    padding: 5px 10px;
     font-size: 20px;
-    font-weight: 500;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    height: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.page__body .not__available_sensor__kit .plus__icon{
-    text-align: center;
-    height: 50%;
+    cursor: pointer;
+    background-color: #83BCFF;
     border-radius: 10px;
-    border: 1px solid #83BCFF;
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 }
 
-.page__body .not__available_sensor__kit .description{
-    margin-top: 20px;
+
+.userInquiries .form {
+    padding: 30px;
+}
+
+
+.userInquiries .form .data__field {
+    padding: 7px;
+    background-color: #151528;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.userInquiries .form .data__field input {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    width: 70%;
+}
+
+.userInquiries .form .data__field textarea {
+    resize: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    height: 150px;
+}
+
+.userInquiries .form .data__field textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.userInquiries .form .data__field textarea::-webkit-scrollbar-track {
+    background-color: #0693F3;
+    border-radius: 3px;
+}
+
+.userInquiries .form .data__field textarea::-webkit-scrollbar-thumb {
+    background-color: #83BCFF;
+    border-radius: 3px;
 }

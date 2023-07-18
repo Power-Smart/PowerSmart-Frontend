@@ -6,7 +6,7 @@ const EmptySensor = () => {
     return (
         <section className="page__body">
             <div className="not__available_sensor__kit">
-                <div className="plus__icon">
+                <div className="plus__icon cursor-pointer">
                     <FaPlus className='w-12 h-12' />
                 </div>
                 <div className="description">
@@ -14,11 +14,7 @@ const EmptySensor = () => {
                     <h3>Click to add a sensor kit.</h3>
                 </div>
             </div>
-
-
         </section>
-
-
     )
 }
 
