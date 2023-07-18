@@ -8,6 +8,7 @@ import Table from './components/ExampleTable/Table2'
 import Cutomer from './pages/TechSupport/CusOrderRequsetInfo/OrderRequest'
 import Tech from './pages/TechSupport/UserInquires/UserInquires'
 import CustomerRequest from './pages/TechSupport/CustomerRequestTable/CustomerRequest'
+import SelectPlaceRoom from './pages/TechSupport/SelectPlace&Room/SelectPlace&Room'
 
 
 
@@ -17,7 +18,7 @@ function App() {
     <Router>
       <div className='flex h-screen items-center justify-center w-full'>
         <Routes>
-          <Route path='/' element={<CustomerRequest />} />
+          <Route path='/' element={<SelectPlaceRoom />} />
           <Route path='/login' element={<Login />} />
         </Routes>
       </div>
