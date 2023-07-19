@@ -1,44 +1,37 @@
-import React from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import Sidebar from '../../../components/Sidebar/Sidebar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import Indicator from '../../../components/smallComps/Indicator'
-import SwitchCard from '../../../components/Cards/SwitchCard'
+import StatusCardMd from '../../../components/Cards/StatusCardMd'
 
 const dataSet = [
     {
-        type: 'FAN',
-        device: 'Fan 1',
-        lastSeen: '2hrs',
-        power: '25',
-        status: 'on'
+        title: 'Temperature',
+        value: '25',
+        measure: '°C'
     },
     {
-        type: 'BULB',
-        device: 'Bulb 1',
-        lastSeen: '2hrs',
-        power: '15',
-        status: 'off'
+        title: 'Humidity',
+        value: '50',
+        measure: '%'
     },
     {
-        type: 'AC',
-        device: 'AC 1',
-        lastSeen: '2hrs',
-        power: '25',
-        status: 'on'
+        title: 'Air Quality',
+        value: 'Good',
+        other: 'CO2: 400ppm'
     },
 ];
 
-const InsideRoom = () => {
+const CheckStatus = () => {
     return (
-        <PageWrapper >
+        <PageWrapper>
             <Sidebar />
-            <PageContent >
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Inside Room" />
+            <PageContent>
+                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Check Status" />
                 <ContentWrapper>
-                    <div className='m-4 py-4 px-8 border-[#0693F3] border-2 rounded-lg bg-[#151528]'>
+                    <div className='m-4 py-4 px-8 rounded-lg bg-[#151528]'>
                         <div className='p-3'>
                             <div className='text-green-400 flex items-center'>
                                 <Indicator color="bg-green-400" />
@@ -48,9 +41,8 @@ const InsideRoom = () => {
                         </div>
                         <hr className='m-2 border-gray-500' />
                         <div className='px-6 py-4 '>
-                            <h3>My Devices</h3>
-                            <div className='py-4 flex flex-wrap'>
-                                {dataSet.map((data, index) => (<SwitchCard key={index} {...data} />))}
+                            <div className='py-4 flex flex-wrap justify-center'>
+                                {dataSet.map((data, index) => (<StatusCardMd key={index} {...data} />))}
                             </div>
                         </div>
                     </div>
@@ -60,4 +52,4 @@ const InsideRoom = () => {
     )
 }
 
-export default InsideRoom
+export default CheckStatus

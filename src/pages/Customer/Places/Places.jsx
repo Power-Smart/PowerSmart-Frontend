@@ -36,7 +36,7 @@ const Places = () => {
             <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Place</button>
           </ButtonBar>
 
-          <div className='flex flex-wrap px-8 py-2 mx-auto'>
+          <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
             {dataSet.map((data, index) => (<PlaceCard key={index} {...data} />))}
           </div>

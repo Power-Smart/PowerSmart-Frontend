@@ -20,6 +20,7 @@
     background: #b30000;
 }
 
+/* Ant switch styles */
 .ant-switch-inner {
     background: rgb(39, 39, 39);
     background: radial-gradient(circle, rgb(41, 41, 41) 0%, rgb(0, 0, 0) 100%);
