@@ -17,7 +17,7 @@ const SwitchCard = ({ type, device, lastSeen, power, status }) => {
                 </div>
                 <div className='flex flex-col text-[#83BCFF] justify-end items-end flex-wrap'>
                     <h2>-</h2>
-                    <h3 className=''>{power}</h3>
+                    <h3 className=''>{power} Wh</h3>
                 </div>
             </div>
         </div>

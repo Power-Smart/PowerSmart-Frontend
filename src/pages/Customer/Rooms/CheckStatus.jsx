@@ -34,13 +34,13 @@ const CheckStatus = () => {
                     <div className='m-4 py-4 px-8 rounded-lg bg-[#151528]'>
                         <div className='p-3'>
                             <div className='text-green-400 flex items-center'>
-                                <Indicator color="bg-green-400" />
+                                <Indicator color='bg-green-400' />
                                 <div className='text-sm'>{"Activity   "}</div>
                             </div>
                             <h1 className='text-xl mt-2'>Front Room</h1>
                         </div>
                         <hr className='m-2 border-gray-500' />
-                        <div className='px-6 py-4 '>
+                        <div className='px-6 py-4'>
                             <div className='py-4 flex flex-wrap justify-center'>
                                 {dataSet.map((data, index) => (<StatusCardMd key={index} {...data} />))}
                             </div>

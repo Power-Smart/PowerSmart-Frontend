@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
 import Table from './components/ExampleTable/Table2'
 import Places from './pages/Customer/Places/Places'
 import Rooms from './pages/Customer/Rooms/Rooms'
@@ -24,7 +21,7 @@ function App() {
           <Route path='/rooms' element={<Rooms />} />
           <Route path='/rooms/insideroom' element={<InsideRoom />} />
           <Route path='/rooms/status' element={<CheckStatus />} />
-          <Route path='/rooms' element={<Rooms />} />
+          <Route path='/plan' element={<CheckStatus />} />
         </Routes>
       </div>
     </Router>
