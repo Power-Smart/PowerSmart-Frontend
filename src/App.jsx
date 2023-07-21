@@ -6,6 +6,8 @@ import Places from './pages/Customer/Places/Places'
 import Rooms from './pages/Customer/Rooms/Rooms'
 import InsideRoom from './pages/Customer/Rooms/InsideRoom'
 import CheckStatus from './pages/Customer/Rooms/CheckStatus'
+import BuyingCart from './pages/Customer/Billing/BuyingCart'
+import Profile from './pages/Customer/Profile/Profile'
 
 
 
@@ -21,7 +23,8 @@ function App() {
           <Route path='/rooms' element={<Rooms />} />
           <Route path='/rooms/insideroom' element={<InsideRoom />} />
           <Route path='/rooms/status' element={<CheckStatus />} />
-          <Route path='/plan' element={<CheckStatus />} />
+          <Route path='/plan' element={<BuyingCart />} />
+          <Route path='/profile' element={<Profile />} />
         </Routes>
       </div>
     </Router>
