@@ -3,20 +3,21 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import loginPageImage from '../../assets/images/login.png';
 import { FcGoogle } from 'react-icons/fc';
 import './login.css';
-import { redirect } from "react-router-dom";
 import { userLogin } from '../../api/apiUser';
 import { login } from '../../redux/slices/userSlice';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const onFinish = async (values) => {
         try {
             const response = await userLogin(values.email, values.password);
-            dispatch(login(response));
-            // redirect("/user");
+            dispatch(login(response.data));
+            navigate('/');
         } catch (error) {
             console.log(error);
         }

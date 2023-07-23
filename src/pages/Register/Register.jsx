@@ -2,12 +2,21 @@ import './register.css'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import registerPageImage from '../../assets/images/register.png'
-
+import { userRegister } from '../../api/apiUser';
 
 const Register = () => {
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const onFinish = async (values) => {
+        if (values.password !== values.confirmPassword) {
+            alert('Password and Confirm Password do not match')
+        } else {
+            const response = await userRegister(values);
+            if (response.status === 201) {
+                console.log('Registration Successful')
+            } else {
+                console.log('Registration Failed')
+            }
+        }
     };
 
     return (
@@ -23,9 +32,22 @@ const Register = () => {
                     }}
                     onFinish={onFinish}
                 >
+                    <label htmlFor="">Name</label>
+                    <Form.Item
+                        name="name"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your name',
+                            },
+                        ]}
+                    >
+                        <Input prefix={<UserOutlined className="site-form-item-icon" />} />
+                    </Form.Item>
+
                     <label htmlFor="">Email</label>
                     <Form.Item
-                        name="username"
+                        name="email"
                         rules={[
                             {
                                 required: true,

@@ -5,8 +5,6 @@ const URL = `${import.meta.env.VITE_APP_API_URL}:${
     import.meta.env.VITE_APP_API_PORT
 }`;
 
-console.log(URL);
-
 export const userLogin = async (email, password) => {
     const response = await axios.post(`${URL}/auth/login`, {
         email,
@@ -14,7 +12,16 @@ export const userLogin = async (email, password) => {
     });
     localStorage.setItem("token", response.data.token);
     Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
-    return response.data;
+    return response;
+};
+
+export const userRegister = async (values) => {
+    const response = await axios.post(`${URL}/auth/register`, {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+    });
+    return response;
 };
 
 // Important function to refresh the token -> do not delete
