@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+
 .table {
     width: 90%;
     border-collapse: collapse;
@@ -7,84 +8,65 @@
     background-color: transparent;
 }
 
-
-.table .ant-table thead th {
-    background-color: #01101b;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-    border-color: #cccccc;
-    padding: 10px;
-    font-family: 'Poppins';
+.search__filer_sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.table .ant-table table {
+.search__filer_sort .sort__filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 23%;
+
+}
+
+.search__filer_sort .sort__filter .sort {
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 0 2px;
+}
+
+.search__filer_sort .sort__filter .filter {
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 0 2px;
+}
+
+
+.search__filer_sort .sort__filter select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    outline: none;
     background-color: transparent;
 }
 
-.table .ant-table tbody td {
-    background: linear-gradient(180deg, #000000 0%, #000000 100%);
-    color: #ffffff;
-    text-align: left;
-    font-family: 'Poppins';
-    font-size: 13px;
-    padding: 20px 10px;
+.search__filer_sort .sort__filter select option {
+    color: black;
+    background-color: white;
 }
 
-
-.table .ant-table tbody td:hover {
-    background-color: #ca0d0d;
+.search__filer_sort .search__filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 0 2px;
 }
 
-
-.table .ant-pagination-item a {
-    color: #000;
-}
-
-.table .ant-pagination-prev .ant-pagination-item-link,
-.table .ant-pagination-next .ant-pagination-item-link {
-    color: #ffffff;
-}
-
-
-.anticon {
-    color: white;
-    font-size: 18px;
+.search__filer_sort .search__filter input {
+    width: 100%;
     padding: 5px;
-}
-
-.search-icon {
+    border-radius: 5px;
+    border: none;
     color: white;
-    font-size: 30px;
-    padding: 5px;
-}
-
-
-.hover-row:hover .ant-table-cell:hover {
-    background-color: #1b1b1b00 !important;
-}
-
-.ant-table-filter-dropdown-btns .ant-btn-primary {
-    background-color: #006DFF;
-    color: white;
-}
-
-.ant-table-row-level-0 {
-    background-color: transparent !important;
-}
-
-.ant-table-row-level-0 :hover {
-    background-color: transparent !important;
-}
-
-.ant-table-row:hover {
-    background-color: transparent !important;
-}
-
-.ant-table-body {
-    background-color: transparent !important;
-}
-
-.amt-table-content {
-    background-color: transparent !important;
+    outline: none;
+    background-color: transparent;
 }
