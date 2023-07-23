@@ -14,7 +14,7 @@ const Sidebar = () => {
     const [toggle, setToggle] = useState(true);
 
     return (
-        <nav className='bg-slate-800 w-fit h-screen flex flex-col items-start justify-between relative'>
+        <nav className='bg-slate-800 w-fit h-screen flex flex-col items-start justify-between md:relative fixed left-0 top-0 z-10'>
             <SidebarToggle setToggle={setToggle} toggle={toggle} />
             <div className='flex flex-col items-start'>
                 <div className={'flex flex-row justify-center items-center my-4 transition-all duration-300 ' + (toggle ? "px-3 w-full" : "")}>
