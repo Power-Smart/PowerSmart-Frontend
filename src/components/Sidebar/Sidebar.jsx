@@ -8,8 +8,20 @@ import { BsChatDots } from 'react-icons/bs'
 import { FaPowerOff } from 'react-icons/fa'
 import Logo from '../../assets/images/logo.jpeg'
 import SidebarToggle from './SidebarToggle'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../redux/slices/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const logoutFunction = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        dispatch(logout());
+        navigate('/login');
+    }
 
     const [toggle, setToggle] = useState(true);
 
@@ -47,7 +59,7 @@ const Sidebar = () => {
                 </SidebarButton>
             </div>
             <div className='flex flex-col items-start w-full'>
-                <div className={'flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-red-800 text-center duration-300 ' + (toggle ? 'w-full' : '')}>
+                <div onClick={logoutFunction} className={'flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-red-800 text-center duration-300 ' + (toggle ? 'w-full' : '')}>
                     <div className='px-2'><FaPowerOff /></div>
                     {toggle && <div>Logout</div>}
                 </div>

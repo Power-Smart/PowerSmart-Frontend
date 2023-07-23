@@ -5,23 +5,31 @@ import { FcGoogle } from 'react-icons/fc';
 import './login.css';
 import { userLogin } from '../../api/apiUser';
 import { login } from '../../redux/slices/userSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
 
     const onFinish = async (values) => {
         try {
             const response = await userLogin(values.email, values.password);
             dispatch(login(response.data));
-            navigate('/');
+            navigate('/customer/dashboard');
         } catch (error) {
             console.log(error);
         }
     };
+
+    useEffect(() => {
+        if (localStorage.getItem('email') && localStorage.getItem('role') != 0) {
+            navigate('/customer/dashboard');
+        }
+    }, [])
 
     return (
         <div className="login__page">
