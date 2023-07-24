@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+.table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 50px auto;
+    background-color: transparent;
+}
+
+.search_filter_sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search_filter_sort .sort_filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 35%;
+
+}
+
+.search_filter_sort .sort_filter .sort {
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 0 2px;
+}
+
+.search_filter_sort .sort_filter .filter {
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 0 2px;
+}
+
+
+.search_filter_sort .sort_filter select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    outline: none;
+    background-color: transparent;
+}
+
+.search_filter_sort .sort_filter select option {
+    color: black;
+    background-color: white;
+}
+
+.search_filter_sort .search_filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 0 2px;
+}
+
+.search_filter_sort .search_filter input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    outline: none;
+    background-color: transparent;
+}

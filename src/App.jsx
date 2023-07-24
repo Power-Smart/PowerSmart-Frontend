@@ -5,7 +5,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Table from './components/ExampleTable/Table2'
-
+import UserInquiries from './pages/TechSupport/UserInquiries/UserInquiries'
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Table />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/userinquiries' element={<UserInquiries/>}/>
         </Routes>
       </div>
     </Router>
