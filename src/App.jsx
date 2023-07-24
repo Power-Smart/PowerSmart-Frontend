@@ -13,6 +13,7 @@ import Profile from './pages/Customer/Profile/Profile'
 import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import { useEffect } from 'react'
 import { session } from './redux/slices/userSlice'
+import FormSample from './pages/FormSample'
 
 
 
@@ -37,6 +38,7 @@ function App() {
           <Route path='/plan' element={<BuyingCart />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/customer/dashboard' element={<CustomerDashboard />} />
+          <Route path='/formsample' element={<FormSample />} />
         </Routes>
       </div>
     </Router>
