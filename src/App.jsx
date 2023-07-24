@@ -31,12 +31,6 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/places' element={<Places />} />
-          <Route path='/rooms' element={<Rooms />} />
-          <Route path='/rooms/insideroom' element={<InsideRoom />} />
-          <Route path='/rooms/status' element={<CheckStatus />} />
-          <Route path='/plan' element={<BuyingCart />} />
-          <Route path='/profile' element={<Profile />} />
           <Route path='/customer/dashboard' element={<CustomerDashboard />} />
           <Route path='/formsample' element={<FormSample />} />
         </Routes>
