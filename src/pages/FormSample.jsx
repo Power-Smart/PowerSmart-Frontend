@@ -9,6 +9,8 @@ import FormGroup from '../components/Forms/FormGroup'
 import FormRowDual from '../components/Forms/FormRowDual'
 import TextInput from '../components/Forms/TextInput'
 import FormTitle from '../components/Forms/FormTitle'
+import FormSubmitButton from '../components/Forms/FormSubmitButton'
+
 
 const FormSample = () => {
     return (
@@ -30,6 +32,16 @@ const FormSample = () => {
                                 <TextInput type='text' label='Middle Name' required={true} />
                             </FormGroup>
                         </FormRowDual>
+                        <FormGroup>
+                            <TextInput type='text' label='Address' required={true} />
+                        </FormGroup>
+                        <FormGroup>
+                            <TextInput type='text' label='Email' required={true} />
+                        </FormGroup>
+                        <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
+                            <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Submit'} />
+                            <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Cancel'} />
+                        </div>
                     </Form>
                 </ContentWrapper>
             </PageContent>
