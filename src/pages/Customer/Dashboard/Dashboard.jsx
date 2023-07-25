@@ -7,11 +7,13 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
     const navigate = useNavigate();
+    const { isLogged, user } = useSelector(state => state.user);
     useEffect(() => {
-        if (!localStorage.getItem('email') || localStorage.getItem('role') == 0) {
+        if (!isLogged || user.role == 0) {
             navigate('/login');
         }
     }, [])

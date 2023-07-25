@@ -11,9 +11,6 @@ export const userLogin = async (email, password) => {
         password,
     });
     localStorage.setItem("token", response.data.token);
-    localStorage.setItem("name", response.data.name);
-    localStorage.setItem("email", response.data.email);
-    localStorage.setItem("role", response.data.role);
     Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
     return response;
 };

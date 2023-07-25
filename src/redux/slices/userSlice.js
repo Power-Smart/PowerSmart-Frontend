@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import jwtDecode from "jwt-decode";
 
 const initialState = {
-    name: "",
-    email: "",
-    token: "",
     isLogged: false,
-    role: 0,
+    user: {
+        name: "",
+        email: "",
+        role: 0,
+    },
 };
 
 export const userSlice = createSlice({
@@ -13,32 +15,30 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         login: (state, action) => {
-            const { name, email, token, role } = action.payload;
-            state.name = name;
-            state.email = email;
-            state.token = token;
-            state.isLogged = true;
-            state.role = role;
+            const { token } = action.payload;
+            if (token) {
+                const { name, email, role } = jwtDecode(token);
+                state.user.name = name;
+                state.user.email = email;
+                state.user.role = role;
+                state.isLogged = true;
+            }
         },
         session: (state) => {
-            const name = localStorage.getItem("name");
-            const email = localStorage.getItem("email");
-            const token = localStorage.getItem("token");
-            const role = localStorage.getItem("role");
+            let token = localStorage.getItem("token");
             if (token) {
-                state.name = name;
-                state.email = email;
-                state.token = token;
+                const { name, email, role } = jwtDecode(token);
+                state.user.name = name;
+                state.user.email = email;
                 state.isLogged = true;
-                state.role = role;
+                state.user.role = role;
             }
         },
         logout: (state) => {
-            state.name = "";
-            state.email = "";
-            state.token = "";
+            state.user.name = "";
+            state.user.email = "";
+            state.user.role = 0;
             state.isLogged = false;
-            state.role = 0;
         },
     },
 });

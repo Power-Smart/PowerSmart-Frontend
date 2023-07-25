@@ -16,13 +16,10 @@ import { session } from './redux/slices/userSlice'
 import FormSample from './pages/FormSample'
 
 
-
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    if (localStorage.getItem('email') && localStorage.getItem('role') != 0) {
-      dispatch(session());
-    }
+    dispatch(session());
   }, [])
   return (
     <Router>

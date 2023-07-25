@@ -8,12 +8,13 @@ import { login } from '../../redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { session } from '../../redux/slices/userSlice';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user);
+    const { isLogged } = useSelector(state => state.user);
 
     const onFinish = async (values) => {
         try {
@@ -26,9 +27,8 @@ const Login = () => {
     };
 
     useEffect(() => {
-        if (localStorage.getItem('email') && localStorage.getItem('role') != 0) {
-            navigate('/customer/dashboard');
-        }
+        dispatch(session());
+        if (isLogged) navigate('/customer/dashboard');
     }, [])
 
     return (
