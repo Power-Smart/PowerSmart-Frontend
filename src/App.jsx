@@ -6,6 +6,7 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Table from './components/ExampleTable/Table2'
 import UserInquiries from './pages/TechSupport/UserInquiries/UserInquiries'
+import AddPlace from './pages/TechSupport/AddPlace/AddPlace'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={<Table />} />
           <Route path='/login' element={<Login />} />
           <Route path='/userinquiries' element={<UserInquiries/>}/>
+          <Route path='/addplace' element={<AddPlace/>}/>
         </Routes>
       </div>
     </Router>
