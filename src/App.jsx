@@ -7,6 +7,7 @@ import Register from './pages/Register/Register'
 import Table from './components/ExampleTable/Table2'
 import UserInquiries from './pages/TechSupport/UserInquiries/UserInquiries'
 import AddPlace from './pages/TechSupport/AddPlace/AddPlace'
+import AddDevice from './pages/TechSupport/AddDevice/AddDevice'
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
           <Route path='/' element={<Table />} />
           <Route path='/login' element={<Login />} />
           <Route path='/userinquiries' element={<UserInquiries/>}/>
-          <Route path='/addplace' element={<AddPlace/>}/>
+          <Route path='/addplaces' element={<AddPlace/>}/>
+          <Route path='/adddevices' element={<AddDevice/>}/>
         </Routes>
       </div>
     </Router>
