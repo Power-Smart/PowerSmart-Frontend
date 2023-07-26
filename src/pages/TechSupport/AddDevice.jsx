@@ -12,6 +12,20 @@ import FormDropdown from '../../components/Forms/FormDropdown'
 
 
 const AddDevice = () => {
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        alert('Form Submitted')
+    }
+
+    const resetForm = (e) => {
+        e.preventDefault()
+        alert('Form Reset')
+    }
+    
+
+
+
     return (
         <PageWrapper>
             <Sidebar />
@@ -33,8 +47,8 @@ const AddDevice = () => {
                             <TextInput type='text' label='Sample Input' required={true} />
                         </FormGroup>
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
-                            <FormSubmitButton backgroundColor="bg-blue-600" urlLink={'register'} buttonText={'Next'} />
-                            <FormSubmitButton backgroundColor="bg-red-600" urlLink={'register'} buttonText={'Clear'} />
+                            <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Next'} onClick={handleSubmit} />
+                            <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Clear'} onClick={resetForm} />
                         </div>
                     </Form>
                 </ContentWrapper>
