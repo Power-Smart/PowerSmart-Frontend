@@ -13,6 +13,17 @@ import FormSubmitButton from '../components/Forms/FormSubmitButton'
 
 
 const FormSample = () => {
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        alert('Form Submitted')
+    }
+
+    const resetForm = (e) => {
+        e.preventDefault()
+        alert('Form Reset')
+    }
+
     return (
         <PageWrapper>
             <Sidebar />
@@ -39,8 +50,8 @@ const FormSample = () => {
                             <TextInput type='text' label='Email' required={true} />
                         </FormGroup>
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
-                            <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Submit'} />
-                            <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Cancel'} />
+                            <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Submit'} onClick={handleSubmit} />
+                            <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Cancel'} onClick={resetForm} />
                         </div>
                     </Form>
                 </ContentWrapper>
