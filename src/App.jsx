@@ -6,8 +6,8 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Table from './components/ExampleTable/Table2'
 import UserInquiries from './pages/TechSupport/UserInquiries/UserInquiries'
-import AddPlace from './pages/TechSupport/AddPlace/AddPlace'
-import AddDevice from './pages/TechSupport/AddDevice/AddDevice'
+import AddPlace from './pages/TechSupport/AddPlace'
+import AddDevice from './pages/TechSupport/AddDevice'
 
 
 function App() {
