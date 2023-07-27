@@ -1,4 +1,7 @@
 import React from 'react'
+import {FaGreaterThan} from 'react-icons/fa'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+
 
 const UserInquiries2 = ({ id, complaint, userID, status }) => {
     return (
@@ -23,7 +26,6 @@ const UserInquiries2 = ({ id, complaint, userID, status }) => {
                 {userID}
             </td>
             <td className="px-6 py-4">
-                <div className="flex items-center justify-center">
                     {/* <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> {status} */}
                     {status === 'Pending' && <span className="px-2 py-1 inline-flex text-xs leading-5 rounded-full bg-yellow-950 text-yellow-500">
                         {status}
@@ -34,6 +36,11 @@ const UserInquiries2 = ({ id, complaint, userID, status }) => {
                     {status === 'Rejected' && <span className="px-2 py-1 inline-flex text-xs leading-5 rounded-full bg-red-950 text-red-500">
                         {status}
                     </span>}
+            </td>
+
+             <td className="px-6 py-4">
+                <div className="flex items-center justify-center">
+                    <Link to="/login" > <FaGreaterThan/></Link>
                 </div>
             </td>
        
