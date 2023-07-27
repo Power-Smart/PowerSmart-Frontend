@@ -8,7 +8,7 @@ import Table from './components/ExampleTable/Table2'
 import UserInquiries from './pages/TechSupport/UserInquiries/UserInquiries'
 import AddPlace from './pages/TechSupport/AddPlace'
 import AddDevice from './pages/TechSupport/AddDevice'
-
+import Profile from './pages/TechSupport/Profile'
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
           <Route path='/userinquiries' element={<UserInquiries/>}/>
           <Route path='/addplaces' element={<AddPlace/>}/>
           <Route path='/adddevices' element={<AddDevice/>}/>
+          <Route path='/profile' element={<Profile/>}/>
         </Routes>
       </div>
     </Router>
