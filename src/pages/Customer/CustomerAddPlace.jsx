@@ -11,7 +11,7 @@ import FormSubmitButton from '../../components/Forms/FormSubmitButton'
 import { FiMapPin } from 'react-icons/fi';
 
 
-const AddPlace = () => {
+const CustomerAddPlace = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -60,4 +60,4 @@ const AddPlace = () => {
     )
 }
 
-export default AddPlace;
+export default CustomerAddPlace;

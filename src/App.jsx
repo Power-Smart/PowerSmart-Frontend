@@ -9,6 +9,7 @@ import UserInquiries from './pages/TechSupport/UserInquiries/UserInquiries'
 import AddPlace from './pages/TechSupport/AddPlace'
 import AddDevice from './pages/TechSupport/AddDevice'
 import Profile from './pages/TechSupport/Profile'
+import CustomerAddPlace from './pages/Customer/CustomerAddPlace'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/addplaces' element={<AddPlace/>}/>
           <Route path='/adddevices' element={<AddDevice/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/customeraddplaces' element={<CustomerAddPlace/>}/>
         </Routes>
       </div>
     </Router>
