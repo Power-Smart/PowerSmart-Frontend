@@ -11,7 +11,6 @@ import CustomerRequest from './pages/TechSupport/CustomerRequestTable/CustomerRe
 import SelectPlaceRoom from './pages/TechSupport/SelectPlace&Room/SelectPlace&Room'
 
 
-
 function App() {
 
   return (
