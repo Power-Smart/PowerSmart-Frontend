@@ -9,7 +9,8 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import DashboardTopHeader from './DashboardTopHeader'
-import Carousel from './PlaceCarousel'
+import PlaceCarousel from './PlaceCarousel'
+import RoomCarousel from './RoomCarousel'
 
 const Dashboard = () => {
     // const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Dashboard = () => {
                     <ButtonBar>
                     </ButtonBar>
                     <DashboardTopHeader />
-                    <Carousel />
+                    <PlaceCarousel />
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>
