@@ -8,15 +8,17 @@ import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import DashboardTopHeader from './DashboardTopHeader'
+import Carousel from './PlaceCarousel'
 
 const Dashboard = () => {
-    const navigate = useNavigate();
-    const { isLogged, user } = useSelector(state => state.user);
-    useEffect(() => {
-        if (!isLogged || user.role == 0) {
-            navigate('/login');
-        }
-    }, [])
+    // const navigate = useNavigate();
+    // const { isLogged, user } = useSelector(state => state.user);
+    // useEffect(() => {
+    //     if (!isLogged || user.role == 0) {
+    //         navigate('/login');
+    //     }
+    // }, [])
     return (
         <PageWrapper>
             <Sidebar />
@@ -25,6 +27,8 @@ const Dashboard = () => {
                 <ContentWrapper>
                     <ButtonBar>
                     </ButtonBar>
+                    <DashboardTopHeader />
+                    <Carousel />
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>

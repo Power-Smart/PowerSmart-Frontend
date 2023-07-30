@@ -20,6 +20,8 @@ import { useEffect } from 'react'
 import { session } from './redux/slices/userSlice'
 import FormSample from './pages/FormSample'
 
+
+
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -29,7 +31,7 @@ function App() {
     <Router>
       <div className='flex h-screen items-center justify-center w-full'>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<CustomerDashboard />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/customer/dashboard' element={<CustomerDashboard />} />

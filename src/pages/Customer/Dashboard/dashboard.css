@@ -1,0 +1,17 @@
+.top-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+.top-header h1{
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+}
+
