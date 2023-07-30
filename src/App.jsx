@@ -12,6 +12,7 @@ import Profile from './pages/TechSupport/Profile'
 import CustomerAddPlace from './pages/Customer/CustomerAddPlace'
 import AddRooms from './pages/Customer/AddRooms'
 
+
 function App() {
 
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path='/adddevices' element={<AddDevice/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/customeraddplaces' element={<CustomerAddPlace/>}/>
-          <Route path='addrooms' element={<AddRooms/>}/>
+          <Route path='/addrooms' element={<AddRooms/>}/>
         </Routes>
       </div>
     </Router>
