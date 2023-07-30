@@ -20,7 +20,6 @@ import { useEffect } from 'react'
 import { session } from './redux/slices/userSlice'
 import FormSample from './pages/FormSample'
 
-
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
