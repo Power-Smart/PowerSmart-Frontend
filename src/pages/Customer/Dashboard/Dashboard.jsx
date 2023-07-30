@@ -11,6 +11,9 @@ import { useSelector } from 'react-redux';
 import DashboardTopHeader from './DashboardTopHeader'
 import PlaceCarousel from './PlaceCarousel'
 import RoomCarousel from './RoomCarousel'
+import ScheduleDevice from './ScheduleDevice'
+
+
 
 const Dashboard = () => {
     // const navigate = useNavigate();
@@ -29,7 +32,17 @@ const Dashboard = () => {
                     <ButtonBar>
                     </ButtonBar>
                     <DashboardTopHeader />
+                    <div className="schedule">
+                        <ScheduleDevice />
+                        <ScheduleDevice />
+                        <ScheduleDevice />
+                        <ScheduleDevice />
+                        <ScheduleDevice />
+                        <ScheduleDevice />
+                    </div>
+
                     <PlaceCarousel />
+                    {/* <RoomCarousel /> */}
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>
