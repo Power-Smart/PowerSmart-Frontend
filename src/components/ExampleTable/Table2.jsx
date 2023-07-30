@@ -1,5 +1,7 @@
 import React from 'react'
 import Table2Row from './Table2Row';
+import {IoSearchCircle} from 'react-icons/io5'
+
 
 const dataset = [
     {
@@ -44,6 +46,7 @@ const Table2 = () => {
     return (
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-12 px-8">
+
             <table className="w-full text-sm text-left text-gray-500">
                 <thead className="text-xs text-gray-700 uppercase ">
                     <tr>
