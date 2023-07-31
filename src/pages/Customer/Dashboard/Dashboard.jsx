@@ -31,18 +31,35 @@ const Dashboard = () => {
                 <ContentWrapper>
                     <ButtonBar>
                     </ButtonBar>
-                    <DashboardTopHeader />
-                    <div className="schedule">
-                        <ScheduleDevice />
-                        <ScheduleDevice />
-                        <ScheduleDevice />
-                        <ScheduleDevice />
-                        <ScheduleDevice />
-                        <ScheduleDevice />
+                    <div className="dashboard-container">
+                        <div className="left-side">
+                            <DashboardTopHeader />
+                            <div className="schedule">
+                                <ScheduleDevice />
+                                <ScheduleDevice />
+                                <ScheduleDevice />
+                                <ScheduleDevice />
+                                <ScheduleDevice />
+                                <ScheduleDevice />
+                            </div>
+
+                            <PlaceCarousel />
+                            <PlaceCarousel />
+                            <PlaceCarousel />
+                        </div>
+
+                        <div className="right-side">
+                            <div className="guest-users">
+                                <h1 className="text-2xl">Guest Users</h1>
+
+                                <div className="one-guest-user">
+                                        
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
-                    <PlaceCarousel />
-                    {/* <RoomCarousel /> */}
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>
