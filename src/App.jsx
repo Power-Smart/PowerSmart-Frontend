@@ -18,6 +18,7 @@ import TechSupportView from "./pages/Admin/TechSupportView/TechSupportView";
 import StockManagerView from "./pages/Admin/StockManagerView/StockManagerView";
 import PaymentView from "./pages/Admin/PaymentView/PaymentView";
 import CustomerView from "./pages/Admin/CustomerView/CustomerView";
+import ComplaintView from "./pages/Admin/ComplaintView/ComplaintView";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
           <Route path="/admin/stockmanager" element={<StockManagerView />} />
           <Route path="/admin/payment" element={<PaymentView />} />
           <Route path="/admin/customer" element={<CustomerView />} />
+          <Route path="/admin/complaint" element={<ComplaintView />} />
         </Routes>
       </div>
     </Router>
