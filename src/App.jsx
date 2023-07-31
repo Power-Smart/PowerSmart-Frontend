@@ -14,6 +14,7 @@ import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import { useEffect } from 'react'
 import { session } from './redux/slices/userSlice'
 import FormSample from './pages/FormSample'
+import ComplaintInfo from './pages/Admin/ComplaintInfo/ComplaintInfo'
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/customer/dashboard' element={<CustomerDashboard />} />
           <Route path='/formsample' element={<FormSample />} />
+          <Route path="/admin/complaint/info" element={<ComplaintInfo />} />
         </Routes>
       </div>
     </Router>
