@@ -14,7 +14,8 @@ import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import { useEffect } from 'react'
 import { session } from './redux/slices/userSlice'
 import FormSample from './pages/FormSample'
-
+import StockManagerAdd from './pages/Admin/StockManagerAdd/StockManagerAdd'
+import TechSupportAdd from './pages/Admin/TechSupportAdd/TechSupportAdd'
 
 function App() {
   const dispatch = useDispatch()
@@ -30,6 +31,8 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/customer/dashboard' element={<CustomerDashboard />} />
           <Route path='/formsample' element={<FormSample />} />
+          <Route path='/admin/stockmanager/new' element={<StockManagerAdd />} />
+          <Route path='/admin/techsupport/new' element={<TechSupportAdd />} />
         </Routes>
       </div>
     </Router>
