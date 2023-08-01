@@ -12,6 +12,8 @@ import Profile from './pages/Customer/Profile/Profile'
 import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import Protected from "./pages/Customer/Protected/Protected";
 
+
+
 export const routesArray = [
     {
         path: "/",
@@ -26,25 +28,26 @@ export const routesArray = [
                 element: <Places />,
             },
             {
-                path: "rooms",
+                path: "places/rooms",
                 element: <Rooms />,
             },
             {
-                path: "rooms/:id",
+                path: "places/rooms/insideRoom",
                 element: <InsideRoom />,
             },
             {
-                path: "check-status",
+                path: "checkStatus",
                 element: <CheckStatus />,
             },
             {
-                path: "buying-cart",
+                path: "payments",
                 element: <BuyingCart />,
             },
             {
                 path: "profile",
                 element: <Profile />,
             },
+            
         ]
     },
     {
@@ -58,6 +61,10 @@ export const routesArray = [
     {
         path: "home",
         element: <Home />,
+    },
+    {
+        path: "*",
+        element: <h1>404</h1>,
     }
 
 ];

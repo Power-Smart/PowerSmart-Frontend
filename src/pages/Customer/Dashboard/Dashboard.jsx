@@ -2,7 +2,6 @@ import React from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
-import Sidebar from '../../../components/Sidebar/Sidebar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import { useEffect } from 'react'
@@ -14,12 +13,12 @@ import ScheduleDevice from './ScheduleDevice'
 import { VscCheck, VscChromeClose } from 'react-icons/vsc'
 import gameAchievement from '../../../assets/images/gama-achievement.png'
 import GuestUsersSuggest from './GuestUsersSuggest'
-
+import CustomerSidebar from '../../../components/Sidebar/Customer/Sidebar'
 
 
 const Dashboard = () => {
-    const navigate = useNavigate();
-    const { isLogged, user } = useSelector(state => state.user);
+    // const navigate = useNavigate();
+    // const { isLogged, user } = useSelector(state => state.user);
     // useEffect(() => {
     //     if (!isLogged || user.role == 0) {
     //         navigate('/login');
@@ -27,7 +26,7 @@ const Dashboard = () => {
     // }, [])
     return (
         <PageWrapper>
-            <Sidebar />
+            <CustomerSidebar />
             <PageContent>
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Dashboard" />
                 <ContentWrapper>
