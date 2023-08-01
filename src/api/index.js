@@ -4,7 +4,7 @@ const URL = `${import.meta.env.VITE_APP_API_URL}:${
     import.meta.env.VITE_APP_API_PORT
 }`;
 
-export default api = axios.create({
+const api = axios.create({
     baseURL: URL,
 }); // Create an axios instance
 
@@ -15,3 +15,5 @@ api.interceptors.request.use((response) => {
     }
     return response;
 }); // Request interceptor
+
+export default api;

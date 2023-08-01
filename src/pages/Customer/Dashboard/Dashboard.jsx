@@ -12,11 +12,11 @@ import { useSelector } from 'react-redux';
 const Dashboard = () => {
     const navigate = useNavigate();
     const { isLogged, user } = useSelector(state => state.user);
-    useEffect(() => {
-        if (!isLogged || user.role == 0) {
-            navigate('/login');
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (!isLogged || user.role == 0) {
+    //         navigate('/login');
+    //     }
+    // }, [])
     return (
         <PageWrapper>
             <Sidebar />
