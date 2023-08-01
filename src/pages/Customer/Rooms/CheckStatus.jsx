@@ -29,7 +29,7 @@ const CheckStatus = () => {
         <PageWrapper>
             <RoomSidebar />
             <PageContent>
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Check Status" />
+                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Check Status" baclLink='/places/rooms' />
                 <ContentWrapper>
                     <div className='m-4 py-4 px-8 rounded-lg bg-[#151528]'>
                         <div className='p-3'>

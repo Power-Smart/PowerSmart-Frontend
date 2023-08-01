@@ -11,6 +11,7 @@ import BuyingCart from './pages/Customer/Billing/BuyingCart'
 import Profile from './pages/Customer/Profile/Profile'
 import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import Protected from "./pages/Customer/Protected/Protected";
+import PageNotFound from "./pages/SpecialPages/PageNotFound";
 
 
 
@@ -64,7 +65,7 @@ export const routesArray = [
     },
     {
         path: "*",
-        element: <h1>404</h1>,
+        element: <PageNotFound />,
     }
 
 ];

@@ -33,7 +33,7 @@ const BuyingCart = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Buying Cart" />
+                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Buying Cart" baclLink='/' />
                 <ContentWrapper>
                     <div className='flex flex-col items-center justify-center w-full h-full'>
                         {dataSet.map((data, index) => (<CheckoutBox key={index} {...data} />))}

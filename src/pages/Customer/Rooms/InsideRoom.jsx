@@ -36,7 +36,7 @@ const InsideRoom = () => {
         <PageWrapper >
             <RoomSidebar />
             <PageContent >
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Inside Room" />
+                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Inside Room" baclLink='/places/rooms' />
                 <ContentWrapper>
                     <div className='m-4 py-4 px-8 border-[#0693F3] border-2 rounded-lg bg-[#151528]'>
                         <div className='p-3'>

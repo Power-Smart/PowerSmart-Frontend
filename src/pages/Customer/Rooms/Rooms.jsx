@@ -31,7 +31,7 @@ const Rooms = () => {
         <PageWrapper >
             <MainSidebar />
             <PageContent >
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Rooms" />
+                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Rooms" baclLink='/places' />
 
                 <div className='px-16 py-4 w-full flex flex-col flex-grow mx-auto'>
                     <ButtonBar>
