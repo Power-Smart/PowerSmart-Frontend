@@ -3,14 +3,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #1a1a1a;
+    background-color: #151528;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
-    width: 90%;
 }
 
 .top-header h1{
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #fff;
 }
@@ -21,17 +20,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #1a1a1a;
+    background-color: #151528;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
-    width: 90%;
 }
 
-.schedule{
+/* .schedule{
     height: 50vh;
     overflow-y: scroll !important;
     margin: 20px 0;
-}
+} */
 
 .right-side .one-guest-user img{
     width: 50px;
@@ -43,14 +41,14 @@
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-    background-color: #1a1a1a;
+    background-color: #151528;
     padding: 1rem 1rem;
     justify-content: space-around;
     border-radius: 0.5rem;  
 }
 
 .right-side .one-guest-user .accept{
-    background-color: #1a1a1a;
+    background-color: #151528;
     border: 1px solid #fff;
     padding: 0.5rem 0.5rem;
     border-radius: 0.5rem;
@@ -62,7 +60,7 @@
 }
 
 .right-side .one-guest-user .reject{
-    background-color: #1a1a1a;
+    background-color: #151528;
     border: 1px solid #fff;
     padding: 0.5rem 0.5rem;
     border-radius: 0.5rem;
@@ -78,4 +76,18 @@
     grid-template-columns: 65% 35%;
     grid-gap: 2rem;
     
+}
+
+.room{
+    background-color: #151528;
+    padding: 1rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.place-sets{
+    background-color: rgba(255, 255, 255, 0.265);
+    padding: 1rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
 }
