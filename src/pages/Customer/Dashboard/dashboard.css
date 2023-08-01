@@ -32,3 +32,50 @@
     overflow-y: scroll !important;
     margin: 20px 0;
 }
+
+.right-side .one-guest-user img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.right-side .one-guest-user{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #1a1a1a;
+    padding: 1rem 1rem;
+    justify-content: space-around;
+    border-radius: 0.5rem;  
+}
+
+.right-side .one-guest-user .accept{
+    background-color: #1a1a1a;
+    border: 1px solid #fff;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    color: #01ff1e;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 0.7rem;
+    font-size: 1.2rem;
+}
+
+.right-side .one-guest-user .reject{
+    background-color: #1a1a1a;
+    border: 1px solid #fff;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    color: #ff0000;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+
+.dashboard-container{
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-gap: 2rem;
+    
+}
