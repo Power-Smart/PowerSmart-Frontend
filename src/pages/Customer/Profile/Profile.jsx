@@ -1,6 +1,6 @@
 import React from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
-import Sidebar from '../../../components/Sidebar/Sidebar'
+import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
@@ -9,7 +9,7 @@ import { AiFillRocket } from 'react-icons/ai'
 const Profile = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Profile" />
                 <ContentWrapper>

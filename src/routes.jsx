@@ -32,11 +32,11 @@ export const routesArray = [
                 element: <Rooms />,
             },
             {
-                path: "places/rooms/insideRoom",
+                path: "places/rooms/controlpanel",
                 element: <InsideRoom />,
             },
             {
-                path: "checkStatus",
+                path: "places/rooms/status",
                 element: <CheckStatus />,
             },
             {
@@ -47,7 +47,7 @@ export const routesArray = [
                 path: "profile",
                 element: <Profile />,
             },
-            
+
         ]
     },
     {

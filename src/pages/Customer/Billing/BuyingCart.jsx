@@ -1,7 +1,7 @@
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
-import Sidebar from '../../../components/Sidebar/Sidebar'
+import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import TopBar from '../../../components/smallComps/TopBar'
 import CheckoutBox from '../../../components/Cards/CheckoutBox'
 
@@ -31,7 +31,7 @@ const dataSet = [
 const BuyingCart = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Buying Cart" />
                 <ContentWrapper>

@@ -13,7 +13,7 @@ import ScheduleDevice from './ScheduleDevice'
 import { VscCheck, VscChromeClose } from 'react-icons/vsc'
 import gameAchievement from '../../../assets/images/gama-achievement.png'
 import GuestUsersSuggest from './GuestUsersSuggest'
-import CustomerSidebar from '../../../components/Sidebar/Customer/Sidebar'
+import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 
 
 const Dashboard = () => {
@@ -26,7 +26,7 @@ const Dashboard = () => {
     // }, [])
     return (
         <PageWrapper>
-            <CustomerSidebar />
+            <MainSidebar />
             <PageContent>
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Dashboard" />
                 <ContentWrapper>

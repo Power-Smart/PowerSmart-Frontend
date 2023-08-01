@@ -1,4 +1,4 @@
-import Sidebar from '../../../components/Sidebar/Sidebar'
+import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
@@ -29,7 +29,7 @@ const dataSet = [
 const Rooms = () => {
     return (
         <PageWrapper >
-            <Sidebar />
+            <MainSidebar />
             <PageContent >
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Rooms" />
 

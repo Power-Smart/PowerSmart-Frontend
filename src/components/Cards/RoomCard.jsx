@@ -24,7 +24,7 @@ const RoomCard = ({ status, name, devices, measures }) => {
                 {measures && <div className='text-xs'>humidity : {measures.humidity}%</div>}
             </div>
 
-            <Link to='/places/rooms/insideRoom'>
+            <Link to='/places/rooms/controlpanel'>
                 <div className='flex flex-col flex-grow justify-end items-center'>
                     <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
                 </div>

@@ -1,10 +1,10 @@
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
-import Sidebar from '../../../components/Sidebar/Sidebar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import Indicator from '../../../components/smallComps/Indicator'
 import StatusCardMd from '../../../components/Cards/StatusCardMd'
+import RoomSidebar from '../../../components/Sidebar/Customer/RoomSidebar'
 
 const dataSet = [
     {
@@ -27,7 +27,7 @@ const dataSet = [
 const CheckStatus = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <RoomSidebar />
             <PageContent>
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Check Status" />
                 <ContentWrapper>
