@@ -28,6 +28,7 @@ const Profile = () => {
         }
     }, [user]);
     // dispatch(getCustomer(cust))
+    
     return (
         <PageWrapper>
             <MainSidebar />

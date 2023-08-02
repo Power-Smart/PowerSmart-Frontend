@@ -20,16 +20,16 @@ const Info = () => {
 
         <Form>
             <FormGroup>
-                <TextInput type='text' label='Name' value="Viraj Sandakelum" required={true} />
+                <TextInput type='text' label='Name' defaultValue="Viraj Sandakelum" required={true} />
             </FormGroup>
             <FormGroup>
-                <TextInput type='text' label='Address Line 01' value="Gampaha" required={true} />
+                <TextInput type='text' label='Address Line 01' defaultValue="Gampaha" required={true} />
             </FormGroup>
             <FormGroup>
-                <TextInput type='text' label='Address Line 01' value="Colombo Road" required={true} />
+                <TextInput type='text' label='Address Line 01' defaultValue="Colombo Road" required={true} />
             </FormGroup>
             <FormGroup>
-                <TextInput type='text' label='Telephone No' value=" +94772878877" required={true} />
+                <TextInput type='text' label='Telephone No' defaultValue=" +94772878877" required={true} />
             </FormGroup>
             
             <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
