@@ -71,7 +71,7 @@ const Chat = () => {
                                                             <path fillRule='evenodd' d='M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z' clipRule='evenodd' />
                                                         </svg>
                                                     </div>
-                                                    <input name='search' className='focus:ring-red-500 focus:border-red-500 block w-full pl-10 sm:text-sm border-gray-100 rounded-full p-2 border' />
+                                                    <input placeholder='Search' name='search' className='focus:ring-red-500 focus:border-red-500 block w-full pl-10 sm:text-sm border-gray-100 rounded-full p-2 border' />
                                                 </div>
                                             </div>      {/*End of search box*/}
 
@@ -222,16 +222,21 @@ const Chat = () => {
                                                     <path fillRule='evenodd' d='M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z' clipRule='evenodd' />
                                                 </svg>
                                             </button>
-                                            <button className='inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'>
+                                            <button className='inline-flex flex-col items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'>
                                                 <svg className='h-6 w-6 text-gray-400' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
-                                                    <path fillRule='evenodd' d="M12 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 9c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 9c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" clipRule='evenodd' />
+                                                    <circle cx='12' cy='6' r='2' />
+                                                    <circle cx='12' cy='12' r='2' />
+                                                    <circle cx='12' cy='18' r='2' />
                                                 </svg>
                                             </button>
+
                                         </div>
                                     </div>
 
                                     {/*Messages*/}
                                     <div id='messages' className='flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch'>
+
+                                        {/*first message*/}
                                         <div className="chat-message">
                                             <div className="flex items-end">
                                                 <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
@@ -241,12 +246,83 @@ const Chat = () => {
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <img src='https://images.unsplash.com/photo-1511130558090-00af810c21b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=389&q=80' className='w-6 h-6 rounded-full order-1'/>
+                                                <img src='https://images.unsplash.com/photo-1511130558090-00af810c21b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=389&q=80' className='w-6 h-6 rounded-full order-1' />
                                             </div>
                                         </div>
 
-                                        
+                                        {/*second message*/}
+                                        <div className="chat-message">
+                                            <div className="flex items-end justify-end">
+                                                <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
+                                                    <div>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-600 text-white'>
+                                                            Lorem ipsum 2
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <img src='https://images.unsplash.com/photo-1511130558090-00af810c21b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=389&q=80' className='w-6 h-6 rounded-full order-1' />
+                                            </div>
+                                        </div>
+
+                                        {/*third message*/}
+                                        <div className="chat-message">
+                                            <div className="flex items-end justify-end">
+                                                <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
+                                                    <div>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-600 text-white'>
+                                                            Lorem ipsum 3
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <img src='https://images.unsplash.com/photo-1511130558090-00af810c21b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=389&q=80' className='w-6 h-6 rounded-full order-1' />
+                                            </div>
+                                        </div>
+
+                                        {/*fourth message*/}
+                                        <div className="chat-message">
+                                            <div className="flex items-end justify-end">
+                                                <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
+                                                    <div>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-600 text-white'>
+                                                            Lorem ipsum 4
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <img src='https://images.unsplash.com/photo-1511130558090-00af810c21b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=389&q=80' className='w-6 h-6 rounded-full order-1' />
+                                            </div>
+                                        </div>
+
+                                        {/*fifth message*/}
+                                        <div className="chat-message">
+                                            <div className="flex items-end">
+                                                <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+                                                    <div>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600'>
+                                                            Lorem ipsum
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <img src='https://images.unsplash.com/photo-1511130558090-00af810c21b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=389&q=80' className='w-6 h-6 rounded-full order-1' />
+                                            </div>
+                                        </div>
+
+                                        {/*messages end here*/}
+                                        <div className='border-t-2 border-gray-200 px-4 pt-4 mb-16'>
+                                            <div className="relative flex">
+                                                <span className='absolute inset-y-0 flex items-center'>
+                                                    <button className='inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300'>
+                                                        <svg className='h-6 w-6 text-gray-600' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' aria-hidden='true' stroke='currentColor'>
+                                                            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z' />
+                                                        </svg>
+                                                    </button>
+                                                </span>
+                                                <input placeholder='Type Something' className='focus:ring-red-500 focus:border-red-500 w-full focus:placeholder-gray-400 text-gray-600 placeholder-gray-300 pl-12 bg-gray-100 rounded-full py-3 border-gray-200' />
+                                            </div>
+
+                                        </div>
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>
