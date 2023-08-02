@@ -4,10 +4,30 @@ import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { AiFillRocket } from 'react-icons/ai'
-import  ProfileForm from './Info'
+import ProfileForm from './Info'
+import { useDispatch, useSelector } from 'react-redux';
+import { getCustomer } from '../../../redux/slices/customerSlice';
+import { useEffect } from 'react'
+import { getCustomerApi } from '../../../api/apiUser'
 
 
 const Profile = () => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
+
+    useEffect(() => {
+        if (user.id) {
+            console.log(user.id)
+            getCustomerApi(user.id)
+                .then(res => {
+                    dispatch(getCustomer(res.data));
+                })
+                .catch(error => {
+                    // Handle error if needed
+                });
+        }
+    }, [user]);
+    // dispatch(getCustomer(cust))
     return (
         <PageWrapper>
             <MainSidebar />
@@ -22,7 +42,7 @@ const Profile = () => {
                             </div>
                             <div className='flex flex-col ml-10'>
                                 <h1 className='text-4xl my-2 font-semibold'>Kavishka Sulakshana</h1>
-                                <h2 className='text-lg my-2'># 245363553</h2>
+                                <h2 className='text-lg my-2'># </h2>
                             </div>
                         </div>
                         <div>

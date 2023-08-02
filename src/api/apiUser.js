@@ -20,6 +20,12 @@ export const userRegister = async (values) => {
     return response;
 };
 
+export const getCustomerApi = async (userId) => {
+    const response = await api.get(`/user/${userId}`);
+    console.log(response);
+    return response;
+};
+
 // Important function to refresh the token -> do not delete
 
 // axios

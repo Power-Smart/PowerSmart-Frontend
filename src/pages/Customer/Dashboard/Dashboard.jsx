@@ -16,6 +16,8 @@ import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 
 
 const Dashboard = () => {
+    const user = useSelector(state => state.user);
+    console.log(user)
     // const navigate = useNavigate();
     // const { isLogged, user } = useSelector(state => state.user);
     // useEffect(() => {
