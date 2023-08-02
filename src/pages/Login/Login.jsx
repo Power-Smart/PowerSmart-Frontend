@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { session } from '../../redux/slices/userSlice';
-
+import { fetchCustomer } from '../../redux/slices/customerSlice';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -20,6 +20,7 @@ const Login = () => {
         try {
             const response = await userLogin(values.email, values.password);
             dispatch(login(response.data));
+            dispatch(fetchCustomer(response.data.id));
             navigate('/');
         } catch (error) {
             console.log(error);

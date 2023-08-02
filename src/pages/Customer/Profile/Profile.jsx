@@ -5,31 +5,12 @@ import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { AiFillRocket } from 'react-icons/ai'
 import ProfileForm from './Info'
-import { useDispatch, useSelector } from 'react-redux';
-import { getCustomer } from '../../../redux/slices/customerSlice';
-import { useEffect } from 'react'
-import { getCustomerApi } from '../../../api/apiUser'
+import { useSelector } from 'react-redux';
+import { selectCustomer } from '../../../redux/slices/customerSlice';
 
 
 const Profile = () => {
-    const dispatch = useDispatch();
-    const user = useSelector(state => state.user);
-    const customer = useSelector(state => state.customer);
-    console.log(customer.points);
-
-    useEffect(() => {
-        console.log(user.user.id);
-        if (user.user.id) {
-            getCustomerApi(user.user.id)
-                .then(res => {
-                    // console.log(res.data);
-                    dispatch(getCustomer(res.data));
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
-    }, [user])
+    const customer = useSelector(selectCustomer);
 
     return (
         <PageWrapper>
