@@ -11,6 +11,7 @@ import AddDevice from './pages/TechSupport/AddDevice'
 import Profile from './pages/TechSupport/Profile'
 import CustomerAddPlace from './pages/Customer/CustomerAddPlace'
 import AddRooms from './pages/Customer/AddRooms'
+import Chat from './pages/Customer/Chat'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/customeraddplaces' element={<CustomerAddPlace/>}/>
           <Route path='/addrooms' element={<AddRooms/>}/>
+          <Route path='/chat' element={<Chat/>}/>
         </Routes>
       </div>
     </Router>
