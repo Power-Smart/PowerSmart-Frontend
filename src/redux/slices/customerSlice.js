@@ -17,7 +17,7 @@ export const userSlice = createSlice({
     reducers: {
         getCustomer: (state, action) => {
             const data = action.payload;
-            console.log(data);
+            
             state.points = data.points;
             state.year_subscription = data.year_subscription;
             state.tel_no = data.tel_no;

@@ -14,21 +14,23 @@ import { getCustomerApi } from '../../../api/apiUser'
 const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
+    const customer = useSelector(state => state.customer);
+    console.log(customer.points);
 
     useEffect(() => {
-        if (user.id) {
-            console.log(user.id)
-            getCustomerApi(user.id)
+        console.log(user.user.id);
+        if (user.user.id) {
+            getCustomerApi(user.user.id)
                 .then(res => {
+                    // console.log(res.data);
                     dispatch(getCustomer(res.data));
                 })
                 .catch(error => {
-                    // Handle error if needed
+                    console.log(error);
                 });
         }
-    }, [user]);
-    // dispatch(getCustomer(cust))
-    
+    }, [user])
+
     return (
         <PageWrapper>
             <MainSidebar />
@@ -43,7 +45,7 @@ const Profile = () => {
                             </div>
                             <div className='flex flex-col ml-10'>
                                 <h1 className='text-4xl my-2 font-semibold'>Kavishka Sulakshana</h1>
-                                <h2 className='text-lg my-2'># </h2>
+                                <h2 className='text-lg my-2'>#{customer.points} </h2>
                             </div>
                         </div>
                         <div>
