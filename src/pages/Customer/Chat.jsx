@@ -28,7 +28,7 @@ const Chat = () => {
                                     <div className='hidden lg:block lg:w-80'>
                                         <div className='flex items-center justify-end'>
                                             <div className='flex'>
-                                                <a href='#' className='px-3 py-2 rounded-md text-sm font-medium text-white hover:text-white'>Chat</a>
+                                                <a href='#' className='px-1 py-2 rounded-md text-sm font-medium text-white hover:text-white'>Chat</a>
                                             </div>
 
                                             <div className='ml-4 relative flex-shrink-0'>
@@ -47,23 +47,10 @@ const Chat = () => {
 
                         <div className='flex-grow w-full max-w-7xl  mx-auto lg:flex'>
                             <div className='flex-1 min-w-0 bg-white xl:flex'>
-                                <div className='border-b border-gray-200 xl:border-b-0 xl:flex-shrink-0 xl:w-64 xl:border-r xl:border-gray-200 bg-gray-50'>
+                                <div className='border-b border-gray-200 xl:border-b-0 xl:flex-shrink-0 xl:w-64 xl:border-r xl:border-gray-200 bg-black'>
                                     <div className='h-full pl-4 pr-2 py-6 sm:pl-6 lg:pl-8 xl:pl-0'>
                                         <div className='h-full relative'>
-                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500 mb-4'>
-
-                                                <div className='flex-shrink-0'>
-                                                    <img className='h-12 w-12 rounded-full' src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80' />
-                                                </div>
-
-                                                <div className='flex-1 min-w-0'>
-                                                    <a href='#' className='focus:outline-none'>
-                                                        <span className='absolute inset-0' />
-                                                        <p className='text-sm font-bold text-black'>Sidharth Malhotra</p>
-                                                        <p className='text-sm text-gray-500 truncate'>TechSupporter</p>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                          
                                             <div className='mb-4'>
                                                 <div className="relative">
                                                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -76,14 +63,14 @@ const Chat = () => {
                                             </div>      {/*End of search box*/}
 
                                             {/*user 1*/}
-                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-gray-200'>
+                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-black'>
                                                 <div className='flex-shrink-0'>
                                                     <img className='h-10 w-10 rounded-full' src='https://images.unsplash.com/photo-1524638431109-93d95c968f03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80' />
                                                 </div>
                                                 <div className='flex-1 min-w-0'>
                                                     <a href='#' className='focus:outline-none'>
                                                         <div className='flex items-center justify-between'>
-                                                            <p className='text-sm font-bold text-blue-800'>
+                                                            <p className='text-sm font-bold text-white'>
                                                                 Dia Gomes
                                                             </p>
                                                             <div className='text-gray-400 text-xs'>
@@ -101,14 +88,14 @@ const Chat = () => {
                                             </div>
 
                                             {/*user 2*/}
-                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-gray-200'>
+                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-black'>
                                                 <div className='flex-shrink-0'>
                                                     <img className='h-10 w-10 rounded-full' src='https://images.unsplash.com/photo-1508341591423-4347099e1f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80' />
                                                 </div>
                                                 <div className='flex-1 min-w-0'>
                                                     <a href='#' className='focus:outline-none'>
                                                         <div className='flex items-center justify-between'>
-                                                            <p className='text-sm font-bold text-blue-800'>
+                                                            <p className='text-sm font-bold text-white'>
                                                                 Michael James
                                                             </p>
                                                             <div className='text-gray-400 text-xs'>
@@ -125,14 +112,14 @@ const Chat = () => {
                                                 </div>
                                             </div>
                                             {/*user 3*/}
-                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-gray-200'>
+                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-black'>
                                                 <div className='flex-shrink-0'>
                                                     <img className='h-10 w-10 rounded-full' src='https://plus.unsplash.com/premium_photo-1668896123988-b1566bb54579?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80' />
                                                 </div>
                                                 <div className='flex-1 min-w-0'>
                                                     <a href='#' className='focus:outline-none'>
                                                         <div className='flex items-center justify-between'>
-                                                            <p className='text-sm font-bold text-blue-800'>
+                                                            <p className='text-sm font-bold text-white'>
                                                                 Anne Georgia
                                                             </p>
                                                             <div className='text-gray-400 text-xs'>
@@ -149,14 +136,14 @@ const Chat = () => {
                                                 </div>
                                             </div>
                                             {/*user 4*/}
-                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-gray-200'>
+                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-black'>
                                                 <div className='flex-shrink-0'>
                                                     <img className='h-10 w-10 rounded-full' src='https://images.unsplash.com/photo-1511130558090-00af810c21b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=389&q=80' />
                                                 </div>
                                                 <div className='flex-1 min-w-0'>
                                                     <a href='#' className='focus:outline-none'>
                                                         <div className='flex items-center justify-between'>
-                                                            <p className='text-sm font-bold text-blue-800'>
+                                                            <p className='text-sm font-bold text-white'>
                                                                 Kina Mayer
                                                             </p>
                                                             <div className='text-gray-400 text-xs'>
@@ -173,14 +160,14 @@ const Chat = () => {
                                                 </div>
                                             </div>
                                             {/*user 5*/}
-                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-gray-200'>
+                                            <div className='relative rounded-lg px-2 py-2 flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 mb-3 hover: bg-black'>
                                                 <div className='flex-shrink-0'>
                                                     <img className='h-10 w-10 rounded-full' src='https://images.unsplash.com/photo-1584043720379-b56cd9199c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80' />
                                                 </div>
                                                 <div className='flex-1 min-w-0'>
                                                     <a href='#' className='focus:outline-none'>
                                                         <div className='flex items-center justify-between'>
-                                                            <p className='text-sm font-bold text-blue-800'>
+                                                            <p className='text-sm font-bold text-white'>
                                                                 James Smith
                                                             </p>
                                                             <div className='text-gray-400 text-xs'>
@@ -200,13 +187,13 @@ const Chat = () => {
                                     </div>
                                 </div>
                                 {/*Body*/}
-                                <div className='flex-1 p:2 sm:pb-6 justify-between  flex-col h-screen hidden xl:flex'>
+                                <div className='flex-1 p:2 sm:pb-6 justify-between  flex-col h-screen hidden xl:flex bg-black'>
                                     <div className="flex sm:items-center justify-between py-3 border-b border-gray-200 p-3">
                                         <div className="flex items-center space-x-4">
                                             <img src='https://images.unsplash.com/photo-1511130558090-00af810c21b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=389&q=80' className='w-10 sm:w-12 h-10 sm:h-12 rounded-full cursor-pointer' />
                                             <div className='flex flex-col leading-tight'>
                                                 <div className='text-1xl mt-1 flex items-center'>
-                                                    <span className='text-gray-700 mr-3'>Kina Mayer</span>
+                                                    <span className='text-white mr-3'>Kina Mayer</span>
                                                     <span className='text-green-500'>
                                                         <svg width={10} height={10}>
                                                             <circle cx={5} cy={5} r={5} fill='currentColor' />
@@ -241,7 +228,7 @@ const Chat = () => {
                                             <div className="flex items-end">
                                                 <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                                                     <div>
-                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600'>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-800'>
                                                             Lorem ipsum
                                                         </span>
                                                     </div>
@@ -255,7 +242,7 @@ const Chat = () => {
                                             <div className="flex items-end justify-end">
                                                 <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
                                                     <div>
-                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-600 text-white'>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-blue-600 text-white'>
                                                             Lorem ipsum 2
                                                         </span>
                                                     </div>
@@ -269,7 +256,7 @@ const Chat = () => {
                                             <div className="flex items-end justify-end">
                                                 <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
                                                     <div>
-                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-600 text-white'>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-blue-600 text-white'>
                                                             Lorem ipsum 3
                                                         </span>
                                                     </div>
@@ -283,7 +270,7 @@ const Chat = () => {
                                             <div className="flex items-end justify-end">
                                                 <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-end">
                                                     <div>
-                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-600 text-white'>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-blue-600 text-white'>
                                                             Lorem ipsum 4
                                                         </span>
                                                     </div>
@@ -297,7 +284,7 @@ const Chat = () => {
                                             <div className="flex items-end">
                                                 <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                                                     <div>
-                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-600'>
+                                                        <span className='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-200 text-gray-800'>
                                                             Lorem ipsum
                                                         </span>
                                                     </div>
