@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { logout } from '../../redux/slices/userSlice'
 import { useNavigate } from 'react-router-dom'
 
+
 const SidebarWrapper = ({ children, toggle, setToggle }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -15,6 +16,11 @@ const SidebarWrapper = ({ children, toggle, setToggle }) => {
         localStorage.clear();
         dispatch(logout());
         navigate('/login');
+    }
+
+    const profileView = (e) => {
+        e.preventDefault();
+        navigate('/profile');
     }
 
     return (
@@ -28,6 +34,11 @@ const SidebarWrapper = ({ children, toggle, setToggle }) => {
                 {children}
             </div>
             <div className='flex flex-col items-start w-full'>
+                    <div onClick={profileView} className={'flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-red-800 text-center duration-300 ' + (toggle ? 'w-full' : '')}>
+                        <div className='px-2'><img src="https://avatars.githubusercontent.com/u/73744585?v=4" alt="" className='w-7 h-7 rounded-full' /></div>
+                        {toggle && <div>Profile</div>}
+                    </div>
+
                 <div onClick={logoutFunction} className={'flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-red-800 text-center duration-300 ' + (toggle ? 'w-full' : '')}>
                     <div className='px-2'><FaPowerOff /></div>
                     {toggle && <div>Logout</div>}

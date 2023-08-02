@@ -4,7 +4,7 @@ import TextInput from '../../../components/Forms/TextInput'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
 
 
-const Report = () => {
+const Info = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -19,18 +19,19 @@ const Report = () => {
     return (
 
         <Form>
-            <h3 className='text-white text-3xl'>Not satisfied with something?</h3>
-            <p className='text-white'>We apologize for any inconvenience caused. Please fill n the required details so that one of our customer service representative could get back to you as soon as possible</p>
-            <br></br>
             <FormGroup>
-                <TextInput type='text' label='Phone number to reach you' required={true} />
+                <TextInput type='text' label='Name' value="Viraj Sandakelum" required={true} />
             </FormGroup>
             <FormGroup>
-                <TextInput type='text' label='Email address' required={true} />
+                <TextInput type='text' label='Address Line 01' value="Gampaha" required={true} />
             </FormGroup>
             <FormGroup>
-                <TextInput type='text' label='Explant your incident to us' required={true} />
+                <TextInput type='text' label='Address Line 01' value="Colombo Road" required={true} />
             </FormGroup>
+            <FormGroup>
+                <TextInput type='text' label='Telephone No' value=" +94772878877" required={true} />
+            </FormGroup>
+            
             <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
                 <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Submit'} onClick={handleSubmit} />
                 <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Cancel'} onClick={resetForm} />
@@ -40,4 +41,4 @@ const Report = () => {
     )
 }
 
-export default Report
+export default Info

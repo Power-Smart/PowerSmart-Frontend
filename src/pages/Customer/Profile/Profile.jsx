@@ -1,10 +1,11 @@
-import React from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { AiFillRocket } from 'react-icons/ai'
+import  ProfileForm from './Info'
+
 
 const Profile = () => {
     return (
@@ -32,7 +33,7 @@ const Profile = () => {
                         </div>
                     </div>
                     <div>
-
+                        <ProfileForm />
                     </div>
                 </ContentWrapper>
             </PageContent>

@@ -20,7 +20,7 @@ export const routesArray = [
         children: [
             {
                 path: "/",
-                element: <Support />,
+                element: <CustomerDashboard />,
             },
             {
                 path: "places",
