@@ -1,5 +1,3 @@
-import { createBrowserRouter, Link } from "react-router-dom";
-
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Home from './pages/Home/Home'
@@ -12,7 +10,7 @@ import Profile from './pages/Customer/Profile/Profile'
 import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import Protected from "./pages/Customer/Protected/Protected";
 import PageNotFound from "./pages/SpecialPages/PageNotFound";
-
+import Support from './pages/Customer/Support/Support'
 
 
 export const routesArray = [
@@ -22,7 +20,7 @@ export const routesArray = [
         children: [
             {
                 path: "/",
-                element: <CustomerDashboard />,
+                element: <Support />,
             },
             {
                 path: "places",
