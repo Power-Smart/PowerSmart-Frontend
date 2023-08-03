@@ -9,6 +9,7 @@ import FormGroup from '../../components/Forms/FormGroup'
 import TextInput from '../../components/Forms/TextInput'
 import FormSubmitButton from '../../components/Forms/FormSubmitButton'
 import { FiMapPin } from 'react-icons/fi';
+import MainSidebar from '../../components/Sidebar/Customer/MainSidebar'
 
 
 const AddPlace = () => {
@@ -26,7 +27,7 @@ const AddPlace = () => {
 
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TopBar title={'Add Places'} />
                 <ContentWrapper>

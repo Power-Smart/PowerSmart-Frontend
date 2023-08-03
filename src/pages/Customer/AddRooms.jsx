@@ -10,6 +10,8 @@ import TextInput from '../../components/Forms/TextInput'
 import FormSubmitButton from '../../components/Forms/FormSubmitButton'
 import { FiMapPin } from 'react-icons/fi';
 import FormRowDual from '../../components/Forms/FormRowDual'
+import MainSidebar from '../../components/Sidebar/Customer/MainSidebar'
+
 
 
 const AddRooms = () => {
@@ -27,7 +29,7 @@ const AddRooms = () => {
 
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TopBar title={'Add Rooms'} />
                 <ContentWrapper>
