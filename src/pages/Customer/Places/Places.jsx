@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../../../components/Sidebar/Sidebar'
+import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import PlaceCard from '../../../components/Cards/PlaceCard'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
@@ -25,9 +25,9 @@ const dataSet = [
 const Places = () => {
   return (
     <PageWrapper >
-      <Sidebar />
+      <MainSidebar />
       <PageContent >
-        <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Places" />
+        <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Places" baclLink='/' />
 
         {/* Content Area */}
         <ContentWrapper>

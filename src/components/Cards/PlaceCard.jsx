@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const PlaceCard = ({ status, name, roomCount, devices }) => {
     return (
@@ -20,9 +21,11 @@ const PlaceCard = ({ status, name, roomCount, devices }) => {
                 <div>{devices} Devices</div>
             </div>
 
-            <div className='flex flex-col flex-grow justify-end items-center'>
-                <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
-            </div>
+            <Link to='rooms'>
+                <div className='flex flex-col flex-grow justify-end items-center'>
+                    <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
+                </div>
+            </Link>
 
         </div>
     )

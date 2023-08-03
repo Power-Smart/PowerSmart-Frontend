@@ -1,0 +1,35 @@
+.page__body .not__available_sensor__kit{
+    color: white;
+    background-color: #151528;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.page__body .not__available_sensor__kit .plus__icon{
+    text-align: center;
+    height: 50%;
+    border-radius: 10px;
+    border: 1px solid #83BCFF;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page__body .not__available_sensor__kit .description{
+    margin-top: 20px;
+}

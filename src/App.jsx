@@ -1,38 +1,33 @@
 import './App.css'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
-import Home from './pages/Home/Home'
-import Places from './pages/Customer/Places/Places'
-import Rooms from './pages/Customer/Rooms/Rooms'
-import InsideRoom from './pages/Customer/Rooms/InsideRoom'
-import CheckStatus from './pages/Customer/Rooms/CheckStatus'
-import BuyingCart from './pages/Customer/Billing/BuyingCart'
-import Profile from './pages/Customer/Profile/Profile'
-import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import jwtDecode from 'jwt-decode'
 import { session } from './redux/slices/userSlice'
-import FormSample from './pages/FormSample'
+import { routesArray } from './routes.jsx'
+import { fetchCustomer, selectCustomer } from './redux/slices/customerSlice'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+
+const router = createBrowserRouter(routesArray);
 
 
 function App() {
   const dispatch = useDispatch()
+  const customer = useSelector(selectCustomer)
   useEffect(() => {
     dispatch(session());
+    let token = localStorage.getItem("token");
+    if (token && customer.status === "idle") {
+      const { id } = jwtDecode(token);
+      dispatch(fetchCustomer(id));
+    }
   }, [])
   return (
-    <Router>
-      <div className='flex h-screen items-center justify-center w-full'>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/customer/dashboard' element={<CustomerDashboard />} />
-          <Route path='/formsample' element={<FormSample />} />
-        </Routes>
-      </div>
-    </Router>
+    <RouterProvider router={router} />
   )
 }
 
