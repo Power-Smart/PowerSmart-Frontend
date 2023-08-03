@@ -1,5 +1,5 @@
 import './App.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import jwtDecode from 'jwt-decode'
 import { session } from './redux/slices/userSlice'
@@ -17,10 +17,11 @@ const router = createBrowserRouter(routesArray);
 
 function App() {
   const dispatch = useDispatch()
+  const customer = useSelector(selectCustomer)
   useEffect(() => {
     dispatch(session());
     let token = localStorage.getItem("token");
-    if (token) {
+    if (token && customer.status === "idle") {
       const { id } = jwtDecode(token);
       dispatch(fetchCustomer(id));
     }
