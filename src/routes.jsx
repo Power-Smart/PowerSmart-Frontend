@@ -11,6 +11,8 @@ import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import Protected from "./pages/Customer/Protected/Protected";
 import PageNotFound from "./pages/SpecialPages/PageNotFound";
 import Support from './pages/Customer/Support/Support'
+import ProfileComplete from './pages/Register/ProfileComplete'
+
 
 
 export const routesArray = [
@@ -64,6 +66,10 @@ export const routesArray = [
     {
         path: "*",
         element: <PageNotFound />,
+    },
+    {
+        path: "/register/profileComplete",
+        element: <ProfileComplete />,
     }
 
 ];
