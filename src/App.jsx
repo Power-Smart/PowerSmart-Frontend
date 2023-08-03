@@ -15,7 +15,11 @@ import { useEffect } from 'react'
 import { session } from './redux/slices/userSlice'
 import FormSample from './pages/FormSample'
 import ComplaintInfo from './pages/Admin/ComplaintInfo/ComplaintInfo'
-
+import TechSupportInfo from './pages/Admin/TechSupportInfo/TechSupportInfo'
+import AdminViewCustomer from './pages/Admin/ViewCustomer/ViewCustomer'
+import AdminProfile from './pages/Admin/Profile/Profile'
+import AdminDashboard from './pages/Admin/Dashboard/AdminDashboard'
+import Dashboard from './pages/Customer/Dashboard/Dashboard'
 
 function App() {
   const dispatch = useDispatch()
@@ -32,6 +36,10 @@ function App() {
           <Route path='/customer/dashboard' element={<CustomerDashboard />} />
           <Route path='/formsample' element={<FormSample />} />
           <Route path="/admin/complaint/info" element={<ComplaintInfo />} />
+          <Route path="/admin/techsupport/info" element={<TechSupportInfo />} />
+          <Route path="/admin/viewcustomer" element={<AdminViewCustomer />} />
+          <Route path="/admin/profile" element={<AdminProfile />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
       </div>
     </Router>

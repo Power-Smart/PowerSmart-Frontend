@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlaceCard = ({ status, name, roomCount, devices }) => {
+const PlaceCard = ({ status, name, placeID, roomCount, devices }) => {
     return (
         <div className='text-sm flex flex-col w-[200px] h-[230px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
 
@@ -10,7 +10,9 @@ const PlaceCard = ({ status, name, roomCount, devices }) => {
                     </div>
                     {status}
                 </div>
+                <label><b>{placeID}</b></label>
                 <label>{name}</label>
+                
             </div>
 
             <hr className='border-gray-600' />
