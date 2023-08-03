@@ -11,7 +11,6 @@ import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import Protected from "./pages/Customer/Protected/Protected";
 import PageNotFound from "./pages/SpecialPages/PageNotFound";
 import Support from './pages/Customer/Support/Support'
-import Table from './components/ExampleTable/Table2'
 import UserInquiries from './pages/TechSupport/UserInquiries/UserInquiries'
 import AddPlace from './pages/TechSupport/AddPlace'
 import AddDevice from './pages/TechSupport/AddDevice'
@@ -19,6 +18,9 @@ import ProfileTechSupport from './pages/TechSupport/Profile'
 import CustomerAddPlace from './pages/Customer/CustomerAddPlace'
 import AddRooms from './pages/Customer/AddRooms'
 import Chat from './pages/Customer/Chat'
+import ProfileComplete from './pages/Register/ProfileComplete'
+
+
 
 export const routesArray = [
     {
@@ -71,6 +73,10 @@ export const routesArray = [
     {
         path: "*",
         element: <PageNotFound />,
+    },
+    {
+        path: "/register/profileComplete",
+        element: <ProfileComplete />,
     }
 
 ];
