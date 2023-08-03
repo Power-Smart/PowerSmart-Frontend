@@ -6,12 +6,19 @@ import Rooms from './pages/Customer/Rooms/Rooms'
 import InsideRoom from './pages/Customer/Rooms/InsideRoom'
 import CheckStatus from './pages/Customer/Rooms/CheckStatus'
 import BuyingCart from './pages/Customer/Billing/BuyingCart'
-import Profile from './pages/Customer/Profile/Profile'
+import ProfileCustomer from './pages/Customer/Profile/Profile'
 import CustomerDashboard from './pages/Customer/Dashboard/Dashboard'
 import Protected from "./pages/Customer/Protected/Protected";
 import PageNotFound from "./pages/SpecialPages/PageNotFound";
 import Support from './pages/Customer/Support/Support'
-
+import Table from './components/ExampleTable/Table2'
+import UserInquiries from './pages/TechSupport/UserInquiries/UserInquiries'
+import AddPlace from './pages/TechSupport/AddPlace'
+import AddDevice from './pages/TechSupport/AddDevice'
+import ProfileTechSupport from './pages/TechSupport/Profile'
+import CustomerAddPlace from './pages/Customer/CustomerAddPlace'
+import AddRooms from './pages/Customer/AddRooms'
+import Chat from './pages/Customer/Chat'
 
 export const routesArray = [
     {
@@ -44,7 +51,7 @@ export const routesArray = [
             },
             {
                 path: "profile",
-                element: <Profile />,
+                element: <ProfileCustomer />,
             },
 
         ]
