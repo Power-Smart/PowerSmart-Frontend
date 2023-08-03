@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-body {
+.register__page {
     background-color: #0E0E1A;
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    /* transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%; */
 }
 
 .login-form-forgot {
@@ -13,25 +19,26 @@ body {
     float: left;
 }
 
-.login__page .login__form .login-form-button {
+.login__container .login__form .login-form-button {
     width: 40%;
     background-color: #0856CD;
 }
 
-.login__page {
+.login__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
     height: fit-content;
     width: fit-content;
-    margin: 0 auto;
-    margin-top: 100px;
     box-shadow: #83BCFF 0px 0px 15px 0px;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
 
-.login__page .image .title {
+.login__container .image .title {
     position: absolute;
     color: white;
     font-weight: bold;
@@ -39,26 +46,25 @@ body {
     margin-top: 20px;
 }
 
-.login__page .image .title h1 {
+.login__container .image .title h1 {
     font-size: 40px;
     letter-spacing: 2px;
 }
 
-.login__page .image .title h4 {
+.login__container .image .title h4 {
     letter-spacing: 1.5px;
 }
 
-.login__page .login__form {
-    width: 350px;
-    margin-top: 30px;
+.login__container .login__form {
+    margin-left: 60px;
 }
 
-label {
+.login__container .login__form label {
     color: white;
 }
 
 
-.login__page .login__form h1 {
+.login__container .login__form h1 {
     color: white;
     text-align: center;
     margin-bottom: 20px;
@@ -67,57 +73,44 @@ label {
     letter-spacing: 10px;
 }
 
-.login__page .login__form .rememberME {
+.login__container .login__form .rememberME {
     color: white;
 }
 
-.login__page .login__form a {
+.login__container .login__form a {
     color: white;
 }
 
-.login__page .login__form .form__submission {
+.login__container .login__form .form__submission {
     text-align: center;
     color: white;
 }
 
-.login__page .login__form .form__submission .google__login {
+.login__container .login__form .form__submission .google__login {
     margin-top: 50px;
     letter-spacing: 1px;
 }
 
-.login__page .image {
-    width: 400px;
+.login__container .image {
+    width: 460px;
 }
 
-@media screen and (max-width: 1024px) {
-    .login__page {
+
+@media screen and (max-width: 1000px) {
+    .login__container {
         grid-template-columns: 1fr;
         grid-gap: 0px;
-        height: 100vh;
-        width: 100vw;
-        margin: 0;
-        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        overflow: hidden;
     }
 
-    .login__page .image {
+    .login__container .image {
         display: none;
     }
 
-    .login__page .login__form {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .login__page .login__form h1 {
-        font-size: 30px;
-        margin-bottom: 10px;
-    }
-
-    .login__page .login__form .login-form-button {
-        width: 100%;
+    .login__container .login__form {
+        margin-left: 0px;
     }
 }

@@ -1,24 +1,34 @@
-import React, { useState } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home/Home'
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
-import Table from './components/ExampleTable/Table2'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import jwtDecode from 'jwt-decode'
+import { session } from './redux/slices/userSlice'
+import { routesArray } from './routes.jsx'
+import { fetchCustomer, selectCustomer } from './redux/slices/customerSlice'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+
+const router = createBrowserRouter(routesArray);
 
 
 function App() {
-
+  const dispatch = useDispatch()
+  const customer = useSelector(selectCustomer)
+  useEffect(() => {
+    dispatch(session());
+    let token = localStorage.getItem("token");
+    if (token && customer.status === "idle") {
+      const { id } = jwtDecode(token);
+      dispatch(fetchCustomer(id));
+    }
+  }, [])
   return (
-    <Router>
-      <div className='flex h-screen items-center justify-center w-full'>
-        <Routes>
-          <Route path='/' element={<Table />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
-      </div>
-    </Router>
+    <RouterProvider router={router} />
   )
 }
 

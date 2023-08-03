@@ -1,20 +1,29 @@
-import axios from "axios";
 import Cookies from "js-cookie";
-
-const URL = `${import.meta.env.VITE_APP_API_URL}:${
-    import.meta.env.VITE_APP_API_PORT
-}`;
-
-console.log(URL);
+import api from ".";
 
 export const userLogin = async (email, password) => {
-    const response = await axios.post(`${URL}/auth/login`, {
+    const response = await api.post(`/auth/login`, {
         email,
         password,
     });
     localStorage.setItem("token", response.data.token);
     Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
-    return response.data;
+    return response;
+};
+
+export const userRegister = async (values) => {
+    const response = await api.post(`/auth/register`, {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+    });
+    return response;
+};
+
+export const getCustomerApi = async (userId) => {
+    const response = await api.get(`/user/${userId}`);
+    console.log(response);
+    return response;
 };
 
 // Important function to refresh the token -> do not delete
