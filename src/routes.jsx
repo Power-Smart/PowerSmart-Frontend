@@ -55,6 +55,14 @@ export const routesArray = [
                 path: "profile",
                 element: <ProfileCustomer />,
             },
+            {
+                path: "places/add",
+                element: <AddPlace />,
+            },
+            {
+                path: "places/rooms/add",
+                element: <AddRooms />,
+            }
 
         ]
     },
