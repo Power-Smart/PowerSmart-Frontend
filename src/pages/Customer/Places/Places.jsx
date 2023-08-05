@@ -10,7 +10,7 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const dataSet = [
