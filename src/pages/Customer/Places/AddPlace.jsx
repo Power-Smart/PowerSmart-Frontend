@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { addPlace } from '../../../redux/slices/placesSlice'
 import { useNavigate } from 'react-router-dom'
-
+import AlertMessage from '../../../components/smallComps/AlertMessage'
 const AddPlace = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -25,16 +25,30 @@ const AddPlace = () => {
         postal_Code: '',
         is_active: false,
     })
+    const [alert, setAlert] = useState({
+        message: '',
+        type: 'success',
+        visible: false,
+    });
 
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
             dispatch(addPlace({ ...place, id: customer.id }))
             resetForm(e)
-            // navigate('/places')
+            setAlert({
+                message: 'Place Added Successfully !',
+                type: 'success',
+                visible: true,
+            })
         }
         catch (err) {
             console.log(err)
+            setAlert({
+                message: 'Error Adding Place !',
+                type: 'error',
+                visible: true,
+            })
         }
     }
 
@@ -44,6 +58,11 @@ const AddPlace = () => {
             name: '',
             location: '',
             postal_Code: '',
+        })
+        setAlert({
+            message: '',
+            type: 'success',
+            visible: false,
         })
     }
 
@@ -55,6 +74,7 @@ const AddPlace = () => {
                 <TopBar title={'Add Places'} />
                 <ContentWrapper>
                     <Form>
+                        <AlertMessage message={alert.message} visible={alert.visible} setVisible={setAlert} closable={true} type={alert.type} />
                         <FormGroup>
                             <TextInput type='text' label='Name' required={true} value={place.name} onChange={(e) => { setPlace({ ...place, name: e.target.value }) }} />
                         </FormGroup>
