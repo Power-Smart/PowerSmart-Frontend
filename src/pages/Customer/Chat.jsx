@@ -50,7 +50,7 @@ const Chat = () => {
                                 <div className='border-b border-gray-200 xl:border-b-0 xl:flex-shrink-0 xl:w-64 xl:border-r xl:border-gray-200 bg-black'>
                                     <div className='h-full pl-4 pr-2 py-6 sm:pl-6 lg:pl-8 xl:pl-0'>
                                         <div className='h-full relative'>
-                                          
+
                                             <div className='mb-4'>
                                                 <div className="relative">
                                                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -308,8 +308,6 @@ const Chat = () => {
 
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>

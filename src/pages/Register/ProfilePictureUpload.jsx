@@ -19,8 +19,8 @@ const ProfilePictureUpload = () => {
         onupdatefiles={setFiles}
         allowMultiple={true}
         maxFiles={3}
-        server=""
-        name="files" /* sets the file input name, it's filepond by default */
+        server="http://localhost:3002/user/saveProfilePic/1"
+        name="profile" /* sets the file input name, it's filepond by default */
         labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
     />   
     )

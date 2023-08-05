@@ -27,8 +27,8 @@ const ProfileComplete = () => {
             <PageContent>
                 <ContentWrapper>
                     <Form>
-                        <FormTitle>Form Title</FormTitle>
-                        {/* <ProfilePictureUpload /> */}
+                        <FormTitle>Profile Complete</FormTitle>
+                        <ProfilePictureUpload />
                         <FormGroup>
                             <TextInput type='text' label='First Name' required={true} />
                         </FormGroup>
@@ -48,7 +48,7 @@ const ProfileComplete = () => {
                         </FormGroup>
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
                             <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Submit'} onClick={handleSubmit} />
-                            <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Cancel'} onClick={resetForm} />
+                            <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Clear'} onClick={resetForm} />
                         </div>
                     </Form>
                 </ContentWrapper>

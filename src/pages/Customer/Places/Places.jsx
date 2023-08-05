@@ -10,6 +10,8 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
+import {Link} from 'react-router-dom'
+
 
 const dataSet = [
   {
@@ -46,9 +48,11 @@ const Places = () => {
         {/* Content Area */}
         <ContentWrapper>
 
-          <ButtonBar>
-            <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Place</button>
-          </ButtonBar>
+          <Link to='/places/add'>
+            <ButtonBar>
+              <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Place</button>
+            </ButtonBar>
+          </Link>
 
           <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
