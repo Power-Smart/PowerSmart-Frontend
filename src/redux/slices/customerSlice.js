@@ -42,7 +42,7 @@ export const userSlice = createSlice({
                 state.is_banned = data.is_banned;
                 state.profile_pic = data.profile_pic;
                 state.achievements = data.achievements;
-                state.id = data.id;
+                state.id = data.customer_id;
             })
             .addCase(fetchCustomer.rejected, (state, action) => {
                 state.status = "failed";
