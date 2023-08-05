@@ -62,8 +62,15 @@ export const routesArray = [
             {
                 path: "places/rooms/add",
                 element: <AddRooms />,
+            },
+            {
+                path: "chat",
+                element: <Chat />,
+            },
+            {
+                path: "support",
+                element: <Support />,
             }
-
         ]
     },
     {
