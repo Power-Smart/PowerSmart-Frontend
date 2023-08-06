@@ -7,6 +7,7 @@ import TopBar from '../../../components/smallComps/TopBar';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar';
 import Report from './Report';
+import Feedback from './Feedback';
 
 const tabListNoTitle = [
     {
@@ -25,7 +26,7 @@ const tabListNoTitle = [
 
 const contentListNoTitle = {
     Report: <p><Report /></p>,
-    Feedback: <p>Feedback content</p>,
+    Feedback: <p><Feedback/></p>,
     Contact: <p>Contact us content</p>,
 };
 

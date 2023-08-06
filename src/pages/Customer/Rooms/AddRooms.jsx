@@ -9,60 +9,66 @@ import FormGroup from '../../../components/Forms/FormGroup'
 import TextInput from '../../../components/Forms/TextInput'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
 import { FiMapPin } from 'react-icons/fi';
+import FormRowDual from '../../../components/Forms/FormRowDual'
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectCustomer } from '../../../redux/slices/customerSlice'
-import { addPlace } from '../../../redux/slices/placesSlice'
-import { useNavigate } from 'react-router-dom'
+import { selectCustomer } from '../../../redux/slices/customerSlice.js'
+import { addRoom } from '../../../redux/slices/roomsSlice'
 import AlertMessage from '../../../components/smallComps/AlertMessage'
 
 
-const AddPlace = () => {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const customer = useSelector(selectCustomer)
-    const [place, setPlace] = useState({
+
+const AddRooms = () => {
+
+    const dispatch = useDispatch();
+    const customer = useSelector(selectCustomer);
+
+    const [room, setRoom] = useState({
         name: '',
-        location: '',
-        postal_Code: '',
-        is_active: false,
+        windows_type: '',
+        size: '',
+        type: '',
     })
+
     const [alert, setAlert] = useState({
         message: '',
         type: 'success',
         visible: false,
     });
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(addPlace({ ...place, id: customer.id }))
+            dispatch(addRoom({ ...room, }))
             resetForm(e)
             setAlert({
-                message: 'Place Added Successfully !',
+                message: 'Room Added Successfully !',
                 type: 'success',
                 visible: true,
             })
         }
-        catch (err) {
-            console.log(err)
+        catch (error) {
+            console.log(error);
             setAlert({
                 message: 'Error Adding Place !',
                 type: 'error',
                 visible: true,
             })
         }
+
     }
 
     const resetForm = (e) => {
         e.preventDefault()
-        setPlace({
+        setRoom({
             name: '',
-            location: '',
-            postal_Code: '',
+            windows_type: '',
+            size: '',
+            type: '',
         })
         setAlert({
-            message: '',
+            message: 'Form Cleaed',
             type: 'success',
             visible: false,
         })
@@ -73,27 +79,22 @@ const AddPlace = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar title={'Add Places'} />
+                <TopBar title={'Add Rooms'} />
                 <ContentWrapper>
                     <Form>
                         <AlertMessage message={alert.message} visible={alert.visible} setVisible={setAlert} closable={true} type={alert.type} />
                         <FormGroup>
-                            <TextInput type='text' label='Name' required={true} value={place.name} onChange={(e) => { setPlace({ ...place, name: e.target.value }) }} />
+                            <TextInput type='text' label='Room Name' required={true} value={room.name} onChange={(e) => setRoom({ ...room, name: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <div className="relative">
-                                <TextInput type='text' label='Location' required={true} value={place.location} onChange={(e) => { setPlace({ ...place, location: e.target.value }) }} />
-                                <FiMapPin className="absolute right-2 top-3 text-gray-400" />
-                            </div>
+                            <TextInput type='text' label='Type' required={true} value={room.type} onChange={(e) => setRoom({ ...room, type: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <TextInput type='text' label='Postal Code' required={true} value={place.postal_Code} onChange={(e) => { setPlace({ ...place, postal_Code: e.target.value }) }} />
+                            <TextInput type='text' label='Windows Type' required={true} value={room.windows_type} onChange={(e) => setRoom({ ...room, windows_type: e.target.value })} />
                         </FormGroup>
+
                         <FormGroup>
-                            <TextInput type='text' label='Nature of Business' required={true} />
-                        </FormGroup>
-                        <FormGroup>
-                            <TextInput type='text' label='Address' required={true} />
+                            <TextInput type='text' label='size' required={true} value={room.size} onChange={(e) => setRoom({ ...room, size: e.target.value })} />
                         </FormGroup>
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
                             <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Add'} onClick={handleSubmit} />
@@ -106,4 +107,5 @@ const AddPlace = () => {
     )
 }
 
-export default AddPlace;
+export default AddRooms;
+

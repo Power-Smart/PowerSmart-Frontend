@@ -13,37 +13,28 @@ import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { Link } from 'react-router-dom'
 
 
-const dataSet = [
-  {
-    status: 'Online',
-    name: 'Home',
-    roomCount: 3,
-    devices: 5
-  },
-  {
-    status: 'Offline',
-    name: 'Workplace',
-    roomCount: 8,
-    devices: 7
-  },
-]
 
 const Places = () => {
+
   const dispatch = useDispatch()
   const customer = useSelector(selectCustomer)
   const places = useSelector(selectPlaces);
   const placesStatus = useSelector(selectPlacesStatus);
+
+  
 
   useEffect(() => {
     if (customer.id && placesStatus === 'idle') {
       dispatch(fetchPlaces(customer.id));
     }
   }, [customer, dispatch])
+
+
   return (
     <PageWrapper >
       <MainSidebar />
       <PageContent >
-        <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Places" baclLink='/' />
+        <TopBar image="https://avatars.githubusercontent.com/u/7374455?v=4" title="Places" baclLink='/' />
 
         {/* Content Area */}
         <ContentWrapper>

@@ -1,8 +1,8 @@
 import React from 'react'
 import PageWrapper from '../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../components/Wrappers/ContentWrapper'
-import Sidebar from '../../components/Sidebar/Sidebar'
 import PageContent from '../../components/Wrappers/PageContent'
+import MainSidebar from '../../components/Sidebar/Customer/MainSidebar'
 
 
 const Chat = () => {
@@ -10,7 +10,7 @@ const Chat = () => {
 
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <ContentWrapper>
                     <div className='relative min-h-screen flex flex-col bg-gray-50'>
