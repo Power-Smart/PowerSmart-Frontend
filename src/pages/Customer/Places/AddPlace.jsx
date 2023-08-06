@@ -15,6 +15,8 @@ import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { addPlace } from '../../../redux/slices/placesSlice'
 import { useNavigate } from 'react-router-dom'
 import AlertMessage from '../../../components/smallComps/AlertMessage'
+
+
 const AddPlace = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()

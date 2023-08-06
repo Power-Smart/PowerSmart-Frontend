@@ -16,7 +16,7 @@ import AddPlace from './pages/Customer/Places/AddPlace'
 import AddDevice from './pages/TechSupport/AddDevice'
 import ProfileTechSupport from './pages/TechSupport/Profile'
 import CustomerAddPlace from './pages/Customer/CustomerAddPlace'
-import AddRooms from './pages/Customer/AddRooms'
+import AddRooms from './pages/Customer/Rooms/AddRooms'
 import Chat from './pages/Customer/Chat'
 import ProfileComplete from './pages/Register/ProfileComplete'
 
