@@ -41,11 +41,7 @@ const Rooms = () => {
     const customer = useSelector(selectCustomer);
     const rooms = useSelector(selectRooms);
     const roomsStatus = useSelector(selectRoomsStatus);
-
     const { placeID } = useParams();
-
-    console.log('params1', placeID)
-
 
     useEffect(() => {
         console.log('customer', customer.id)

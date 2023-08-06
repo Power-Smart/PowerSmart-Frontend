@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getRoomsApi } from "../../api/apiRooms";
+import { getRoomsApi, addRoomApi } from "../../api/apiRooms";
 
 
 export const fetchRooms = createAsyncThunk(
@@ -14,6 +14,24 @@ export const fetchRooms = createAsyncThunk(
         }
     }
 );
+
+
+export const addRoom = createAsyncThunk(
+    "rooms/addRoom",
+    async (room, thunkAPI) => {
+        try{
+            const response = await addRoomApi(room);
+            if(response.status === 201){
+                return response.data;
+            }else{
+                return thunkAPI.rejectWithValue({error:response.data});
+            }
+        }catch(error){
+            return thunkAPI.rejectWithValue({error:error.message});
+        }
+    }
+)
+
 
 const initialState = {
     rooms: [],
@@ -38,7 +56,18 @@ export const roomSlice = createSlice({
             .addCase(fetchRooms.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
-            });
+            })
+            .addCase(addRoom.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(addRoom.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.rooms.push(action.payload);
+            })
+            .addCase(addRoom.rejected,(state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            })
     }
 });
 

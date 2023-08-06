@@ -34,7 +34,7 @@ const Places = () => {
     <PageWrapper >
       <MainSidebar />
       <PageContent >
-        <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Places" baclLink='/' />
+        <TopBar image="https://avatars.githubusercontent.com/u/7374455?v=4" title="Places" baclLink='/' />
 
         {/* Content Area */}
         <ContentWrapper>
