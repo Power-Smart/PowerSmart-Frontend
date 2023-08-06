@@ -36,7 +36,7 @@ export const routesArray = [
                 element: <Places />,
             },
             {
-                path: "places/rooms",
+                path: "places/:placeID/rooms",
                 element: <Rooms />,
             },
             {
@@ -62,8 +62,15 @@ export const routesArray = [
             {
                 path: "places/rooms/add",
                 element: <AddRooms />,
+            },
+            {
+                path: "chat",
+                element: <Chat />,
+            },
+            {
+                path: "support",
+                element: <Support />,
             }
-
         ]
     },
     {

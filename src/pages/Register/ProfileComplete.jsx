@@ -14,7 +14,6 @@ const ProfileComplete = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        alert('Form Submitted')
     }
 
     const resetForm = (e) => {

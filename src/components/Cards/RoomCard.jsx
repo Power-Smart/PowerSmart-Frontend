@@ -3,15 +3,15 @@ import Indicator from '../smallComps/Indicator'
 import { Link } from 'react-router-dom'
 
 
-const RoomCard = ({ status, name, devices, measures }) => {
+const RoomCard = ({ is_active, name, devices, measures }) => {
     return (
         <div className='text-sm flex flex-col w-[200px] h-[230px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
 
             <div className='flex flex-col flex-grow'>
                 <div className=' text-xs text-green-300 flex justify-start items-center'>
-                    {status === "Online" && <Indicator color="bg-green-400" />}
-                    {status === "Offline" && <Indicator color="bg-red-400" />}
-                    {status}
+                    {is_active && <Indicator color="bg-green-400" status={"Online"}/>}
+                    {!is_active && <Indicator color="bg-red-400" status={"Offline"}/>}
+                    {is_active}
                 </div>
                 <label>{name}</label>
             </div>

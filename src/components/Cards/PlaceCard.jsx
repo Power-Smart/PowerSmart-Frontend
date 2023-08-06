@@ -26,7 +26,7 @@ const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location }) =>
                 <div>{roomCount} Rooms</div>
             </div>
 
-            <Link to='rooms'>
+            <Link to='1/rooms'>
                 <div className='flex flex-col flex-grow justify-end items-center'>
                     <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
                 </div>
