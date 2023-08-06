@@ -36,7 +36,7 @@ export const routesArray = [
                 element: <Places />,
             },
             {
-                path: "places/rooms",
+                path: "places/:placeID/rooms",
                 element: <Rooms />,
             },
             {

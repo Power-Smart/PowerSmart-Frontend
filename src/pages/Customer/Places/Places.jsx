@@ -10,35 +10,26 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
-const dataSet = [
-  {
-    status: 'Online',
-    name: 'Home',
-    roomCount: 3,
-    devices: 5
-  },
-  {
-    status: 'Offline',
-    name: 'Workplace',
-    roomCount: 8,
-    devices: 7
-  },
-]
 
 const Places = () => {
+
   const dispatch = useDispatch()
   const customer = useSelector(selectCustomer)
   const places = useSelector(selectPlaces);
   const placesStatus = useSelector(selectPlacesStatus);
+
+  
 
   useEffect(() => {
     if (customer.id && placesStatus === 'idle') {
       dispatch(fetchPlaces(customer.id));
     }
   }, [customer, dispatch])
+
+
   return (
     <PageWrapper >
       <MainSidebar />
