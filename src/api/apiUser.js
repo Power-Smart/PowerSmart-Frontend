@@ -25,6 +25,14 @@ export const getCustomerApi = async (userId) => {
     return response;
 };
 
+export const updateCustomerProfileApi = async (values) => {
+    const response = await api.patch(`/user/customer_profile/${values.id}`, {
+        name: values.name,
+        tel_no: values.tel_no,
+        address: values.address,
+    });
+    return response;
+};
 //! Important function to refresh the token -> do not delete
 
 // axios
