@@ -15,6 +15,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectCustomer } from '../../../redux/slices/customerSlice.js'
 import { addRoom } from '../../../redux/slices/roomsSlice'
 import AlertMessage from '../../../components/smallComps/AlertMessage'
+import { selectPlaces } from '../../../redux/slices/placesSlice'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 
@@ -22,7 +24,10 @@ const AddRooms = () => {
 
     const dispatch = useDispatch();
     const customer = useSelector(selectCustomer);
+    const navigate = useNavigate();
+    const {placeID} = useParams();
 
+    
     const [room, setRoom] = useState({
         name: '',
         windows_type: '',
@@ -40,24 +45,25 @@ const AddRooms = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(addRoom({ ...room, }))
+            dispatch(addRoom({ ...room, id:customer.id, placeID:placeID}))
             resetForm(e)
             setAlert({
-                message: 'Room Added Successfully !',
+                message: 'Room Added Successfully!',
                 type: 'success',
                 visible: true,
             })
+            // navigate('//')
         }
         catch (error) {
             console.log(error);
             setAlert({
-                message: 'Error Adding Place !',
+                message: 'Error Adding Place!',
                 type: 'error',
                 visible: true,
             })
         }
-
     }
+    
 
     const resetForm = (e) => {
         e.preventDefault()
@@ -92,7 +98,6 @@ const AddRooms = () => {
                         <FormGroup>
                             <TextInput type='text' label='Windows Type' required={true} value={room.windows_type} onChange={(e) => setRoom({ ...room, windows_type: e.target.value })} />
                         </FormGroup>
-
                         <FormGroup>
                             <TextInput type='text' label='size' required={true} value={room.size} onChange={(e) => setRoom({ ...room, size: e.target.value })} />
                         </FormGroup>
