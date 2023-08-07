@@ -6,7 +6,7 @@ export const fetchRooms = createAsyncThunk(
     "rooms/fetchRooms",
     async (data, thunkAPI) => {
         try {
-            console.log("ddd" + data["customer_id"], data["place_id"]);
+            // console.log("ddd" + data["customer_id"], data["place_id"]);
             const response = await getRoomsApi(data["customer_id"], data["place_id"]);
             return response.data;
         } catch (error) {
@@ -20,6 +20,7 @@ export const addRoom = createAsyncThunk(
     "rooms/addRoom",
     async (room, thunkAPI) => {
         try{
+            console.log(room);
             const response = await addRoomApi(room);
             if(response.status === 201){
                 return response.data;
@@ -39,10 +40,17 @@ const initialState = {
     error: null,
 };
 
+
 export const roomSlice = createSlice({
     name: "rooms",
     initialState,
-    reducers: {},
+    reducers: {
+        emptyRoomsSlice: (state) => {
+            state.rooms = [];
+            state.status = "idle";
+            state.error = "null"
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchRooms.pending, (state) => {
@@ -50,7 +58,7 @@ export const roomSlice = createSlice({
             })
             .addCase(fetchRooms.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                console.log(action.payload);
+                // console.log(action.payload);
                 state.rooms = action.payload;
             })
             .addCase(fetchRooms.rejected, (state, action) => {
@@ -74,5 +82,7 @@ export const roomSlice = createSlice({
 export const selectRooms = (state) => state.rooms.rooms;
 export const selectRoomsStatus = (state) => state.rooms.status;
 export const selectPlacesError = (state) => state.rooms.error;
+
+export const {emptyRoomsSlice} = roomSlice.actions;
 
 export default roomSlice.reducer;

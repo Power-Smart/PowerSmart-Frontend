@@ -21,7 +21,7 @@ const Places = () => {
   const places = useSelector(selectPlaces);
   const placesStatus = useSelector(selectPlacesStatus);
 
-  
+  // console.log(places)
 
   useEffect(() => {
     if (customer.id && placesStatus === 'idle') {
@@ -39,11 +39,11 @@ const Places = () => {
         {/* Content Area */}
         <ContentWrapper>
 
-          <Link to='/places/add'>
-            <ButtonBar>
+          <ButtonBar>
+            <Link to='/places/add'>
               <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Place</button>
-            </ButtonBar>
-          </Link>
+            </Link>
+          </ButtonBar>
 
           <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
