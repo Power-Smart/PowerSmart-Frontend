@@ -13,7 +13,6 @@ import { completeProfile } from '../../api/apiUser'
 import { useSelector } from 'react-redux'
 import { selectUserID } from '../../redux/slices/userSlice'
 import { useDispatch } from 'react-redux';
-import { session } from '../../redux/slices/userSlice';
 
 
 
@@ -46,10 +45,6 @@ const ProfileComplete = () => {
         alert('Form Reset')
     }
 
-    
-    useEffect(() => {
-        dispatch(session());
-    }, [])
 
     return (
         <PageWrapper>
