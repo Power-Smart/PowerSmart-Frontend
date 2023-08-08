@@ -8,9 +8,11 @@ import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { fetchRooms, selectRooms, selectRoomsStatus } from '../../../redux/slices/roomsSlice'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { selectPlaces } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
+import { emptyRoomsSlice } from '../../../redux/slices/roomsSlice'
+
 
 
 // const dataSet = [
@@ -43,12 +45,16 @@ const Rooms = () => {
     const roomsStatus = useSelector(selectRoomsStatus);
     const { placeID } = useParams();
 
+
     useEffect(() => {
-        console.log('customer', customer.id)
-        console.log('rooms', roomsStatus)
-
-
-        if (customer.id && placeID && roomsStatus === 'idle') {
+        if (roomsStatus === 'succeeded') {
+            dispatch(emptyRoomsSlice());
+            dispatch(fetchRooms({
+                customer_id: customer.id,
+                place_id: placeID
+            }));
+        }
+        else if (customer.id && placeID && roomsStatus === 'idle') {
             dispatch(fetchRooms({
                 customer_id: customer.id,
                 place_id: placeID
@@ -65,11 +71,11 @@ const Rooms = () => {
 
                 <div className='px-16 py-4 w-full flex flex-col flex-grow mx-auto'>
 
-                    <Link to='/places/rooms/add'>
-                        <ButtonBar>
+                    <ButtonBar>
+                        <Link to={`/places/${placeID}/rooms/add`}>
                             <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Room</button>
-                        </ButtonBar>
-                    </Link>
+                        </Link>
+                    </ButtonBar>
 
                     <div className='flex flex-wrap px-8 py-2 justify-center'>
                         {/* Cards */}
@@ -83,7 +89,6 @@ const Rooms = () => {
                 </div>
             </PageContent>
         </PageWrapper>
-
     )
 }
 
