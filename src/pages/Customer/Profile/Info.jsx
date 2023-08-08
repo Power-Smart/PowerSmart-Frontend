@@ -7,7 +7,7 @@ import FormGroup from '../../../components/Forms/FormGroup'
 import TextInput from '../../../components/Forms/TextInput'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
 import KeyValueLabel from '../../../components/Forms/KeyValueLabel'
-
+import { AiFillEdit } from "react-icons/ai";
 
 const Info = () => {
     const dispatch = useDispatch()
@@ -67,7 +67,9 @@ const Info = () => {
 
         <Form>
             {!editToggle && <div className='flex w-full justify-end'>
-                <FormSubmitButton className="self-end" backgroundColor={'#0856CD'} buttonText={'edit'} onClick={toggleToEdit} />
+                <div className='p-2 bg-white/10 cursor-pointer rounded-md' onClick={toggleToEdit}>
+                    <AiFillEdit color='white' />
+                </div>
             </div>}
             {editToggle &&
                 <>
@@ -82,17 +84,17 @@ const Info = () => {
                             return (
                                 <FormGroup key={index}>
                                     <TextInput value={tel} type='text' label={`Telephone No ${index + 1}`} required={true} onChange={e => { updateTelNo(e, index) }} />
-                                    <button type='button' className='absolute top-0 right-0' onClick={() => { setData({ ...data, tel_no: data.tel_no.filter(no => no !== tel) }) }}>X</button>
+                                    {data.tel_no.length > 1 && <button type='button' className='absolute top-0 right-0' onClick={() => { setData({ ...data, tel_no: data.tel_no.filter(no => no !== tel) }) }}>X</button>}
                                 </FormGroup>
                             )
 
                         })
                     }
-                    <button type='button' className='text-blue-500 p-2' onClick={() => { setData({ ...data, tel_no: [...data.tel_no, ''] }) }}>+ Add</button>
+                    {data.tel_no.length < 3 && <button type='button' className='text-blue-500 p-2' onClick={() => { setData({ ...data, tel_no: [...data.tel_no, ''] }) }}>+ Add Tel No</button>}
                 </>}
 
             {!editToggle &&
-                <>
+                <div className='py-3'>
                     <FormGroup>
                         <KeyValueLabel name='Name' value={data.name} />
                     </FormGroup>
@@ -100,16 +102,19 @@ const Info = () => {
                         <KeyValueLabel name='Address' value={data.address} />
                     </FormGroup>
                     <FormGroup>
-                        {
-                            data.tel_no && data.tel_no.map((tel, index) => {
-                                return (
-                                    <KeyValueLabel key={index} name='Tel No' value={tel} />
-                                )
+                        <div className="flex flex-wrap space-x-4 text-base lg:text-lg md:text-sm rounded-xl">
+                            <label className='px-3 py-1 rounded-xl text-blue-400'>Telephone Numbers : </label>
+                            {
+                                data.tel_no && data.tel_no.map((tel, index) => {
+                                    return (
+                                        <label className='m-1 px-3 py-1 rounded-xl bg-gray-900'>{tel}</label>
+                                    )
 
-                            })
-                        }
+                                })
+                            }
+                        </div>
                     </FormGroup>
-                </>}
+                </div>}
 
             <div className="button-section w-full text-center p-2 m-auto flex justify-around align-middle mt-8">
                 {editToggle && <>
