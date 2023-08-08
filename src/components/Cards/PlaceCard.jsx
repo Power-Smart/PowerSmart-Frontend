@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location }) => {
+
     return (
         <div className='text-sm flex flex-col w-[200px] h-[230px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
 
@@ -9,6 +10,11 @@ const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location }) =>
                 {is_active && <div className=' text-xs text-green-300 flex justify-start items-center'>
                     <div className='w-[8px] h-[8px] bg-green-300 mr-2 rounded-full'>
                     </div>
+
+                    {status}
+                </div>
+                <label><b>{placeID}</b></label>
+
                     {"ACTIVE"}
                 </div>}
                 {!is_active && <div className=' text-xs text-red-300 flex justify-start items-center'>
@@ -16,7 +22,9 @@ const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location }) =>
                     </div>
                     {"INACTIVE"}
                 </div>}
+
                 <label>{name}</label>
+                
             </div>
 
             <hr className='border-gray-600' />
