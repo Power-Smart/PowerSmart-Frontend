@@ -1,17 +1,22 @@
-import React from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
-import Sidebar from '../../../components/Sidebar/Sidebar'
+import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { AiFillRocket } from 'react-icons/ai'
+import ProfileForm from './Info'
+import { useSelector } from 'react-redux';
+import { selectCustomer } from '../../../redux/slices/customerSlice';
+
 
 const Profile = () => {
+    const customer = useSelector(selectCustomer);
+
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Profile" />
+                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Profile" baclLink='/' />
                 <ContentWrapper>
                     <div className='flex justify-between items-center p-4'>
                         <div className='flex justify-start items-center'>
@@ -21,7 +26,7 @@ const Profile = () => {
                             </div>
                             <div className='flex flex-col ml-10'>
                                 <h1 className='text-4xl my-2 font-semibold'>Kavishka Sulakshana</h1>
-                                <h2 className='text-lg my-2'># 245363553</h2>
+                                <h2 className='text-lg my-2'>#{customer.points} </h2>
                             </div>
                         </div>
                         <div>
@@ -32,7 +37,7 @@ const Profile = () => {
                         </div>
                     </div>
                     <div>
-
+                        <ProfileForm />
                     </div>
                 </ContentWrapper>
             </PageContent>
