@@ -21,6 +21,7 @@ const AddPlace = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const customer = useSelector(selectCustomer)
+    
     const [place, setPlace] = useState({
         name: '',
         location: '',
