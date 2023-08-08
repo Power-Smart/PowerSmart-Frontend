@@ -1,12 +1,8 @@
-import axios from "axios";
 import Cookies from "js-cookie";
-
-const URL = `${import.meta.env.VITE_APP_API_URL}:${
-    import.meta.env.VITE_APP_API_PORT
-}`;
+import api from ".";
 
 export const userLogin = async (email, password) => {
-    const response = await axios.post(`${URL}/auth/login`, {
+    const response = await api.post(`/auth/login`, {
         email,
         password,
     });
@@ -16,11 +12,17 @@ export const userLogin = async (email, password) => {
 };
 
 export const userRegister = async (values) => {
-    const response = await axios.post(`${URL}/auth/register`, {
+    const response = await api.post(`/auth/register`, {
         name: values.name,
         email: values.email,
         password: values.password,
     });
+    return response;
+};
+
+export const getCustomerApi = async (userId) => {
+    const response = await api.get(`/user/${userId}`);
+    console.log(response);
     return response;
 };
 

@@ -3,8 +3,12 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import registerPageImage from '../../assets/images/register.png'
 import { userRegister } from '../../api/apiUser';
+import { useNavigate } from 'react-router-dom';
+
 
 const Register = () => {
+
+    const navigate = useNavigate();
 
     const onFinish = async (values) => {
         if (values.password !== values.confirmPassword) {
@@ -12,6 +16,7 @@ const Register = () => {
         } else {
             const response = await userRegister(values);
             if (response.status === 201) {
+                navigate('/register/profileComplete')
                 console.log('Registration Successful')
             } else {
                 console.log('Registration Failed')
@@ -95,7 +100,7 @@ const Register = () => {
                             <div className="login__register">
                                 <Button type="primary" htmlType="submit" className="login-form-button">
                                     Register
-                                </Button><br></br>
+                                </Button>
                             </div>
                             <div className="google__login">
                                 Already Logged In?<a href=""> Login</a>
