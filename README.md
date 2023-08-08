@@ -1,5 +1,10 @@
 PowerSmart-Frontend
 
+1 - Customer
+2 - Tech-Support
+3 - Stock Manager
+4 - Admin
+
 Run the front-end, following the steps
 
 1.Install the node modeules packages : npm install
