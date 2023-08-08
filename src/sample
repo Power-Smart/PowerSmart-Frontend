@@ -1,0 +1,63 @@
+// <Router>
+    // <div className='flex h-screen items-center justify-center w-full'>
+        // <Routes>
+            //
+            <Route path='/' element={<Home />} />
+            //
+            <Route path='/login' element={<Login />} />
+            //
+            <Route path='/register' element={<Register />} />
+            //
+            <Route path='/customer/dashboard' element={<CustomerDashboard />} />
+            //
+            <Route path='/formsample' element={<FormSample />} />
+            //
+            <Route path="/admin/complaint/info" element={<ComplaintInfo />} />
+            //
+            <Route path="/admin/techsupport/info" element={<TechSupportInfo />} />
+            //
+            <Route path="/admin/viewcustomer" element={<AdminViewCustomer />} />
+            //
+            <Route path="/admin/profile" element={<AdminProfile />} />
+            //
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            //
+        </Routes>
+        // </div>
+    // </Router>
+
+//
+<Route path='/' element={<Home />} />
+//
+<Route path='/login' element={<Login />} />
+//
+<Route path='/register' element={<Register />} />
+//
+<Route path='/customer/dashboard' element={<CustomerDashboard />} />
+//
+<Route path='/formsample' element={<FormSample />} />
+//
+<Route path='/admin/stockmanager/new' element={<StockManagerAdd />} />
+//
+<Route path='/admin/techsupport/new' element={<TechSupportAdd />} />
+
+//
+<Route path="/" element={<Home />} />
+//
+<Route path="/login" element={<Login />} />
+//
+<Route path="/register" element={<Register />} />
+//
+<Route path="/formsample" element={<FormSample />} />
+//
+<Route path="/customer/dashboard" element={<CustomerDashboard />} />
+//
+<Route path="/admin/techsupport" element={<TechSupportView />} />
+//
+<Route path="/admin/stockmanager" element={<StockManagerView />} />
+//
+<Route path="/admin/payment" element={<PaymentView />} />
+//
+<Route path="/admin/customer" element={<CustomerView />} />
+//
+<Route path="/admin/complaint" element={<ComplaintView />} />

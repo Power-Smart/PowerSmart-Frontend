@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location }) => {
+
     return (
         <div className='text-sm flex flex-col w-[200px] h-[230px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
 
@@ -16,7 +17,9 @@ const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location }) =>
                     </div>
                     {"INACTIVE"}
                 </div>}
+
                 <label>{name}</label>
+
             </div>
 
             <hr className='border-gray-600' />
