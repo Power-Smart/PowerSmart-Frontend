@@ -1,5 +1,7 @@
 import React from 'react'
 import Indicator from '../smallComps/Indicator'
+import { Link } from 'react-router-dom'
+
 
 const RoomCard = ({ status, name, devices, measures }) => {
     return (
@@ -22,9 +24,12 @@ const RoomCard = ({ status, name, devices, measures }) => {
                 {measures && <div className='text-xs'>humidity : {measures.humidity}%</div>}
             </div>
 
-            <div className='flex flex-col flex-grow justify-end items-center'>
-                <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
-            </div>
+            <Link to='/places/rooms/controlpanel'>
+                <div className='flex flex-col flex-grow justify-end items-center'>
+                    <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
+                </div>
+            </Link>
+
 
         </div>
     )
