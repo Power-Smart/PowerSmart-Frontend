@@ -17,25 +17,6 @@ import jwtDecode from 'jwt-decode'
 import { session } from './redux/slices/userSlice'
 
 import FormSample from './pages/FormSample'
-import ComplaintInfo from './pages/Admin/ComplaintInfo/ComplaintInfo'
-import TechSupportInfo from './pages/Admin/TechSupportInfo/TechSupportInfo'
-import AdminViewCustomer from './pages/Admin/ViewCustomer/ViewCustomer'
-import AdminProfile from './pages/Admin/Profile/Profile'
-import AdminDashboard from './pages/Admin/Dashboard/AdminDashboard'
-import Dashboard from './pages/Customer/Dashboard/Dashboard'
-
-import { routesArray } from './routes.jsx'
-import { fetchCustomer, selectCustomer } from './redux/slices/customerSlice'
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
-
-const router = createBrowserRouter(routesArray);
-
-
 
 function App() {
   const dispatch = useDispatch()
@@ -49,6 +30,15 @@ function App() {
     }
   }, [])
   return (
+
+//           <Route path='/' element={<Home />} />
+//           <Route path='/login' element={<Login />} />
+//           <Route path='/register' element={<Register />} />
+//           <Route path='/customer/dashboard' element={<CustomerDashboard />} />
+//           <Route path='/formsample' element={<FormSample />} />
+//           <Route path='/admin/stockmanager/new' element={<StockManagerAdd />} />
+//           <Route path='/admin/techsupport/new' element={<TechSupportAdd />} />
+
 
 //     <Router>
 //       <div className='flex h-screen items-center justify-center w-full'>
