@@ -20,13 +20,36 @@ export const userRegister = async (values) => {
     return response;
 };
 
+
+export const completeProfile = async(customer) => {
+    console.log(customer);
+    const response = await api.post('/user/customer/addProfileInfo',customer)
+    return response;
+}
+
+
 export const getCustomerApi = async (userId) => {
     const response = await api.get(`/user/${userId}`);
-    console.log(response);
     return response;
 };
 
-// Important function to refresh the token -> do not delete
+export const updateCustomerProfileApi = async (values) => {
+    const response = await api.patch(`/user/customer_profile/${values.id}`, {
+        name: values.name,
+        tel_no: values.tel_no,
+        address: values.address,
+    });
+    return response;
+};
+
+export const removeCustomerProfile = async (picName) => {
+    const response = await api.delete(`/user/deleteProfilePic/${picName}`);
+    return response;
+};
+
+
+
+//! Important function to refresh the token -> do not delete
 
 // axios
 //     .post(`${URL}/auth/login`, {

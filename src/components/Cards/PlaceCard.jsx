@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location }) => {
+const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location, place_id }) => {
 
     return (
         <div className='text-sm flex flex-col w-[200px] h-[230px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
@@ -29,7 +29,7 @@ const PlaceCard = ({ is_active, name, roomCount = 0, devices = 0, location }) =>
                 <div>{roomCount} Rooms</div>
             </div>
 
-            <Link to='rooms'>
+            <Link to={`${place_id}/rooms`}>
                 <div className='flex flex-col flex-grow justify-end items-center'>
                     <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
                 </div>

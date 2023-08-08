@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getPlacesApi } from "../../api/apiPlaces";
+import { getPlacesApi, addPlaceApi } from "../../api/apiPlaces";
 
 export const fetchPlaces = createAsyncThunk(
     "places/fetchPlaces",
@@ -7,6 +7,22 @@ export const fetchPlaces = createAsyncThunk(
         try {
             const response = await getPlacesApi(userID);
             return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
+        }
+    }
+);
+
+export const addPlace = createAsyncThunk(
+    "places/addPlace",
+    async (place, thunkAPI) => {
+        try {
+            const response = await addPlaceApi(place);
+            if (response.status === 201) {
+                return response.data;
+            } else {
+                return thunkAPI.rejectWithValue({ error: response.data });
+            }
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
         }
@@ -30,10 +46,20 @@ export const placesSlice = createSlice({
             })
             .addCase(fetchPlaces.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                console.log(action.payload);
                 state.places = action.payload;
             })
             .addCase(fetchPlaces.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            .addCase(addPlace.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(addPlace.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.places.push(action.payload);
+            })
+            .addCase(addPlace.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });

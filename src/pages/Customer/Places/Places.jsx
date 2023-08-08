@@ -10,49 +10,40 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
-const dataSet = [
-  {
-    status: 'Online',
-    name: 'Home',
-    roomCount: 3,
-    devices: 5
-  },
-  {
-    status: 'Offline',
-    name: 'Workplace',
-    roomCount: 8,
-    devices: 7
-  },
-]
 
 const Places = () => {
+
   const dispatch = useDispatch()
   const customer = useSelector(selectCustomer)
   const places = useSelector(selectPlaces);
   const placesStatus = useSelector(selectPlacesStatus);
+
+  // console.log(places)
 
   useEffect(() => {
     if (customer.id && placesStatus === 'idle') {
       dispatch(fetchPlaces(customer.id));
     }
   }, [customer, dispatch])
+
+
   return (
     <PageWrapper >
       <MainSidebar />
       <PageContent >
-        <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Places" baclLink='/' />
+        <TopBar image="https://avatars.githubusercontent.com/u/7374455?v=4" title="Places" baclLink='/' />
 
         {/* Content Area */}
         <ContentWrapper>
 
-          <Link to='/places/add'>
-            <ButtonBar>
+          <ButtonBar>
+            <Link to='/places/add'>
               <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Place</button>
-            </ButtonBar>
-          </Link>
+            </Link>
+          </ButtonBar>
 
           <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
