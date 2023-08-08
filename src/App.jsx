@@ -1,3 +1,14 @@
+//           <Route path="/" element={<Home />} />
+//           <Route path="/login" element={<Login />} />
+//           <Route path="/register" element={<Register />} />
+//           <Route path="/formsample" element={<FormSample />} />
+//           <Route path="/customer/dashboard" element={<CustomerDashboard />} />
+//           <Route path="/admin/techsupport" element={<TechSupportView />} />
+//           <Route path="/admin/stockmanager" element={<StockManagerView />} />
+//           <Route path="/admin/payment" element={<PaymentView />} />
+//           <Route path="/admin/customer" element={<CustomerView />} />
+//           <Route path="/admin/complaint" element={<ComplaintView />} />
+
 import './App.css'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -60,5 +71,4 @@ function App() {
   )
 }
 
-export default App
-
+export default App;
