@@ -4,19 +4,24 @@ import { Button, Form, Input } from 'antd';
 import registerPageImage from '../../assets/images/register.png'
 import { userRegister } from '../../api/apiUser';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { completeProfileInfo } from '../../redux/slices/userSlice';
 
 
 const Register = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onFinish = async (values) => {
         if (values.password !== values.confirmPassword) {
             alert('Password and Confirm Password do not match')
         } else {
             const response = await userRegister(values);
+            console.log(response.data.user.user_id)
             if (response.status === 201) {
                 navigate('/register/profileComplete')
+                dispatch(completeProfileInfo(response.data.user.user_id));
                 console.log('Registration Successful')
             } else {
                 console.log('Registration Failed')
