@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import registerPageImage from '../../assets/images/register.png'
 import { userRegister } from '../../api/apiUser';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { completeProfileInfo } from '../../redux/slices/userSlice';
 
@@ -108,7 +108,7 @@ const Register = () => {
                                 </Button>
                             </div>
                             <div className="google__login">
-                                Already Logged In?<a href=""> Login</a>
+                                Already Logged In?<Link to='/login'> Login</Link>
                             </div>
                         </Form.Item>
                     </Form>
