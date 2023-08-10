@@ -60,7 +60,13 @@ const initialState = {
 export const placesSlice = createSlice({
     name: "places",
     initialState,
-    reducers: {},
+    reducers: {
+        emptyPlacesSlice: (state) => {
+            state.places = [];
+            state.status = "idle";
+            state.error = null;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchPlaces.pending, (state) => {
@@ -91,5 +97,7 @@ export const placesSlice = createSlice({
 export const selectPlaces = (state) => state.places.places;
 export const selectPlacesStatus = (state) => state.places.status;
 export const selectPlacesError = (state) => state.places.error;
+
+export const { emptyPlacesSlice } = placesSlice.actions;
 
 export default placesSlice.reducer;
