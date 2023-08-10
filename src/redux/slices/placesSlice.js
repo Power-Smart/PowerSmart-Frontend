@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getPlacesApi, addPlaceApi } from "../../api/apiPlaces";
+import { getPlacesApi, addPlaceApi, updatePlaceApi } from "../../api/apiPlaces";
+
 
 export const fetchPlaces = createAsyncThunk(
     "places/fetchPlaces",
@@ -28,6 +29,27 @@ export const addPlace = createAsyncThunk(
         }
     }
 );
+
+export const updatePlace = createAsyncThunk(
+    "place/update",
+    async (place, thunkAPI) => {
+        try{
+            // console.log(place)
+
+            const response = await updatePlaceApi(place);
+            if(response.status === 201){
+                return response.data;
+            }else{
+                return thunkAPI.rejectWithValue({error:response.data});
+            }
+        }catch(error){
+            return thunkAPI.rejectWithValue({error:error.message});
+        }
+    }
+)
+
+
+
 
 const initialState = {
     places: [],

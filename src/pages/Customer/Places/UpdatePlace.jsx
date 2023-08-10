@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import Sidebar from '../../../components/Sidebar/Sidebar'
@@ -12,36 +12,61 @@ import { FiMapPin } from 'react-icons/fi';
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectCustomer } from '../../../redux/slices/customerSlice'
-import { addPlace } from '../../../redux/slices/placesSlice'
-import { useNavigate } from 'react-router-dom'
+import { updatePlace } from '../../../redux/slices/placesSlice'
+import { useNavigate, useParams } from 'react-router-dom'
 import AlertMessage from '../../../components/smallComps/AlertMessage'
+import { selectPlaces } from '../../../redux/slices/placesSlice'
 
 
-const AddPlace = () => {
+
+const UpdatePlace = () => {
     const user = useSelector(state => state.user.user)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const customer = useSelector(selectCustomer)
-    console.log(user.id);
+    const { placeID } = useParams()
+    // console.log(user.id);
+
+
+    const places = useSelector(selectPlaces);
+
     const [place, setPlace] = useState({
         name: '',
         location: '',
         postal_Code: '',
         is_active: false,
     })
+
     const [alert, setAlert] = useState({
         message: '',
         type: 'success',
         visible: false,
     });
 
+
+    useEffect(() => {
+        places.map(place => {
+            if (place.place_id == placeID) {
+                setPlace({
+                    name: place.name,
+                    location: place.location,
+                    postal_Code: place.postal_Code,
+                    is_active: place.is_active,
+                })
+            }
+        })
+    }, [places, placeID]);
+
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(addPlace({ ...place, id: customer.id }))
-            resetForm(e)
+            dispatch(updatePlace({...place,placeID:placeID}))
+            // resetForm(e)
             setAlert({
-                message: 'Place Added Successfully !',
+                message: 'Place Updated Successfully !',
                 type: 'success',
                 visible: true,
             })
@@ -49,7 +74,7 @@ const AddPlace = () => {
         catch (err) {
             console.log(err)
             setAlert({
-                message: 'Error Adding Place !',
+                message: 'Error Updating Place !',
                 type: 'error',
                 visible: true,
             })
@@ -91,12 +116,12 @@ const AddPlace = () => {
                         <FormGroup>
                             <TextInput type='text' label='Postal Code' required={true} value={place.postal_Code} onChange={(e) => { setPlace({ ...place, postal_Code: e.target.value }) }} />
                         </FormGroup>
-                        <FormGroup>
+                        {/* <FormGroup>
                             <TextInput type='text' label='Nature of Business' required={true} />
                         </FormGroup>
                         <FormGroup>
                             <TextInput type='text' label='Address' required={true} />
-                        </FormGroup>
+                        </FormGroup> */}
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
                             <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Add'} onClick={handleSubmit} />
                             <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Clear'} onClick={resetForm} />
@@ -108,4 +133,4 @@ const AddPlace = () => {
     )
 }
 
-export default AddPlace;
+export default UpdatePlace;
