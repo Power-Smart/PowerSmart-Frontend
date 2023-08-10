@@ -14,7 +14,7 @@ export const updateCustomerProfile = createAsyncThunk(
     async (data, thunkAPI) => {
         const response = await updateCustomerProfileApi(data);
         if (response.status === 200) {
-            console.log("response : ", response.data);
+            // console.log("response : ", response.data);
             return response.data;
         } else {
             console.log("error : ", response.data);

@@ -16,7 +16,8 @@ const Info = () => {
     const [editToggle, setEditToggle] = useState(false)
     const [data, setData] = useState({
         id: 0,
-        name: '',
+        first_name: '',
+        last_name: '',
         address: '',
         tel_no: []
     })
@@ -24,18 +25,18 @@ const Info = () => {
     useEffect(() => {
         setData({
             id: user.id,
-            name: user.name,
+            first_name: user.first_name,
+            last_name: user.last_name,
             address: customer.address,
             tel_no: customer.tel_no
         })
     }, [customer, user]);
 
-    console.log(data.tel_no)
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
             dispatch(updateCustomerProfile(data))
-            dispatch(updateName(data.name))
+            dispatch(updateName(data))
             setEditToggle(false)
         } catch (err) {
             console.log(err)
@@ -46,7 +47,8 @@ const Info = () => {
         e.preventDefault()
         setData({
             id: user.id,
-            name: user.name,
+            first_name: user.first_name,
+            last_name: user.last_name,
             address: customer.address,
             tel_no: customer.tel_no
         })
@@ -74,7 +76,10 @@ const Info = () => {
             {editToggle &&
                 <>
                     <FormGroup>
-                        <TextInput value={data.name} type='text' label='Name' required={true} onChange={e => { setData({ ...data, name: e.target.value }) }} />
+                        <TextInput value={data.first_name} type='text' label='First Name' required={true} onChange={e => { setData({ ...data, first_name: e.target.value }) }} />
+                    </FormGroup>
+                    <FormGroup>
+                        <TextInput value={data.last_name} type='text' label='Last Name' required={true} onChange={e => { setData({ ...data, last_name: e.target.value }) }} />
                     </FormGroup>
                     <FormGroup>
                         <TextInput value={data.address} type='text' label='Address' required={true} onChange={e => { setData({ ...data, address: e.target.value }) }} />
@@ -96,7 +101,10 @@ const Info = () => {
             {!editToggle &&
                 <div className='py-3'>
                     <FormGroup>
-                        <KeyValueLabel name='Name' value={data.name} />
+                        <KeyValueLabel name='First Name' value={data.first_name} />
+                    </FormGroup>
+                    <FormGroup>
+                        <KeyValueLabel name='Last Name' value={data.last_name} />
                     </FormGroup>
                     <FormGroup>
                         <KeyValueLabel name='Address' value={data.address} />
@@ -107,7 +115,7 @@ const Info = () => {
                             {
                                 data.tel_no && data.tel_no.map((tel, index) => {
                                     return (
-                                        <label className='m-1 px-3 py-1 rounded-xl bg-gray-900'>{tel}</label>
+                                        <label key={tel} className='m-1 px-3 py-1 rounded-xl bg-gray-900'>{tel}</label>
                                     )
 
                                 })

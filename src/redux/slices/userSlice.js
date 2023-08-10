@@ -52,7 +52,8 @@ export const userSlice = createSlice({
             state.isLogged = false;
         },
         updateName: (state, action) => {
-            state.user.name = action.payload;
+            state.user.first_name = action.payload.first_name;
+            state.user.last_name = action.payload.last_name;
         },
         completeProfileInfo: (state, action) => {
             state.user.id = action.payload;
