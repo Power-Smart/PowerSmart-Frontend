@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextInput = ({ type = "text", label = "text input", required = false, value = undefined, onChange = undefined, ref = null, id = undefined, pattern = undefined }) => {
+const TextInput = ({ type = "text", label = "text input", required = false, value = "", onChange = () => { }, ref = null, id = undefined, pattern = undefined }) => {
     return (
         <>
             <input
