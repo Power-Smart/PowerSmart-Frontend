@@ -15,7 +15,7 @@ const CustomerRequest = () => {
             <PageContent>
                 <TopBar title={'Profile'} />
                 <ContentWrapper>
-                    <div className='page__body'><Table /></div>
+                    <Table />
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>

@@ -1,11 +1,10 @@
 import React from "react";
-import UserInquiries2 from './UserInquiries2';
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import Sidebar from '../../../components/Sidebar/Sidebar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
-
+import UserInquiriesRow from "./UserInquiriesRow";
 
 
 const dataset = [
@@ -42,7 +41,7 @@ const dataset = [
 ];
 
 
-const UserInquiries = () => {
+const UserComplaints = () => {
     return (
         <PageWrapper>
             <Sidebar />
@@ -78,7 +77,7 @@ const UserInquiries = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {dataset.map((data) => <UserInquiries2 {...data} />)}
+                                {dataset.map((data) => <UserInquiriesRow {...data} />)}
                             </tbody>
                         </table>
                     </div>
@@ -88,4 +87,4 @@ const UserInquiries = () => {
     )
 }
 
-export default UserInquiries
+export default UserComplaints
