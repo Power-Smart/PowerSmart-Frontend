@@ -42,13 +42,26 @@ const Register = () => {
                         }}
                         onFinish={onFinish}
                     >
-                        <label htmlFor="">Name</label>
+                        <label htmlFor="">First Name</label>
                         <Form.Item
-                            name="name"
+                            name="first_name"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your name',
+                                    message: 'your first name',
+                                },
+                            ]}
+                        >
+                            <Input prefix={<UserOutlined className="site-form-item-icon" />} />
+                        </Form.Item>
+
+                        <label htmlFor="">Last Name</label>
+                        <Form.Item
+                            name="last_name"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'your last name',
                                 },
                             ]}
                         >

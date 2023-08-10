@@ -13,20 +13,19 @@ export const userLogin = async (email, password) => {
 
 export const userRegister = async (values) => {
     const response = await api.post(`/auth/register`, {
-        name: values.name,
+        first_name: values.first_name,
+        last_name: values.last_name,
         email: values.email,
         password: values.password,
     });
     return response;
 };
 
-
-export const completeProfile = async(customer) => {
+export const completeProfile = async (customer) => {
     console.log(customer);
-    const response = await api.post('/user/customer/addProfileInfo',customer)
+    const response = await api.post("/user/customer/addProfileInfo", customer);
     return response;
-}
-
+};
 
 export const getCustomerApi = async (userId) => {
     const response = await api.get(`/user/${userId}`);
@@ -46,8 +45,6 @@ export const removeCustomerProfile = async (picName) => {
     const response = await api.delete(`/user/deleteProfilePic/${picName}`);
     return response;
 };
-
-
 
 //! Important function to refresh the token -> do not delete
 
