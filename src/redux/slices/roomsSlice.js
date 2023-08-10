@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getRoomsApi, addRoomApi } from "../../api/apiRooms";
+import { getRoomsApi, addRoomApi, updateRoomApi } from "../../api/apiRooms";
 
 
 export const fetchRooms = createAsyncThunk(
@@ -22,6 +22,23 @@ export const addRoom = createAsyncThunk(
         try{
             console.log(room);
             const response = await addRoomApi(room);
+            if(response.status === 201){
+                return response.data;
+            }else{
+                return thunkAPI.rejectWithValue({error:response.data});
+            }
+        }catch(error){
+            return thunkAPI.rejectWithValue({error:error.message});
+        }
+    }
+)
+
+
+export const updateRoom = createAsyncThunk(
+    "room/update",
+    async (room, thunkAPI) => {
+        try{
+            const response = await updateRoomApi(room);
             if(response.status === 201){
                 return response.data;
             }else{

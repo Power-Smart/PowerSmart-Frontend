@@ -20,6 +20,7 @@ import AddRooms from './pages/Customer/Rooms/AddRooms'
 import Chat from './pages/Customer/Chat'
 import ProfileComplete from './pages/Register/ProfileComplete'
 import UpdatePlace from './pages/Customer/Places/UpdatePlace'
+import UpdateRoom from './pages/Customer/Rooms/UpdateRoom'
 
 
 export const routesArray = [
@@ -62,6 +63,10 @@ export const routesArray = [
             {
                 path: "places/:placeID/rooms/add",
                 element: <AddRooms />,
+            },
+            {
+                path: "places/:placeID/rooms/:roomID/update",
+                element: <UpdateRoom />,
             },
             {
                 path: "places/:placeID/update",
