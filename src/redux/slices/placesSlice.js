@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getPlacesApi, addPlaceApi, updatePlaceApi } from "../../api/apiPlaces";
 
-
 export const fetchPlaces = createAsyncThunk(
     "places/fetchPlaces",
     async (userID, thunkAPI) => {
@@ -33,23 +32,18 @@ export const addPlace = createAsyncThunk(
 export const updatePlace = createAsyncThunk(
     "place/update",
     async (place, thunkAPI) => {
-        try{
-            // console.log(place)
-
+        try {
             const response = await updatePlaceApi(place);
-            if(response.status === 201){
+            if (response.status === 200) {
                 return response.data;
-            }else{
-                return thunkAPI.rejectWithValue({error:response.data});
+            } else {
+                return thunkAPI.rejectWithValue({ error: response.data });
             }
-        }catch(error){
-            return thunkAPI.rejectWithValue({error:error.message});
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
         }
     }
-)
-
-
-
+);
 
 const initialState = {
     places: [],
@@ -60,13 +54,7 @@ const initialState = {
 export const placesSlice = createSlice({
     name: "places",
     initialState,
-    reducers: {
-        emptyPlacesSlice: (state) => {
-            state.places = [];
-            state.status = "idle";
-            state.error = null;
-        }
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchPlaces.pending, (state) => {
@@ -90,6 +78,22 @@ export const placesSlice = createSlice({
             .addCase(addPlace.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
+            })
+            .addCase(updatePlace.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(updatePlace.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                console.log(action.payload);
+                const index = state.places.findIndex(
+                    (place) => place.id === action.payload.id
+                );
+                state.places[index] = action.payload;
+            })
+            .addCase(updatePlace.rejected, (state, action) => {
+                state.status = "failed";
+                console.log(action.error);
+                state.error = action.error.message;
             });
     },
 });
@@ -97,7 +101,5 @@ export const placesSlice = createSlice({
 export const selectPlaces = (state) => state.places.places;
 export const selectPlacesStatus = (state) => state.places.status;
 export const selectPlacesError = (state) => state.places.error;
-
-export const { emptyPlacesSlice } = placesSlice.actions;
 
 export default placesSlice.reducer;

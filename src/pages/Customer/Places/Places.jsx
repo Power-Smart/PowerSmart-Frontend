@@ -11,7 +11,6 @@ import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { Link } from 'react-router-dom'
-import { emptyPlacesSlice } from '../../../redux/slices/placesSlice'
 
 
 
@@ -24,14 +23,10 @@ const Places = () => {
 
 
   useEffect(() => {
-    if (placesStatus === 'succeeded') {
-        dispatch(emptyPlacesSlice());
-        dispatch(fetchPlaces(user.id));
-    }
-    else if (user.id && placesStatus === 'idle') {
+    if (user.id && placesStatus === 'idle') {
       dispatch(fetchPlaces(user.id));
     }
-  }, [user, dispatch])
+  }, [places, user, dispatch])
 
 
   return (
