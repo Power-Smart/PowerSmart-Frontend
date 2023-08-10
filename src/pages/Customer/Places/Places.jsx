@@ -17,17 +17,17 @@ import { Link } from 'react-router-dom'
 const Places = () => {
 
   const dispatch = useDispatch()
-  const customer = useSelector(selectCustomer)
+  const user = useSelector(state => state.user.user)
   const places = useSelector(selectPlaces);
   const placesStatus = useSelector(selectPlacesStatus);
 
   // console.log(places)
 
   useEffect(() => {
-    if (customer.id && placesStatus === 'idle') {
-      dispatch(fetchPlaces(customer.id));
+    if (user.id && placesStatus === 'idle') {
+      dispatch(fetchPlaces(user.id));
     }
-  }, [customer, dispatch])
+  }, [user, dispatch])
 
 
   return (

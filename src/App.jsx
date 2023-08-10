@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import jwtDecode from 'jwt-decode'
 import { session } from './redux/slices/userSlice'
-import { routesArray } from './routes.jsx'
+import { routesArray } from './routes/routes.jsx'
 import { fetchCustomer, selectCustomer } from './redux/slices/customerSlice'
 import {
   createBrowserRouter,

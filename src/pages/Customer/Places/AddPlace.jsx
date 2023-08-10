@@ -20,8 +20,8 @@ import AlertMessage from '../../../components/smallComps/AlertMessage'
 const AddPlace = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const customer = useSelector(selectCustomer)
-    
+    const user = useSelector(state => state.user.user)
+
     const [place, setPlace] = useState({
         name: '',
         location: '',
@@ -37,7 +37,7 @@ const AddPlace = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(addPlace({ ...place, id: customer.id }))
+            dispatch(addPlace({ ...place, id: user.id }))
             resetForm(e)
             setAlert({
                 message: 'Place Added Successfully !',
