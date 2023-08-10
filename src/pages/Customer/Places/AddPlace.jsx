@@ -38,7 +38,6 @@ const AddPlace = () => {
         e.preventDefault()
         try {
             dispatch(addPlace({ ...place, id: user.id }))
-            resetForm(e)
             setAlert({
                 message: 'Place Added Successfully !',
                 type: 'success',
@@ -53,6 +52,7 @@ const AddPlace = () => {
                 visible: true,
             })
         }
+        navigate(-1)
     }
 
     const resetForm = (e) => {

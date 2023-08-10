@@ -59,17 +59,16 @@ const UpdatePlace = () => {
 
 
 
-
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
             dispatch(updatePlace({...place,placeID:placeID}))
-            // resetForm(e)
             setAlert({
                 message: 'Place Updated Successfully !',
                 type: 'success',
                 visible: true,
             })
+            navigate(-1)
         }
         catch (err) {
             console.log(err)

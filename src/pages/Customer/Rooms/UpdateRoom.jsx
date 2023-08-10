@@ -47,13 +47,12 @@ const UpdateRoom = () => {
         e.preventDefault()
         try {
             dispatch(updateRoom({...room,placeID:placeID,roomID:roomID}));
-            // resetForm(e)
             setAlert({
                 message: 'Room Updated Successfully!',
                 type: 'success',
                 visible: true,
             })
-            // navigate('//')
+            navigate(-1)
         }
         catch (error) {
             console.log(error);

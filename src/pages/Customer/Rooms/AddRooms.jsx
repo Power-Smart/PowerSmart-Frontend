@@ -26,6 +26,7 @@ const AddRooms = () => {
     const customer = useSelector(selectCustomer);
     const navigate = useNavigate();
     const {placeID} = useParams();
+    const user = useSelector(state => state.user.user)
 
     
     const [room, setRoom] = useState({
@@ -45,14 +46,13 @@ const AddRooms = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(addRoom({ ...room, id:customer.id, placeID:placeID}))
-            resetForm(e)
+            dispatch(addRoom({ ...room, id:user.id, placeID:placeID}))
             setAlert({
                 message: 'Room Added Successfully!',
                 type: 'success',
                 visible: true,
             })
-            // navigate('//')
+            navigate(-1)
         }
         catch (error) {
             console.log(error);

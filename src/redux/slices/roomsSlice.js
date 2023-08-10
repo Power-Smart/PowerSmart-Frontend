@@ -6,8 +6,8 @@ export const fetchRooms = createAsyncThunk(
     "rooms/fetchRooms",
     async (data, thunkAPI) => {
         try {
-            // console.log("ddd" + data["customer_id"], data["place_id"]);
-            const response = await getRoomsApi(data["customer_id"], data["place_id"]);
+            // console.log("ddd" + data["user_id"], data["place_id"]);
+            const response = await getRoomsApi(data["user_id"], data["place_id"]);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });

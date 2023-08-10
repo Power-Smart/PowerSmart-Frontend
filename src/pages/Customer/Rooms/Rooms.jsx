@@ -40,28 +40,28 @@ import { emptyRoomsSlice } from '../../../redux/slices/roomsSlice'
 const Rooms = () => {
 
     const dispatch = useDispatch();
-    const customer = useSelector(selectCustomer);
     const rooms = useSelector(selectRooms);
     const roomsStatus = useSelector(selectRoomsStatus);
     const { placeID } = useParams();
+    const user = useSelector(state => state.user.user)
 
-    // console.log(rooms.room_id);
+    // console.log(user.id);
 
     useEffect(() => {
         if (roomsStatus === 'succeeded') {
             dispatch(emptyRoomsSlice());
             dispatch(fetchRooms({
-                customer_id: customer.id,
+                user_id: user.id,
                 place_id: placeID
             }));
         }
-        else if (customer.id && placeID && roomsStatus === 'idle') {
+        else if (user.id && placeID && roomsStatus === 'idle') {
             dispatch(fetchRooms({
-                customer_id: customer.id,
+                user_id: user.id,
                 place_id: placeID
             }));
         }
-    }, [customer, dispatch]);
+    }, [user, dispatch]);
 
 
     return (
