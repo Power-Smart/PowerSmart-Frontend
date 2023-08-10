@@ -25,19 +25,15 @@ const Dashboard = () => {
     //         navigate('/login');
     //     }
     // }, [])
+
     return (
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Dashboard" />
                 <ContentWrapper>
                     <div className="dashboard-container">
                         <div className="left-side">
                             <DashboardTopHeader />
-                            <div className="schedule">
-                                <ScheduleDevice />
-                                <ScheduleDevice />
-                            </div>
 
                             <div className="place-sets">
                                 <div className="one-place">
@@ -65,13 +61,18 @@ const Dashboard = () => {
 
                         <div className="right-side">
 
-                            <div className="game-achievement">
+                            {/* <div className="game-achievement">
                                 <h1 className="text-2xl">Game Achievement</h1>
                                 <img src={gameAchievement} alt="" />
+                            </div> */}
+
+                            <div className="schedule">
+                                <ScheduleDevice />
+                                <ScheduleDevice />
                             </div>
 
                             <div className="guest-users">
-                                <h1 className="text-2xl">Tech Support Request</h1>
+                                <h1 className="text-xl">Tech Support Request</h1>
 
                                 <div className="one-guest-user">
                                     <div className="default-profile-img">
@@ -91,7 +92,7 @@ const Dashboard = () => {
 
 
                             <div className="guest-users">
-                                <h1 className="text-2xl">Guest Users Suggest</h1>
+                                <h1 className="text-xl">Guest Users Suggest</h1>
                                 <GuestUsersSuggest />
                                 <GuestUsersSuggest />
                                 <GuestUsersSuggest />
@@ -99,7 +100,6 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>

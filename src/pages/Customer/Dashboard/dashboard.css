@@ -1,7 +1,6 @@
 .top-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 35% 65%;
     padding: 1rem 2rem;
     background-color: #151528;
     border-radius: 0.5rem;
@@ -19,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem;
     background-color: #151528;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
@@ -32,9 +31,10 @@
 } */
 
 .right-side .one-guest-user img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .right-side .one-guest-user{
@@ -42,7 +42,7 @@
     align-items: center;
     margin-bottom: 1rem;
     background-color: #151528;
-    padding: 1rem 1rem;
+    padding: 7px;
     justify-content: space-around;
     border-radius: 0.5rem;  
 }
@@ -50,24 +50,24 @@
 .right-side .one-guest-user .accept{
     background-color: #151528;
     border: 1px solid #fff;
-    padding: 0.5rem 0.5rem;
+    padding: 0.3rem;
     border-radius: 0.5rem;
     color: #01ff1e;
     cursor: pointer;
     font-weight: 600;
     margin-right: 0.7rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .right-side .one-guest-user .reject{
     background-color: #151528;
     border: 1px solid #fff;
-    padding: 0.5rem 0.5rem;
+    padding: 0.3rem;
     border-radius: 0.5rem;
     color: #ff0000;
     cursor: pointer;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 
@@ -75,19 +75,24 @@
     display: grid;
     grid-template-columns: 65% 35%;
     grid-gap: 2rem;
-    
 }
 
 .room{
     background-color: #151528;
-    padding: 1rem 1rem;
+    padding: 14px;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
 }
 
 .place-sets{
     background-color: rgba(255, 255, 255, 0.265);
-    padding: 1rem 1rem;
+    padding: 10px;
     border-radius: 0.5rem;
-    margin-bottom: 1rem;
+    height: 55vh;
+    overflow-y: scroll !important;
+}
+
+.place-sets .one-place{
+    border-radius: 0.5rem;
+    background-color: #fff;
 }

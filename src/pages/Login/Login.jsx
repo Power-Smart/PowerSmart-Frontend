@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { session } from '../../redux/slices/userSlice';
 import { fetchCustomer } from '../../redux/slices/customerSlice';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -99,7 +100,7 @@ const Login = () => {
                                 </Button><br></br>
                             </div>
                             <div className="google__login">
-                                Need an account?<a href=""> SIGN UP</a><br></br>
+                                Need an account?<Link to='/register' > SIGN UP</Link><br></br>
                                 Or <a href='#'>Continue With <FcGoogle style={{ display: 'inline', fontSize: '20px' }} /></a>
                             </div>
                         </Form.Item>

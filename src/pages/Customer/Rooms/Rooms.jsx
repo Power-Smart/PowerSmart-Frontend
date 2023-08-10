@@ -45,6 +45,7 @@ const Rooms = () => {
     const roomsStatus = useSelector(selectRoomsStatus);
     const { placeID } = useParams();
 
+    // console.log(rooms.room_id);
 
     useEffect(() => {
         if (roomsStatus === 'succeeded') {

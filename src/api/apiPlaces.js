@@ -14,3 +14,9 @@ export const addPlaceApi = async (place) => {
     const response = await api.post("/places/add", place);
     return response;
 };
+
+
+export const updatePlaceApi = async (place) => {
+    const response = await api.patch(`/places/update/${place.placeID}`,place);
+    return response;
+}
