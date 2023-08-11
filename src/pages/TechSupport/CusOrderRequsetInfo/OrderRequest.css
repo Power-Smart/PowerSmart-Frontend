@@ -1,18 +1,7 @@
-.page__body {
-    background-color: #0E0E1A;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-y: scroll;
-}
-
 .requestInfoBox {
     border: 2px solid #83BCFF;
     border-radius: 10px;
     color: white;
-    width: 50%;
 }
 
 .requestInfoBox .infoHeader {
@@ -29,24 +18,17 @@
 }
 
 
-.requestInfoBox .form .data__field {
-    padding: 7px;
-    background-color: #151528;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
 .requestInfoBox .form .data__field input {
     outline: none;
     background-color: transparent;
     border: none;
-    width: 70%;
+    width: 80%;
 }
 
 .requestInfoBox .form .data__field textarea {
     resize: none;
     background-color: transparent;
-    width: 100%;
+    width: 80%;
     padding: 10px;
     height: 150px;
 }

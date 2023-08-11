@@ -46,7 +46,7 @@ const UpdateRoom = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(updateRoom({...room,placeID:placeID,roomID:roomID}));
+            dispatch(updateRoom({ ...room, placeID: placeID, roomID: roomID }));
             setAlert({
                 message: 'Room Updated Successfully!',
                 type: 'success',
@@ -106,14 +106,18 @@ const UpdateRoom = () => {
                             <TextInput type='text' label='Room Name' required={true} value={room.name} onChange={(e) => setRoom({ ...room, name: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <TextInput type='text' label='Type' required={true} value={room.type} onChange={(e) => setRoom({ ...room, type: e.target.value })} />
+                            <SelectInput required={true} categories={windows_type} ref={selectWindowType} onChange={(e) => { selectWindowType.current = e.target.value }} />
                         </FormGroup>
                         <FormGroup>
-                            <TextInput type='text' label='Windows Type' required={true} value={room.windows_type} onChange={(e) => setRoom({ ...room, windows_type: e.target.value })} />
+                            <SelectInput required={true} categories={active_status} ref={selectActiveStatus} onChange={(e) => selectActiveStatus.current = e.target.value} />
                         </FormGroup>
                         <FormGroup>
-                            <TextInput type='text' label='size' required={true} value={room.size} onChange={(e) => setRoom({ ...room, size: e.target.value })} />
+                            <TextInput type='number' label='Room Size' required={true} value={room.size} onChange={(e) => setRoom({ ...room, size: e.target.value })} />
                         </FormGroup>
+                        <FormGroup>
+                            <SelectInput required={true} categories={room_type} ref={selectRoomType} onChange={(e) => { selectRoomType.current = e.target.value }} />
+                        </FormGroup>
+
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
                             <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Add'} onClick={handleSubmit} />
                             <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Clear'} onClick={resetForm} />

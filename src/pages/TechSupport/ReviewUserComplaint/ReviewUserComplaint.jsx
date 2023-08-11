@@ -1,5 +1,5 @@
-import { AiOutlineCloseCircle } from 'react-icons/ai'
-import './OrderRequest.css'
+import './ReviewUserComplaint.css'
+import { BsChatDots } from 'react-icons/bs'
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
 import Sidebar from '../../../components/Sidebar/Sidebar';
@@ -7,21 +7,26 @@ import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
 
 
-
-const OrderRequest = () => {
+const ReviewUserComplaint = () => {
     return (
         <PageWrapper>
             <Sidebar />
             <PageContent>
                 <TopBar title={'Profile'} />
                 <ContentWrapper>
-                    <div className="requestInfoBox  my-4 mx-auto w-9/12">
-                        <div className="infoHeader">
-                            <div className="title">
-                                <h3>Customer Order Request Information</h3>
+                    <div className="userInquiries my-4 mx-auto w-9/12">
+                        <div className="chat ">
+                            <div className="chat__btn">
+                                <button><BsChatDots className='inline-block mb-1 mr-1' />Chat</button>
                             </div>
                         </div>
+
                         <div className="form">
+                            <div className="data__field">
+                                <label htmlFor="">Inquiry No: </label>
+                                <input type="text" value="#455662" disabled/>
+                            </div>
+
                             <div className="data__field">
                                 <label htmlFor="">Customer ID: </label>
                                 <input type="text" value="#455662" disabled/>
@@ -33,32 +38,20 @@ const OrderRequest = () => {
                             </div>
 
                             <div className="data__field">
-                                <label htmlFor="">Number of Places: </label>
-                                <input type="text" value="03" disabled/>
-                            </div>
-
-                            <div className="data__field">
-                                <label htmlFor="">Number of Rooms: </label>
-                                <input type="text" value="10" disabled/>
-                            </div>
-
-                            <div className="data__field">
-                                <label htmlFor="">Order Description: </label>
+                                <label htmlFor="">Description: </label>
                                 <textarea disabled value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
                             </div>
 
-                            <div className="flex justify-center mt-10">
+                            <div className="button__section">
                                 <button className='px-4 py-1 bg-red-700 rounded-lg mr-5'>Reject</button>
-                                <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
+                                <button className='px-4 py-1 bg-blue-700 rounded-lg'>Resolved</button>
                             </div>
-
                         </div>
                     </div>
                 </ContentWrapper>
             </PageContent>
-        </PageWrapper >
-    );
-};
+        </PageWrapper>
+    )
+}
 
-
-export default OrderRequest;
+export default ReviewUserComplaint

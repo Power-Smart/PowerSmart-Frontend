@@ -20,7 +20,7 @@ export const addRoom = createAsyncThunk(
     "rooms/addRoom",
     async (room, thunkAPI) => {
         try{
-            console.log(room);
+            console.log(room)
             const response = await addRoomApi(room);
             if(response.status === 201){
                 return response.data;
@@ -92,6 +92,13 @@ export const roomSlice = createSlice({
             .addCase(addRoom.rejected,(state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
+            })
+            .addCase(updateRoom.pending,(state) => {
+                state.status = "loading";
+            })
+            .addCase(updateRoom.fulfilled,(state,action) => {
+                state.status = "succeeded";
+                
             })
     }
 });

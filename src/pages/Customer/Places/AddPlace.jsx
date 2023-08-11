@@ -32,6 +32,8 @@ const AddPlace = () => {
         time_zone: '',
         is_active: false,
     })
+
+
     const [alert, setAlert] = useState({
         message: '',
         type: 'success',
@@ -46,7 +48,6 @@ const AddPlace = () => {
         selectCity.current = cities[0].value;
         selectCountry.current = countries[0].value;
     }, [])
-
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
