@@ -93,7 +93,7 @@ const AddPlace = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar title={'Add Places'} />
+                <TopBar title={'Add Places'} baclLink='/places' />
                 <ContentWrapper>
                     <Form>
                         <AlertMessage message={alert.message} visible={alert.visible} setVisible={setAlert} closable={true} type={alert.type} />

@@ -1,4 +1,4 @@
-.top-header{
+.top-header {
     display: grid;
     grid-template-columns: 35% 65%;
     padding: 1rem 2rem;
@@ -7,14 +7,14 @@
     margin-bottom: 1rem;
 }
 
-.top-header h1{
+.top-header h1 {
     font-size: 2rem;
     font-weight: 600;
     color: #fff;
 }
 
 
-.one-schedule{
+.one-schedule {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,24 +30,24 @@
     margin: 20px 0;
 } */
 
-.right-side .one-guest-user img{
+.right-side .one-guest-user img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.right-side .one-guest-user{
+.right-side .one-guest-user {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
     background-color: #151528;
     padding: 7px;
     justify-content: space-around;
-    border-radius: 0.5rem;  
+    border-radius: 0.5rem;
 }
 
-.right-side .one-guest-user .accept{
+.right-side .one-guest-user .accept {
     background-color: #151528;
     border: 1px solid #fff;
     padding: 0.3rem;
@@ -59,7 +59,7 @@
     font-size: 1rem;
 }
 
-.right-side .one-guest-user .reject{
+.right-side .one-guest-user .reject {
     background-color: #151528;
     border: 1px solid #fff;
     padding: 0.3rem;
@@ -71,28 +71,28 @@
 }
 
 
-.dashboard-container{
+.dashboard-container {
     display: grid;
     grid-template-columns: 65% 35%;
     grid-gap: 2rem;
 }
 
-.room{
-    background-color: #151528;
+.room {
+    background-color: #1f1a4089;
     padding: 14px;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
 }
 
-.place-sets{
-    background-color: rgba(255, 255, 255, 0.265);
+.place-sets {
+    background-color: #151528;
     padding: 10px;
     border-radius: 0.5rem;
     height: 55vh;
     overflow-y: scroll !important;
 }
 
-.place-sets .one-place{
+.place-sets .one-place {
     border-radius: 0.5rem;
-    background-color: #fff;
+    background-color: #151528;
 }
