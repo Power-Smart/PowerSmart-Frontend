@@ -8,7 +8,6 @@ const dataset = [
         places: 2,
         rooms: 4,
         status: 'Pending'
-
     },
     {
         id: 2,

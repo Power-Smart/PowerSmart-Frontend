@@ -7,9 +7,10 @@ import TechDashboard from '../pages/TechSupport/TechDashboard/TechDashboard';
 import OrderRequest from '../pages/TechSupport/CusOrderRequsetInfo/OrderRequest';
 import TechMarketPlace from '../pages/TechSupport/TechMarketPlace/TechMarketPlace';
 import SelectPlaceRoom from '../pages/TechSupport/SelectPlaceRoom/SelectPlaceRoom';
-import AddPlace from '../pages/TechSupport/AddPlace'
 import ReviewUserComplaint from '../pages/TechSupport/ReviewUserComplaint/ReviewUserComplaint';
 import UserComplaints from '../pages/TechSupport/UserComplaints/UserComplaints';
+import Relays from '../pages/TechSupport/Relays/Relays';
+import Places from '../pages/TechSupport/Places/Places';
 
 
 
@@ -53,17 +54,17 @@ const techSupportRoute =
             element: <CustomerRequest />,
         },
         {
-            path: `${techSupport}/profile`,
-            element: <Profile />,
-        },
-        {
-            path: `${techSupport}/addPlace`,
-            element: <AddPlace />,
-        },
-        {
             path: `${techSupport}/addDevice`,
             element: <AddDevice />,
-        }
+        },
+        {
+            path: `${techSupport}/relays`,
+            element: <Relays />,
+        },
+        {
+            path: `${techSupport}/places`,
+            element: <Places />,
+        },
     ]
 };
 
