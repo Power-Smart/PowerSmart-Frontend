@@ -5,7 +5,7 @@ import { TbHomeEdit } from 'react-icons/tb'
 
 
 
-const RoomCard = ({ is_active, name, size, type,window_type, place_id, room_id,device_count = 0 }) => {
+const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id, device_count = 0 }) => {
     return (
         <div className='text-sm flex flex-col w-[230px] h-[270px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
 

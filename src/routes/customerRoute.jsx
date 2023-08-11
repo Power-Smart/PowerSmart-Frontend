@@ -9,10 +9,10 @@ import ProtectedCustomer from "../pages/Customer/Protected/ProtectedCustomer";
 import Support from '../pages/Customer/Support/Support'
 import AddPlace from '../pages/Customer/Places/AddPlace'
 import AddRooms from '../pages/Customer/Rooms/AddRooms'
-import Chat from '../pages/Customer/Chat'
+// import Chat from '../pages/Customer/Chat'
 import UpdateRoom from '../pages/Customer/Rooms/UpdateRoom'
 import UpdatePlace from '../pages/Customer/Places/UpdatePlace'
-
+import Chat from '../pages/Customer/Chat/Chat'
 
 const customerRoute =
 {

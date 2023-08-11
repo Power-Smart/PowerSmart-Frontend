@@ -11,7 +11,7 @@ import { fetchRooms, selectRooms, selectRoomsStatus } from '../../../redux/slice
 import { useEffect, useState } from 'react'
 import { selectPlaces } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
-
+import { emptyRoomsSlice } from '../../../redux/slices/roomsSlice'
 
 
 const Rooms = () => {
@@ -25,13 +25,19 @@ const Rooms = () => {
     // console.log(user.id);
 
     useEffect(() => {
-        if (user.id && placeID && roomsStatus === 'idle') {
+        if (roomsStatus === 'succeeded') {
+            dispatch(emptyRoomsSlice());
+            dispatch(fetchRooms({
+                user_id: user.id,
+                place_id: placeID
+            }));
+        } else if (user.id && placeID && roomsStatus === 'idle') {
             dispatch(fetchRooms({
                 user_id: user.id,
                 place_id: placeID
             }));
         }
-    }, [rooms, user, dispatch]);
+    }, [ user, dispatch]);
 
 
     return (
