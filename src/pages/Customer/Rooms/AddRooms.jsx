@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import Sidebar from '../../../components/Sidebar/Sidebar'
@@ -43,15 +43,22 @@ const AddRooms = () => {
     });
 
 
-    const selectWindowType = useRef(windows_type[0].value);
-    const selectActiveStatus = useRef(active_status[0].value);
-    const selectRoomType = useRef(room_type[0].value);
+    const selectWindowType = useRef(null);
+    const selectActiveStatus = useRef(null);
+    const selectRoomType = useRef(null);
 
-    
+
+    useEffect(() => {
+        selectWindowType.current = windows_type[0].value;
+        selectActiveStatus.current = active_status[0].value;
+        selectRoomType.current = room_type[0].value;
+    }, [])
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(addRoom({ ...room, id: user.id, placeID: placeID, windows_type:selectWindowType.current,active_status:selectActiveStatus.current,room_type:selectRoomType.current }))
+            dispatch(addRoom({ ...room, id: user.id, placeID: placeID, windows_type: selectWindowType.current, active_status: selectActiveStatus.current, room_type: selectRoomType.current }))
             setAlert({
                 message: 'Room Added Successfully!',
                 type: 'success',
@@ -99,16 +106,16 @@ const AddRooms = () => {
                             <TextInput type='text' label='Room Name' required={true} value={room.name} onChange={(e) => setRoom({ ...room, name: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={windows_type} ref={selectWindowType} onChange={(e) => {selectWindowType.current = e.target.value}} />
+                            <SelectInput required={true} categories={windows_type} ref={selectWindowType} onChange={(e) => { selectWindowType.current = e.target.value }} />
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={active_status} ref={selectActiveStatus} onChange = {(e) => selectActiveStatus.current = e.target.value} />
+                            <SelectInput required={true} categories={active_status} ref={selectActiveStatus} onChange={(e) => selectActiveStatus.current = e.target.value} />
                         </FormGroup>
                         <FormGroup>
                             <TextInput type='number' label='Room Size' required={true} value={room.size} onChange={(e) => setRoom({ ...room, size: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={room_type} ref={selectRoomType} onChange = {(e)=>{selectRoomType.current = e.target.value}} />
+                            <SelectInput required={true} categories={room_type} ref={selectRoomType} onChange={(e) => { selectRoomType.current = e.target.value }} />
                         </FormGroup>
 
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">

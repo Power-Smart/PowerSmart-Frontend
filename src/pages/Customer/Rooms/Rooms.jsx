@@ -11,30 +11,7 @@ import { fetchRooms, selectRooms, selectRoomsStatus } from '../../../redux/slice
 import { useEffect, useState } from 'react'
 import { selectPlaces } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
-import { emptyRoomsSlice } from '../../../redux/slices/roomsSlice'
 
-
-
-// const dataSet = [
-//     {
-//         status: 'Online',
-//         name: 'Living Room',
-//         devices: 5,
-//         measures: {
-//             temperature: 25,
-//             humidity: 50,
-//         }
-//     },
-//     {
-//         status: 'Offline',
-//         name: 'Bedroom',
-//         devices: 3,
-//         measures: {
-//             temperature: 25,
-//             humidity: 50,
-//         }
-//     },
-// ];
 
 
 const Rooms = () => {
@@ -48,20 +25,13 @@ const Rooms = () => {
     // console.log(user.id);
 
     useEffect(() => {
-        if (roomsStatus === 'succeeded') {
-            dispatch(emptyRoomsSlice());
+        if (user.id && placeID && roomsStatus === 'idle') {
             dispatch(fetchRooms({
                 user_id: user.id,
                 place_id: placeID
             }));
         }
-        else if (user.id && placeID && roomsStatus === 'idle') {
-            dispatch(fetchRooms({
-                user_id: user.id,
-                place_id: placeID
-            }));
-        }
-    }, [user, dispatch]);
+    }, [rooms, user, dispatch]);
 
 
     return (
@@ -85,7 +55,6 @@ const Rooms = () => {
                         {(roomsStatus === 'succeeded' && rooms.map((data, index) => (<RoomCard key={index} {...data} />)))}
                         {(roomsStatus === 'succeeded' && rooms.length === 0) && <div className='text-white'>No rooms found</div>}
 
-                        {/* {dataSet.map((data, index) => (<RoomCard key={index} {...data} />))} */}
                     </div>
                 </div>
             </PageContent>
