@@ -17,6 +17,7 @@ export const addPlace = createAsyncThunk(
     "places/addPlace",
     async (place, thunkAPI) => {
         try {
+            console.log(place)
             const response = await addPlaceApi(place);
             if (response.status === 201) {
                 return response.data;

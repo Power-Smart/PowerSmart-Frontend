@@ -32,11 +32,15 @@ const AddPlace = () => {
         time_zone: '',
         is_active: false,
     })
+
+    
     const [alert, setAlert] = useState({
         message: '',
         type: 'success',
         visible: false,
     });
+
+
     const selectType = useRef(categories[0].value);
     const selectCity = useRef(cities[0].value);
     const selectCountry = useRef(countries[0].value);
