@@ -19,16 +19,16 @@ export const fetchRooms = createAsyncThunk(
 export const addRoom = createAsyncThunk(
     "rooms/addRoom",
     async (room, thunkAPI) => {
-        try{
+        try {
             console.log(room)
             const response = await addRoomApi(room);
-            if(response.status === 201){
+            if (response.status === 201) {
                 return response.data;
-            }else{
-                return thunkAPI.rejectWithValue({error:response.data});
+            } else {
+                return thunkAPI.rejectWithValue({ error: response.data });
             }
-        }catch(error){
-            return thunkAPI.rejectWithValue({error:error.message});
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
         }
     }
 )
@@ -37,15 +37,15 @@ export const addRoom = createAsyncThunk(
 export const updateRoom = createAsyncThunk(
     "room/update",
     async (room, thunkAPI) => {
-        try{
+        try {
             const response = await updateRoomApi(room);
-            if(response.status === 201){
+            if (response.status === 201) {
                 return response.data;
-            }else{
-                return thunkAPI.rejectWithValue({error:response.data});
+            } else {
+                return thunkAPI.rejectWithValue({ error: response.data });
             }
-        }catch(error){
-            return thunkAPI.rejectWithValue({error:error.message});
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
         }
     }
 )
@@ -61,13 +61,7 @@ const initialState = {
 export const roomSlice = createSlice({
     name: "rooms",
     initialState,
-    reducers: {
-        emptyRoomsSlice: (state) => {
-            state.rooms = [];
-            state.status = "idle";
-            state.error = "null"
-        }
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchRooms.pending, (state) => {
@@ -89,16 +83,23 @@ export const roomSlice = createSlice({
                 state.status = "succeeded";
                 state.rooms.push(action.payload);
             })
-            .addCase(addRoom.rejected,(state, action) => {
+            .addCase(addRoom.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
-            .addCase(updateRoom.pending,(state) => {
+            .addCase(updateRoom.pending, (state) => {
                 state.status = "loading";
             })
-            .addCase(updateRoom.fulfilled,(state,action) => {
+            .addCase(updateRoom.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                
+                const index = state.rooms.findIndex(
+                    (room) => room.id = action.payload.id
+                )
+                state.rooms[index] = action.payload;
+            })
+            .addCase(updateRoom.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
             })
     }
 });
@@ -107,6 +108,5 @@ export const selectRooms = (state) => state.rooms.rooms;
 export const selectRoomsStatus = (state) => state.rooms.status;
 export const selectPlacesError = (state) => state.rooms.error;
 
-export const {emptyRoomsSlice} = roomSlice.actions;
 
 export default roomSlice.reducer;

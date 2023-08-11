@@ -42,12 +42,15 @@ const AddPlace = () => {
     const selectType = useRef(null);
     const selectCity = useRef(null);
     const selectCountry = useRef(null);
+    
 
     useEffect(() => {
         selectType.current = categories[0].value;
         selectCity.current = cities[0].value;
         selectCountry.current = countries[0].value;
     }, [])
+
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
