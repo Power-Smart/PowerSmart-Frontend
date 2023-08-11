@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import Sidebar from '../../../components/Sidebar/Sidebar'
@@ -17,6 +17,10 @@ import { addRoom, updateRoom } from '../../../redux/slices/roomsSlice'
 import AlertMessage from '../../../components/smallComps/AlertMessage'
 import { useNavigate, useParams } from 'react-router-dom'
 import { selectRooms } from '../../../redux/slices/roomsSlice'
+import SelectInput from '../../../components/Forms/SelectInput'
+import { windows_type, active_status, room_type } from './RoomSelectItemList'
+
+
 
 
 const UpdateRoom = () => {
@@ -31,9 +35,7 @@ const UpdateRoom = () => {
 
     const [room, setRoom] = useState({
         name: '',
-        windows_type: '',
         size: '',
-        type: '',
     })
 
     const [alert, setAlert] = useState({
@@ -43,16 +45,20 @@ const UpdateRoom = () => {
     });
 
 
+    const selectWindowType = useRef(null);
+    const selectActiveStatus = useRef(null);
+    const selectRoomType = useRef(null);
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(updateRoom({ ...room, placeID: placeID, roomID: roomID }));
+            dispatch(updateRoom({ ...room, placeID: placeID, roomID: roomID, window_type: selectWindowType.current, active_status: selectActiveStatus.current, room_type: selectRoomType.current }));
             setAlert({
                 message: 'Room Updated Successfully!',
                 type: 'success',
                 visible: true,
             })
-            navigate(-1)
         }
         catch (error) {
             console.log(error);
@@ -62,6 +68,7 @@ const UpdateRoom = () => {
                 visible: true,
             })
         }
+        navigate(-1)
     }
 
 
@@ -69,9 +76,7 @@ const UpdateRoom = () => {
         e.preventDefault()
         setRoom({
             name: '',
-            windows_type: '',
             size: '',
-            type: '',
         })
         setAlert({
             message: 'Form Cleaed',
@@ -85,13 +90,14 @@ const UpdateRoom = () => {
             if (room.room_id == roomID) {
                 setRoom({
                     name: room.name,
-                    windows_type: room.windows_type,
                     size: room.size,
-                    type: room.type
                 })
+                selectWindowType.current = room.windows_type
+                selectActiveStatus.current = room.active_status
+                selectRoomType.current = room.room_type
             }
         })
-    }, [rooms]);
+    }, [rooms, roomID]);
 
 
     return (

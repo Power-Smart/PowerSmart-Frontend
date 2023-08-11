@@ -92,8 +92,9 @@ export const roomSlice = createSlice({
             })
             .addCase(updateRoom.fulfilled, (state, action) => {
                 state.status = "succeeded";
+                console.log(action.payload);
                 const index = state.rooms.findIndex(
-                    (room) => room.id = action.payload.id
+                    (room) => room.id === action.payload.id
                 )
                 state.rooms[index] = action.payload;
             })

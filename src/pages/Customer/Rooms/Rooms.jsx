@@ -14,28 +14,6 @@ import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 
 
 
-// const dataSet = [
-//     {
-//         status: 'Online',
-//         name: 'Living Room',
-//         devices: 5,
-//         measures: {
-//             temperature: 25,
-//             humidity: 50,
-//         }
-//     },
-//     {
-//         status: 'Offline',
-//         name: 'Bedroom',
-//         devices: 3,
-//         measures: {
-//             temperature: 25,
-//             humidity: 50,
-//         }
-//     },
-// ];
-
-
 const Rooms = () => {
 
     const dispatch = useDispatch();
@@ -53,7 +31,7 @@ const Rooms = () => {
                 place_id: placeID
             }));
         }
-    }, [user, dispatch,rooms]);
+    }, [rooms, user, dispatch]);
 
 
     return (
@@ -77,7 +55,6 @@ const Rooms = () => {
                         {(roomsStatus === 'succeeded' && rooms.map((data, index) => (<RoomCard key={index} {...data} />)))}
                         {(roomsStatus === 'succeeded' && rooms.length === 0) && <div className='text-white'>No rooms found</div>}
 
-                        {/* {dataSet.map((data, index) => (<RoomCard key={index} {...data} />))} */}
                     </div>
                 </div>
             </PageContent>
