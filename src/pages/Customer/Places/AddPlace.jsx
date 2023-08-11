@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import Sidebar from '../../../components/Sidebar/Sidebar'
@@ -37,9 +37,15 @@ const AddPlace = () => {
         type: 'success',
         visible: false,
     });
-    const selectType = useRef(categories[0].value);
-    const selectCity = useRef(cities[0].value);
-    const selectCountry = useRef(countries[0].value);
+    const selectType = useRef(null);
+    const selectCity = useRef(null);
+    const selectCountry = useRef(null);
+
+    useEffect(() => {
+        selectType.current = categories[0].value;
+        selectCity.current = cities[0].value;
+        selectCountry.current = countries[0].value;
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()
