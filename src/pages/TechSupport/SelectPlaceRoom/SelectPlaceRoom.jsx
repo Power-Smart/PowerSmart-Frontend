@@ -5,7 +5,7 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
-
+import { Link } from 'react-router-dom';
 
 
 const SelectPlaceRoom = () => {
@@ -42,7 +42,9 @@ const SelectPlaceRoom = () => {
 
 
                             <div className="button flex justify-center mt-3">
-                                <button className='px-4 py-1 bg-blue-700 rounded-lg'>Add to plan</button>
+                                <Link to="/tech/marketPlace">
+                                    <button className='px-4 py-1 bg-blue-700 rounded-lg'>Add to plan</button>
+                                </Link>
                             </div>
 
                         </div>
