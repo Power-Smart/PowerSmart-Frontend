@@ -1,4 +1,4 @@
-import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai";
+import { AiFillCaretRight } from "react-icons/ai";
 import React, { useState } from 'react'
 
 const CheckoutBox = ({ place, room, total }) => {

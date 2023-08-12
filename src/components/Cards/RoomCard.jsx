@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { TbHomeEdit } from 'react-icons/tb'
 
 
-
-const RoomCard = ({ is_active, name, size, type,window_type, place_id, room_id,device_count = 0 }) => {
+const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id, device_count = 0 }) => {
     return (
         <div className='text-sm flex flex-col w-[230px] h-[270px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
 
@@ -32,7 +31,7 @@ const RoomCard = ({ is_active, name, size, type,window_type, place_id, room_id,d
                 <div className='text-sm'>Window type : {window_type}</div>
             </div>
 
-            <Link to='/places/rooms/controlpanel'>
+            <Link to={`/places/${place_id}/rooms/${room_id}/controlpanel`}>
                 <div className='flex flex-col flex-grow justify-end items-center mt-3'>
                     <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
                 </div>

@@ -17,7 +17,7 @@ export const addPlace = createAsyncThunk(
     "places/addPlace",
     async (place, thunkAPI) => {
         try {
-            console.log(place)
+            console.log(place);
             const response = await addPlaceApi(place);
             if (response.status === 201) {
                 return response.data;
@@ -85,11 +85,13 @@ export const placesSlice = createSlice({
             })
             .addCase(updatePlace.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                console.log(action.payload);
                 const index = state.places.findIndex(
                     (place) => place.id === action.payload.id
                 );
-                state.places[index] = action.payload;
+                state.places[index] = {
+                    room_count: state.places[index].room_count,
+                    ...action.payload,
+                };
             })
             .addCase(updatePlace.rejected, (state, action) => {
                 state.status = "failed";
