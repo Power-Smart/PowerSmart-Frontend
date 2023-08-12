@@ -5,7 +5,7 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
-
+import { Link } from 'react-router-dom';
 
 
 const OrderRequest = () => {
@@ -24,22 +24,22 @@ const OrderRequest = () => {
                         <div className="form">
                             <div className="data__field">
                                 <label htmlFor="">Customer ID: </label>
-                                <input type="text" value="#455662" disabled/>
+                                <input type="text" value="#455662" disabled />
                             </div>
 
                             <div className="data__field">
                                 <label htmlFor="">Customer: </label>
-                                <input type="text" value="Anawarathna  M.A.D.V.S" disabled/>
+                                <input type="text" value="Anawarathna  M.A.D.V.S" disabled />
                             </div>
 
                             <div className="data__field">
                                 <label htmlFor="">Number of Places: </label>
-                                <input type="text" value="03" disabled/>
+                                <input type="text" value="03" disabled />
                             </div>
 
                             <div className="data__field">
                                 <label htmlFor="">Number of Rooms: </label>
-                                <input type="text" value="10" disabled/>
+                                <input type="text" value="10" disabled />
                             </div>
 
                             <div className="data__field">
@@ -49,7 +49,10 @@ const OrderRequest = () => {
 
                             <div className="flex justify-center mt-10">
                                 <button className='px-4 py-1 bg-red-700 rounded-lg mr-5'>Reject</button>
-                                <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
+
+                                <Link to="/tech/marketPlace">
+                                    <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
+                                </Link>
                             </div>
 
                         </div>
