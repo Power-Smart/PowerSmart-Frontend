@@ -1,4 +1,5 @@
 // import profilePic from '../../../assets/images/profile.jpeg'
+import { Link } from "react-router-dom";
 
 const TableRow = ({ profilePic, id, email, name, places, status }) => {
   return (
@@ -35,7 +36,9 @@ const TableRow = ({ profilePic, id, email, name, places, status }) => {
         </div>
       </td>
       <td className="px-6 py-4">
-        <button className="view__btn">View</button>
+        <Link to="./:customerId">
+          <button className="view__btn">View</button>
+        </Link>
       </td>
     </tr>
   );
