@@ -34,7 +34,8 @@ export const getCustomerApi = async (userId) => {
 
 export const updateCustomerProfileApi = async (values) => {
     const response = await api.patch(`/user/customer_profile/${values.id}`, {
-        name: values.name,
+        first_name: values.first_name,
+        last_name: values.last_name,
         tel_no: values.tel_no,
         address: values.address,
     });

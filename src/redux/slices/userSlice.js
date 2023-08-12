@@ -50,9 +50,11 @@ export const userSlice = createSlice({
             state.user.email = "";
             state.user.role = 0;
             state.isLogged = false;
+            state = {};
         },
         updateName: (state, action) => {
-            state.user.name = action.payload;
+            state.user.first_name = action.payload.first_name;
+            state.user.last_name = action.payload.last_name;
         },
         completeProfileInfo: (state, action) => {
             state.user.id = action.payload;

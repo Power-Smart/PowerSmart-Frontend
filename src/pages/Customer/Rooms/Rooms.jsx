@@ -14,60 +14,37 @@ import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { emptyRoomsSlice } from '../../../redux/slices/roomsSlice'
 
 
-
-// const dataSet = [
-//     {
-//         status: 'Online',
-//         name: 'Living Room',
-//         devices: 5,
-//         measures: {
-//             temperature: 25,
-//             humidity: 50,
-//         }
-//     },
-//     {
-//         status: 'Offline',
-//         name: 'Bedroom',
-//         devices: 3,
-//         measures: {
-//             temperature: 25,
-//             humidity: 50,
-//         }
-//     },
-// ];
-
-
 const Rooms = () => {
 
     const dispatch = useDispatch();
-    const customer = useSelector(selectCustomer);
     const rooms = useSelector(selectRooms);
     const roomsStatus = useSelector(selectRoomsStatus);
     const { placeID } = useParams();
+    const user = useSelector(state => state.user.user)
 
+    // console.log(user.id);
 
     useEffect(() => {
         if (roomsStatus === 'succeeded') {
             dispatch(emptyRoomsSlice());
             dispatch(fetchRooms({
-                customer_id: customer.id,
+                user_id: user.id,
                 place_id: placeID
             }));
-        }
-        else if (customer.id && placeID && roomsStatus === 'idle') {
+        } else if (user.id && placeID && roomsStatus === 'idle') {
             dispatch(fetchRooms({
-                customer_id: customer.id,
+                user_id: user.id,
                 place_id: placeID
             }));
         }
-    }, [customer, dispatch]);
+    }, [ user, dispatch]);
 
 
     return (
         <PageWrapper >
             <MainSidebar />
             <PageContent >
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Rooms" baclLink='/places' />
+                <TopBar image="https://avatars.githubusercontent.com/u/7374421685?v=4" title="Rooms" baclLink='/places' />
 
                 <div className='px-16 py-4 w-full flex flex-col flex-grow mx-auto'>
 
@@ -84,7 +61,6 @@ const Rooms = () => {
                         {(roomsStatus === 'succeeded' && rooms.map((data, index) => (<RoomCard key={index} {...data} />)))}
                         {(roomsStatus === 'succeeded' && rooms.length === 0) && <div className='text-white'>No rooms found</div>}
 
-                        {/* {dataSet.map((data, index) => (<RoomCard key={index} {...data} />))} */}
                     </div>
                 </div>
             </PageContent>

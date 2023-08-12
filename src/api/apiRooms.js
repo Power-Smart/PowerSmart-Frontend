@@ -9,3 +9,8 @@ export const addRoomApi = async (room) => {
     const response = await api.post("/places/rooms/add", room)
     return response;
 }
+
+export const updateRoomApi = async (room) => {
+    const response = await api.patch(`/places/rooms/update/${room.placeID}/${room.roomID}`, room);
+    return response;
+}

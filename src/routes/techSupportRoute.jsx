@@ -1,9 +1,18 @@
 import ProtectedTechSupport from '../pages/Customer/Protected/ProtectedTechSupport';
-import UserInquiries from '../pages/TechSupport/UserInquiries/UserInquiries'
 import AddDevice from '../pages/TechSupport/AddDevice'
 import ProfileTechSupport from '../pages/TechSupport/Profile'
 import CustomerRequest from '../pages/TechSupport/CustomerRequestTable/CustomerRequest';
 import Profile from '../pages/TechSupport/Profile';
+import TechDashboard from '../pages/TechSupport/TechDashboard/TechDashboard';
+import OrderRequest from '../pages/TechSupport/CusOrderRequsetInfo/OrderRequest';
+import TechMarketPlace from '../pages/TechSupport/TechMarketPlace/TechMarketPlace';
+import SelectPlaceRoom from '../pages/TechSupport/SelectPlaceRoom/SelectPlaceRoom';
+import ReviewUserComplaint from '../pages/TechSupport/ReviewUserComplaint/ReviewUserComplaint';
+import UserComplaints from '../pages/TechSupport/UserComplaints/UserComplaints';
+import Relays from '../pages/TechSupport/Relays/Relays';
+import Places from '../pages/TechSupport/Places/Places';
+
+
 
 const techSupport = "/tech";
 
@@ -13,12 +22,28 @@ const techSupportRoute =
     element: <ProtectedTechSupport />,
     children: [
         {
-            path: `${techSupport}/addDevice`,
-            element: <AddDevice />,
+            path: `${techSupport}`,
+            element: <TechDashboard />,
         },
         {
-            path: `${techSupport}/userInquiries`,
-            element: <UserInquiries />,
+            path: `${techSupport}/orderRequest`,
+            element: <OrderRequest />,
+        },
+        {
+            path: `${techSupport}/marketPlace`,
+            element: <TechMarketPlace />,
+        },
+        {
+            path: `${techSupport}/selectPlaceRoom`,
+            element: <SelectPlaceRoom />,
+        },
+        {
+            path: `${techSupport}/userComplaints`,
+            element: <UserComplaints />,
+        },
+        {
+            path: `${techSupport}/viewUserComplaint`,
+            element: <ReviewUserComplaint />,
         },
         {
             path: `${techSupport}/profile`,
@@ -29,9 +54,17 @@ const techSupportRoute =
             element: <CustomerRequest />,
         },
         {
-            path: `${techSupport}/profile`,
-            element: <Profile />,
-        }
+            path: `${techSupport}/addDevice`,
+            element: <AddDevice />,
+        },
+        {
+            path: `${techSupport}/relays`,
+            element: <Relays />,
+        },
+        {
+            path: `${techSupport}/places`,
+            element: <Places />,
+        },
     ]
 };
 

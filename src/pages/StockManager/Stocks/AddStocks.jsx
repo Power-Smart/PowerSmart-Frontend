@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
@@ -31,15 +31,15 @@ const AddStocks = () => {
         { value: 'option1', label: 'Option 1' },
         { value: 'option2', label: 'Option 2' },
         { value: 'option3', label: 'Option 3' },
-      ];
+    ];
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         console.log(file);
         e.preventDefault()
         setSelectedFile(file);
-      };
+    };
 
-      const handleOptionChange = (e) => {
+    const handleOptionChange = (e) => {
         e.preventDefault()
         setselectedOption(e.target.value)
     }
@@ -60,10 +60,10 @@ const AddStocks = () => {
             <PageContent>
                 <TopBar title="Complaint" image="https://avatars.githubusercontent.com/u/73744585?v=4" />
                 <ContentWrapper>
-                <Form>
-                    <FormGroup>
-                        <FileInput id="stockImage" accept={'image/*'} selectedFile={selectedFile} onChange={handleFileChange} />
-                    </FormGroup>
+                    <Form>
+                        <FormGroup>
+                            <FileInput id="stockImage" accept={'image/*'} selectedFile={selectedFile} onChange={handleFileChange} />
+                        </FormGroup>
                         <FormGroup>
                             <TextInput type='text' label='Name' required={true} />
                         </FormGroup>

@@ -1,9 +1,6 @@
 import React from 'react'
-import {FaGreaterThan} from 'react-icons/fa'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
-
-const UserInquiries2 = ({ id, complaint, userID, status }) => {
+const TableRow = ({ id, name, places, rooms, status }) => {
     return (
         <tr className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900">
             {/* <td className="w-4 p-4">
@@ -12,7 +9,7 @@ const UserInquiries2 = ({ id, complaint, userID, status }) => {
                     <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
                 </div>
             </td> */}
-            <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+            <th scope="row" className="flex items-center px-2 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                 {/* <img className="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image" /> */}
                 <div className="pl-3">
                     <div className="text-base font-semibold">{id}</div>
@@ -20,32 +17,30 @@ const UserInquiries2 = ({ id, complaint, userID, status }) => {
                 </div>
             </th>
             <td className="px-6 py-4">
-                {complaint.slice(0, 25) + '...'}
+                {name}
             </td>
             <td className="px-6 py-4">
-                {userID}
+                {places}
             </td>
             <td className="px-6 py-4">
+                {rooms}
+            </td>
+            <td className="px-6 py-4">
+                <div className="flex items-center justify-center">
                     {/* <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> {status} */}
                     {status === 'Pending' && <span className="px-2 py-1 inline-flex text-xs leading-5 rounded-full bg-yellow-950 text-yellow-500">
                         {status}
                     </span>}
-                    {status === 'Solved' && <span className="px-2 py-1 inline-flex text-xs leading-5 rounded-full bg-green-950 text-green-500">
+                    {status === 'Resolved' && <span className="px-2 py-1 inline-flex text-xs leading-5 rounded-full bg-green-950 text-green-500">
                         {status}
                     </span>}
                     {status === 'Rejected' && <span className="px-2 py-1 inline-flex text-xs leading-5 rounded-full bg-red-950 text-red-500">
                         {status}
                     </span>}
-            </td>
-
-             <td className="px-6 py-4">
-                <div className="flex items-center justify-center">
-                    <Link to="/login" > <FaGreaterThan/></Link>
                 </div>
             </td>
-       
         </tr>
     )
 }
 
-export default UserInquiries2
+export default TableRow

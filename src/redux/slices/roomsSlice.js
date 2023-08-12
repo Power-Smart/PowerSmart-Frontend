@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getRoomsApi, addRoomApi } from "../../api/apiRooms";
+import { getRoomsApi, addRoomApi, updateRoomApi } from "../../api/apiRooms";
 
 
 export const fetchRooms = createAsyncThunk(
     "rooms/fetchRooms",
     async (data, thunkAPI) => {
         try {
-            // console.log("ddd" + data["customer_id"], data["place_id"]);
-            const response = await getRoomsApi(data["customer_id"], data["place_id"]);
+            // console.log("ddd" + data["user_id"], data["place_id"]);
+            const response = await getRoomsApi(data["user_id"], data["place_id"]);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
@@ -19,16 +19,33 @@ export const fetchRooms = createAsyncThunk(
 export const addRoom = createAsyncThunk(
     "rooms/addRoom",
     async (room, thunkAPI) => {
-        try{
-            console.log(room);
+        try {
+            console.log(room)
             const response = await addRoomApi(room);
-            if(response.status === 201){
+            if (response.status === 201) {
                 return response.data;
-            }else{
-                return thunkAPI.rejectWithValue({error:response.data});
+            } else {
+                return thunkAPI.rejectWithValue({ error: response.data });
             }
-        }catch(error){
-            return thunkAPI.rejectWithValue({error:error.message});
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
+        }
+    }
+)
+
+
+export const updateRoom = createAsyncThunk(
+    "room/update",
+    async (room, thunkAPI) => {
+        try {
+            const response = await updateRoomApi(room);
+            if (response.status === 201) {
+                return response.data;
+            } else {
+                return thunkAPI.rejectWithValue({ error: response.data });
+            }
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
         }
     }
 )
@@ -72,7 +89,22 @@ export const roomSlice = createSlice({
                 state.status = "succeeded";
                 state.rooms.push(action.payload);
             })
-            .addCase(addRoom.rejected,(state, action) => {
+            .addCase(addRoom.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            })
+            .addCase(updateRoom.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(updateRoom.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                console.log(action.payload);
+                const index = state.rooms.findIndex(
+                    (room) => room.id === action.payload.id
+                )
+                state.rooms[index] = action.payload;
+            })
+            .addCase(updateRoom.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
@@ -83,6 +115,6 @@ export const selectRooms = (state) => state.rooms.rooms;
 export const selectRoomsStatus = (state) => state.rooms.status;
 export const selectPlacesError = (state) => state.rooms.error;
 
-export const {emptyRoomsSlice} = roomSlice.actions;
+export const { emptyRoomsSlice } = roomSlice.actions;
 
 export default roomSlice.reducer;

@@ -25,37 +25,33 @@ const Dashboard = () => {
     //         navigate('/login');
     //     }
     // }, [])
+
     return (
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Dashboard" />
                 <ContentWrapper>
                     <div className="dashboard-container">
                         <div className="left-side">
                             <DashboardTopHeader />
-                            <div className="schedule">
-                                <ScheduleDevice />
-                                <ScheduleDevice />
-                            </div>
 
-                            <div className="place-sets">
+                            <div className="place-sets my-4">
                                 <div className="one-place">
-                                    <h1 className="text-2x">Place 01</h1>
+                                    <h1 className="text-2x mx-4 my-3">Place 01</h1>
                                     <div className="place-details">
                                         <PlaceCarousel />
                                     </div>
                                 </div>
 
                                 <div className="one-place">
-                                    <h1 className="text-2x">Place 01</h1>
+                                    <h1 className="text-2x mx-4 my-3">Place 02</h1>
                                     <div className="place-details">
                                         <PlaceCarousel />
                                     </div>
                                 </div>
 
                                 <div className="one-place">
-                                    <h1 className="text-2x">Place 01</h1>
+                                    <h1 className="text-2x mx-4 my-3">Place 03</h1>
                                     <div className="place-details">
                                         <PlaceCarousel />
                                     </div>
@@ -65,19 +61,24 @@ const Dashboard = () => {
 
                         <div className="right-side">
 
-                            <div className="game-achievement">
+                            {/* <div className="game-achievement">
                                 <h1 className="text-2xl">Game Achievement</h1>
                                 <img src={gameAchievement} alt="" />
+                            </div> */}
+
+                            <div className="schedule">
+                                <ScheduleDevice />
+                                <ScheduleDevice />
                             </div>
 
                             <div className="guest-users">
-                                <h1 className="text-2xl">Tech Support Request</h1>
+                                <h1 className="text-xl mt-4 mb-2">Tech Support Request</h1>
 
-                                <div className="one-guest-user">
+                                <div className="one-guest-user text-sm">
                                     <div className="default-profile-img">
                                         <img src="https://avatars.githubusercontent.com/u/73744585?v=4" alt="" />
                                     </div>
-                                    <div className="suggest-info">
+                                    <div className="suggest-info m-3">
                                         <h3>Temperature :<span> 30°C</span></h3>
                                         <h3>Light Intensity :<span> 30%</span></h3>
                                         <h3>Room Status :<span> Occupied</span></h3>
@@ -91,7 +92,7 @@ const Dashboard = () => {
 
 
                             <div className="guest-users">
-                                <h1 className="text-2xl">Guest Users Suggest</h1>
+                                <h1 className="text-xl mt-4 mb-2">Guest Users Suggest</h1>
                                 <GuestUsersSuggest />
                                 <GuestUsersSuggest />
                                 <GuestUsersSuggest />
@@ -99,7 +100,6 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>

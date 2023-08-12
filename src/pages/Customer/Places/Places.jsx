@@ -21,13 +21,12 @@ const Places = () => {
   const places = useSelector(selectPlaces);
   const placesStatus = useSelector(selectPlacesStatus);
 
-  // console.log(places)
 
   useEffect(() => {
     if (user.id && placesStatus === 'idle') {
       dispatch(fetchPlaces(user.id));
     }
-  }, [user, dispatch])
+  }, [places, user, dispatch])
 
 
   return (
