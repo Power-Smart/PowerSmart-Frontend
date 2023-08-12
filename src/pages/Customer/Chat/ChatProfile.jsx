@@ -3,9 +3,9 @@ import './chat.css'
 
 
 
-const ChatProfile = ({ profilePicture, userName, lastMessage }) => {
+const ChatProfile = ({ profilePicture, userName, lastMessage, onClick = undefined, id = null }) => {
     return (
-        <div className="one-chat">
+        <div className="one-chat" onClick={onClick} id={id} >
             <div className="profile-image">
                 <img src={profilePicture} alt="" />
             </div>

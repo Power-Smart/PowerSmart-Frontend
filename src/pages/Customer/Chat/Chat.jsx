@@ -1,49 +1,79 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
-import { LuSend } from 'react-icons/lu'
 import { RiUserSearchLine } from 'react-icons/ri'
 import './chat.css'
-import RecivierMessage from './RecivierMessage'
-import SenderMessage from './SenderMessage'
 import ChatProfile from './ChatProfile'
+import NotSelectedChat from './NotSelectedChat'
+import SelectedChat from './SelectedChat'
+
+
+
+const chatList = [
+    {
+        userID: '1',
+        profilePicture: 'https://avatars.githubusercontent.com/u/73744585?v=4',
+        userName: 'Viraj Sandakelum',
+        lastMessage: 'I am fine, how are you?'
+    },
+    {
+        userID: '2',
+        profilePicture: 'https://avatars.githubusercontent.com/u/7144115?v=4',
+        userName: 'Nirman Sandapawan',
+        lastMessage: 'I am fine, how are you?'
+    },
+    {
+        userID: '3',
+        profilePicture: 'https://avatars.githubusercontent.com/u/73544585?v=4',
+        userName: 'Madushika Sandaruwan',
+        lastMessage: 'I am fine, how are you?'
+    },
+    {
+        userID: '4',
+        profilePicture: 'https://avatars.githubusercontent.com/u/73342585?v=4',
+        userName: 'Hansanga Sandatharauka',
+        lastMessage: 'I am fine, how are you?'
+    },
+]
 
 
 const Chat = () => {
+
+    const [selectedUser, setSelectedUser] = useState(false);
+    const [selectedUserID, setSelectedUserID] = useState('');
+    const [selectedUserName, setSelectedUserName] = useState('');
+    const [selectedUserPicture, setSelectedUserPicture] = useState('');
+
+
+    const handleSelectUserDisplay = (userID) => {
+        chatList.forEach((chatUser) => {
+            if (chatUser.userID === userID) {
+                setSelectedUser(true)
+                setSelectedUserID(chatUser.userID)
+                setSelectedUserName(chatUser.userName)
+                setSelectedUserPicture(chatUser.profilePicture)
+            }
+        })
+    }
+
+
+
+
     return (
         <PageWrapper>
             <MainSidebar />
             <PageContent>
                 <div className="chat ">
-                    <div className="chat-message-container px-16 py-4 w-full flex flex-col flex-grow mx-auto mt-8">
-                        <div className="chat-header">
-                            <div className="profile-image">
-                                <img src="https://avatars.githubusercontent.com/u/73744585?v=4" alt="" />
-                            </div>
-                            <div className="name">
-                                <h1 className='text-xl'>Viraj Sandakelum</h1>
-                            </div>
-                        </div>
-                        <div className="chat-body">
-                            <RecivierMessage RecivedMessageText='I am fine, how are you?' />
-                            <SenderMessage SendMessageText='I am fine, how are you?' />
-                            <RecivierMessage RecivedMessageText='I am fine, how are you?' />
-                            <SenderMessage SendMessageText='I am fine, how are you?' />
-                            <RecivierMessage RecivedMessageText='I am fine, how are you?' />
-                            <SenderMessage SendMessageText='I am fine, how are you?' />
-                            <RecivierMessage RecivedMessageText='I am fine, how are you?' />
-                            <SenderMessage SendMessageText='I am fine, how are you?' />
-                            <RecivierMessage RecivedMessageText='I am fine, how are you?' />
-                            <SenderMessage SendMessageText='I am fine, how are you?' />
-                        </div>
-                        <div className="chat-send">
-                            <input type="text" placeholder="Type a message here" />
-                            <a href="#"><LuSend /></a>
-                        </div>
+
+                    <div className="chat-message-container notSelectedUserPage px-16 py-4 w-full flex flex-col flex-grow mx-auto mt-4">
+                        {
+                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture}/>) : (<NotSelectedChat/>)
+                        }
                     </div>
+
 
                     <div className="chat-user-list">
                         <div className="search-chat mt-8">
@@ -51,9 +81,11 @@ const Chat = () => {
                             <input type="text" placeholder="Search Chat by Name" />
                         </div>
                         <div className="chat-list">
-                            <ChatProfile profilePicture='https://avatars.githubusercontent.com/u/73744585?v=4' userName='Viraj Sandakelum' lastMessage="I am fine, how are you?" />
-                            <ChatProfile profilePicture='https://avatars.githubusercontent.com/u/73744585?v=4' userName='Viraj Sandakelum' lastMessage="I am fine, how are you?" />
-                            <ChatProfile profilePicture='https://avatars.githubusercontent.com/u/73744585?v=4' userName='Viraj Sandakelum' lastMessage="I am fine, how are you?" />
+                            {
+                                chatList.map((chat) => (
+                                    <ChatProfile profilePicture={chat.profilePicture} userName={chat.userName} lastMessage={chat.lastMessage} id={chat.userID}  onClick={(e) => handleSelectUserDisplay(e.currentTarget.id)} key={chat.userID} />
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -61,5 +93,6 @@ const Chat = () => {
         </PageWrapper>
     )
 }
+
 
 export default Chat
