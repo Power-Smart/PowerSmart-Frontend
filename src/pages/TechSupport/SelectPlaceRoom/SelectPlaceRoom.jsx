@@ -3,9 +3,9 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
 import Sidebar from '../../../components/Sidebar/Sidebar';
-import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
 import { Link } from 'react-router-dom';
+import TechSupportTopBar from '../TechSupportTopBar/TechSupportTopBar'
 
 
 const SelectPlaceRoom = () => {
@@ -13,7 +13,7 @@ const SelectPlaceRoom = () => {
         <PageWrapper>
             <Sidebar />
             <PageContent>
-                <TopBar title={'Profile'} />
+                <TechSupportTopBar title={'Profile'} />
                 <ContentWrapper>
                     <div className="requestInfoBox my-auto mx-auto min-w-max">
                         <div className="infoHeader">

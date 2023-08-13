@@ -2,10 +2,11 @@ import React from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import Sidebar from '../../../components/Sidebar/Sidebar'
-import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import Title from 'antd/es/typography/Title'
 import ItemCard from '../../../components/Cards/ItemCard'
+import TechSupportTopBar from '../TechSupportTopBar/TechSupportTopBar'
+
 
 const packages = [
     {
@@ -55,7 +56,7 @@ const TechMarketPlace = () => {
         <PageWrapper>
             <Sidebar />
             <PageContent>
-                <TopBar title={'Market Place'} />
+                <TechSupportTopBar title={'Market Place'} />
                 <ContentWrapper>
                     <div className='flex flex-col justify-center my-4 text-left'>
                         <h1 className='text-2xl font-bold'>Built in packages</h1>

@@ -1,4 +1,4 @@
-import './CustomerRequest.css'
+import './AccessCusAccount.css'
 import Table from './Table';
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
@@ -8,7 +8,7 @@ import PageContent from '../../../components/Wrappers/PageContent';
 
 
 
-const CustomerRequest = () => {
+const AccessCusAccount = () => {
     return (
         <PageWrapper>
             <Sidebar />
@@ -22,4 +22,4 @@ const CustomerRequest = () => {
     )
 }
 
-export default CustomerRequest
+export default AccessCusAccount
