@@ -1,5 +1,5 @@
-import './CustomerRequest.css'
-import Table from './Table';
+import './accessCusAccount.css'
+import AccessCusTable from './AccessCusTable';
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
 import Sidebar from '../../../components/Sidebar/Sidebar';
@@ -8,18 +8,18 @@ import PageContent from '../../../components/Wrappers/PageContent';
 
 
 
-const CustomerRequest = () => {
+const AccessCusAccount = () => {
     return (
         <PageWrapper>
             <Sidebar />
             <PageContent>
                 <TopBar title={'Profile'} />
                 <ContentWrapper>
-                    <Table />
+                    <AccessCusTable />
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>
     )
 }
 
-export default CustomerRequest
+export default AccessCusAccount

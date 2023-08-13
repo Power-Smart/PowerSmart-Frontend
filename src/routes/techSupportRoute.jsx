@@ -1,7 +1,6 @@
 import ProtectedTechSupport from '../pages/Customer/Protected/ProtectedTechSupport';
 import AddDevice from '../pages/TechSupport/AddDevice'
 import ProfileTechSupport from '../pages/TechSupport/Profile'
-import CustomerRequest from '../pages/TechSupport/CustomerRequestTable/CustomerRequest';
 import Profile from '../pages/TechSupport/Profile';
 import TechDashboard from '../pages/TechSupport/TechDashboard/TechDashboard';
 import OrderRequest from '../pages/TechSupport/CusOrderRequsetInfo/OrderRequest';
@@ -11,6 +10,9 @@ import ReviewUserComplaint from '../pages/TechSupport/ReviewUserComplaint/Review
 import UserComplaints from '../pages/TechSupport/UserComplaints/UserComplaints';
 import Relays from '../pages/TechSupport/Relays/Relays';
 import Places from '../pages/TechSupport/Places/Places';
+import AccessCusAccount from '../pages/TechSupport/AccessCusAccount/AccessCusAccount';
+import Rooms from '../pages/TechSupport/Rooms/Rooms';
+import Devices from '../pages/TechSupport/Devices/Devices';
 
 
 
@@ -50,8 +52,8 @@ const techSupportRoute =
             element: <ProfileTechSupport />,
         },
         {
-            path: `${techSupport}/customerRequests`,
-            element: <CustomerRequest />,
+            path: `${techSupport}/accessCusAccount`,
+            element: <AccessCusAccount />,
         },
         {
             path: `${techSupport}/addDevice`,
@@ -65,6 +67,14 @@ const techSupportRoute =
             path: `${techSupport}/places`,
             element: <Places />,
         },
+        {
+            path: `${techSupport}/place/rooms`,
+            element: <Rooms />,
+        },
+        {
+            path: `${techSupport}/place/rooms/devices`,
+            element: <Devices />,
+        }
     ]
 };
 

@@ -31,8 +31,6 @@ const places = [
 ];
 
 const Places = () => {
-
-
   return (
     <PageWrapper >
       <MainSidebar />
