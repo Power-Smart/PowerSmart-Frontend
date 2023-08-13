@@ -11,6 +11,8 @@ import UserComplaints from '../pages/TechSupport/UserComplaints/UserComplaints';
 import Relays from '../pages/TechSupport/Relays/Relays';
 import Places from '../pages/TechSupport/Places/Places';
 import AccessCusAccount from '../pages/TechSupport/AccessCusAccount/AccessCusAccount';
+import Rooms from '../pages/TechSupport/Rooms/Rooms';
+import Devices from '../pages/TechSupport/Devices/Devices';
 
 
 
@@ -65,6 +67,14 @@ const techSupportRoute =
             path: `${techSupport}/places`,
             element: <Places />,
         },
+        {
+            path: `${techSupport}/place/rooms`,
+            element: <Rooms />,
+        },
+        {
+            path: `${techSupport}/place/rooms/devices`,
+            element: <Devices />,
+        }
     ]
 };
 
