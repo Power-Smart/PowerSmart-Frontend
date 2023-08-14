@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
@@ -7,6 +7,8 @@ import Indicator from '../../../components/smallComps/Indicator'
 import SwitchCard from '../../../components/Cards/SwitchCard'
 import RoomSidebar from '../../../components/Sidebar/Customer/RoomSidebar'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getDevices } from '../../../api/apiDevices'
 
 const dataSet = [
     {
@@ -34,6 +36,20 @@ const dataSet = [
 
 const InsideRoom = () => {
     const { placeID, roomID } = useParams();
+    const user = useSelector(state => state.user.user);
+    const [devices, setDevices] = React.useState([]);
+
+    useEffect(() => {
+        const fetchDevicesData = async () => {
+            const devices = await getDevices(user.id, roomID);
+            setDevices(devices);
+        }
+        if (user) {
+            fetchDevicesData();
+            console.log(devices);
+        }
+    }, [user]);
+
     return (
         <PageWrapper >
             <RoomSidebar placeID={placeID} roomID={roomID} />
@@ -52,7 +68,16 @@ const InsideRoom = () => {
                         <div className='px-6 py-4 '>
                             <h3>My Devices</h3>
                             <div className='py-4 flex flex-wrap'>
-                                {dataSet.map((data, index) => (<SwitchCard key={index} {...data} />))}
+                                {devices.map((device, index) => (
+                                    <SwitchCard key={index}
+                                        id={device.device_id}
+                                        status={device.switch_status}
+                                        validity={device.status}
+                                        device={device.device.name}
+                                        type={device.device.type}
+                                        schedule={device.device.schedule}
+                                    />
+                                ))}
                             </div>
                         </div>
                     </div>
