@@ -6,6 +6,8 @@ import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import RelayCard from './RelayCard'
+import { Link, useParams } from 'react-router-dom'
+
 
 const RelaySet = [
     {
@@ -36,7 +38,9 @@ const Relays = () => {
                 <TopBar />
                 <ContentWrapper>
                     <ButtonBar>
-                        <button className="btn btn-primary">Add Relay</button>
+                        <Link to={`/tech/addRelays`}>
+                            <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Relay</button>
+                        </Link>
                     </ButtonBar>
                     <div className='flex flex-wrap'>
                         {

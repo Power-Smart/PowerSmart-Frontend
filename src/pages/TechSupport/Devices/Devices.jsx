@@ -6,6 +6,7 @@ import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import DeviceCard from './DeviceCard'
+import { Link, useParams } from 'react-router-dom'
 
 
 const RelaySet = [
@@ -13,19 +14,19 @@ const RelaySet = [
         id: 1,
         walt: '15',
         deviceName: 'Fan',
-        image:'https://damro.lk/wp-content/uploads/2019/11/F-56MZ2.jpg'
+        image: 'https://damro.lk/wp-content/uploads/2019/11/F-56MZ2.jpg'
     },
     {
         id: 2,
         walt: '15',
         deviceName: 'Light',
-        image:'https://damro.lk/wp-content/uploads/2019/11/F-56MZ2.jpg'
+        image: 'https://damro.lk/wp-content/uploads/2019/11/F-56MZ2.jpg'
     },
     {
         id: 3,
         walt: '15',
         deviceName: 'Fan',
-        image:'https://damro.lk/wp-content/uploads/2019/11/F-56MZ2.jpg'
+        image: 'https://damro.lk/wp-content/uploads/2019/11/F-56MZ2.jpg'
     }
 ];
 
@@ -39,7 +40,9 @@ const Devices = () => {
                 <TopBar />
                 <ContentWrapper>
                     <ButtonBar>
-                        <button className="btn btn-primary">Add Relay</button>
+                        <Link to={`/tech/addDevice`}>
+                            <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Device</button>
+                        </Link>
                     </ButtonBar>
                     <div className='flex flex-wrap'>
                         {
