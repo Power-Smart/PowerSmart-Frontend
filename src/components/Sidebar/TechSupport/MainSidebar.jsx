@@ -15,22 +15,19 @@ const MainSidebar = () => {
 
     return (
         <SidebarWrapper toggle={toggle} setToggle={setToggle}>
-            <SidebarButton text="Dashboard" toggle={toggle} link='/'>
+            <SidebarButton text="Dashboard" toggle={toggle} link='/tech'>
                 <AiOutlineHome />
             </SidebarButton>
-            <SidebarButton text="Places" toggle={toggle} link='/places'>
+            <SidebarButton text="Complaint" toggle={toggle} link='/tech/userComplaints'>
                 <MdOutlinePlace />
             </SidebarButton>
-            {/* <SidebarButton text="Complaints" toggle={toggle} link='/Complaints'>
-                <TbReport />
-            </SidebarButton> */}
-            <SidebarButton text="Chat" toggle={toggle} link='/chat'>
+            <SidebarButton text="Chat" toggle={toggle} link='/tech/chat'>
                 <BsChatDots />
             </SidebarButton>
-            <SidebarButton text="Payment" toggle={toggle} link='/payments'>
+            <SidebarButton text="Payment" toggle={toggle} link='#'>
                 <RiMoneyDollarCircleLine />
             </SidebarButton>
-            <SidebarButton text="Support" toggle={toggle} link='/support'>
+            <SidebarButton text="Support" toggle={toggle} link='#'>
                 <BiSupport />
             </SidebarButton>
         </SidebarWrapper>

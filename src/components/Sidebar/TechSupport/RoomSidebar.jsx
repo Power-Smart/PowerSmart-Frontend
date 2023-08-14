@@ -5,19 +5,23 @@ import { useState } from 'react'
 import { BsClipboardData, BsDiagram3 } from 'react-icons/bs'
 import SidebarWrapper from '../SidebarWrapper'
 
+
 const RoomSidebar = () => {
 
     const [toggle, setToggle] = useState(true);
 
     return (
         <SidebarWrapper toggle={toggle} setToggle={setToggle}>
-            <SidebarButton text="Control Panel" toggle={toggle} link='/places/rooms/controlpanel'>
+            <SidebarButton text="Dashboard" toggle={toggle} link='/tech'>
                 <AiOutlineControl />
             </SidebarButton>
-            <SidebarButton text="Check Status" toggle={toggle} link='/places/rooms/status'>
+            <SidebarButton text="Place" toggle={toggle} link='/tech/place/rooms'>
                 <BsClipboardData />
             </SidebarButton>
-            <SidebarButton text="Placements" toggle={toggle} link='/places/rooms/placements'>
+            <SidebarButton text="Sensor" toggle={toggle} link='/tech/sensors'>
+                <BsDiagram3 />
+            </SidebarButton>
+            <SidebarButton text="Device" toggle={toggle} link='/tech/place/rooms/devices'>
                 <BsDiagram3 />
             </SidebarButton>
         </SidebarWrapper>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TbDeviceSdCard } from 'react-icons/tb'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
-import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
+import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'

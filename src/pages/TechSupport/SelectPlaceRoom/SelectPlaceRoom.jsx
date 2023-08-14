@@ -2,16 +2,17 @@ import './SelectPlaceRoom.css'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
-import Sidebar from '../../../components/Sidebar/Sidebar';
 import PageContent from '../../../components/Wrappers/PageContent';
 import { Link } from 'react-router-dom';
 import TechSupportTopBar from '../TechSupportTopBar/TechSupportTopBar'
+import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
+
 
 
 const SelectPlaceRoom = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TechSupportTopBar title={'Profile'} />
                 <ContentWrapper>

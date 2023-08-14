@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
+import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
 import PlaceCardTech from '../../../components/Cards/PlaceCardTech'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
@@ -11,6 +11,7 @@ import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { Link } from 'react-router-dom'
+
 
 const places = [
   {
@@ -33,7 +34,7 @@ const places = [
 const Places = () => {
   return (
     <PageWrapper >
-      <MainSidebar />
+      <PlaceSidebar />
       <PageContent >
         <TopBar image="https://avatars.githubusercontent.com/u/7374455?v=4" title="Places" baclLink='/' />
 

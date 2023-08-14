@@ -1,11 +1,13 @@
 import React from 'react'
-import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
+import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
 import PlaceCardTech from '../../../components/Cards/PlaceCardTech'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import RoomCard from '../../../components/Cards/RoomCard'
+
+
 
 const rooms = [
     {
@@ -30,7 +32,7 @@ const rooms = [
 const Rooms = () => {
     return (
         < PageWrapper >
-            <MainSidebar />
+            <RoomSidebar />
             <PageContent >
                 <TopBar image="https://avatars.githubusercontent.com/u/7374455?v=4" title="Rooms" baclLink='/' />
 

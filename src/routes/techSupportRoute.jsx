@@ -15,6 +15,9 @@ import Rooms from '../pages/TechSupport/Rooms/Rooms';
 import Devices from '../pages/TechSupport/Devices/Devices';
 import AddRelay from '../pages/TechSupport/Relays/AddRelay';
 import PaymentSummary from '../pages/TechSupport/PaymentSummary/PaymentSummary';
+import Sensors from '../pages/TechSupport/Sensors/Sensors';
+import Chat from '../pages/TechSupport/Chat/Chat';
+
 
 
 const techSupport = "/tech";
@@ -41,8 +44,8 @@ const techSupportRoute =
             element: <SelectPlaceRoom />,
         },
         {
-            path:`${techSupport}/paymentSummary`,
-            element:<PaymentSummary/>
+            path: `${techSupport}/paymentSummary`,
+            element: <PaymentSummary />
         },
         {
             path: `${techSupport}/userComplaints`,
@@ -69,6 +72,10 @@ const techSupportRoute =
             element: <Relays />,
         },
         {
+            path: `${techSupport}/sensors`,
+            element: <Sensors />,
+        },
+        {
             path: `${techSupport}/addRelays`,
             element: <AddRelay />,
         },
@@ -84,6 +91,11 @@ const techSupportRoute =
             path: `${techSupport}/place/rooms/devices`,
             element: <Devices />,
         }
+        ,
+        {
+            path: `${techSupport}/chat`,
+            element: <Chat />,
+        },
     ]
 };
 

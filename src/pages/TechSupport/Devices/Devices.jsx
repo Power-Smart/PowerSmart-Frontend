@@ -1,12 +1,12 @@
 import React from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
-import Sidebar from '../../../components/Sidebar/Sidebar'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import DeviceCard from './DeviceCard'
 import { Link, useParams } from 'react-router-dom'
+import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
 
 
 const RelaySet = [
@@ -35,7 +35,7 @@ const RelaySet = [
 const Devices = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <RoomSidebar />
             <PageContent>
                 <TopBar />
                 <ContentWrapper>

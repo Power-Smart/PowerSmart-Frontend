@@ -4,8 +4,8 @@ import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
-import RelayCard from './RelayCard'
-import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
+import SensorCard from './SensorCard'
+import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
 
 
 
@@ -30,10 +30,11 @@ const RelaySet = [
     }
 ];
 
-const Relays = () => {
+
+const Sensors = () => {
     return (
         <PageWrapper>
-            <PlaceSidebar />
+            <RoomSidebar />
             <PageContent>
                 <TopBar />
                 <ContentWrapper>
@@ -43,7 +44,7 @@ const Relays = () => {
                     <div className='flex flex-wrap'>
                         {
                             RelaySet.map((relay) => (
-                                <RelayCard
+                                <SensorCard
                                     key={relay.id}
                                     id={relay.id}
                                     type={relay.type}
@@ -59,4 +60,4 @@ const Relays = () => {
     )
 }
 
-export default Relays
+export default Sensors

@@ -2,7 +2,7 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './OrderRequest.css'
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
-import Sidebar from '../../../components/Sidebar/Sidebar';
+import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const OrderRequest = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TopBar title={'Profile'} />
                 <ContentWrapper>

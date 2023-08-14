@@ -11,13 +11,13 @@ const RoomSidebar = () => {
 
     return (
         <SidebarWrapper toggle={toggle} setToggle={setToggle}>
-            <SidebarButton text="Control Panel" toggle={toggle} link='/places/rooms/controlpanel'>
+            <SidebarButton text="Dashboard" toggle={toggle} link='/places/rooms/controlpanel'>
                 <AiOutlineControl />
             </SidebarButton>
-            <SidebarButton text="Check Status" toggle={toggle} link='/places/rooms/status'>
+            <SidebarButton text="Place" toggle={toggle} link='/tech/places'>
                 <BsClipboardData />
             </SidebarButton>
-            <SidebarButton text="Placements" toggle={toggle} link='/places/rooms/placements'>
+            <SidebarButton text="Relay" toggle={toggle} link='/tech/relays'>
                 <BsDiagram3 />
             </SidebarButton>
         </SidebarWrapper>

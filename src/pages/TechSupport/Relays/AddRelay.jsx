@@ -9,6 +9,8 @@ import FormGroup from '../../../components/Forms/FormGroup'
 import TextInput from '../../../components/Forms/TextInput'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
 import FormDropdown from '../../../components/Forms/FormDropdown'
+import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
+
 
 
 const AddRelay = () => {
@@ -26,7 +28,7 @@ const AddRelay = () => {
 
     return (
         <PageWrapper>
-            <Sidebar />
+            <PlaceSidebar />
             <PageContent>
                 <TopBar title={'Add Relay'} />
                 <ContentWrapper>

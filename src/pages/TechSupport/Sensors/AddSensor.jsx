@@ -8,11 +8,11 @@ import FormGroup from '../../../components/Forms/FormGroup'
 import TextInput from '../../../components/Forms/TextInput'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
 import FormDropdown from '../../../components/Forms/FormDropdown'
-import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
+import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
 
 
 
-const AddDevice = () => {
+const AddSensor = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,9 +27,9 @@ const AddDevice = () => {
 
     return (
         <PageWrapper>
-            <MainSidebar />
+            <RoomSidebar />
             <PageContent>
-                <TopBar title={'Add Devices'} />
+                <TopBar title={'Add Relay'} />
                 <ContentWrapper>
                     <Form>
                         <FormGroup>
@@ -55,4 +55,4 @@ const AddDevice = () => {
     )
 }
 
-export default AddDevice
+export default AddSensor
