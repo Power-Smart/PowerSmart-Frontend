@@ -29,7 +29,7 @@ const TechDashboard = () => {
                                 <TableOrderStatus />
                             </div>
                         </div>
-                        <div className='flex flex-col'>
+                        <div className='flex flex-col mt-4'>
                             <div className='flex justify-around items-center flex-col'>
                                 <DashboardCard title='Order Request' number={12} icon={<TbDeviceSdCard className='text-2xl' />} />
                                 <DashboardCard title='Product Request' number={12} icon={<TbDeviceSdCard className='text-2xl' />} />

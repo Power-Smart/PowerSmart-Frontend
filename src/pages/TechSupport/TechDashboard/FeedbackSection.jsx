@@ -9,28 +9,28 @@ const FeedbackSection = () => {
         <div>
             <div className="rating-sectuion text-center mb-4 bg-[#0856CD] py-3 px-2 rounded-lg h-fit">
                 <div className="rating-number mb-4">
-                    <h1 className='text-4xl font-bold'>4.9</h1>
+                    <h1 className='text-5xl font-bold'>4.9</h1>
                 </div>
                 <div className="star-count bg-[#83BCFF] rounded-lg p-2 ">
                     <div className="star flex justify-around mb-2">
-                        <ImStarFull className='text-yellow-500 text-xl' />
-                        <ImStarFull className='text-yellow-500 text-xl' />
-                        <ImStarFull className='text-yellow-500 text-xl' />
-                        <ImStarFull className='text-yellow-500 text-xl' />
-                        <ImStarHalf className='text-yellow-500 text-xl' />
+                        <ImStarFull className='text-yellow-500 text-3xl' />
+                        <ImStarFull className='text-yellow-500 text-3xl' />
+                        <ImStarFull className='text-yellow-500 text-3xl' />
+                        <ImStarFull className='text-yellow-500 text-3xl' />
+                        <ImStarHalf className='text-yellow-500 text-3xl' />
                     </div>
                     <div className="num-of-rating">
-                        <h3 className='text-sm'>1540 Ratings</h3>
+                        <h3 className='text-2sm'>1540 Ratings</h3>
                     </div>
                 </div>
             </div>
 
             <div className="rating-section">
-                <div className="flex justify-around flex-row items-center">
+                <div className="flex justify-around flex-row items-center mb-1">
                     <div className="flex justify-between w-full items-center">
                         <h1>5</h1>
                         <div className="w-full ml-4">
-                            <Progress percent={80} status="active" showInfo={false} strokeColor='#4CAF50' trailColor='#E5E5E5' />
+                            <Progress percent={80} status="active" showInfo={false} strokeColor='#4CAF50' trailColor='#E5E5E5' size={[200, 10]} />
                         </div>
                     </div>
                     <div className="ml-4">
@@ -38,11 +38,11 @@ const FeedbackSection = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-around flex-row items-center">
+                <div className="flex justify-around flex-row items-center mb-1">
                     <div className="flex justify-between w-full items-center">
                         <h1>4</h1>
                         <div className="w-full ml-4">
-                            <Progress percent={10} status="active" showInfo={false} strokeColor='#8BC34A' trailColor='#E5E5E5' />
+                            <Progress percent={10} status="active" showInfo={false} strokeColor='#8BC34A' trailColor='#E5E5E5' size={[200, 10]}/>
                         </div>
                     </div>
                     <div className="ml-4">
@@ -51,11 +51,11 @@ const FeedbackSection = () => {
                 </div>
 
 
-                <div className="flex justify-around flex-row items-center">
+                <div className="flex justify-around flex-row items-center mb-1">
                     <div className="flex justify-between w-full items-center">
                         <h1>3</h1>
                         <div className="w-full ml-4">
-                            <Progress percent={60} status="active" showInfo={false} strokeColor='#FFC107' trailColor='#E5E5E5' />
+                            <Progress percent={60} status="active" showInfo={false} strokeColor='#FFC107' trailColor='#E5E5E5' size={[200, 10]}/>
                         </div>
                     </div>
                     <div className="ml-4">
@@ -64,11 +64,11 @@ const FeedbackSection = () => {
                 </div>
 
 
-                <div className="flex justify-around flex-row items-center">
+                <div className="flex justify-around flex-row items-center mb-1">
                     <div className="flex justify-between w-full items-center">
                         <h1>2</h1>
                         <div className="w-full ml-4">
-                            <Progress percent={40} status="active" showInfo={false} strokeColor='#FF9800' trailColor='#E5E5E5' />
+                            <Progress percent={40} status="active" showInfo={false} strokeColor='#FF9800' trailColor='#E5E5E5' size={[200, 10]}/>
                         </div>
                     </div>
                     <div className="ml-4">
@@ -76,11 +76,11 @@ const FeedbackSection = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-around flex-row items-center">
+                <div className="flex justify-around flex-row items-center mb-1">
                     <div className="flex justify-between w-full items-center">
                         <h1>1</h1>
                         <div className="w-full ml-4">
-                            <Progress percent={5} status="active" showInfo={false} strokeColor='#F44336' trailColor='#E5E5E5' />
+                            <Progress percent={5} status="active" showInfo={false} strokeColor='#F44336' trailColor='#E5E5E5' size={[200, 10]}/>
                         </div>
                     </div>
                     <div className="ml-4">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import {BsCartPlus} from 'react-icons/bs'
 
 
 const ItemCard = ({ price, description, name, quantity, image, addDel = true }) => {
@@ -34,8 +34,8 @@ const ItemCard = ({ price, description, name, quantity, image, addDel = true }) 
       </div>}
       {!addDel && <div className="flex justify-evenly items-center">
         <Link to='/tech/selectPlaceRoom'>
-          <button className="px-4 py-1 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF]">
-            Add to Cart
+          <button className="px-4 py-1 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF] font-bold">
+            <BsCartPlus className="inline-block mb-1 mr-2 font-bold text-xl"/>Add to Cart
           </button>
         </Link>
       </div>}

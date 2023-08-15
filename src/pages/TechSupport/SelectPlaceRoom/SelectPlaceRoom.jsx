@@ -16,14 +16,14 @@ const SelectPlaceRoom = () => {
             <PageContent>
                 <TechSupportTopBar title={'Profile'} />
                 <ContentWrapper>
-                    <div className="requestInfoBox my-auto mx-auto min-w-max">
+                    <div className="requestInfoBox mt-20 mx-auto w-[500px]">
                         <div className="infoHeader">
                             <div className="title">
                                 <h3>Select a Place and Room</h3>
                             </div>
-                            <div className="closeBtn">
+                            {/* <div className="closeBtn">
                                 <AiOutlineCloseCircle className='h-8 w-8 text-red-500 cursor-pointer' />
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="form">

@@ -15,7 +15,7 @@ const OrderRequest = () => {
             <PageContent>
                 <TopBar title={'Profile'} />
                 <ContentWrapper>
-                    <div className="requestInfoBox  my-4 mx-auto w-9/12">
+                    <div className="requestInfoBox w-full mx-auto">
                         <div className="infoHeader">
                             <div className="title">
                                 <h3>Customer Order Request Information</h3>

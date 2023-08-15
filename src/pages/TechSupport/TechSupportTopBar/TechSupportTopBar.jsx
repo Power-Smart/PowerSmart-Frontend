@@ -15,7 +15,7 @@ const TechSupportTopBar = ({ title, image, baclLink = "" }) => {
                 <h2 className='text-3xl font-bold'>{title}</h2>
             </div>
 
-            <div className='bg-white text-black flex justify-between items-center rounded-md font-bold h-[70px] w-[190px] pl-1'>
+            <div className='bg-white text-black flex justify-between items-center rounded-xl font-bold h-[70px] w-[190px] pl-1'>
                 <div className="cart-icon">
                     <TiShoppingCart className='text-black text-4xl' />
                 </div>
@@ -29,7 +29,7 @@ const TechSupportTopBar = ({ title, image, baclLink = "" }) => {
                 </div>
 
                 <Link to="/tech/paymentSummary">
-                    <div className="visit-cart bg-red-400 h-[70px] w-[60px] flex justify-center items-center rounded-md">
+                    <div className="visit-cart bg-[#83BCFF] h-[70px] w-[60px] flex justify-center items-center rounded-xl border-4 border-[#006DFF]">
                         <button>Cart</button>
                     </div>
                 </Link>
