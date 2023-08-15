@@ -2,11 +2,11 @@ import React from 'react'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 
 
-const SelectedItem = ({ itemName, itemPrice, place, room, count }) => {
+const SelectedItem = ({ itemName, itemPrice, place, room, count, itemDevicePic }) => {
     return (
         <div className='one-item flex flex-row justify-around w-full mb-6'>
-            <div className="image w-20">
-                <img src="https://damro.lk/wp-content/uploads/2019/11/F-56MZ2.jpg" alt="" className='w-full rounded-md object-cover' />
+            <div className="image">
+                <img src={itemDevicePic} alt="" className='w-[70px] h-[70px] rounded-md object-fill' />
             </div>
 
             <div className="item-description text-center flex justify-center items-center flex-col">
