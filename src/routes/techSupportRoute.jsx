@@ -90,8 +90,7 @@ const techSupportRoute =
         {
             path: `${techSupport}/place/rooms/devices`,
             element: <Devices />,
-        }
-        ,
+        },
         {
             path: `${techSupport}/chat`,
             element: <Chat />,

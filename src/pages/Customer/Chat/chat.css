@@ -2,13 +2,13 @@
     display: grid;
     grid-template-columns: 75% auto;
     height: 100vh;
-    column-gap: 10px;
+    column-gap: 5px;
     overflow: hidden;
 }
 
-.chat-message-container {
+/* .chat-message-container {
     width: 0 auto;
-}
+} */
 
 .chat-message-container .chat-header {
     display: flex;
@@ -204,5 +204,5 @@
 }
 
 .notSelectedUserPage .empty-part .image-part img {
-    width: 60%;
+    width: 400px;
 }

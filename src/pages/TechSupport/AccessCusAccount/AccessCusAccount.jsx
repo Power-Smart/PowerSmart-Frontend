@@ -13,7 +13,7 @@ const AccessCusAccount = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar title={'Profile'} />
+                <TopBar title={'Account Access Requests'} />
                 <ContentWrapper>
                     <AccessCusTable />
                 </ContentWrapper>

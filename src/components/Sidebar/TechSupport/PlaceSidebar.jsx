@@ -4,6 +4,9 @@ import { AiOutlineControl } from 'react-icons/ai'
 import { useState } from 'react'
 import { BsClipboardData, BsDiagram3 } from 'react-icons/bs'
 import SidebarWrapper from '../SidebarWrapper'
+import {BiTachometer} from 'react-icons/bi'
+import {GiElectricalResistance} from 'react-icons/gi'
+
 
 const RoomSidebar = () => {
 
@@ -11,14 +14,14 @@ const RoomSidebar = () => {
 
     return (
         <SidebarWrapper toggle={toggle} setToggle={setToggle}>
-            <SidebarButton text="Dashboard" toggle={toggle} link='/places/rooms/controlpanel'>
-                <AiOutlineControl />
+            <SidebarButton text="Dashboard" toggle={toggle} link='/tech/'>
+                <BiTachometer />
             </SidebarButton>
             <SidebarButton text="Place" toggle={toggle} link='/tech/places'>
                 <BsClipboardData />
             </SidebarButton>
             <SidebarButton text="Relay" toggle={toggle} link='/tech/relays'>
-                <BsDiagram3 />
+                <GiElectricalResistance className='text-xl font-bold'/>
             </SidebarButton>
         </SidebarWrapper>
 

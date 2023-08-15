@@ -8,6 +8,11 @@ import { BsChatDots } from 'react-icons/bs'
 import { BiSupport } from 'react-icons/bi'
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 import SidebarWrapper from '../SidebarWrapper'
+import {BsHouseLock} from 'react-icons/bs'
+import {BiTachometer} from 'react-icons/bi'
+import {MdOutlineReportGmailerrorred} from 'react-icons/md'
+import {FaUserShield} from 'react-icons/fa'
+
 
 const MainSidebar = () => {
 
@@ -15,20 +20,17 @@ const MainSidebar = () => {
 
     return (
         <SidebarWrapper toggle={toggle} setToggle={setToggle}>
-            <SidebarButton text="Dashboard" toggle={toggle} link='/tech'>
-                <AiOutlineHome />
+            <SidebarButton text="Dashboard" toggle={toggle} link='/tech/'>
+                <BiTachometer />
             </SidebarButton>
             <SidebarButton text="Complaint" toggle={toggle} link='/tech/userComplaints'>
-                <MdOutlinePlace />
+                <MdOutlineReportGmailerrorred />
             </SidebarButton>
             <SidebarButton text="Chat" toggle={toggle} link='/tech/chat'>
                 <BsChatDots />
             </SidebarButton>
-            <SidebarButton text="Payment" toggle={toggle} link='#'>
-                <RiMoneyDollarCircleLine />
-            </SidebarButton>
-            <SidebarButton text="Support" toggle={toggle} link='#'>
-                <BiSupport />
+            <SidebarButton text="Account Access" toggle={toggle} link='/tech/accessCusAccount'>
+                <FaUserShield />
             </SidebarButton>
         </SidebarWrapper>
 

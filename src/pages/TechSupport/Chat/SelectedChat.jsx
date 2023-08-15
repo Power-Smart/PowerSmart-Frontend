@@ -1,5 +1,4 @@
 import React from 'react'
-import './chat.css'
 import RecivierMessage from './RecivierMessage'
 import SenderMessage from './SenderMessage'
 import { LuSend } from 'react-icons/lu'

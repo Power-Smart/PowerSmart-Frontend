@@ -4,7 +4,6 @@ import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { RiUserSearchLine } from 'react-icons/ri'
-import './chat.css'
 import ChatProfile from './ChatProfile'
 import NotSelectedChat from './NotSelectedChat'
 import SelectedChat from './SelectedChat'
@@ -16,25 +15,25 @@ const chatList = [
     {
         userID: '1',
         profilePicture: 'https://avatars.githubusercontent.com/u/73744585?v=4',
-        userName: 'Viraj Sandakelum',
+        userName: 'Jone Doe',
         lastMessage: 'I am fine, how are you?'
     },
     {
         userID: '2',
         profilePicture: 'https://avatars.githubusercontent.com/u/7144115?v=4',
-        userName: 'Nirman Sandapawan',
+        userName: 'Kamal Perera',
         lastMessage: 'I am fine, how are you?'
     },
     {
         userID: '3',
         profilePicture: 'https://avatars.githubusercontent.com/u/73544585?v=4',
-        userName: 'Madushika Sandaruwan',
+        userName: 'Sunil Perera',
         lastMessage: 'I am fine, how are you?'
     },
     {
         userID: '4',
         profilePicture: 'https://avatars.githubusercontent.com/u/73342585?v=4',
-        userName: 'Hansanga Sandatharauka',
+        userName: 'Amal Perera',
         lastMessage: 'I am fine, how are you?'
     },
 ]
@@ -66,11 +65,12 @@ const Chat = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <div className="chat ">
+                <div className="chat">
 
-                    <div className="chat-message-container notSelectedUserPage px-16 py-4 w-full flex flex-col flex-grow mx-auto mt-4">
+                    <div className="chat-message-container notSelectedUserPage px-16 py-4 mt-4">
                         {
-                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture}/>) : (<NotSelectedChat/>)
+                            // selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture}/>) : (<NotSelectedChat/>)
+                                <NotSelectedChat/>
                         }
                     </div>
 

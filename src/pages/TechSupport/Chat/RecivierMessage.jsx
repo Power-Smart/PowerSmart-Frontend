@@ -1,4 +1,3 @@
-import './chat.css'
 import React from 'react'
 
 
