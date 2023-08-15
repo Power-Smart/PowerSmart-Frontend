@@ -69,8 +69,7 @@ const Chat = () => {
 
                     <div className="chat-message-container notSelectedUserPage px-16 py-4 mt-4">
                         {
-                            // selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture}/>) : (<NotSelectedChat/>)
-                                <NotSelectedChat/>
+                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture}/>) : (<NotSelectedChat/>)
                         }
                     </div>
 

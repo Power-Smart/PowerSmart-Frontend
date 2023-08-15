@@ -28,7 +28,7 @@ const AccessCusTableRow = ({ id, complaint, userID, assigned, status }) => {
             <td className="px-6 py-4">
                 {status === 'cancel' && <button className='cancel__btn'>Cancel</button>}
                 {status === 'request' && <button className='request__btn'>Request</button>}
-                {status === 'view' && <Link to='/tech/places'><button className='view__btn'>view</button></Link>}
+                {status === 'view' && <Link to='/tech/places'><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>view</button></Link>}
             </td>
         </tr>
     )
