@@ -88,11 +88,12 @@
     background-color: #151528;
     padding: 10px;
     border-radius: 0.5rem;
-    height: 55vh;
+    height: 57vh;
     overflow-y: scroll !important;
 }
 
 .place-sets .one-place {
     border-radius: 0.5rem;
     background-color: #151528;
+    margin-bottom: 25px;
 }

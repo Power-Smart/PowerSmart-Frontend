@@ -5,7 +5,7 @@ import SidebarToggle from './SidebarToggle'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../redux/slices/userSlice'
 import { useNavigate } from 'react-router-dom'
-import sidebar from '../../assets/images/sidebar.gif' 
+import sidebar from '../../assets/images/sidebar.gif'
 
 
 const SidebarWrapper = ({ children, toggle, setToggle }) => {
@@ -21,12 +21,12 @@ const SidebarWrapper = ({ children, toggle, setToggle }) => {
 
     const profileView = (e) => {
         e.preventDefault();
-        navigate('/profile');
+        navigate('/tech/profile');
     }
 
     return (
-        <nav className='bg-blue-400 w-fit h-screen flex flex-col items-start justify-between md:relative fixed left-0 top-0 z-10'>
-            <img src={sidebar} alt=""  className='absolute z-0 h-full object-cover blur-[0.5px]'/>
+        <nav className='bg-white w-[190px] h-screen flex flex-col items-start justify-between md:relative fixed left-0 top-0 z-10'>
+            <img src={sidebar} alt="" className='absolute z-0 h-full object-cover blur-[0.5px]' />
             <SidebarToggle setToggle={setToggle} toggle={toggle} />
             <div className='flex flex-col items-start z-20'>
                 <div className={'flex flex-row justify-center items-center my-4 transition-all duration-300 ' + (toggle ? "px-3 w-full" : "")}>

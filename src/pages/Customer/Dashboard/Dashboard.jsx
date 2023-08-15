@@ -93,10 +93,12 @@ const Dashboard = () => {
 
                             <div className="guest-users">
                                 <h1 className="text-xl mt-4 mb-2">Guest Users Suggest</h1>
-                                <GuestUsersSuggest />
-                                <GuestUsersSuggest />
-                                <GuestUsersSuggest />
-                                <GuestUsersSuggest />
+                                <div className='h-[290px] overflow-y-scroll'>
+                                    <GuestUsersSuggest />
+                                    <GuestUsersSuggest />
+                                    <GuestUsersSuggest />
+                                    <GuestUsersSuggest />
+                                </div>
                             </div>
                         </div>
                     </div>
