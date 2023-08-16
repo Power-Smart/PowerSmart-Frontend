@@ -21,7 +21,7 @@ export const getDevicesData = async (userID, roomID) => {
 export const apiToggleDevice = async (deviceID, status) => {
     try {
         const response = await api.get(`/devices/toggle/${deviceID}/${status}`);
-        return response.data;
+        return response;
     } catch (error) {
         console.log(error);
     }

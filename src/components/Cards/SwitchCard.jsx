@@ -5,12 +5,15 @@ import { apiToggleDevice } from '../../api/apiDevices.js';
 
 const SwitchCard = ({ id, type, device, validity, schedule = null, status }) => {
     const [toggle, setToggle] = useState(status);
+    const [loading, setLoading] = useState((validity === "active_pending"));
     const deviceSwitch = async (state) => {
+        setLoading(true);
         let res = await apiToggleDevice(id, state);
         if (res.status === 200) {
-            setToggle(!state);
-        } else {
+            setLoading(false);
             setToggle(state);
+        } else {
+            setToggle(!state);
         }
     }
 
@@ -21,9 +24,9 @@ const SwitchCard = ({ id, type, device, validity, schedule = null, status }) => 
                 <Switch className='toggle-switch'
                     checkedChildren="on"
                     unCheckedChildren="Off"
-                    defaultChecked={status}
+                    defaultChecked={toggle}
                     checked={toggle}
-                    loading={(validity === "active_pending") ? true : false}
+                    loading={loading}
                     onChange={deviceSwitch} />
             </div>
 
