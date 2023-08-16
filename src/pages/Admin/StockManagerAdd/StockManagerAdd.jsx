@@ -10,6 +10,7 @@ import FormRowDual from "../../../components/Forms/FormRowDual";
 import TextInput from "../../../components/Forms/TextInput";
 import FormTitle from "../../../components/Forms/FormTitle";
 import FormSubmitButton from "../../../components/Forms/FormSubmitButton";
+import AdmninSidebar from "../../../components/Sidebar/Admin/AdminSidebar";
 
 const StockManagerAdd = () => {
   const handleSubmit = (e) => {
@@ -24,7 +25,7 @@ const StockManagerAdd = () => {
 
   return (
     <PageWrapper>
-      <Sidebar />
+      <AdmninSidebar />
       <PageContent>
         <TopBar
           image="https://avatars.githubusercontent.com/u/73744585?v=4"
