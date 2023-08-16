@@ -9,11 +9,12 @@ const SwitchCard = ({ id, type, device, validity, schedule = null, status }) => 
     const deviceSwitch = async (state) => {
         setLoading(true);
         let res = await apiToggleDevice(id, state);
-        if (res.status === 200) {
+        if (res.data === "toggled") {
             setLoading(false);
             setToggle(state);
         } else {
             setToggle(!state);
+            setLoading(false);
         }
     }
 
