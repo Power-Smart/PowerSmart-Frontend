@@ -25,8 +25,8 @@ const tabListNoTitle = [
 ];
 
 const contentListNoTitle = {
-    Report: <p><Report /></p>,
-    Feedback: <p><Feedback/></p>,
+    Report: <Report />,
+    Feedback: <Feedback />,
     Contact: <p>Contact us content</p>,
 };
 
@@ -49,7 +49,7 @@ const Support = () => {
                         activeTabKey={activeTabKey2}
                         onTabChange={onTab2Change}
                         color='#0856CD'
-                        className='bg-[#1F2937] border-none custom-card'
+                        className='bg-[#0b1727] border-none custom-card'
                         headStyle={{ backgroundColor: '#83BCFF', color: 'white', fontSize: '2.5rem' }}
                         defaultActiveTabKey='Report'
                     >

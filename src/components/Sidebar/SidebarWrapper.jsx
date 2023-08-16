@@ -35,6 +35,7 @@ const SidebarWrapper = ({ children, toggle, setToggle, profileLink, isGifActive 
                 </div>
                 {children}
             </div>
+
             <div className='flex flex-col items-start w-full relative z-20'>
                 <div onClick={profileView} className={'cursor-pointer flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-white hover:text-black text-center duration-300 ' + (toggle ? 'w-full' : '')}>
                     <div className='px-2'><img src="https://avatars.githubusercontent.com/u/73744585?v=4" alt="" className='w-12 h-12 rounded-full' /></div>
@@ -42,6 +43,7 @@ const SidebarWrapper = ({ children, toggle, setToggle, profileLink, isGifActive 
                         {toggle && <div className='font-bold'>Kamal Perera</div>}
                         {toggle && <div className='font-extralight'>View Profile</div>}
                     </div>
+
                 </div>
 
                 <div onClick={logoutFunction} className={'flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-red-800 text-center duration-300 ' + (toggle ? 'w-full' : '')}>

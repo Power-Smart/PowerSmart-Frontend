@@ -32,11 +32,11 @@ const customerRoute =
             element: <Rooms />,
         },
         {
-            path: "places/rooms/controlpanel",
+            path: "places/:placeID/rooms/:roomID/controlpanel",
             element: <InsideRoom />,
         },
         {
-            path: "places/rooms/status",
+            path: "places/:placeID/rooms/:roomID/status",
             element: <CheckStatus />,
         },
         {
