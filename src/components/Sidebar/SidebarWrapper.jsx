@@ -5,10 +5,10 @@ import SidebarToggle from './SidebarToggle'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../redux/slices/userSlice'
 import { useNavigate } from 'react-router-dom'
-import sidebar from '../../assets/images/sidebar.gif'
+import sidebarGif from '../../assets/images/sidebar.gif'
 
 
-const SidebarWrapper = ({ children, toggle, setToggle }) => {
+const SidebarWrapper = ({ children, toggle, setToggle, profileLink, isGifActive }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -21,12 +21,12 @@ const SidebarWrapper = ({ children, toggle, setToggle }) => {
 
     const profileView = (e) => {
         e.preventDefault();
-        navigate('/tech/profile');
+        navigate(profileLink);
     }
 
     return (
-        <nav className='bg-white w-[190px] h-screen flex flex-col items-start justify-between md:relative fixed left-0 top-0 z-10'>
-            <img src={sidebar} alt="" className='absolute z-0 h-full object-cover blur-[0.5px]' />
+        <nav className='bg-slate-800 w-[190px] h-screen flex flex-col items-start justify-between md:relative fixed left-0 top-0 z-10'>
+            <img src={sidebarGif} alt="" className='absolute z-0 h-full object-cover blur-[0.5px] opacity-90' style={{ display: isGifActive ? 'block' : 'none' }} />
             <SidebarToggle setToggle={setToggle} toggle={toggle} />
             <div className='flex flex-col items-start z-20'>
                 <div className={'flex flex-row justify-center items-center my-4 transition-all duration-300 ' + (toggle ? "px-3 w-full" : "")}>
@@ -36,7 +36,7 @@ const SidebarWrapper = ({ children, toggle, setToggle }) => {
                 {children}
             </div>
             <div className='flex flex-col items-start w-full relative z-20'>
-                <div onClick={profileView} className={'flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-white hover:text-black text-center duration-300 ' + (toggle ? 'w-full' : '')}>
+                <div onClick={profileView} className={'cursor-pointer flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-white hover:text-black text-center duration-300 ' + (toggle ? 'w-full' : '')}>
                     <div className='px-2'><img src="https://avatars.githubusercontent.com/u/73744585?v=4" alt="" className='w-12 h-12 rounded-full' /></div>
                     <div className="details flex flex-col items-center justify-center">
                         {toggle && <div className='font-bold'>Kamal Perera</div>}

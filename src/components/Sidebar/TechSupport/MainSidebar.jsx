@@ -19,7 +19,7 @@ const MainSidebar = () => {
     const [toggle, setToggle] = useState(true);
 
     return (
-        <SidebarWrapper toggle={toggle} setToggle={setToggle}>
+        <SidebarWrapper toggle={toggle} setToggle={setToggle} profileLink="/tech/profile">
             <SidebarButton text="Dashboard" toggle={toggle} link='/tech/'>
                 <BiTachometer />
             </SidebarButton>

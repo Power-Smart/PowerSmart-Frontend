@@ -76,12 +76,11 @@ const Dashboard = () => {
 
                                 <div className="one-guest-user text-sm">
                                     <div className="default-profile-img">
-                                        <img src="https://avatars.githubusercontent.com/u/73744585?v=4" alt="" />
+                                        <img src="https://avatars.githubusercontent.com/u/9700585?v=4" alt="" />
                                     </div>
-                                    <div className="suggest-info m-3">
-                                        <h3>Temperature :<span> 30°C</span></h3>
-                                        <h3>Light Intensity :<span> 30%</span></h3>
-                                        <h3>Room Status :<span> Occupied</span></h3>
+                                    <div className="m-3">
+                                        <h3 className='font-bold text-[18px] mb-2'>Viraj Sandakelum</h3>
+                                        <h3>Payment: Rs. 5250.00</h3>
                                     </div>
                                     <div className="accept-reject">
                                         <button className="accept"><VscCheck /></button>

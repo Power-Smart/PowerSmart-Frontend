@@ -1,6 +1,6 @@
 .top-header {
     display: grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 30% 70%;
     padding: 1rem 2rem;
     background-color: #151528;
     border-radius: 0.5rem;
@@ -31,8 +31,8 @@
 } */
 
 .right-side .one-guest-user img {
-    width: 40px;
-    height: 40px;
+    width:55px;
+    height: 55px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -73,7 +73,7 @@
 
 .dashboard-container {
     display: grid;
-    grid-template-columns: 65% 35%;
+    grid-template-columns: 70% 30%;
     grid-gap: 2rem;
 }
 
@@ -88,7 +88,7 @@
     background-color: #151528;
     padding: 10px;
     border-radius: 0.5rem;
-    height: 57vh;
+    height: 52vh;
     overflow-y: scroll !important;
 }
 

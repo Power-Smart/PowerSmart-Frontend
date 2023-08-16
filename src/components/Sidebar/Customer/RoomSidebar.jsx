@@ -10,7 +10,7 @@ const RoomSidebar = () => {
     const [toggle, setToggle] = useState(true);
 
     return (
-        <SidebarWrapper toggle={toggle} setToggle={setToggle}>
+        <SidebarWrapper toggle={toggle} setToggle={setToggle} profileLink="/profile" isGifActive={true}>
             <SidebarButton text="Control Panel" toggle={toggle} link='/places/rooms/controlpanel'>
                 <AiOutlineControl />
             </SidebarButton>
