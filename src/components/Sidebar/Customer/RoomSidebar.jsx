@@ -11,7 +11,7 @@ const RoomSidebar = ({ placeID, roomID }) => {
 
     return (
         <SidebarWrapper toggle={toggle} setToggle={setToggle} profileLink="/profile" isGifActive={true}>
-            <SidebarButton text="Control Panel" toggle={toggle} link='/places/rooms/controlpanel'>
+            <SidebarButton text="Control Panel" toggle={toggle} link={`/places/${placeID}/rooms/${roomID}/controlpanel`}>
                 <AiOutlineControl />
             </SidebarButton>
             <SidebarButton text="Check Status" toggle={toggle} link={`/places/${placeID}/rooms/${roomID}/status`}>

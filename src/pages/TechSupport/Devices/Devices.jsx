@@ -23,12 +23,6 @@ const RelaySet = [
         image: 'https://images.pexels.com/photos/1616472/pexels-photo-1616472.jpeg?cs=srgb&dl=pexels-dids-1616472.jpg&fm=jpg'
     },
     {
-        id: 2,
-        walt: '600',
-        deviceName: 'Air Conditioner',
-        image: 'https://imgeng.jagran.com/images/2022/sep/ac%20under%20400001662611944627.jpg'
-    },
-    {
         id: 3,
         walt: '95',
         deviceName: 'Bulb-02',
