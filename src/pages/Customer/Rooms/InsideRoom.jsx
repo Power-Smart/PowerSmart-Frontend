@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
@@ -7,6 +7,8 @@ import Indicator from '../../../components/smallComps/Indicator'
 import SwitchCard from '../../../components/Cards/SwitchCard'
 import RoomSidebar from '../../../components/Sidebar/Customer/RoomSidebar'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getDevicesData } from '../../../api/apiDevices'
 
 const dataSet = [
     {
@@ -34,6 +36,23 @@ const dataSet = [
 
 const InsideRoom = () => {
     const { placeID, roomID } = useParams();
+    const user = useSelector(state => state.user.user);
+    const [deviceData, setDeviceData] = useState([]);
+
+    const fetchDevicesData = async () => {
+        const devData = await getDevicesData(user.id, roomID);
+        setDeviceData(devData);
+        // console.log(deviceData);
+    }
+
+    useEffect(() => {
+        if (user) {
+            fetchDevicesData();
+            const interval = setInterval(fetchDevicesData, 5000);
+            return () => clearInterval(interval);
+        }
+    }, [user]);
+
     return (
         <PageWrapper >
             <RoomSidebar placeID={placeID} roomID={roomID} />
@@ -52,7 +71,16 @@ const InsideRoom = () => {
                         <div className='px-6 py-4 '>
                             <h3>My Devices</h3>
                             <div className='py-4 flex flex-wrap'>
-                                {dataSet.map((data, index) => (<SwitchCard key={index} {...data} />))}
+                                {deviceData.map((device, index) => (
+                                    <SwitchCard key={index}
+                                        id={device.device_id}
+                                        status={device.deviceSwitch.switch_status}
+                                        validity={device.deviceSwitch.status}
+                                        device={device.name}
+                                        type={device.type}
+                                        schedule={device.schedule}
+                                    />
+                                ))}
                             </div>
                         </div>
                     </div>
