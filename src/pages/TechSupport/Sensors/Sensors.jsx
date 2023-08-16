@@ -6,7 +6,7 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import SensorCard from './SensorCard'
 import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
-
+import { Link } from 'react-router-dom'
 
 
 const Sensorset = [
@@ -39,7 +39,9 @@ const Sensors = () => {
                 <TopBar />
                 <ContentWrapper>
                     <ButtonBar>
-                        <button className="btn btn-primary">Add Sensors</button>
+                        <Link to={`#`}>
+                            <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Sensors</button>
+                        </Link>
                     </ButtonBar>
                     <div className='flex flex-wrap'>
                         {

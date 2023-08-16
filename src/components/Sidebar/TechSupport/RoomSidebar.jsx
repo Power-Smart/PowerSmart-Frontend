@@ -11,6 +11,7 @@ import { GiElectric } from 'react-icons/gi'
 import { MdElectricalServices } from 'react-icons/md'
 import { GrLocation } from 'react-icons/gr'
 import { MdOutlinePlace } from 'react-icons/md'
+import {TbHome2} from 'react-icons/tb'
 
 
 const RoomSidebar = () => {
@@ -22,8 +23,11 @@ const RoomSidebar = () => {
             <SidebarButton text="Dashboard" toggle={toggle} link='/tech/'>
                 <BiTachometer />
             </SidebarButton>
-            <SidebarButton text="Place" toggle={toggle} link='/tech/place/rooms'>
+            <SidebarButton text="Place" toggle={toggle} link='/tech/places'>
                 <MdOutlinePlace />
+            </SidebarButton>
+            <SidebarButton text="Room" toggle={toggle} link='/tech/place/room'>
+                <TbHome2 />
             </SidebarButton>
             <SidebarButton text="Sensor" toggle={toggle} link='/tech/sensors'>
                 <MdSensors />
