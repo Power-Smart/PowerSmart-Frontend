@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Switch } from 'antd';
 import DeviceIcon from '../smallComps/DeviceIcon.jsx';
+import { apiToggleDevice } from '../../api/apiDevices.js';
 
 const SwitchCard = ({ id, type, device, validity, schedule = null, status }) => {
+    const [toggle, setToggle] = useState(status);
+    const deviceSwitch = async (state) => {
+        let res = await apiToggleDevice(id, state);
+        if (res.status === 200) {
+            setToggle(!state);
+        } else {
+            setToggle(state);
+        }
+    }
+
     return (
         <div className='mx-auto drop-shadow text-sm flex flex-col justify-between md:w-[230px] md:h-[150px] w-[200px] h-[150px] bg-[#0E0E1A] md:rounded-xl rounded-md shadow-md px-6 py-6 m-5'>
             <div className='flex justify-between flex-grow flex-wrap'>
                 <DeviceIcon type={type} />
-                <Switch className='toggle-switch' checkedChildren="on" unCheckedChildren="Off" defaultChecked={status} loading={!(validity === "pending active") ? true : false} />
+                <Switch className='toggle-switch'
+                    checkedChildren="on"
+                    unCheckedChildren="Off"
+                    defaultChecked={status}
+                    checked={toggle}
+                    loading={(validity === "active_pending") ? true : false}
+                    onChange={deviceSwitch} />
             </div>
 
             <div className='flex sm:flex-row sm:flex-grow sm:justify-between sm:items-end flex-col justify-start items-center'>

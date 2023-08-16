@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
@@ -8,7 +8,7 @@ import SwitchCard from '../../../components/Cards/SwitchCard'
 import RoomSidebar from '../../../components/Sidebar/Customer/RoomSidebar'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { getDevices } from '../../../api/apiDevices'
+import { getDevicesData } from '../../../api/apiDevices'
 
 const dataSet = [
     {
@@ -37,16 +37,19 @@ const dataSet = [
 const InsideRoom = () => {
     const { placeID, roomID } = useParams();
     const user = useSelector(state => state.user.user);
-    const [devices, setDevices] = React.useState([]);
+    const [deviceData, setDeviceData] = useState([]);
+
+    const fetchDevicesData = async () => {
+        const devData = await getDevicesData(user.id, roomID);
+        setDeviceData(devData);
+        // console.log(deviceData);
+    }
 
     useEffect(() => {
-        const fetchDevicesData = async () => {
-            const devices = await getDevices(user.id, roomID);
-            setDevices(devices);
-        }
         if (user) {
             fetchDevicesData();
-            console.log(devices);
+            const interval = setInterval(fetchDevicesData, 5000);
+            return () => clearInterval(interval);
         }
     }, [user]);
 
@@ -68,14 +71,14 @@ const InsideRoom = () => {
                         <div className='px-6 py-4 '>
                             <h3>My Devices</h3>
                             <div className='py-4 flex flex-wrap'>
-                                {devices.map((device, index) => (
+                                {deviceData.map((device, index) => (
                                     <SwitchCard key={index}
                                         id={device.device_id}
-                                        status={device.switch_status}
-                                        validity={device.status}
-                                        device={device.device.name}
-                                        type={device.device.type}
-                                        schedule={device.device.schedule}
+                                        status={device.deviceSwitch.switch_status}
+                                        validity={device.deviceSwitch.status}
+                                        device={device.name}
+                                        type={device.type}
+                                        schedule={device.schedule}
                                     />
                                 ))}
                             </div>
