@@ -33,7 +33,7 @@ const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id,
             </div>
 
             {
-                isCustomer ? <Link to='/places/rooms/controlpanel'>
+                isCustomer ? <Link to={`/places/${place_id}/rooms/${room_id}/controlpanel`}>
                     <div className='flex flex-col flex-grow justify-end items-center mt-3'>
                         <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
                     </div>
