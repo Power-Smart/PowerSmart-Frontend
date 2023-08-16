@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const TableRow = ({ id, complaint, customer, assigned, status }) => {
   return (
     <tr className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900">
@@ -20,7 +22,9 @@ const TableRow = ({ id, complaint, customer, assigned, status }) => {
         </div>
       </td>
       <td className="px-6 py-4">
-        <button className="view__btn">View</button>
+      <Link to="./:complaintId">
+          <button className="view__btn">View</button>
+        </Link>
       </td>
     </tr>
   );

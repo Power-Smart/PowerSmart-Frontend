@@ -7,6 +7,7 @@ import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { AiFillRocket } from 'react-icons/ai'
+import AdmninSidebar from '../../../components/Sidebar/Admin/AdminSidebar'
 
 const dataSet = [
   {
@@ -32,10 +33,10 @@ const dataSet = [
   },
 ]
 
-const ViewCustomer = () => {
+const CustomerInfo = () => {
   return (
     <PageWrapper >
-      <Sidebar />
+      <AdmninSidebar />
       <PageContent >
         <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="View Customer" />
 
@@ -63,16 +64,14 @@ const ViewCustomer = () => {
           {/* <ButtonBar>
             <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Place</button>
           </ButtonBar> */}
-
           <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
             {dataSet.map((data, index) => (<PlaceCard key={index} {...data} />))}
           </div>
-
         </ContentWrapper>
       </PageContent>
     </PageWrapper>
   )
 }
 
-export default ViewCustomer
+export default CustomerInfo

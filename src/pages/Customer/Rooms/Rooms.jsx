@@ -58,7 +58,7 @@ const Rooms = () => {
                         {/* Cards */}
 
                         {(roomsStatus === 'loading' || roomsStatus === 'idle') && <LoadingSpinner />}
-                        {(roomsStatus === 'succeeded' && rooms.map((data, index) => (<RoomCard key={index} {...data} />)))}
+                        {(roomsStatus === 'succeeded' && rooms.map((data, index) => (<RoomCard isCustomer={true} key={index} {...data} />)))}
                         {(roomsStatus === 'succeeded' && rooms.length === 0) && <div className='text-white'>No rooms found</div>}
 
                     </div>

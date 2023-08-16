@@ -5,11 +5,12 @@ import TopBar from '../../../components/smallComps/TopBar'
 import Sidebar from '../../../components/Sidebar/Sidebar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
+import AdmninSidebar from '../../../components/Sidebar/Admin/AdminSidebar'
 
 const AdminDashboard = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <AdmninSidebar />
             <PageContent>
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Dashboard" />
                 <ContentWrapper>

@@ -1,44 +1,43 @@
 import React from 'react'
 import TableRow from './TableRow';
 
+
 const dataset = [
     {
-        id: 1,
-        name: 'Lorem ipsum',
+        name: 'Kamal Ahmed',
+        profilePicture:'https://avatars.githubusercontent.com/u/73744585?v=4',
         places: 2,
         rooms: 4,
         status: 'Pending'
     },
     {
-        id: 2,
-        name: 'Lorem ipsum',
+        name: 'Pamal Kumar',
+        profilePicture:'https://avatars.githubusercontent.com/u/44749685?v=4',
         places: 2,
         rooms: 4,
         status: 'Resolved'
-
     },
     {
-        id: 3,
-        name: 'Lorem ipsum',
+        name: 'Yamal Qumar',
+        profilePicture:'https://avatars.githubusercontent.com/u/37753777?v=4',
         places: 2,
         rooms: 4,
         status: 'Pending'
-
     },
     {
-        id: 4,
-        name: 'Lorem ipsum',
+        name: 'Bamal Kumar',
+        profilePicture:'https://avatars.githubusercontent.com/u/73994665?v=4',
         places: 2,
         rooms: 4,
         status: 'Resolved'
-
     },
 ];
 
 
+
 const TableOrderStatus = () => {
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-12 px-8">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-2 px-6">
 
             <table className="w-full text-sm text-left text-gray-500">
                 <thead className="text-xs text-gray-700 uppercase ">
@@ -49,19 +48,19 @@ const TableOrderStatus = () => {
                                 <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
                             </div>
                         </th> */}
-                        <th scope="col" className="px-6 py-3">
-                            Customer ID
+                        <th scope="col" className="px-6 py-3 text-center">
+                            Customer Name
                         </th>
-                        <th scope="col" className="px-6 py-3">
-                            Name
+                        <th scope="col" className="px-6 py-3 text-center">
+                            Profile Picture
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-center">
                             Places
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-center">
                             Rooms
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-center">
                             Status
                         </th>
                     </tr>

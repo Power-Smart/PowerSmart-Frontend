@@ -21,3 +21,15 @@
     border-radius: 10px;
     width: 65px;
 }
+
+.view__btn{
+    background-color: blue;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 2px 7px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 65px;
+}

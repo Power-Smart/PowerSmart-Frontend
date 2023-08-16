@@ -1,10 +1,10 @@
 import React from "react";
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
-import Sidebar from '../../../components/Sidebar/Sidebar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import UserInquiriesRow from "./UserInquiriesRow";
+import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 
 
 const dataset = [
@@ -44,7 +44,7 @@ const dataset = [
 const UserComplaints = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TopBar title={'User Inquiries'} />
                 <ContentWrapper>

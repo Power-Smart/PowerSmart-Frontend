@@ -1,25 +1,25 @@
-import './CustomerRequest.css'
-import Table from './Table';
+import './accessCusAccount.css'
+import AccessCusTable from './AccessCusTable';
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
-import Sidebar from '../../../components/Sidebar/Sidebar';
 import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
+import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 
 
 
-const CustomerRequest = () => {
+const AccessCusAccount = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
-                <TopBar title={'Profile'} />
+                <TopBar title={'Account Access Requests'} />
                 <ContentWrapper>
-                    <Table />
+                    <AccessCusTable />
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>
     )
 }
 
-export default CustomerRequest
+export default AccessCusAccount

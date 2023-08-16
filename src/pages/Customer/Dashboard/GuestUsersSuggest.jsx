@@ -5,7 +5,7 @@ const GuestUsersSuggest = () => {
     return (
         <div className="one-guest-user">
             <div className="default-profile-img">
-                <img src="https://avatars.githubusercontent.com/u/73744585?v=4" alt="" />
+                <img src="https://avatars.githubusercontent.com/u/73214585?v=4" alt="" />
             </div>
             <div className="suggest-info text-sm m-3">
                 <h3>Temperature :<span> 30°C</span></h3>

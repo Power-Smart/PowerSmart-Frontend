@@ -1,7 +1,9 @@
 import profilePic from '../../../assets/images/profile.jpeg'
+import { Link } from 'react-router-dom'
 
 
-const Table2Row = ({ id, complaint, userID, assigned, status }) => {
+
+const AccessCusTableRow = ({ id, complaint, userID, assigned, status }) => {
     return (
         <tr className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900">
             <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
@@ -24,11 +26,12 @@ const Table2Row = ({ id, complaint, userID, assigned, status }) => {
                 {status}
             </td>
             <td className="px-6 py-4">
-                {status === 'Pending' && <button className='cancel__btn'>Cancel</button>}
-                {status === 'Resolved' && <button className='request__btn'>Request</button>}
+                {status === 'cancel' && <button className='cancel__btn'>Cancel</button>}
+                {status === 'request' && <button className='request__btn'>Request</button>}
+                {status === 'view' && <Link to='/tech/places'><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>view</button></Link>}
             </td>
         </tr>
     )
 }
 
-export default Table2Row
+export default AccessCusTableRow

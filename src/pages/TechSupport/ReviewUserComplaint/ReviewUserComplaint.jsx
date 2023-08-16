@@ -2,15 +2,16 @@ import './ReviewUserComplaint.css'
 import { BsChatDots } from 'react-icons/bs'
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
-import Sidebar from '../../../components/Sidebar/Sidebar';
 import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
+import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
+
 
 
 const ReviewUserComplaint = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TopBar title={'Profile'} />
                 <ContentWrapper>

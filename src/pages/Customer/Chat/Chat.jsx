@@ -16,25 +16,25 @@ const chatList = [
     {
         userID: '1',
         profilePicture: 'https://avatars.githubusercontent.com/u/73744585?v=4',
-        userName: 'Viraj Sandakelum',
+        userName: 'Jone Doe',
         lastMessage: 'I am fine, how are you?'
     },
     {
         userID: '2',
         profilePicture: 'https://avatars.githubusercontent.com/u/7144115?v=4',
-        userName: 'Nirman Sandapawan',
+        userName: 'Kamal Perera',
         lastMessage: 'I am fine, how are you?'
     },
     {
         userID: '3',
         profilePicture: 'https://avatars.githubusercontent.com/u/73544585?v=4',
-        userName: 'Madushika Sandaruwan',
+        userName: 'Sunil Perera',
         lastMessage: 'I am fine, how are you?'
     },
     {
         userID: '4',
         profilePicture: 'https://avatars.githubusercontent.com/u/73342585?v=4',
-        userName: 'Hansanga Sandatharauka',
+        userName: 'Amal Perera',
         lastMessage: 'I am fine, how are you?'
     },
 ]

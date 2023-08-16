@@ -15,9 +15,9 @@ const TopBar = ({ title, image, baclLink = "" }) => {
             </div>
             <div className='flex items-center justify-center'>
                 {/* Profile Pic */}
-                <div>
+                {/* <div>
                     <img src={image} alt="profile" className='w-10 h-10 rounded-full border-[#83BCFF] border-2' />
-                </div>
+                </div> */}
             </div>
         </div >
     )

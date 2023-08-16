@@ -31,7 +31,7 @@ const PlaceCardTech = ({ is_active, name, room_count = 0, location, place_id }) 
                 <div>{room_count} Rooms</div>
             </div>
 
-            <Link to={`${place_id}/rooms`}>
+            <Link to={`/tech/place/room`}>
                 <div className='flex flex-col flex-grow justify-end items-center'>
                     <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
                 </div>

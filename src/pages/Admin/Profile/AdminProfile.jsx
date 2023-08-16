@@ -10,9 +10,10 @@ import FormRowDual from '../../../components/Forms/FormRowDual'
 import TextInput from '../../../components/Forms/TextInput'
 import FormTitle from '../../../components/Forms/FormTitle'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
+import AdmninSidebar from '../../../components/Sidebar/Admin/AdminSidebar'
 
 
-const Profile = () => {
+const AdminProfile = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -26,7 +27,7 @@ const Profile = () => {
 
     return (
         <PageWrapper>
-            <Sidebar />
+            <AdmninSidebar />
             <PageContent>
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Profile" />
                 <ContentWrapper>
@@ -75,4 +76,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default AdminProfile
