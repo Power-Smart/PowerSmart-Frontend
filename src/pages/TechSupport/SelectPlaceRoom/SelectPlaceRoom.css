@@ -1,0 +1,46 @@
+.requestInfoBox {
+    border: 2px solid #83BCFF;
+    border-radius: 10px;
+    color: white;
+    width: 30%;
+}
+
+.requestInfoBox .infoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.requestInfoBox .form {
+    padding: 30px;
+}
+
+.requestInfoBox .form .button{
+    margin-top: 40px;
+}
+
+.requestInfoBox .form .data__field {
+    padding: 7px;
+    background-color: #151528;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.requestInfoBox .form .data__field select{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    width: 20%;
+    color: white;
+}
+
+
+
+

@@ -5,6 +5,7 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import Indicator from '../../../components/smallComps/Indicator'
 import StatusCardMd from '../../../components/Cards/StatusCardMd'
 import RoomSidebar from '../../../components/Sidebar/Customer/RoomSidebar'
+import { useParams } from 'react-router-dom'
 
 const dataSet = [
     {
@@ -25,11 +26,12 @@ const dataSet = [
 ];
 
 const CheckStatus = () => {
+    const { placeID, roomID } = useParams();
     return (
         <PageWrapper>
-            <RoomSidebar />
+            <RoomSidebar placeID={placeID} roomID={roomID} />
             <PageContent>
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Check Status" baclLink='/places/rooms' />
+                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Check Status" baclLink={`/places/${placeID}/rooms`} />
                 <ContentWrapper>
                     <div className='m-4 py-4 px-8 rounded-lg bg-[#151528]'>
                         <div className='p-3'>

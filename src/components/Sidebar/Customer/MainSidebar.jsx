@@ -14,23 +14,23 @@ const MainSidebar = () => {
     const [toggle, setToggle] = useState(true);
 
     return (
-        <SidebarWrapper toggle={toggle} setToggle={setToggle}>
+        <SidebarWrapper toggle={toggle} setToggle={setToggle} profileLink="/profile" isGifActive={true} >
             <SidebarButton text="Dashboard" toggle={toggle} link='/'>
                 <AiOutlineHome />
             </SidebarButton>
             <SidebarButton text="Places" toggle={toggle} link='/places'>
                 <MdOutlinePlace />
             </SidebarButton>
-            <SidebarButton text="Complaints" toggle={toggle} link='/Complaints'>
+            {/* <SidebarButton text="Complaints" toggle={toggle} link='/Complaints'>
                 <TbReport />
-            </SidebarButton>
+            </SidebarButton> */}
             <SidebarButton text="Chat" toggle={toggle} link='/chat'>
                 <BsChatDots />
             </SidebarButton>
             <SidebarButton text="Payment" toggle={toggle} link='/payments'>
                 <RiMoneyDollarCircleLine />
             </SidebarButton>
-            <SidebarButton text="Support" toggle={toggle}>
+            <SidebarButton text="Support" toggle={toggle} link='/support'>
                 <BiSupport />
             </SidebarButton>
         </SidebarWrapper>

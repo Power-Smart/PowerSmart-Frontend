@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getCustomerApi } from "../../api/apiUser";
+import { getCustomerApi, updateCustomerProfileApi } from "../../api/apiUser";
 
 export const fetchCustomer = createAsyncThunk(
     "customer/fetchCustomer",
@@ -9,8 +9,21 @@ export const fetchCustomer = createAsyncThunk(
     }
 );
 
+export const updateCustomerProfile = createAsyncThunk(
+    "customer/updateCustomerProfile",
+    async (data, thunkAPI) => {
+        const response = await updateCustomerProfileApi(data);
+        if (response.status === 200) {
+            // console.log("response : ", response.data);
+            return response.data;
+        } else {
+            console.log("error : ", response.data);
+            return thunkAPI.rejectWithValue({ error: response.data });
+        }
+    }
+);
+
 const initialState = {
-    id: null,
     points: null,
     year_subscription: null,
     tel_no: [],
@@ -42,9 +55,21 @@ export const userSlice = createSlice({
                 state.is_banned = data.is_banned;
                 state.profile_pic = data.profile_pic;
                 state.achievements = data.achievements;
-                state.id = data.id;
             })
             .addCase(fetchCustomer.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            .addCase(updateCustomerProfile.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(updateCustomerProfile.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                const data = action.payload;
+                state.tel_no = data.tel_no;
+                state.address = data.address;
+            })
+            .addCase(updateCustomerProfile.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });

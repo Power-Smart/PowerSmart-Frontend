@@ -6,8 +6,8 @@ const DashboardTopHeader = () => {
     return (
         <div className="top-header">
             <div className="content">
-                <h1>Hi, Viraj !</h1>
-                <h1>241 Days Left</h1>
+                <h1>Hi, Jone Doe !</h1>
+                {/* <h1>241 Days Left</h1> */}
             </div>
             <div className="image">
                 <img src={DashboardImage} alt="" />

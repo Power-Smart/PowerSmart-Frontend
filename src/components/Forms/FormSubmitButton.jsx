@@ -4,7 +4,7 @@ const FormSubmitButton = ({ backgroundColor = "backgroundColor", urlLink = "urlL
 
     return (
         <div>
-            <button onClick={onClick} className={`text-white font-bold py-1 px-7 rounded-3xl`} style={{ backgroundColor }} type='button'>
+            <button onClick={onClick} className={`text-white font-bold py-1 px-7 rounded-3xl w-fit`} style={{ backgroundColor }} type='button'>
                 {buttonText}
             </button>
         </div>

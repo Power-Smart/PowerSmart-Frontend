@@ -1,13 +1,12 @@
-import React from "react";
+import { forwardRef } from 'react';
 
-const SelectInput = ({
+const SelectInput = forwardRef(({
   required = false,
-  onChange = undefined,
+  onChange = () => { },
   selectedOption,
   categories,
-  ref = null,
   id = undefined,
-}) => {
+}, ref) => {
   return (
     <>
       <select
@@ -27,6 +26,6 @@ const SelectInput = ({
       </select>
     </>
   );
-};
+});
 
 export default SelectInput;

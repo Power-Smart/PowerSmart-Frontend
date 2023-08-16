@@ -1,6 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import {BsCartPlus} from 'react-icons/bs'
 
-const ItemCard = ({ price, description, name, quantity, image }) => {
+
+const ItemCard = ({ price, description, name, quantity, image, addDel = true }) => {
   return (
     <div className="text-sm flex flex-col border-solid border border-secondaryBlue w-[200px] h-auto bg-[#1C1C2E] rounded-3xl shadow-md px-2 pb-5 m-5 justify-evenly">
       <div className="item-image rounded-es-3xl rounded-ee-3xl mx-auto bg-white">
@@ -19,14 +22,23 @@ const ItemCard = ({ price, description, name, quantity, image }) => {
         <div className="text-lg">Rs. {price}</div>
       </div>
 
-      <div className="flex justify-evenly items-center">
-        <button className="px-4 py-1 w-20 text-sm bg-primaryBtn rounded-2xl text-black">
-          Edit
-        </button>
-        <button className="px-4 py-1 w-20 text-sm bg-secondaryBtn rounded-2xl text-black">
+      {addDel && <div className="flex justify-evenly items-center">
+        <Link to='/tech/selectPlaceRoom'>
+          <button className="px-4 py-1 w-20 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF]">
+            Edit
+          </button>
+        </Link>
+        <button className="px-4 py-1 w-20 text-sm bg-secondaryBtn rounded-2xl text-black bg-[#FF8383]">
           Delete
         </button>
-      </div>
+      </div>}
+      {!addDel && <div className="flex justify-evenly items-center">
+        <Link to='/tech/selectPlaceRoom'>
+          <button className="px-4 py-1 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF] font-bold">
+            <BsCartPlus className="inline-block mb-1 mr-2 font-bold text-xl"/>Add to Cart
+          </button>
+        </Link>
+      </div>}
     </div>
   );
 };
