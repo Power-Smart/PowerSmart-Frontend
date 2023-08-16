@@ -24,7 +24,7 @@ const DeviceCard = ({ id, deviceName, walt, image }) => {
                 <button className="px-4 py-1 w-20 text-sm bg-secondaryBtn rounded-2xl text-black bg-[#FF8383]">
                     Delete
                 </button>
-                <Link to='/tech/selectPlaceRoom'>
+                <Link to='#'>
                     <button className="px-4 py-1 w-20 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF]">
                         Edit
                     </button>
