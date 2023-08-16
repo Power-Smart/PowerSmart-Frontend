@@ -11,7 +11,7 @@ const ProtectedStockManager = () => {
     // }, [])
     return (
         <>
-            <h1 className="absolute text-xs right-0 top-0 text-white z-50">Stock Manager</h1>
+            {/* <h1 className="absolute text-xs right-0 top-0 text-white z-50">Stock Manager</h1> */}
             <Outlet />
         </>
     )
