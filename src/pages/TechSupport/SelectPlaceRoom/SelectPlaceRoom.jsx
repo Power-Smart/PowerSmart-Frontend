@@ -2,27 +2,28 @@ import './SelectPlaceRoom.css'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
-import Sidebar from '../../../components/Sidebar/Sidebar';
 import PageContent from '../../../components/Wrappers/PageContent';
 import { Link } from 'react-router-dom';
 import TechSupportTopBar from '../TechSupportTopBar/TechSupportTopBar'
+import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
+
 
 
 const SelectPlaceRoom = () => {
     return (
         <PageWrapper>
-            <Sidebar />
+            <MainSidebar />
             <PageContent>
                 <TechSupportTopBar title={'Profile'} />
                 <ContentWrapper>
-                    <div className="requestInfoBox my-auto mx-auto min-w-max">
+                    <div className="requestInfoBox mt-20 mx-auto w-[500px]">
                         <div className="infoHeader">
                             <div className="title">
                                 <h3>Select a Place and Room</h3>
                             </div>
-                            <div className="closeBtn">
+                            {/* <div className="closeBtn">
                                 <AiOutlineCloseCircle className='h-8 w-8 text-red-500 cursor-pointer' />
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="form">

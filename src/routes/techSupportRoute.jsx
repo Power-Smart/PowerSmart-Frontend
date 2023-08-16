@@ -1,5 +1,5 @@
 import ProtectedTechSupport from '../pages/Customer/Protected/ProtectedTechSupport';
-import AddDevice from '../pages/TechSupport/AddDevice'
+import AddDevice from '../pages/TechSupport/Devices/AddDevice'
 import ProfileTechSupport from '../pages/TechSupport/Profile'
 import Profile from '../pages/TechSupport/Profile';
 import TechDashboard from '../pages/TechSupport/TechDashboard/TechDashboard';
@@ -13,6 +13,10 @@ import Places from '../pages/TechSupport/Places/Places';
 import AccessCusAccount from '../pages/TechSupport/AccessCusAccount/AccessCusAccount';
 import Rooms from '../pages/TechSupport/Rooms/Rooms';
 import Devices from '../pages/TechSupport/Devices/Devices';
+import AddRelay from '../pages/TechSupport/Relays/AddRelay';
+import PaymentSummary from '../pages/TechSupport/PaymentSummary/PaymentSummary';
+import Sensors from '../pages/TechSupport/Sensors/Sensors';
+import Chat from '../pages/TechSupport/Chat/Chat';
 
 
 
@@ -40,6 +44,10 @@ const techSupportRoute =
             element: <SelectPlaceRoom />,
         },
         {
+            path: `${techSupport}/paymentSummary`,
+            element: <PaymentSummary />
+        },
+        {
             path: `${techSupport}/userComplaints`,
             element: <UserComplaints />,
         },
@@ -64,17 +72,29 @@ const techSupportRoute =
             element: <Relays />,
         },
         {
+            path: `${techSupport}/sensors`,
+            element: <Sensors />,
+        },
+        {
+            path: `${techSupport}/addRelays`,
+            element: <AddRelay />,
+        },
+        {
             path: `${techSupport}/places`,
             element: <Places />,
         },
         {
-            path: `${techSupport}/place/rooms`,
+            path: `${techSupport}/place/room`,
             element: <Rooms />,
         },
         {
             path: `${techSupport}/place/rooms/devices`,
             element: <Devices />,
-        }
+        },
+        {
+            path: `${techSupport}/chat`,
+            element: <Chat />,
+        },
     ]
 };
 

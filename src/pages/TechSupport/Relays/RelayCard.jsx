@@ -6,7 +6,7 @@ const RelayCard = ({ id, name, type, image }) => {
         <div className="text-sm flex flex-col border-solid border border-secondaryBlue w-[200px] h-auto bg-[#1C1C2E] rounded-3xl shadow-md px-2 pb-5 m-5 justify-evenly">
             <div className="item-image rounded-es-3xl rounded-ee-3xl mx-auto bg-white">
                 <img
-                    className="object-cover rounded-es-3xl rounded-ee-3xl h-20 w-20"
+                    className="object-fill rounded-es-3xl rounded-ee-3xl h-20 w-20"
                     src={image}
                     alt="item"
                 />
@@ -20,7 +20,7 @@ const RelayCard = ({ id, name, type, image }) => {
             </div>
 
             <div className="flex justify-evenly items-center">
-                <Link to='/tech/selectPlaceRoom'>
+                <Link to='#'>
                     <button className="px-4 py-1 w-20 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF]">
                         Edit
                     </button>

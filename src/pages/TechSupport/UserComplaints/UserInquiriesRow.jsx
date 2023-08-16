@@ -40,7 +40,7 @@ const UserInquiriesRow = ({ id, complaint, userID, status }) => {
 
             <td className="px-6 py-4">
                 <div className="flex items-center justify-center">
-                    <Link to="/login" > <FaGreaterThan /></Link>
+                    <Link to='#'><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>view</button></Link>
                 </div>
             </td>
 

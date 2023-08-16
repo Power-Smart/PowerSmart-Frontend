@@ -14,7 +14,7 @@ const Profile = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Profile" baclLink='/' />
+                {/* <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Profile" baclLink='/' /> */}
                 <ContentWrapper>
                     <div className='flex justify-between items-center p-4'>
                         <div className='flex justify-start items-center'>

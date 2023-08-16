@@ -10,8 +10,8 @@ const RoomSidebar = ({ placeID, roomID }) => {
     const [toggle, setToggle] = useState(true);
 
     return (
-        <SidebarWrapper toggle={toggle} setToggle={setToggle}>
-            <SidebarButton text="Control Panel" toggle={toggle} link={`/places/${placeID}/rooms/${roomID}/controlpanel`}>
+        <SidebarWrapper toggle={toggle} setToggle={setToggle} profileLink="/profile" isGifActive={true}>
+            <SidebarButton text="Control Panel" toggle={toggle} link='/places/rooms/controlpanel'>
                 <AiOutlineControl />
             </SidebarButton>
             <SidebarButton text="Check Status" toggle={toggle} link={`/places/${placeID}/rooms/${roomID}/status`}>
