@@ -16,7 +16,7 @@ const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id,
             </div> */}
 
             <div className='flex flex-col flex-grow mb-3'>
-                <div className=' text-xs text-green-300 flex justify-start items-center'>
+                <div className={'text-xs flex justify-start items-center ' + (is_active ? "text-green-300" : "text-red-300")}>
                     {is_active && <Indicator color="bg-green-400" status={"Online"} />}
                     {!is_active && <Indicator color="bg-red-400" status={"Offline"} />}
                 </div>
