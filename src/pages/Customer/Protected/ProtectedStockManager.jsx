@@ -6,7 +6,7 @@ const ProtectedStockManager = () => {
     const navigate = useNavigate();
     const { isLogged, user } = useSelector(state => state.user);
     useEffect(() => {
-        if (!isLogged || user.role != 4) {
+        if (!isLogged || user.role != 3) {
             navigate('/login');
         }
     }, [])
