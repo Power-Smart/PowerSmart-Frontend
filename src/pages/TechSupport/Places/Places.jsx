@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
 import PlaceCardTech from '../../../components/Cards/PlaceCardTech'
@@ -11,27 +12,24 @@ import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { Link } from 'react-router-dom'
+import { getPlacesByCustomer } from '../../../api/apiTechAssigns'
 
-
-const places = [
-  {
-    place_id: 1,
-    name: 'Place 1',
-    is_active: true,
-    room_count: 3,
-    location: 'Location 1'
-
-  },
-  {
-    place_id: 2,
-    name: 'Place 2',
-    is_active: false,
-    room_count: 3,
-    location: 'Location 2'
-  },
-];
 
 const Places = () => {
+  const { customerID } = useParams();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
+  const [places, setPlaces] = useState([]);
+
+  const fetchPlaces = async () => {
+    const placeData = await getPlacesByCustomer(user.id, customerID);
+    setPlaces(placeData.data);
+  }
+
+  useEffect(() => {
+    fetchPlaces();
+  }, [user, dispatch]);
+
   return (
     <PageWrapper >
       <PlaceSidebar />
@@ -43,7 +41,8 @@ const Places = () => {
 
           <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
-            {places.map((data, index) => (<PlaceCardTech key={index} {...data} />))}
+            {(places.length > 0) && places.map((data, index) => (<PlaceCardTech key={index} {...data} />))}
+            {!(places.length) && "No places to access"}
           </div>
 
         </ContentWrapper>
