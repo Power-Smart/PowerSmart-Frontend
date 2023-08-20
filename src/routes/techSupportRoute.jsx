@@ -80,7 +80,7 @@ const techSupportRoute =
             element: <AddRelay />,
         },
         {
-            path: `${techSupport}/places`,
+            path: `${techSupport}/customer/:customerID`,
             element: <Places />,
         },
         {

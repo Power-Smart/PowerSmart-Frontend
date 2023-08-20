@@ -6,6 +6,7 @@ import customerSlice from "./slices/customerSlice";
 import placesSlice from "./slices/placesSlice";
 import roomsSlice from "./slices/roomsSlice";
 import orderSlice from "./slices/orderSlice";
+import techCustomersSlice from "./slices/techsupport/techCustomersSlice";
 
 export const store = configureStore({
     reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
         places: placesSlice,
         rooms: roomsSlice,
         orders: orderSlice,
+        techCustomers: techCustomersSlice,
     },
 });
