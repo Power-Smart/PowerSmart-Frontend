@@ -4,7 +4,7 @@ import { TbHomeEdit } from 'react-icons/tb'
 
 
 
-const PlaceCardTech = ({ place_id, place, access_type }) => {
+const PlaceCardTech = ({ place_id, place, access_type, customerID }) => {
 
     return (
         <div className='text-sm flex flex-col w-[200px] h-[230px] bg-[#1C1C2E] rounded-md shadow-md px-6 py-4 m-5 justify-evenly'>
@@ -31,12 +31,12 @@ const PlaceCardTech = ({ place_id, place, access_type }) => {
                 <div>{place.city}</div>
             </div>
 
-            {access_type === 1 && <Link to={`/tech/place/room`}>
+            {access_type === 1 && <Link to={`/tech/${customerID}/place/${place_id}/rooms`}>
                 <div className='flex flex-col flex-grow justify-end items-center'>
                     <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
                 </div>
             </Link>}
-            {access_type === 0 && <Link to={`/tech/place/room`}>
+            {access_type === 0 && <Link to={`/tech/`}>
                 <div className='flex flex-col flex-grow justify-end items-center'>
                     <button className='px-4 py-1 text-sm bg-[#ff8383] rounded-md text-black'>Request access</button>
                 </div>

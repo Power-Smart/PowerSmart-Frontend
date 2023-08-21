@@ -38,7 +38,7 @@ const Places = () => {
           <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
             {(techPlacesStatus === 'loading') && <LoadingSpinner />}
-            {(places.length > 0) && places.map((data, index) => (<PlaceCardTech key={index} {...data} />))}
+            {(places.length > 0) && places.map((data, index) => (<PlaceCardTech key={index} {...data} customerID={customerID} />))}
             {!(places.length) && "No places to access"}
           </div>
 

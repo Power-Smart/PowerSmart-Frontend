@@ -14,7 +14,7 @@ import { MdOutlinePlace } from 'react-icons/md'
 import { TbHome2 } from 'react-icons/tb'
 import { GiElectricalResistance } from 'react-icons/gi'
 
-const RoomSidebar = () => {
+const RoomSidebar = ({ placeID, customerID }) => {
 
     const [toggle, setToggle] = useState(true);
 
@@ -26,7 +26,7 @@ const RoomSidebar = () => {
             <SidebarButton text="Place" toggle={toggle} link='/tech/places'>
                 <MdOutlinePlace />
             </SidebarButton> */}
-            <SidebarButton text="Rooms" toggle={toggle} link='/tech/place/room'>
+            <SidebarButton text="Rooms" toggle={toggle} link={`/tech/${customerID}/place/${placeID}/rooms`}>
                 <TbHome2 />
             </SidebarButton>
             {/* <SidebarButton text="Sensor" toggle={toggle} link='/tech/sensors'>

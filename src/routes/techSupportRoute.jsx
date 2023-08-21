@@ -84,7 +84,7 @@ const techSupportRoute =
             element: <Places />,
         },
         {
-            path: `${techSupport}/place/room`,
+            path: `${techSupport}/:customerID/place/:placeID/rooms`,
             element: <Rooms />,
         },
         {
