@@ -7,6 +7,7 @@ import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import RelayCard from './RelayCard'
 import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
 import { Link, useParams } from 'react-router-dom'
+import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
 
 
 
@@ -34,9 +35,9 @@ const RelaySet = [
 const Relays = () => {
     return (
         <PageWrapper>
-            <PlaceSidebar />
+            <RoomSidebar />
             <PageContent>
-                <TopBar />
+                <TopBar title={"Relays"} baclLink='' />
                 <ContentWrapper>
                     <ButtonBar>
                         <Link to={`/tech/addDevice`}>

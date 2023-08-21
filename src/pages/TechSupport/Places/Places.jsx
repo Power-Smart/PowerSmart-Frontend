@@ -8,31 +8,27 @@ import PageContent from '../../../components/Wrappers/PageContent'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
-import { selectCustomer } from '../../../redux/slices/customerSlice'
-import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { Link } from 'react-router-dom'
-import { getPlacesByCustomer } from '../../../api/apiTechAssigns'
+import { fetchData, selectTechPlaces, selectTechPlacesStatus } from '../../../redux/slices/techsupport/techPlaceSlice'
 
 
 const Places = () => {
   const { customerID } = useParams();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.user);
-  const [places, setPlaces] = useState([]);
-
-  const fetchPlaces = async () => {
-    const placeData = await getPlacesByCustomer(user.id, customerID);
-    setPlaces(placeData.data);
-  }
+  const places = useSelector(selectTechPlaces);
+  const techPlacesStatus = useSelector(selectTechPlacesStatus);
 
   useEffect(() => {
-    fetchPlaces();
+    if (user.id && techPlacesStatus === 'idle') {
+      dispatch(fetchData({ user_id: user.id, customer_id: customerID }));
+    }
   }, [user, dispatch]);
 
   return (
     <PageWrapper >
-      <PlaceSidebar />
+      <PlaceSidebar customerID={customerID} />
       <PageContent >
         <TopBar image="https://avatars.githubusercontent.com/u/7374455?v=4" title="Assigned Places" baclLink='/tech/accessCusAccount' />
 
@@ -41,6 +37,7 @@ const Places = () => {
 
           <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
+            {(techPlacesStatus === 'loading') && <LoadingSpinner />}
             {(places.length > 0) && places.map((data, index) => (<PlaceCardTech key={index} {...data} />))}
             {!(places.length) && "No places to access"}
           </div>
