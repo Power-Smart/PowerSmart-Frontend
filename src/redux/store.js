@@ -8,6 +8,7 @@ import roomsSlice from "./slices/roomsSlice";
 import orderSlice from "./slices/orderSlice";
 import techCustomersSlice from "./slices/techsupport/techCustomersSlice";
 import techPlacesSlice from "./slices/techsupport/techPlaceSlice";
+import marketPlaceSlice from "./slices/techsupport/marketPlaceSlice";
 
 export const store = configureStore({
     reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
         orders: orderSlice,
         techCustomers: techCustomersSlice,
         techPlaces: techPlacesSlice,
+        marketPlace: marketPlaceSlice,
     }
 });

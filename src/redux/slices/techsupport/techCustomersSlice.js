@@ -38,6 +38,7 @@ export const techCustomersSlice = createSlice({
             });
     },
 });
+
 export const selectCustomers = (state) => state.techCustomers.customers;
 export const selectStatus = (state) => state.techCustomers.status;
 export default techCustomersSlice.reducer;
