@@ -130,9 +130,9 @@ const SelectPlaceRoom = () => {
 
 
                             <div className="button flex justify-center mt-3">
-                                {/* <Link to={`/tech/marketPlace/${customerID}`}> */}
+                                <Link to={`/tech/marketPlace/${customerID}`}>
                                     <button className='px-4 py-1 bg-blue-700 rounded-lg' onClick={(e) => addItemCart(marketPlaceItemByItemID)}>Add to plan</button>
-                                {/* </Link> */}
+                                </Link>
                                 <Link to="/tech/marketPlace">
                                     <button className='px-4 py-1 bg-red-700 rounded-lg ml-3'>Cancel</button>
                                 </Link>

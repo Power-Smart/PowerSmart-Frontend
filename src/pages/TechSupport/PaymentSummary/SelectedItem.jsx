@@ -39,6 +39,7 @@ const SelectedItem = ({ itemName, itemPrice, place, room, count, itemDevicePic }
                 </div>
             </div>
 
+
         </div>
     )
 }

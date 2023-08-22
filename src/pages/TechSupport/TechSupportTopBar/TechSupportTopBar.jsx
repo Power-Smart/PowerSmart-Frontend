@@ -4,7 +4,7 @@ import { IoChevronBack } from 'react-icons/io5'
 import { TiShoppingCart } from 'react-icons/ti'
 
 
-const TechSupportTopBar = ({ title, image, baclLink = "", customerID }) => {
+const TechSupportTopBar = ({ title, image, baclLink = "", customerID, totalPrice, itemsNumbers }) => {
     return (
         <div className='px-16 py-5 flex justify-between items-center' >
             <div className='flex items-center justify-center'>
@@ -21,10 +21,10 @@ const TechSupportTopBar = ({ title, image, baclLink = "", customerID }) => {
                 </div>
                 <div className="cart-details flex flex-col">
                     <div className="price ">
-                        <span className="actual-price">0 LKR</span>
+                        <span className="actual-price">{totalPrice} LKR</span>
                     </div>
                     <div className="item-count">
-                        <span className="count">0 item(s)</span>
+                        <span className="count">{itemsNumbers} item(s)</span>
                     </div>
                 </div>
 
