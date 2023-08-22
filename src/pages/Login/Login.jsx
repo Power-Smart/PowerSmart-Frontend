@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { isLogged } = useSelector(state => state.user);
+    const { isLogged, user } = useSelector(state => state.user);
 
     const onFinish = async (values) => {
         try {
@@ -31,7 +31,24 @@ const Login = () => {
 
     useEffect(() => {
         dispatch(session());
-        if (isLogged) navigate('/');
+        if (isLogged) {
+            switch (user.role) {
+                case 1:
+                    navigate('/');
+                    break;
+                case 2:
+                    navigate('/tech')
+                    break;
+                case 3:
+                    navigate('/stockManager')
+                    break;
+                case 4:
+                    navigate('/admin');
+                    break;
+                default:
+                    break;
+            }
+        }
     }, [])
 
     return (
