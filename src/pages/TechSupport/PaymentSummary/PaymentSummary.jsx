@@ -29,7 +29,7 @@ const PaymentSummary = () => {
                     <div className="selected-items h-[400px] overflow-y-scroll">
                         {
                             customerCartItems.map((data) => {
-                                return <SelectedItem itemName={data.name} itemPrice={data.price} place={data.place_name} room={data.room_name} count={data.quantity} itemDevicePic={"https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg"} />
+                                return <SelectedItem itemID={data.item_id} itemName={data.name} itemPrice={data.price} place={data.place_name} room={data.room_name} count={data.quantity} itemDevicePic={"https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg"} />
                             })
                         }
 

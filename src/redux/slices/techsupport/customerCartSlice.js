@@ -12,6 +12,19 @@ export const addItems = createAsyncThunk(
     }
 );
 
+export const removeItems = createAsyncThunk(
+    "customerCart/removeItems",
+    async (itemID, thunkAPI) => {
+        try {
+            return itemID;
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
+        }
+    }
+);
+
+
+
 
 let initialState = {
     customerCart: [],
@@ -33,6 +46,17 @@ export const customerCartSlice = createSlice({
                 state.customerCart = state.customerCart.concat(action.payload);
             })
             .addCase(addItems.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            .addCase(removeItems.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(removeItems.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.customerCart = state.customerCart.filter((item) => item.item_id !== action.payload);
+            })
+            .addCase(removeItems.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             })
