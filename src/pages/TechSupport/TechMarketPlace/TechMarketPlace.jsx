@@ -6,7 +6,7 @@ import Title from 'antd/es/typography/Title'
 import ItemCard from '../../../components/Cards/ItemCard'
 import TechSupportTopBar from '../TechSupportTopBar/TechSupportTopBar'
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
-
+import { Link, useParams } from 'react-router-dom'
 
 const buildPackages = [
     {
@@ -91,11 +91,14 @@ const Packages = [
 ];
 
 const TechMarketPlace = () => {
+
+    const { customerID } = useParams();
+
     return (
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TechSupportTopBar title={'Market Place'} />
+                <TechSupportTopBar title={'Market Place'} customerID={customerID} />
                 <ContentWrapper>
                     <div className='flex flex-col justify-center text-left '>
                         <h1 className='text-2xl font-bold'>Built in packages</h1>

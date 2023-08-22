@@ -4,7 +4,7 @@ import { IoChevronBack } from 'react-icons/io5'
 import { TiShoppingCart } from 'react-icons/ti'
 
 
-const TechSupportTopBar = ({ title, image, baclLink = "" }) => {
+const TechSupportTopBar = ({ title, image, baclLink = "", customerID }) => {
     return (
         <div className='px-16 py-5 flex justify-between items-center' >
             <div className='flex items-center justify-center'>
@@ -28,7 +28,7 @@ const TechSupportTopBar = ({ title, image, baclLink = "" }) => {
                     </div>
                 </div>
 
-                <Link to="/tech/paymentSummary">
+                <Link to={`/tech/paymentSummary/${customerID}`}>
                     <div className="visit-cart bg-[#83BCFF] h-[70px] w-[60px] flex justify-center items-center rounded-xl border-4 border-[#006DFF]">
                         <button>Cart</button>
                     </div>

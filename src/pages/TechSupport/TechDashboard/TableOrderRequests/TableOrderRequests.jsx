@@ -3,24 +3,28 @@ import TableRow from './TableRow';
 
 const dataset = [
     {
+        customerID: 1,
         name: 'Kamal Ahmed',
         profilePicture:'https://avatars.githubusercontent.com/u/73744585?v=4',
         places: 2,
         rooms: 4,
     },
     {
+        customerID: 2,
         name: 'Pamal Kumar',
         profilePicture:'https://avatars.githubusercontent.com/u/44749685?v=4',
         places: 2,
         rooms: 4,
     },
     {
+        customerID: 3,
         name: 'Yamal Qumar',
         profilePicture:'https://avatars.githubusercontent.com/u/37753777?v=4',
         places: 2,
         rooms: 4,
     },
     {
+        customerID: 4,
         name: 'Bamal Kumar',
         profilePicture:'https://avatars.githubusercontent.com/u/73994665?v=4',
         places: 2,

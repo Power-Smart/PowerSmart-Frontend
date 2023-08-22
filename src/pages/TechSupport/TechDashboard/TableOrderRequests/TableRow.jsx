@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const TableRow = ({ id, name, places, rooms, profilePicture }) => {
+const TableRow = ({ customerID, name, places, rooms, profilePicture }) => {
     return (
         <tr className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900">
             
@@ -20,7 +20,7 @@ const TableRow = ({ id, name, places, rooms, profilePicture }) => {
             </td>
             <td className="px-6 py-3 text-center">
                 {/* <a href="/tech/orderRequest" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a> */}
-                <Link to='/tech/orderRequest'><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>view</button></Link>
+                <Link to={`/tech/orderRequest/${customerID}`}><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>view</button></Link>
 
             </td>
         </tr>
