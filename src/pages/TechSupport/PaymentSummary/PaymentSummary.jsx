@@ -6,10 +6,16 @@ import PageContent from '../../../components/Wrappers/PageContent'
 import SelectedItem from './SelectedItem'
 import { Link } from 'react-router-dom'
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
-
+import { useSelector } from 'react-redux'
+import { selectCustomerCart } from '../../../redux/slices/techsupport/customerCartSlice'
 
 
 const PaymentSummary = () => {
+
+    const customerCartItems = useSelector(selectCustomerCart);
+    const totalSelectedItems = customerCartItems.length;
+
+
     return (
         <PageWrapper>
             <MainSidebar />
@@ -17,12 +23,16 @@ const PaymentSummary = () => {
                 <TopBar title={'Add Relay'} />
                 <ContentWrapper>
                     <div className="mb-8 border-b-[1px] border-[#707070]">
-                        <p className="text-xl font-bold pb-2">Selected 03 Items</p>
+                        <p className="text-xl font-bold pb-2">Selected {totalSelectedItems} Items</p>
                     </div>
 
                     <div className="selected-items h-[400px] overflow-y-scroll">
-                        <SelectedItem itemName={'Relay Kit (Large)'} itemPrice={'Rs. 2500.00'} place={'Home'} room={'Bedroom'} count={1} itemDevicePic={"https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg"} />
-                        <SelectedItem itemName={'Sensor Kit (Large)'} itemPrice={'Rs. 5000.00'} place={'Office'} room={'Kitchen'} count={1} itemDevicePic={"https://microchip.lk/wp-content/uploads/2019/05/37-sensor-in-kit.jpg"} />
+                        {
+                            customerCartItems.map((data) => {
+                                return <SelectedItem itemID={data.item_id} itemName={data.name} itemPrice={data.price} place={data.place_name} room={data.room_name} count={data.quantity} itemDevicePic={"https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg"} />
+                            })
+                        }
+
                     </div>
 
                     <div className="do-payment rounded-md bg-[#3F3F46] p-4 w-full text-center mt-5">

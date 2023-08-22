@@ -1,8 +1,19 @@
 import React from 'react'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+import { removeItems } from '../../../redux/slices/techsupport/customerCartSlice'
+import { useDispatch } from 'react-redux'
 
 
-const SelectedItem = ({ itemName, itemPrice, place, room, count, itemDevicePic }) => {
+const SelectedItem = ({ itemID, itemName, itemPrice, place, room, count, itemDevicePic }) => {
+
+    const dispatch = useDispatch();
+
+    const removeSelectedItems = (itemID) => {
+        dispatch(removeItems(itemID))
+    }
+
+
+
     return (
         <div className='one-item flex flex-row justify-around w-full mb-6'>
             <div className="image">
@@ -38,6 +49,11 @@ const SelectedItem = ({ itemName, itemPrice, place, room, count, itemDevicePic }
                     <button className='flex items-center justify-center'><AiOutlinePlus /></button>
                 </div>
             </div>
+
+            <div className="remove-items">
+                <button className='text-[#006DFF]' onClick={(e) => removeSelectedItems(itemID)}>Remove</button>
+            </div>
+
 
         </div>
     )

@@ -5,10 +5,13 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 
 
 const OrderRequest = () => {
+
+    const { customerID } = useParams();
+
     return (
         <PageWrapper>
             <MainSidebar />
@@ -50,7 +53,7 @@ const OrderRequest = () => {
                             <div className="flex justify-center mt-10">
                                 <button className='px-4 py-1 bg-red-700 rounded-lg mr-5'>Reject</button>
 
-                                <Link to="/tech/marketPlace">
+                                <Link to={`/tech/marketPlace/${customerID}`}>
                                     <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
                                 </Link>
                             </div>
