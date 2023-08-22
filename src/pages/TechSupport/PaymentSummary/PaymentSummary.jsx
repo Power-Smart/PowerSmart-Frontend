@@ -4,7 +4,7 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import SelectedItem from './SelectedItem'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate} from 'react-router-dom'
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import { useSelector } from 'react-redux'
 import { selectCustomerCart } from '../../../redux/slices/techsupport/customerCartSlice'
@@ -14,6 +14,17 @@ const PaymentSummary = () => {
 
     const customerCartItems = useSelector(selectCustomerCart);
     const totalSelectedItems = customerCartItems.length;
+    let totalItemPrice = 0;
+
+    customerCartItems.map((data) => {
+        return totalItemPrice = totalItemPrice + data.price;
+    })
+
+    const navigate = useNavigate();
+
+    const backMarketplace = () => {
+        navigate(-1)
+    }
 
 
     return (
@@ -38,10 +49,11 @@ const PaymentSummary = () => {
                     <div className="do-payment rounded-md bg-[#3F3F46] p-4 w-full text-center mt-5">
                         <div className="flex justify-end items-center">
                             <p className="text-xl font-bold mr-4">Total</p>
-                            <p className="text-xl font-bold pr-3">Rs. 7500.00</p>
+                            <p className="text-xl font-bold pr-3">Rs. {totalItemPrice}</p>
                         </div>
                         <div className="button-section flex justify-end align-middle mt-4">
-                            <button className='mx-2 px-4 py-2 bg-[#CE4444] rounded-md text-black w-fit font-bold'>Cancel</button>
+                            <button className='mx-2 px-4 py-2 bg-[#CE4444] rounded-md text-black w-fit font-bold' onClick={(e) => backMarketplace()}>Cancel</button>
+
                             <Link to="/tech/accessCusAccount">
                                 <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black w-fit font-bold'>Sent to customer</button>
                             </Link>
