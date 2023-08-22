@@ -13,7 +13,6 @@ const SelectedItem = ({ itemID, itemName, itemPrice, place, room, count, itemDev
     }
 
 
-
     return (
         <div className='one-item flex flex-row justify-around w-full mb-6'>
             <div className="image">
@@ -38,7 +37,7 @@ const SelectedItem = ({ itemID, itemName, itemPrice, place, room, count, itemDev
                 </div>
             </div>
 
-            <div className="select-item-count flex flex-row justify-between items-center w-20">
+            {/* <div className="select-item-count flex flex-row justify-between items-center w-20">
                 <div className="decrement border border-[#006DFF] rounded-md p-1">
                     <button className='flex items-center justify-center'><AiOutlineMinus /></button>
                 </div>
@@ -48,7 +47,7 @@ const SelectedItem = ({ itemID, itemName, itemPrice, place, room, count, itemDev
                 <div className="increment border border-[#006DFF] rounded-md p-1">
                     <button className='flex items-center justify-center'><AiOutlinePlus /></button>
                 </div>
-            </div>
+            </div> */}
 
             <div className="remove-items">
                 <button className='text-[#006DFF]' onClick={(e) => removeSelectedItems(itemID)}>Remove</button>
