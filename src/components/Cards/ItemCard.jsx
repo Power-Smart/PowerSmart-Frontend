@@ -3,7 +3,7 @@ import { Link,useParams } from "react-router-dom";
 import {BsCartPlus} from 'react-icons/bs'
 
 
-const ItemCard = ({ price, description, name, quantity, image, addDel = true }) => {
+const ItemCard = ({ item_id,price, description, name, quantity, image, addDel = true }) => {
 
   const { customerID } = useParams();
 
@@ -36,7 +36,7 @@ const ItemCard = ({ price, description, name, quantity, image, addDel = true }) 
         </button>
       </div>}
       {!addDel && <div className="flex justify-evenly items-center">
-        <Link to={`/tech/selectPlaceRoom/${customerID}`}>
+        <Link to={`/tech/selectPlaceRoom/${customerID}/${item_id}`}>
           <button className="px-4 py-1 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF] font-bold">
             <BsCartPlus className="inline-block mb-1 mr-2 font-bold text-xl"/>Add to Cart
           </button>

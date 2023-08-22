@@ -40,7 +40,7 @@ const techSupportRoute =
             element: <TechMarketPlace />,
         },
         {
-            path: `${techSupport}/selectPlaceRoom/:customerID`,
+            path: `${techSupport}/selectPlaceRoom/:customerID/:itemID`,
             element: <SelectPlaceRoom />,
         },
         {
