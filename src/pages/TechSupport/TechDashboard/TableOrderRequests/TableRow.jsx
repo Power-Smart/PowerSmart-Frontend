@@ -2,15 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const TableRow = ({ customer_id, num_of_places,num_of_rooms,name,num_of_devices,order_description, profilePicture }) => {
+const TableRow = ({ customer_id, num_of_places,num_of_rooms,name,num_of_devices,order_description, customerProfilePic }) => {
     return (
         <tr className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900">
             
             <td className="px-6 py-3 text-center font-bold text-white">
-                {customer_id}
+                {name}
             </td>
             <td className="px-6 py-3 text-center flex justify-center items-center">
-                <img className="w-10 h-10 rounded-full" src={profilePicture} alt="Jese image" />
+                <img className="w-10 h-10 rounded-full" src={customerProfilePic} alt="Jese image" />
             </td>
             <td className="px-6 py-3 text-center">
                 {num_of_rooms}
