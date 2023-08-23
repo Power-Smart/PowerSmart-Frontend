@@ -10,6 +10,7 @@ import techCustomersSlice from "./slices/techsupport/techCustomersSlice";
 import techPlacesSlice from "./slices/techsupport/techPlaceSlice";
 import marketPlaceSlice from "./slices/techsupport/marketPlaceSlice";
 import customerCartSlice from "./slices/techsupport/customerCartSlice";
+import customerOrderRequestSlice from "./slices/techsupport/customerOrderRequestSlice";
 
 
 export const store = configureStore({
@@ -23,5 +24,6 @@ export const store = configureStore({
         techPlaces: techPlacesSlice,
         marketPlace: marketPlaceSlice,
         customerCart: customerCartSlice,
+        customerOrderRequests: customerOrderRequestSlice,
     }
 });
