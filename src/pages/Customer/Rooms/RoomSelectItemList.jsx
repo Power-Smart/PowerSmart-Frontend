@@ -11,7 +11,7 @@ export const windows_type = [
         label: 'Triple',
         value: 'triple',
     },
-]       
+]
 
 
 export const active_status = [
@@ -38,4 +38,15 @@ export const room_type = [
         label: 'Kitchen',
         value: 'kitchen',
     },
+]
+
+export const relay_type = [
+    {
+        label: 'Large',
+        value: 'L',
+    },
+    {
+        label: 'Medium',
+        value: 'M',
+    }
 ]

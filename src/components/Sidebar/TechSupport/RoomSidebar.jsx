@@ -35,7 +35,7 @@ const RoomSidebar = ({ placeID, customerID }) => {
             <SidebarButton text="Device" toggle={toggle} link='/tech/place/rooms/devices'>
                 <MdElectricalServices />
             </SidebarButton> */}
-            <SidebarButton text="Relays" toggle={toggle} link='/tech/place/relays'>
+            <SidebarButton text="Relays" toggle={toggle} link={`/tech/${customerID}/place/${placeID}/relays`}>
                 <GiElectricalResistance className='text-xl font-bold' />
             </SidebarButton>
         </SidebarWrapper>
