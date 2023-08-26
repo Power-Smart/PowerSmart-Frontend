@@ -13,7 +13,7 @@ const TableOrderRequests = () => {
 
     useEffect(() => {
         dispatch(fetchCustomerOrderRequests());
-    }, [])
+    }, [dispatch])
 
 
     return (
@@ -33,6 +33,9 @@ const TableOrderRequests = () => {
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
                             Rooms
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-center">
+                            Devices
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
                             Action
