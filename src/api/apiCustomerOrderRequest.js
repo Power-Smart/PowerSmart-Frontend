@@ -9,3 +9,12 @@ export const getAllCustomerOrderRequestsApi = async () => {
     }
 };
 
+export const deleteCustomerOrderRequestApi = async (orderID) => {
+    try {
+        const response = await api.delete(`/customerOrderRequests/deleteOrder/${orderID}`);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+};
+

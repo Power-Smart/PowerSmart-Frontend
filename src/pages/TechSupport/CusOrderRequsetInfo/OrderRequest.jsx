@@ -8,7 +8,7 @@ import PageContent from '../../../components/Wrappers/PageContent';
 import { Link,useParams } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchCustomerOrderRequests, selectCustomerOrderRequests, selectCustomerOrderRequestsStatus } from '../../../redux/slices/techsupport/customerOrderRequestSlice';
+import { fetchCustomerOrderRequests, deleteCustomerOrderRequest,selectCustomerOrderRequests, selectCustomerOrderRequestsStatus } from '../../../redux/slices/techsupport/customerOrderRequestSlice';
 
 
 
@@ -18,7 +18,6 @@ const OrderRequest = () => {
     const dispatch = useDispatch();
     const customerOrderRequests = useSelector(selectCustomerOrderRequests);
 
-    console.log(orderID);
 
     useEffect(() => {
         dispatch(fetchCustomerOrderRequests());
@@ -26,6 +25,10 @@ const OrderRequest = () => {
 
 
     let particularOrder = customerOrderRequests.filter((order) => order.order_id == orderID);
+
+    const rejectOrderRequest = () => {
+        dispatch(deleteCustomerOrderRequest(orderID));
+    }
 
 
     return (
@@ -72,7 +75,7 @@ const OrderRequest = () => {
                             </div>
 
                             <div className="flex justify-center mt-10">
-                                <button className='px-4 py-1 bg-red-700 rounded-lg mr-5'>Reject</button>
+                                <button className='px-4 py-1 bg-red-700 rounded-lg mr-5' onClick={(e) => rejectOrderRequest()} >Reject</button>
 
                                 <Link to={`/tech/marketPlace/${orderID}`}>
                                     <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>

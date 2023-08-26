@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllCustomerOrderRequestsApi } from "../../../api/apiCustomerOrderRequest";
+import { getAllCustomerOrderRequestsApi , deleteCustomerOrderRequestApi} from "../../../api/apiCustomerOrderRequest";
 
 
 export const fetchCustomerOrderRequests = createAsyncThunk(
@@ -13,6 +13,20 @@ export const fetchCustomerOrderRequests = createAsyncThunk(
         }
     }
 );
+
+export const deleteCustomerOrderRequest = createAsyncThunk(
+    "customerOrderRequests/deleteCustomerOrderRequest",
+    async (orderID, thunkAPI) => {
+        try {
+            const response = await deleteCustomerOrderRequestApi(orderID);
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
+        }
+    }
+);
+
+
 
 const initialState = {
     customerOrderRequests: [],
@@ -34,6 +48,19 @@ export const customerOrderRequestSlice = createSlice({
                 state.customerOrderRequests = action.payload;
             })
             .addCase(fetchCustomerOrderRequests.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            .addCase(deleteCustomerOrderRequest.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(deleteCustomerOrderRequest.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.customerOrderRequests = state.customerOrderRequests.filter(
+                    (customerOrderRequest) => customerOrderRequest.order_id !== action.payload
+                );
+            })
+            .addCase(deleteCustomerOrderRequest.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });
