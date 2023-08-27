@@ -3,17 +3,20 @@ import { Switch } from 'antd';
 import DeviceIcon from '../smallComps/DeviceIcon.jsx';
 import { apiToggleDevice } from '../../api/apiDevices.js';
 
-const SwitchCard = ({ id, type, device, validity, schedule = null, status }) => {
-    const [toggle, setToggle] = useState(status);
+const SwitchCard = ({ id, type, device, validity, schedule = null, status, switch_toggle, setSwitches }) => {
     const [loading, setLoading] = useState((validity === "active_pending"));
     const deviceSwitch = async (state) => {
         setLoading(true);
         let res = await apiToggleDevice(id, state);
         if (res.data === "toggled") {
             setLoading(false);
-            setToggle(state);
+            setSwitches(prev => {
+                const temp = [...prev];
+                const index = temp.findIndex(switches => switches.id === id);
+                temp[index].status = state;
+                return temp;
+            });
         } else {
-            setToggle(!state);
             setLoading(false);
         }
     }
@@ -25,8 +28,8 @@ const SwitchCard = ({ id, type, device, validity, schedule = null, status }) => 
                 <Switch className='toggle-switch'
                     checkedChildren="on"
                     unCheckedChildren="Off"
-                    defaultChecked={toggle}
-                    checked={toggle}
+                    defaultChecked={switch_toggle.status}
+                    checked={switch_toggle.status}
                     loading={loading}
                     onChange={deviceSwitch} />
             </div>

@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import {BsCartPlus} from 'react-icons/bs'
 
 
-const ItemCard = ({ price, description, name, quantity, image, addDel = true }) => {
+const ItemCard = ({ item_id,price, description, name, quantity, image, addDel = true }) => {
+
+  const { customerID } = useParams();
+
   return (
     <div className="text-sm flex flex-col border-solid border border-secondaryBlue w-[200px] h-auto bg-[#1C1C2E] rounded-3xl shadow-md px-2 pb-5 m-5 justify-evenly">
       <div className="item-image rounded-es-3xl rounded-ee-3xl mx-auto bg-white">
@@ -33,7 +36,7 @@ const ItemCard = ({ price, description, name, quantity, image, addDel = true }) 
         </button>
       </div>}
       {!addDel && <div className="flex justify-evenly items-center">
-        <Link to='/tech/selectPlaceRoom'>
+        <Link to={`/tech/selectPlaceRoom/${customerID}/${item_id}`}>
           <button className="px-4 py-1 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF] font-bold">
             <BsCartPlus className="inline-block mb-1 mr-2 font-bold text-xl"/>Add to Cart
           </button>
