@@ -52,7 +52,9 @@ const ProfileComplete = () => {
                 <ContentWrapper>
                     <Form>
                         <FormTitle>Profile Complete</FormTitle>
-                        <ProfilePictureUpload />
+                        <div className="profile-picture flex justify-center items-center">
+                            <ProfilePictureUpload />
+                        </div>
                         <FormGroup>
                             <TextInput type='text' label='First Name' required={true} onChange={(e) => setProfileInfo({ ...profileInfo, firstName: e.target.value })} />
                         </FormGroup>

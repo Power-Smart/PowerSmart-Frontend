@@ -32,7 +32,7 @@ const techSupportRoute =
             element: <TechDashboard />,
         },
         {
-            path: `${techSupport}/orderRequest/:customerID`,
+            path: `${techSupport}/orderRequest/:orderID`,
             element: <OrderRequest />,
         },
         {
