@@ -21,7 +21,7 @@ const Places = () => {
   const techPlacesStatus = useSelector(selectTechPlacesStatus);
 
   useEffect(() => {
-    if (user.id && techPlacesStatus === 'idle') {
+    if (user.id) {
       dispatch(fetchData({ user_id: user.id, customer_id: customerID }));
     }
   }, [user, dispatch]);

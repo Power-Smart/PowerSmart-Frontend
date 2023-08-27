@@ -19,3 +19,18 @@ export const getRelayUnitsByPlace = async (user_id, place_id) => {
     const response = await api.get(`/assigns/relayunits/${user_id}/${place_id}`);
     return response;
 }
+
+export const addRelayUnitToPlace = async (user_id, place_id, data) => {
+    const response = await api.post(`/assigns/relayunits/${user_id}/${place_id}`, {
+        relayUnit: data
+    });
+    return response;
+}
+
+export const updateRelayUnit = async (user_id, place_id, relay_unit_id, data) => {
+    const response = await api.put(`/assigns/relayunits/${user_id}/${place_id}/${relay_unit_id}`, {
+        relayUnit: data
+    });
+    console.log(response);
+    return response;
+}

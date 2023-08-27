@@ -17,7 +17,7 @@ import AddRelay from '../pages/TechSupport/Relays/AddRelay';
 import PaymentSummary from '../pages/TechSupport/PaymentSummary/PaymentSummary';
 import Sensors from '../pages/TechSupport/Sensors/Sensors';
 import Chat from '../pages/TechSupport/Chat/Chat';
-
+import EditRelay from '../pages/TechSupport/Relays/EditRelay';
 
 
 const techSupport = "/tech";
@@ -70,6 +70,14 @@ const techSupportRoute =
         {
             path: `${techSupport}/:customerID/place/:placeID/relays`,
             element: <Relays />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/relays/add`,
+            element: <AddRelay />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/relays/update/:relayID`,
+            element: <EditRelay />,
         },
         {
             path: `${techSupport}/sensors`,

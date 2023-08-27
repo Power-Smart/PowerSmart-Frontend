@@ -1,67 +1,43 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import RelayCard from './RelayCard'
-import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
 import { Link, useParams } from 'react-router-dom'
 import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
-import { getRelayUnitsByPlace } from '../../../api/apiTechAssigns'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchRelays, selectRelays, selectRelaysStatus } from '../../../redux/slices/techsupport/relaySlice'
+import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 
-// const RelaySet = [
-//     {
-//         id: 1,
-//         type: '8 Relays',
-//         name: 'Relay 1',
-//         image: 'https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg'
-//     },
-//     {
-//         id: 2,
-//         type: '5 Relays',
-//         name: 'Relay 2',
-//         image: 'https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg'
-//     },
-//     {
-//         id: 3,
-//         type: '3 Relays',
-//         name: 'Relay 3',
-//         image: 'https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg'
-//     }
-// ];
 
 const Relays = () => {
-    const user = useSelector(state => state.user.user);
+    const dispatch = useDispatch();
     const { customerID, placeID } = useParams();
-    const [relayUnits, setRelayUnits] = useState([]);
-
-    const getRelayUnits = async () => {
-        const data = await getRelayUnitsByPlace(user.id, +placeID);
-        setRelayUnits(data.data);
-        console.log(data.data);
-    }
+    const user = useSelector(state => state.user.user);
+    const relayUnits = useSelector(selectRelays);
+    const relaysStatus = useSelector(selectRelaysStatus);
 
     useEffect(() => {
-        if (user && relayUnits.length === 0) {
-            getRelayUnits();
+        if (user.id) {
+            dispatch(fetchRelays({ userID: user.id, placeID }));
         }
-    }, [user]);
+    }, [user, dispatch]);
 
     return (
         <PageWrapper>
             <RoomSidebar customerID={customerID} placeID={placeID} />
             <PageContent>
-                <TopBar title={"Relays"} baclLink='' />
+                <TopBar title={"Relays"} baclLink={`/tech/customer/${customerID}`} />
                 <ContentWrapper>
                     <ButtonBar>
-                        <Link to={`/tech/addDevice`}>
+                        <Link to={`/tech/${customerID}/place/${placeID}/relays/add`}>
                             <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Relay</button>
                         </Link>
                     </ButtonBar>
                     <div className='flex flex-wrap'>
-                        {relayUnits.length > 0 ?
+                        {relayUnits.length > 0 &&
                             relayUnits.map((relay, index) => (
                                 <RelayCard
                                     key={index}
@@ -71,9 +47,10 @@ const Relays = () => {
                                     image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgVtrLNUoaXFIUW5kH5uP3pvEMuS0tlTAXRguMjbzxgwCkBbUYcObNusbfvJdgJE6W8QQ&usqp=CAU'
                                     description={relay.description}
                                 />
-                            )) :
-                            <h2 className=' text-center mx-auto'>No Relay Units to Display</h2>
+                            ))
                         }
+                        {relaysStatus === "idle" && <LoadingSpinner />}
+                        {relayUnits.length === 0 && <h2 className=' text-center mx-auto'>No Relay Units to Display</h2>}
                     </div>
                 </ContentWrapper>
             </PageContent>
