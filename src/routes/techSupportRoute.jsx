@@ -32,19 +32,19 @@ const techSupportRoute =
             element: <TechDashboard />,
         },
         {
-            path: `${techSupport}/orderRequest`,
+            path: `${techSupport}/orderRequest/:orderID`,
             element: <OrderRequest />,
         },
         {
-            path: `${techSupport}/marketPlace`,
+            path: `${techSupport}/marketPlace/:customerID`,
             element: <TechMarketPlace />,
         },
         {
-            path: `${techSupport}/selectPlaceRoom`,
+            path: `${techSupport}/selectPlaceRoom/:customerID/:itemID`,
             element: <SelectPlaceRoom />,
         },
         {
-            path: `${techSupport}/paymentSummary`,
+            path: `${techSupport}/paymentSummary/:customerID`,
             element: <PaymentSummary />
         },
         {
