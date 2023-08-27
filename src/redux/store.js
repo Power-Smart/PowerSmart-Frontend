@@ -11,6 +11,8 @@ import techPlacesSlice from "./slices/techsupport/techPlaceSlice";
 import marketPlaceSlice from "./slices/techsupport/marketPlaceSlice";
 import customerCartSlice from "./slices/techsupport/customerCartSlice";
 import customerOrderRequestSlice from "./slices/techsupport/customerOrderRequestSlice";
+import techRatingByCustomerSlice from "./slices/techsupport/techRatingByCustomerSlice";
+import complaintHandlingSlice from "./slices/techsupport/complaintHandlingSlice";
 
 
 export const store = configureStore({
@@ -25,5 +27,7 @@ export const store = configureStore({
         marketPlace: marketPlaceSlice,
         customerCart: customerCartSlice,
         customerOrderRequests: customerOrderRequestSlice,
+        techSupportRatingByCustomer: techRatingByCustomerSlice,
+        complaintHandling: complaintHandlingSlice,
     }
 });
