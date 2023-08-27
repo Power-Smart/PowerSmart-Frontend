@@ -23,7 +23,7 @@ const Relays = () => {
         if (user.id) {
             dispatch(fetchRelays({ userID: user.id, placeID }));
         }
-    }, [user, dispatch]);
+    }, [user, dispatch, relayUnits]);
 
     return (
         <PageWrapper>

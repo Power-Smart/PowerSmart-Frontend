@@ -31,6 +31,10 @@ export const updateRelayUnit = async (user_id, place_id, relay_unit_id, data) =>
     const response = await api.put(`/assigns/relayunits/${user_id}/${place_id}/${relay_unit_id}`, {
         relayUnit: data
     });
-    console.log(response);
+    return response;
+}
+
+export const deleteRelayUnit = async (user_id, place_id, relay_unit_id) => {
+    const response = await api.delete(`/assigns/relayunits/${user_id}/${place_id}/${relay_unit_id}`);
     return response;
 }

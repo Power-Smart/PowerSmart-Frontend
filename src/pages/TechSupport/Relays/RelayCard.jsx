@@ -1,8 +1,17 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
+import { deleteRelay } from '../../../redux/slices/techsupport/relaySlice';
 
 const RelayCard = ({ id, name, type, image, description }) => {
     const { customerID, placeID } = useParams();
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user)
+    const deleteRelayUnit = (e) => {
+        e.preventDefault();
+        if (user.id) dispatch(deleteRelay({ userID: user.id, placeID, relayID: id }))
+    }
+
     return (
         <div className="text-sm flex flex-col border-solid border border-secondaryBlue w-[200px] h-auto bg-[#1C1C2E] rounded-3xl shadow-md px-2 pb-5 m-5 justify-evenly">
             <div className="item-image rounded-es-3xl rounded-ee-3xl mx-auto bg-white">
@@ -25,7 +34,7 @@ const RelayCard = ({ id, name, type, image, description }) => {
                         Edit
                     </button>
                 </Link>
-                <button className="px-4 py-1 w-20 text-sm bg-secondaryBtn rounded-2xl text-black bg-[#FF8383]">
+                <button className="px-4 py-1 w-20 text-sm bg-secondaryBtn rounded-2xl text-black bg-[#FF8383]" onClick={deleteRelayUnit}>
                     Delete
                 </button>
             </div>
