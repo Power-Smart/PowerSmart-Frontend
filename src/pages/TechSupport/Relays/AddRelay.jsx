@@ -8,9 +8,10 @@ import Form from '../../../components/Forms/Form'
 import FormGroup from '../../../components/Forms/FormGroup'
 import TextInput from '../../../components/Forms/TextInput'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
+import SelectInput from '../../../components/Forms/SelectInput'
 import FormDropdown from '../../../components/Forms/FormDropdown'
 import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
-
+import { relay_type } from '../../Customer/Rooms/RoomSelectItemList'
 
 
 const AddRelay = () => {
@@ -24,7 +25,7 @@ const AddRelay = () => {
         e.preventDefault()
         alert('Form Reset')
     }
-    
+
 
     return (
         <PageWrapper>
@@ -33,14 +34,17 @@ const AddRelay = () => {
                 <TopBar title={'Add Relay'} />
                 <ContentWrapper>
                     <Form>
+                        {/* <FormGroup>
+                            <TextInput type='text' label='Relay ID' required={true} />
+                        </FormGroup> */}
                         <FormGroup>
                             <TextInput type='text' label='Name' required={true} />
                         </FormGroup>
                         <FormGroup>
-                            <TextInput type='text' label='Relay ID' required={true} />
+                            <TextInput type='text' label='Description' required={true} />
                         </FormGroup>
                         <FormGroup>
-                            <TextInput type='text' label='Wattage' required={true} />
+                            <SelectInput required={true} categories={relay_type} />
                         </FormGroup>
                         <FormGroup>
                             <TextInput type='text' label='Sample Input' required={true} />

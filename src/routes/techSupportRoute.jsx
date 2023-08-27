@@ -68,7 +68,7 @@ const techSupportRoute =
             element: <AddDevice />,
         },
         {
-            path: `${techSupport}/place/relays`,
+            path: `${techSupport}/:customerID/place/:placeID/relays`,
             element: <Relays />,
         },
         {
