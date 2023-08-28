@@ -13,6 +13,8 @@ import customerCartSlice from "./slices/techsupport/customerCartSlice";
 import customerOrderRequestSlice from "./slices/techsupport/customerOrderRequestSlice";
 import techRatingByCustomerSlice from "./slices/techsupport/techRatingByCustomerSlice";
 import complaintHandlingSlice from "./slices/techsupport/complaintHandlingSlice";
+import customerServiceRequestSlice from "./slices/techsupport/customerServiceRequestSlice";
+
 
 
 export const store = configureStore({
@@ -29,5 +31,6 @@ export const store = configureStore({
         customerOrderRequests: customerOrderRequestSlice,
         techSupportRatingByCustomer: techRatingByCustomerSlice,
         complaintHandling: complaintHandlingSlice,
+        customerServiceRequest: customerServiceRequestSlice,
     }
 });
