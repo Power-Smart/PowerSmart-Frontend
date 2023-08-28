@@ -11,6 +11,13 @@ import TableOrderStatus from './TableOrderStatus/TableOrderStatus'
 import FeedbackSection from './FeedbackSection'
 
 
+
+import Calendar from '../../../components/taskCalendar/Calendar'
+import Header from '../../../components/taskCalendar/Header'
+import TaskForm from '../../../components/taskCalendar/TaskForm'
+import CalendarState from '../../../components/context/CalendarContext'
+
+
 const TechDashboard = () => {
     return (
         <PageWrapper>
@@ -18,26 +25,13 @@ const TechDashboard = () => {
             <PageContent>
                 {/* <TopBar /> */}
                 <ContentWrapper>
-                    <div className='grid grid-cols-[78%,22%] gap-[40px]'>
-                        <div className='flex flex-col grow'>
-                            <div className='flex flex-col '>
-                                <h1 className='text-lg font-semibold mb-2'>Request Order</h1>
-                                <TableOrderRequests />
-                            </div>
-                            <div className='flex flex-col mt-4'>
-                                <h1 className='text-lg font-semibold mb-2'>Order Status</h1>
-                                <TableOrderStatus />
-                            </div>
-                        </div>
-                        <div className='flex flex-col mt-4'>
-                            <div className='flex justify-around items-center flex-col'>
-                                <DashboardCard title='Order Request' number={12} icon={<TbDeviceSdCard className='text-2xl' />} />
-                                <DashboardCard title='Product Request' number={12} icon={<TbDeviceSdCard className='text-2xl' />} />
-                                <DashboardCard title='Service Request' number={12} icon={<TbDeviceSdCard className='text-2xl' />} />
-                            </div>
-                            <h1 className='text-base text-center font-semibold mb-2 mt-7'>Customer Feedback</h1>
-                            <FeedbackSection />
-                        </div>
+                    <div className="container">
+                        <CalendarState>
+                            <Header />
+                            <Calendar />
+                            <TaskForm />
+                        </CalendarState>
+                        <a href="https://github.com/sergiss/task-calendar" target="_blank"><i className="fa">&#xf09b;</i> Source Code </a>
                     </div>
                 </ContentWrapper>
             </PageContent>
