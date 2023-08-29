@@ -62,7 +62,7 @@ const Rooms = () => {
                     <div className='flex flex-wrap px-8 py-2 justify-center'>
                         {/* Cards */}
                         {rooms.length > 0 ?
-                            rooms.map((data, index) => (<RoomCard isTechSupport={true} isCustomer={false} key={index} {...data} />))
+                            rooms.map((data, index) => (<RoomCard customerID={customerID} isTechSupport={true} isCustomer={false} key={index} {...data} />))
                             : "No rooms to access"}
                     </div>
 

@@ -6,7 +6,7 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import DeviceCard from './DeviceCard'
 import { Link, useParams } from 'react-router-dom'
-import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
+import InsideRoomSidebar from '../../../components/Sidebar/TechSupport/InsideRoomSidebar'
 
 
 const RelaySet = [
@@ -33,11 +33,12 @@ const RelaySet = [
 
 
 const Devices = () => {
+    const { customerID, placeID, roomID } = useParams();
     return (
         <PageWrapper>
-            <RoomSidebar />
+            <InsideRoomSidebar customerID={customerID} placeID={placeID} roomID={roomID} />
             <PageContent>
-                <TopBar />
+                <TopBar title={"Room Devices"} />
                 <ContentWrapper>
                     <ButtonBar>
                         <Link to={`/tech/addDevice`}>

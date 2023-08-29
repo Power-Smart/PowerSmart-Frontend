@@ -96,7 +96,7 @@ const techSupportRoute =
             element: <Rooms />,
         },
         {
-            path: `${techSupport}/place/rooms/devices`,
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices`,
             element: <Devices />,
         },
         {
