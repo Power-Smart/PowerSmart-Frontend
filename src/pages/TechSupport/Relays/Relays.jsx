@@ -23,7 +23,7 @@ const Relays = () => {
         if (user.id) {
             dispatch(fetchRelays({ userID: user.id, placeID }));
         }
-    }, [user, dispatch, relayUnits]);
+    }, [user, dispatch]);
 
     return (
         <PageWrapper>
@@ -50,7 +50,7 @@ const Relays = () => {
                             ))
                         }
                         {relaysStatus === "idle" && <LoadingSpinner />}
-                        {relayUnits.length === 0 && <h2 className=' text-center mx-auto'>No Relay Units to Display</h2>}
+                        {relayUnits.length === 0 && <h2 className=' text-center mx-auto'>No Relays<br /> <nav className='text-gray-500'>click 'Add Relay' to add a relay</nav></h2>}
                     </div>
                 </ContentWrapper>
             </PageContent>

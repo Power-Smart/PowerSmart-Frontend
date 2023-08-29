@@ -39,14 +39,3 @@ export const room_type = [
         value: 'kitchen',
     },
 ]
-
-export const relay_type = [
-    {
-        label: 'Medium',
-        value: 'M',
-    },
-    {
-        label: 'Large',
-        value: 'L',
-    },
-]

@@ -9,11 +9,11 @@ import FormGroup from '../../../components/Forms/FormGroup'
 import TextInput from '../../../components/Forms/TextInput'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
 import SelectInput from '../../../components/Forms/SelectInput'
-import { relay_type } from '../../Customer/Rooms/RoomSelectItemList'
 import { useParams, useNavigate } from 'react-router-dom'
 import { addRelayUnitToPlace } from '../../../api/apiTechAssigns'
 import { useDispatch, useSelector } from 'react-redux'
 import { addRelay, selectRelays, selectRelaysStatus } from '../../../redux/slices/techsupport/relaySlice'
+import { relay_types } from '../data'
 
 const AddRelay = () => {
     const { customerID, placeID } = useParams();
@@ -71,7 +71,7 @@ const AddRelay = () => {
                             <TextInput type='text' label='Description' required={true} value={data.description} onChange={(e) => setData({ ...data, description: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={relay_type} ref={categoryRef} value={categoryRef.current} onChange={(e) => { categoryRef.current = e.target.value; console.log(categoryRef.current) }} />
+                            <SelectInput required={true} categories={relay_types} ref={categoryRef} value={categoryRef.current} onChange={(e) => { categoryRef.current = e.target.value }} />
                         </FormGroup>
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
                             <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Add'} onClick={handleSubmit} />
