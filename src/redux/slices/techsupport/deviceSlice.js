@@ -1,11 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+    getDevicesByRoom,
+    addDeviceToRoom,
+    updateDeviceToRoom,
+    deleteDevicetoRoom
+} from "../../../api/apiTechAssigns";
 
 export const fetchDevices = createAsyncThunk(
     "devices/fetchDevices",
     async (params, thunkAPI) => {
         try {
-            // const response = await getDeviceUnitsByPlace(params.userID, params.placeID);
-            // return response.data;
+            const response = await getDevicesByRoom(params.userID, params.placeID, params.roomID);
+            return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
         }
@@ -16,13 +22,13 @@ export const addDevice = createAsyncThunk(
     "devices/addDevice",
     async (params, thunkAPI) => {
         try {
-            // const response = await addDeviceUnitToPlace(params.userID, params.placeID, params.data);
-            // if (response.status === 200) {
-            //     return response.data;
-            // }
-            // else {
-            //     return thunkAPI.rejectWithValue({ error: response.data });
-            // }
+            const response = await addDeviceToRoom(params.userID, params.placeID, params.roomID, params.data);
+            if (response.status === 200) {
+                return response.data;
+            }
+            else {
+                return thunkAPI.rejectWithValue({ error: response.data });
+            }
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
         }
@@ -33,13 +39,13 @@ export const updateDevice = createAsyncThunk(
     "devices/updateDevice",
     async (params, thunkAPI) => {
         try {
-            // const response = await updateDeviceUnit(params.userID, params.placeID, params.relayID, params.data);
-            // if (response.status === 200) {
-            //     return response.data;
-            // }
-            // else {
-            //     return thunkAPI.rejectWithValue({ error: response.data });
-            // }
+            const response = await updateDeviceToRoom(params.userID, params.placeID, params.roomID, params.deviceID, params.data);
+            if (response.status === 200) {
+                return response.data;
+            }
+            else {
+                return thunkAPI.rejectWithValue({ error: response.data });
+            }
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
         }
@@ -50,12 +56,12 @@ export const deleteDevice = createAsyncThunk(
     "devices/deleteDevice",
     async (params, thunkAPI) => {
         try {
-            // const response = await deleteDeviceUnit(params.userID, params.placeID, params.relayID);
-            // if (response.status === 204) {
-            //     return response.data;
-            // } else {
-            //     return thunkAPI.rejectWithValue({ error: response.data });
-            // }
+            const response = await deleteDevicetoRoom(params.userID, params.placeID, params.roomID, params.deviceID);
+            if (response.status === 204) {
+                return response.data;
+            } else {
+                return thunkAPI.rejectWithValue({ error: response.data });
+            }
         }
         catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });

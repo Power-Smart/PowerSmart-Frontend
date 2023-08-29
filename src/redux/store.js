@@ -12,6 +12,7 @@ import marketPlaceSlice from "./slices/techsupport/marketPlaceSlice";
 import customerCartSlice from "./slices/techsupport/customerCartSlice";
 import customerOrderRequestSlice from "./slices/techsupport/customerOrderRequestSlice";
 import relaySlice from "./slices/techsupport/relaySlice";
+import deviceSlice from "./slices/techsupport/deviceSlice";
 
 
 export const store = configureStore({
@@ -27,5 +28,6 @@ export const store = configureStore({
         customerCart: customerCartSlice,
         customerOrderRequests: customerOrderRequestSlice,
         relays: relaySlice,
+        devices: deviceSlice
     }
 });

@@ -100,6 +100,10 @@ const techSupportRoute =
             element: <Devices />,
         },
         {
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices/add`,
+            element: <AddDevice />,
+        },
+        {
             path: `${techSupport}/chat`,
             element: <Chat />,
         },

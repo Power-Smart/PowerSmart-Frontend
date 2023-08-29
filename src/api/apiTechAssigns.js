@@ -51,14 +51,14 @@ export const addDeviceToRoom = async (user_id, place_id, room_id, data) => {
     return response;
 }
 
-export const updateDevice = async (user_id, place_id, room_id, device_id, data) => {
+export const updateDeviceToRoom = async (user_id, place_id, room_id, device_id, data) => {
     const response = await api.put(`/assigns/devices/${user_id}/${place_id}/${room_id}/${device_id}`, {
         device: data
     });
     return response;
 }
 
-export const deleteDevice = async (user_id, place_id, room_id, device_id) => {
+export const deleteDevicetoRoom = async (user_id, place_id, room_id, device_id) => {
     const response = await api.delete(`/assigns/devices/${user_id}/${place_id}/${room_id}/${device_id}`);
     return response;
 }
