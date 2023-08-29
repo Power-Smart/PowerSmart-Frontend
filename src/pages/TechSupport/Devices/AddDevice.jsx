@@ -7,7 +7,6 @@ import Form from '../../../components/Forms/Form'
 import FormGroup from '../../../components/Forms/FormGroup'
 import TextInput from '../../../components/Forms/TextInput'
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
-import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import SelectInput from '../../../components/Forms/SelectInput'
 import { selectRelays, fetchRelays } from '../../../redux/slices/techsupport/relaySlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -39,8 +38,8 @@ const AddDevice = () => {
         if (user.id) {
             dispatch(fetchRelays({ userID: user.id, placeID }));
         }
-        relayRef.current = relayObj[0].value;
-        typeRef.current = device_types[0].value;
+        relayRef.current = relayObj[0]?.value;
+        typeRef.current = device_types[0]?.value;
     }, [user, dispatch]);
 
     const handleSubmit = (e) => {
