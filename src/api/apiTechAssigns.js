@@ -58,7 +58,7 @@ export const updateDeviceToRoom = async (user_id, place_id, room_id, device_id, 
     return response;
 }
 
-export const deleteDevicetoRoom = async (user_id, place_id, room_id, device_id) => {
+export const deleteDeviceFromRoom = async (user_id, place_id, room_id, device_id) => {
     const response = await api.delete(`/assigns/devices/${user_id}/${place_id}/${room_id}/${device_id}`);
     return response;
 }

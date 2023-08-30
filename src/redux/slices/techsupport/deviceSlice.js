@@ -3,7 +3,7 @@ import {
     getDevicesByRoom,
     addDeviceToRoom,
     updateDeviceToRoom,
-    deleteDevicetoRoom
+    deleteDeviceFromRoom
 } from "../../../api/apiTechAssigns";
 
 export const fetchDevices = createAsyncThunk(
@@ -56,8 +56,8 @@ export const deleteDevice = createAsyncThunk(
     "devices/deleteDevice",
     async (params, thunkAPI) => {
         try {
-            const response = await deleteDevicetoRoom(params.userID, params.placeID, params.roomID, params.deviceID);
-            if (response.status === 204) {
+            const response = await deleteDeviceFromRoom(params.userID, params.placeID, params.roomID, params.deviceID);
+            if (response.status === 200) {
                 return response.data;
             } else {
                 return thunkAPI.rejectWithValue({ error: response.data });
@@ -119,7 +119,7 @@ export const deviceSlice = createSlice({
                 state.error = action.error.message;
             })
             .addCase(deleteDevice.fulfilled, (state, action) => {
-                state.devices = state.devices.filter(device => { });
+                state.devices = state.devices.filter(device => device.device_id !== +action.payload.device_id);
                 state.status = "succeeded";
             });
     }

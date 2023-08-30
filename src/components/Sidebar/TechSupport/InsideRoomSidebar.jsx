@@ -15,7 +15,7 @@ const InsideRoomSidebar = ({ placeID, roomID, customerID }) => {
             <SidebarButton text="Device" toggle={toggle} link={`/tech/${customerID}/place/${placeID}/room/${roomID}/devices`}>
                 <MdElectricalServices />
             </SidebarButton>
-            <SidebarButton text="Sensors" toggle={toggle} link='/tech/sensors'>
+            <SidebarButton text="Sensor Unit" toggle={toggle} link={`/tech/${customerID}/place/${placeID}/room/${roomID}/sensor`}>
                 <MdSensors />
             </SidebarButton>
         </SidebarWrapper>

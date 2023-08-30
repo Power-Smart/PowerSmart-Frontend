@@ -30,19 +30,20 @@ const Devices = () => {
                 <TopBar title={"Room Devices"} baclLink={`/tech/${customerID}/place/${placeID}/rooms`} />
                 <ContentWrapper>
                     <ButtonBar>
-                        <Link to={`/tech/${customerID}/place/${placeID}/room/${roomID}/devices/add`}>
+                        <Link to="add">
                             <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Device</button>
                         </Link>
                     </ButtonBar>
                     <div className='flex flex-wrap'>
                         {
-                            devices.map((device) => (
+                            devices.map((device, index) => (
                                 <DeviceCard
-                                    key={device.id}
-                                    id={device.id}
-                                    walt={device.walt}
+                                    key={index}
+                                    id={device.device_id}
                                     deviceName={device.name}
-                                    image={device.image}
+                                    type={device.type}
+                                    socket={device.socket}
+                                    relay={device.relay_unit_id}
                                 />
                             ))
                         }

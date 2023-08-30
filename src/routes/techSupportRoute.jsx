@@ -80,10 +80,6 @@ const techSupportRoute =
             element: <EditRelay />,
         },
         {
-            path: `${techSupport}/sensors`,
-            element: <Sensors />,
-        },
-        {
             path: `${techSupport}/addRelays`,
             element: <AddRelay />,
         },
@@ -98,6 +94,10 @@ const techSupportRoute =
         {
             path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices`,
             element: <Devices />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/sensor`,
+            element: <Sensors />,
         },
         {
             path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices/add`,

@@ -6,7 +6,8 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import SensorCard from './SensorCard'
 import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import InsideRoomSidebar from '../../../components/Sidebar/TechSupport/InsideRoomSidebar'
 
 
 const Sensorset = [
@@ -32,9 +33,10 @@ const Sensorset = [
 
 
 const Sensors = () => {
+    const { customerID, placeID, roomID } = useParams();
     return (
         <PageWrapper>
-            <RoomSidebar />
+            <InsideRoomSidebar customerID={customerID} placeID={placeID} roomID={roomID} />
             <PageContent>
                 <TopBar />
                 <ContentWrapper>

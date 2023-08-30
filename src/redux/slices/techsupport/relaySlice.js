@@ -52,7 +52,7 @@ export const deleteRelay = createAsyncThunk(
     async (params, thunkAPI) => {
         try {
             const response = await deleteRelayUnit(params.userID, params.placeID, params.relayID);
-            if (response.status === 204) {
+            if (response.status === 200) {
                 return response.data;
             } else {
                 return thunkAPI.rejectWithValue({ error: response.data });
