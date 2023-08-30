@@ -17,18 +17,6 @@ const Sensorset = [
         name: 'Sensors 1',
         image: 'https://static-01.daraz.lk/p/1e82dbf5a3a7028ff75b5575988d4635.jpg'
     },
-    {
-        id: 2,
-        type: '5 Sensors',
-        name: 'Sensors 2',
-        image: 'https://nilambaraelectronics.com/wp-content/uploads/2019/09/dht-11-humidity-sensor-500x500.jpg'
-    },
-    {
-        id: 3,
-        type: '8 Sensors',
-        name: 'Sensors 3',
-        image: 'https://www.heelectronicslk.com/wp-content/uploads/2021/06/nodemcu-esp8266-cp2102.jpg'
-    }
 ];
 
 
@@ -38,11 +26,11 @@ const Sensors = () => {
         <PageWrapper>
             <InsideRoomSidebar customerID={customerID} placeID={placeID} roomID={roomID} />
             <PageContent>
-                <TopBar />
+                <TopBar title={`Sensor Unit - Room ${roomID}`} baclLink={`/tech/${customerID}/place/${placeID}/rooms`} />
                 <ContentWrapper>
                     <ButtonBar>
                         <Link to={`#`}>
-                            <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Sensors</button>
+                            {/* <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Sensors</button> */}
                         </Link>
                     </ButtonBar>
                     <div className='flex flex-wrap'>
