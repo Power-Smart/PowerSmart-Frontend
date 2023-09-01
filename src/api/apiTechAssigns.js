@@ -62,3 +62,20 @@ export const deleteDeviceFromRoom = async (user_id, place_id, room_id, device_id
     const response = await api.delete(`/assigns/devices/${user_id}/${place_id}/${room_id}/${device_id}`);
     return response;
 }
+
+export const getSensorUnitOfRoom = async (user_id, place_id, room_id) => {
+    const response = await api.get(`/assigns/sensorunit/${user_id}/${place_id}/${room_id}`);
+    return response;
+}
+
+export const updateSensorUnit = async (room_id, sensor_unit_id, data) => {
+    const response = await api.put(`/assigns/sensorunit/${room_id}/${sensor_unit_id}`, {
+        sensorUnit: data
+    });
+    return response;
+}
+
+export const getSensorLogs = async (sensor_unit_id, no_of_rows) => {
+    const response = await api.get(`/assigns/sensorunit/logs/${sensor_unit_id}/${no_of_rows}`);
+    return response;
+}
