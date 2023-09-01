@@ -10,16 +10,6 @@ import { Link, useParams } from 'react-router-dom'
 import InsideRoomSidebar from '../../../components/Sidebar/TechSupport/InsideRoomSidebar'
 
 
-const Sensorset = [
-    {
-        id: 1,
-        type: '8 Sensors',
-        name: 'Sensors 1',
-        image: 'https://static-01.daraz.lk/p/1e82dbf5a3a7028ff75b5575988d4635.jpg'
-    },
-];
-
-
 const Sensors = () => {
     const { customerID, placeID, roomID } = useParams();
     return (
@@ -34,17 +24,11 @@ const Sensors = () => {
                         </Link>
                     </ButtonBar>
                     <div className='flex flex-wrap'>
-                        {
-                            Sensorset.map((Sensors) => (
-                                <SensorCard
-                                    key={Sensors.id}
-                                    id={Sensors.id}
-                                    type={Sensors.type}
-                                    name={Sensors.name}
-                                    image={Sensors.image}
-                                />
-                            ))
-                        }
+                        <SensorCard
+                            customerID={customerID}
+                            placeID={placeID}
+                            roomID={roomID}
+                        />
                     </div>
                 </ContentWrapper>
             </PageContent>

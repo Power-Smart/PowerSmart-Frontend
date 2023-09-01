@@ -1,11 +1,11 @@
 import React from 'react'
 
-const SensorDataRow = ({ id, co2_level, hummidity_level, temperature, light_intensity, pir_reading, createdAt }) => {
+const SensorDataRow = ({ id, co2_level, hummidity_level, temperature, light_intensity, pir_reading, updatedAt }) => {
     return (
         <tr className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900 text-center">
 
             <td className="px-6 py-4">
-                {createdAt}
+                {updatedAt}
             </td>
             <td className="px-6 py-4">
                 {co2_level}

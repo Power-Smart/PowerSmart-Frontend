@@ -1,26 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SensorDataRow from './SensorDataRow';
-import { IoSearchCircle } from 'react-icons/io5'
+import { getSensorLogs } from '../../../api/apiTechAssigns';
+import { AiOutlineSync } from "react-icons/ai";
 
+const SensorData = ({ placeId, roomID, sensor_unit_id }) => {
+    const [sensorUnitData, setSensorUnitData] = useState([]);
+    const [rows, setRows] = useState(5);
 
-const dataset = [
-    {
-        id: 1,
-        co2_level: 200,
-        hummidity_level: 50,
-        temperature: 30,
-        light_intensity: 2,
-        pir_reading: 'true',
-        createdAt: '2021-08-01 12:00:00'
+    const getSensorUnitData = async (rows = 5) => {
+        const data = await getSensorLogs(sensor_unit_id, rows);
+        console.log(data.data);
+        setSensorUnitData(data.data);
     }
-];
 
+    useEffect(() => {
+        if (sensorUnitData.length <= 0)
+            getSensorUnitData();
+    }, []);
 
-const SensorData = () => {
     return (
 
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-12 px-8">
-
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-5 px-8">
+            <div className='right-2 top-2 flex justify-between'>
+                <div className='flex items-center'>
+                    No of rows :
+                    <select className='bg-slate-800 p-1 mx-3' onChange={(e) => { getSensorUnitData(+e.target.value); setRows(+e.target.value) }}>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                    </select>
+                </div>
+                <button className='text-slate-50 text-xs py-2 px-2 rounded-lg flex items-center' onClick={(e) => getSensorUnitData(rows)}>
+                    <AiOutlineSync className='mx-1' /> Refresh
+                </button>
+            </div>
             <table className="w-full text-sm text-left text-gray-500">
                 <thead className="text-xs text-gray-700 uppercase ">
                     <tr className='text-center'>
@@ -46,7 +59,7 @@ const SensorData = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {dataset.map((data) => <SensorDataRow {...data} />)}
+                    {sensorUnitData.map((row) => <SensorDataRow {...row} />)}
                 </tbody>
             </table>
         </div>
