@@ -7,7 +7,7 @@ import { FaUsers } from 'react-icons/fa'
 const PlaceCarousel = ({ place_id, rooms = [], isActive }) => {
     console.log(place_id, rooms);
     return (
-        <Carousel cols={2} rows={1} gap={10} showDots>
+        <Carousel cols={rooms.length === 0 ? 1 : 2} rows={1} gap={10} showDots={rooms.length === 0 ? false : true}>
             {rooms.length > 0 ? rooms.map((room, index) => (
                 room?.sensor_unit_id ? <Carousel.Item key={index}>
                     <div className="room">
@@ -26,10 +26,10 @@ const PlaceCarousel = ({ place_id, rooms = [], isActive }) => {
                             <div className="status flex justify-between">
                                 <div className="image flex items-center">
                                     <HiOutlineLightBulb className="text-2sm" />
-                                    <h1 className="text-2sm ml-1">{room.light_intensity}</h1>
+                                    <h1 className="text-2sm ml-1">light_intensity</h1>
                                 </div>
                                 <div className="text">
-                                    <h1 className="text-2sm">30%</h1>
+                                    <h1 className="text-2sm">{room.light_intensity}%</h1>
                                 </div>
                             </div>
 
@@ -70,7 +70,7 @@ const PlaceCarousel = ({ place_id, rooms = [], isActive }) => {
                     </Carousel.Item>
             )) :
                 <Carousel.Item>
-                    <div className="room w-full">
+                    <div className="room text-center mx-5">
                         <h1>{isActive ? "No Rooms Available" : "Not an Active Place"}</h1>
                     </div>
                 </Carousel.Item>
