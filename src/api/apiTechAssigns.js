@@ -79,3 +79,8 @@ export const getSensorLogs = async (sensor_unit_id, no_of_rows) => {
     const response = await api.get(`/assigns/sensorunit/logs/${sensor_unit_id}/${no_of_rows}`);
     return response;
 }
+
+export const getAvailableUnitsCount = async (user_id, type) => {
+    const response = await api.get(`/assigns/count/${user_id}/${type}`);
+    return response;
+}

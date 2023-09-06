@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
@@ -10,6 +10,8 @@ import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRelays, selectRelays, selectRelaysStatus } from '../../../redux/slices/techsupport/relaySlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
+import { getAvailableUnitsCount } from '../../../api/apiTechAssigns'
+import { data } from 'autoprefixer'
 
 
 const Relays = () => {
@@ -18,6 +20,19 @@ const Relays = () => {
     const user = useSelector(state => state.user.user);
     const relayUnits = useSelector(selectRelays);
     const relaysStatus = useSelector(selectRelaysStatus);
+    const [avilUnitCount, setAvilUnitCount] = useState(0);
+
+    useEffect(() => {
+        if (user) {
+            getAvailableUnitsCount(customerID, "relay")
+                .then(res => {
+                    if (res.status === 200) {
+                        setAvilUnitCount(res.data.count);
+                    }
+                });
+        }
+        console.log(avilUnitCount);
+    }, [user]);
 
     useEffect(() => {
         if (user.id) {
@@ -32,9 +47,9 @@ const Relays = () => {
                 <TopBar title={"Relays"} baclLink={`/tech/customer/${customerID}`} />
                 <ContentWrapper>
                     <ButtonBar>
-                        <Link to={`/tech/${customerID}/place/${placeID}/relays/add`}>
+                        {avilUnitCount > 0 && <Link to={`/tech/${customerID}/place/${placeID}/relays/add`}>
                             <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Relay</button>
-                        </Link>
+                        </Link>}
                     </ButtonBar>
                     <div className='flex flex-wrap'>
                         {relayUnits.length > 0 &&
