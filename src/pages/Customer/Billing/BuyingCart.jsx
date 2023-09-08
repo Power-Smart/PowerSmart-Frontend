@@ -9,6 +9,7 @@ import { selectOrders, fetchOrder, selectOrderStatus } from '../../../redux/slic
 import { selectPlaces, fetchPlaces, selectPlacesStatus } from '../../../redux/slices/placesSlice'
 import { useEffect, useState } from 'react'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
+import CheckoutButton from '../../../components/smallComps/CheckoutButton'
 
 const dataSet = [
     {
@@ -91,7 +92,8 @@ const BuyingCart = () => {
                             </div>}
                         {ordersStatus === 'succeeded' && groupedOrders &&
                             <div className='flex flex-end w-4/5 justify-end my-4'>
-                                <button className='px-8 py-1 bg-[#83BCFF] rounded-md text-black'>Pay</button>
+                                <CheckoutButton userID={user.id} orderID={1} total={totals ? Object.keys(totals).reduce((acc, key) => acc + totals[key], 0).toFixed(2) : 0} />
+                                {/* <button className='px-8 py-1 bg-[#83BCFF] rounded-md text-black'>Pay</button> */}
                             </div>
                         }
                     </div>
