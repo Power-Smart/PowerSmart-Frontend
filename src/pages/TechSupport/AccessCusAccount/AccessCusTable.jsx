@@ -1,74 +1,77 @@
 import AccessCusTableRow from './AccessCusTableRow';
 import { IoSearchCircle } from 'react-icons/io5'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData, selectCustomers, selectStatus } from '../../../redux/slices/techsupport/techCustomersSlice';
+import { useEffect } from 'react';
 
 
 const dataset = [
     {
-        id: '#413656',
+        user_id: '#413656',
         complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: 'John Doe',
-        assigned: '10',
-        status: 'view'
+        name: 'John Doe',
+        email: '10',
     },
     {
-        id: '#413656',
+        user_id: '#413656',
         complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: 'Alice Smith',
-        assigned: 'Bob Johnson',
-        status: 'request'
+        name: 'Alice Smith',
+        email: 'Bob Johnson',
     },
     {
-        id: '#413656',
+        user_id: '#413656',
         complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: 'Emily Brown',
-        assigned: 'David Wilson',
-        status: 'cancel'
+        name: 'Emily Brown',
+        email: 'David Wilson',
     },
     {
-        id: '#413656',
+        user_id: '#413656',
         complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: 'Michael Davis',
-        assigned: 'Sophia Lee',
-        status: 'view'
+        name: 'Michael Davis',
+        email: 'Sophia Lee',
     },
     {
-        id: '#413656',
+        user_id: '#413656',
         complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: 'Oliver Thompson',
-        assigned: 'Emma Anderson',
-        status: 'request'
+        name: 'Oliver Thompson',
+        email: 'Emma Anderson',
     }
 ];
 
 
 const AccessCusTable = () => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user)
+    const customers = useSelector(selectCustomers);
+    const customersStatus = useSelector(selectStatus);
+
+    useEffect(() => {
+        if (user.id && customersStatus === 'idle') {
+            dispatch(fetchData(user.id))
+        }
+    }, [user, dispatch]);
+
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-12 px-8">
             <table className="w-full text-sm text-left text-gray-500">
-                <thead className="text-xs text-gray-700 uppercase ">
+                <thead className="text-xs text-gray-700 uppercase">
                     <tr>
-                        <th scope="col" className="px-6 py-3">
-                            Customer ID
-                        </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-center">
                             Profile
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-center">
+                            Customer ID
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-center">
                             Name
                         </th>
-                        <th scope="col" className="px-6 py-3">
-                            Places
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Rooms
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Action
+                        <th scope="col" className="px-6 py-3 text-center">
+                            Actions
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {dataset.map((data) => <AccessCusTableRow {...data} />)}
+                    {customers ? customers.map((data, index) => <AccessCusTableRow key={index} {...data} />) : "No Customers Assigned Yet!"}
                 </tbody>
             </table>
         </div>

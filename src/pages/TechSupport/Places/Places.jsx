@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
 import PlaceCardTech from '../../../components/Cards/PlaceCardTech'
@@ -7,43 +8,38 @@ import PageContent from '../../../components/Wrappers/PageContent'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
-import { selectCustomer } from '../../../redux/slices/customerSlice'
-import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { Link } from 'react-router-dom'
+import { fetchData, selectTechPlaces, selectTechPlacesStatus } from '../../../redux/slices/techsupport/techPlaceSlice'
 
-
-const places = [
-  {
-    place_id: 1,
-    name: 'Place 1',
-    is_active: true,
-    room_count: 3,
-    location: 'Location 1'
-
-  },
-  {
-    place_id: 2,
-    name: 'Place 2',
-    is_active: false,
-    room_count: 3,
-    location: 'Location 2'
-  },
-];
 
 const Places = () => {
+  const { customerID } = useParams();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
+  const places = useSelector(selectTechPlaces);
+  const techPlacesStatus = useSelector(selectTechPlacesStatus);
+
+  useEffect(() => {
+    if (user.id) {
+      dispatch(fetchData({ user_id: user.id, customer_id: customerID }));
+    }
+  }, [user, dispatch]);
+
   return (
     <PageWrapper >
-      <PlaceSidebar />
+      <PlaceSidebar customerID={customerID} />
       <PageContent >
-        <TopBar image="https://avatars.githubusercontent.com/u/7374455?v=4" title="Places" baclLink='/' />
+        <TopBar image="https://avatars.githubusercontent.com/u/7374455?v=4" title="Assigned Places" baclLink='/tech/accessCusAccount' />
 
         {/* Content Area */}
         <ContentWrapper>
 
           <div className='flex flex-wrap px-8 py-2 justify-center'>
             {/* Cards */}
-            {places.map((data, index) => (<PlaceCardTech key={index} {...data} />))}
+            {(techPlacesStatus === 'loading') && <LoadingSpinner />}
+            {(places.length > 0) && places.map((data, index) => (<PlaceCardTech key={index} {...data} customerID={customerID} />))}
+            {!(places.length) && "No places to access"}
           </div>
 
         </ContentWrapper>

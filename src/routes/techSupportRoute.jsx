@@ -17,7 +17,7 @@ import AddRelay from '../pages/TechSupport/Relays/AddRelay';
 import PaymentSummary from '../pages/TechSupport/PaymentSummary/PaymentSummary';
 import Sensors from '../pages/TechSupport/Sensors/Sensors';
 import Chat from '../pages/TechSupport/Chat/Chat';
-
+import EditRelay from '../pages/TechSupport/Relays/EditRelay';
 
 
 const techSupport = "/tech";
@@ -32,19 +32,19 @@ const techSupportRoute =
             element: <TechDashboard />,
         },
         {
-            path: `${techSupport}/orderRequest`,
+            path: `${techSupport}/orderRequest/:orderID`,
             element: <OrderRequest />,
         },
         {
-            path: `${techSupport}/marketPlace`,
+            path: `${techSupport}/marketPlace/:customerID`,
             element: <TechMarketPlace />,
         },
         {
-            path: `${techSupport}/selectPlaceRoom`,
+            path: `${techSupport}/selectPlaceRoom/:customerID/:itemID`,
             element: <SelectPlaceRoom />,
         },
         {
-            path: `${techSupport}/paymentSummary`,
+            path: `${techSupport}/paymentSummary/:customerID`,
             element: <PaymentSummary />
         },
         {
@@ -68,28 +68,40 @@ const techSupportRoute =
             element: <AddDevice />,
         },
         {
-            path: `${techSupport}/relays`,
+            path: `${techSupport}/:customerID/place/:placeID/relays`,
             element: <Relays />,
         },
         {
-            path: `${techSupport}/sensors`,
-            element: <Sensors />,
+            path: `${techSupport}/:customerID/place/:placeID/relays/add`,
+            element: <AddRelay />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/relays/update/:relayID`,
+            element: <EditRelay />,
         },
         {
             path: `${techSupport}/addRelays`,
             element: <AddRelay />,
         },
         {
-            path: `${techSupport}/places`,
+            path: `${techSupport}/customer/:customerID`,
             element: <Places />,
         },
         {
-            path: `${techSupport}/place/room`,
+            path: `${techSupport}/:customerID/place/:placeID/rooms`,
             element: <Rooms />,
         },
         {
-            path: `${techSupport}/place/rooms/devices`,
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices`,
             element: <Devices />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/sensor`,
+            element: <Sensors />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices/add`,
+            element: <AddDevice />,
         },
         {
             path: `${techSupport}/chat`,

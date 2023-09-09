@@ -1,30 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 import DashboardTopHeader from './DashboardTopHeader'
 import PlaceCarousel from './PlaceCarousel'
 import ScheduleDevice from './ScheduleDevice'
 import { VscCheck, VscChromeClose } from 'react-icons/vsc'
-import gameAchievement from '../../../assets/images/gama-achievement.png'
 import GuestUsersSuggest from './GuestUsersSuggest'
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
-
+import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
+import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
+import { getPlaceEvent } from '../../../api/apiSse'
 
 const Dashboard = () => {
-    const user = useSelector(state => state.user);
-    console.log(user)
-    // const navigate = useNavigate();
-    // const { isLogged, user } = useSelector(state => state.user);
-    // useEffect(() => {
-    //     if (!isLogged || user.role == 0) {
-    //         navigate('/login');
-    //     }
-    // }, [])
+
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user.user);
+    const places = useSelector(selectPlaces);
+    const placesStatus = useSelector(selectPlacesStatus);
+    const [roomsData, setRoomsData] = useState([]);
+
+
+    useEffect(() => {
+        if (user.id) {
+            dispatch(fetchPlaces(user.id));
+        }
+        console.log('user id', user.id);
+        const eventSource = getPlaceEvent(user.id);
+        eventSource.onmessage = (event) => {
+            try {
+                setRoomsData(JSON.parse(event.data));
+            } catch (error) {
+                setRoomsData({});
+            }
+            console.log(JSON.parse(event.data));
+        }
+        return () => {
+            eventSource.close();
+        }
+    }, [user, dispatch]);
 
     return (
         <PageWrapper>
@@ -35,28 +51,18 @@ const Dashboard = () => {
                         <div className="left-side">
                             <DashboardTopHeader />
 
-                            <div className="place-sets my-4">
-                                <div className="one-place">
-                                    <h1 className="text-2x mx-4 my-3">Place 01</h1>
-                                    <div className="place-details">
-                                        <PlaceCarousel />
-                                    </div>
-                                </div>
-
-                                <div className="one-place">
-                                    <h1 className="text-2x mx-4 my-3">Place 02</h1>
-                                    <div className="place-details">
-                                        <PlaceCarousel />
-                                    </div>
-                                </div>
-
-                                <div className="one-place">
-                                    <h1 className="text-2x mx-4 my-3">Place 03</h1>
-                                    <div className="place-details">
-                                        <PlaceCarousel />
-                                    </div>
-                                </div>
-                            </div>
+                            {placesStatus === 'loading' && <LoadingSpinner />}
+                            {placesStatus === 'succeeded' &&
+                                <div className="place-sets my-4">
+                                    {places.length > 0 && places.map((place, index) => (
+                                        <div className="one-place" key={index}>
+                                            <h1 className="text-2x mx-4 my-3">{place.name}</h1>
+                                            <div className="place-details">
+                                                <PlaceCarousel place_id={place.place_id} isActive={place.is_active} rooms={roomsData.filter(room => +room.place_id === place.place_id)} />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>}
                         </div>
 
                         <div className="right-side">

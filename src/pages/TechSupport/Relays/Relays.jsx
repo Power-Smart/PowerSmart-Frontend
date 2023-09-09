@@ -1,60 +1,71 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import RelayCard from './RelayCard'
-import PlaceSidebar from '../../../components/Sidebar/TechSupport/PlaceSidebar'
 import { Link, useParams } from 'react-router-dom'
+import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchRelays, selectRelays, selectRelaysStatus } from '../../../redux/slices/techsupport/relaySlice'
+import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
+import { getAvailableUnitsCount } from '../../../api/apiTechAssigns'
+import { data } from 'autoprefixer'
 
-
-
-const RelaySet = [
-    {
-        id: 1,
-        type: '8 Relays',
-        name: 'Relay 1',
-        image: 'https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg'
-    },
-    {
-        id: 2,
-        type: '5 Relays',
-        name: 'Relay 2',
-        image: 'https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg'
-    },
-    {
-        id: 3,
-        type: '3 Relays',
-        name: 'Relay 3',
-        image: 'https://www.plusquip.com.au/wp-content/uploads/2013/07/REL-000-relay-replacement-kit.jpg'
-    }
-];
 
 const Relays = () => {
+    const dispatch = useDispatch();
+    const { customerID, placeID } = useParams();
+    const user = useSelector(state => state.user.user);
+    const relayUnits = useSelector(selectRelays);
+    const relaysStatus = useSelector(selectRelaysStatus);
+    const [avilUnitCount, setAvilUnitCount] = useState(0);
+
+    useEffect(() => {
+        if (user) {
+            getAvailableUnitsCount(customerID, "relay")
+                .then(res => {
+                    if (res.status === 200) {
+                        setAvilUnitCount(res.data.count);
+                    }
+                });
+        }
+        console.log(avilUnitCount);
+    }, [user]);
+
+    useEffect(() => {
+        if (user.id) {
+            dispatch(fetchRelays({ userID: user.id, placeID }));
+        }
+    }, [user, dispatch]);
+
     return (
         <PageWrapper>
-            <PlaceSidebar />
+            <RoomSidebar customerID={customerID} placeID={placeID} />
             <PageContent>
-                <TopBar />
+                <TopBar title={"Relays"} baclLink={`/tech/customer/${customerID}`} />
                 <ContentWrapper>
                     <ButtonBar>
-                        <Link to={`/tech/addDevice`}>
+                        {avilUnitCount > 0 && <Link to={`/tech/${customerID}/place/${placeID}/relays/add`}>
                             <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Relay</button>
-                        </Link>
+                        </Link>}
                     </ButtonBar>
                     <div className='flex flex-wrap'>
-                        {
-                            RelaySet.map((relay) => (
+                        {relayUnits.length > 0 &&
+                            relayUnits.map((relay, index) => (
                                 <RelayCard
-                                    key={relay.id}
-                                    id={relay.id}
-                                    type={relay.type}
+                                    key={index}
+                                    id={relay.relay_unit_id}
+                                    type={relay.category}
                                     name={relay.name}
-                                    image={relay.image}
+                                    image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgVtrLNUoaXFIUW5kH5uP3pvEMuS0tlTAXRguMjbzxgwCkBbUYcObNusbfvJdgJE6W8QQ&usqp=CAU'
+                                    description={relay.description}
                                 />
                             ))
                         }
+                        {relaysStatus === "idle" && <LoadingSpinner />}
+                        {relayUnits.length === 0 && <h2 className=' text-center mx-auto'>No Relays<br /> <nav className='text-gray-500'>click 'Add Relay' to add a relay</nav></h2>}
                     </div>
                 </ContentWrapper>
             </PageContent>
