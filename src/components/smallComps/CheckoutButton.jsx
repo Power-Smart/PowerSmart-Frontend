@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import crypto from 'crypto-js';
-import { getOrderCustomerDetailApi } from '../../api/apiPayment';
+import { getOrderCustomerDetailApi, getOrderTotalApi } from '../../api/apiPayment';
 
-const CheckoutButton = ({ userID, total }) => {
+const CheckoutButton = ({ userID, total, checkedList }) => {
     const merchant_id = import.meta.env.VITE_APP_MERCHANT_ID;
     const [userData, setUserData] = useState({
         first_name: '',
@@ -13,13 +13,11 @@ const CheckoutButton = ({ userID, total }) => {
         city: '',
         country: '',
     });
-    const [amount, setAmount] = useState(0);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         getOrderCustomerDetailApi(userID).then(res => res.data)
             .then(data => {
-                setAmount(data.totalBill);
                 const userData = data.userData;
                 console.log(userData);
                 setUserData({
@@ -57,35 +55,41 @@ const CheckoutButton = ({ userID, total }) => {
     };
 
 
-    function checkout(e) {
+    async function checkout(e) {
         e.preventDefault();
+        try {
+            const res = await getOrderTotalApi(userID, checkedList);
+            const amount = res.data.total;
 
-        const data = {
-            "sandbox": true,
-            "merchant_id": merchant_id, // ??
-            "return_url": undefined, // ??
-            "cancel_url": undefined, // ??
-            "notify_url": "http://sample.com/notify", // ??
-            "order_id": userID, // ?
-            "items": "Total Bill", // ?
-            "amount": amount, // ?
-            "currency": "LKR", // ?
-            "first_name": userData.first_name, // ?
-            "last_name": userData.last_name, // ?
-            "email": userData.email, // ?
-            "phone": userData.phone, // ?
-            "address": userData.address, // ?
-            "city": userData.city, // !
-            "country": userData.country, // !
-            "custom_1": "",
-            "custom_2": "",
-            hash: createHash(userID, amount, "LKR"),
-        }
-        console.log(data);
-        if (!error && total > 0 && total == amount) {
-            window.payhere.startPayment(data);
-        } else {
-            alert("Payment can't be done.");
+            const data = {
+                "sandbox": true,
+                "merchant_id": merchant_id,
+                "return_url": undefined,
+                "cancel_url": undefined,
+                "notify_url": "http://sample.com/notify",
+                "order_id": userID,
+                "items": "Total Bill",
+                "amount": amount,
+                "currency": "LKR",
+                "first_name": userData.first_name,
+                "last_name": userData.last_name,
+                "email": userData.email,
+                "phone": userData.phone,
+                "address": userData.address,
+                "city": userData.city, // !
+                "country": userData.country, // !
+                "custom_1": "",
+                "custom_2": "",
+                hash: createHash(userID, amount, "LKR"),
+            }
+            console.log(data);
+            if (!error && total > 0 && total == amount) {
+                window.payhere.startPayment(data);
+            } else {
+                alert("Payment can't be done.");
+            }
+        } catch (err) {
+            console.log(err);
         }
     }
 
