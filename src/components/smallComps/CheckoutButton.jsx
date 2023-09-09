@@ -1,8 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import crypto from 'crypto-js';
+import { getOrderCustomerDetailApi } from '../../api/apiPayment';
 
-const CheckoutButton = ({ userID, orderID, total }) => {
+const CheckoutButton = ({ userID, total }) => {
     const merchant_id = import.meta.env.VITE_APP_MERCHANT_ID;
+    const [userData, setUserData] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        address: '',
+        city: '',
+        country: '',
+    });
+    const [amount, setAmount] = useState(0);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        getOrderCustomerDetailApi(userID).then(res => res.data)
+            .then(data => {
+                setAmount(data.totalBill);
+                const userData = data.userData;
+                console.log(userData);
+                setUserData({
+                    first_name: userData.user.first_name,
+                    last_name: userData.user.last_name,
+                    email: userData.user.email,
+                    phone: userData.tel_no[0],
+                    address: userData.address,
+                    city: "Colombo",
+                    country: "Sri Lanka",
+                })
+                setError(null);
+            }).catch(err => setError(err));
+    }, []);
+
 
     const createHash = (order_id, amount, currency) => {
         const merchant_secret = import.meta.env.VITE_APP_MERCHANT_SECRET;
@@ -24,33 +56,37 @@ const CheckoutButton = ({ userID, orderID, total }) => {
         console.log("Error:" + error);
     };
 
-    const data = {
-        "sandbox": true,
-        "merchant_id": merchant_id,
-        "return_url": undefined,
-        "cancel_url": undefined,
-        "notify_url": "http://sample.com/notify",
-        "order_id": "ItemNo12345",
-        "items": "Total Bill",
-        "amount": total,
-        "currency": "LKR",
-        "first_name": "Saman",
-        "last_name": "Perera",
-        "email": "samanp@gmail.com",
-        "phone": "0771234567",
-        "address": "No.1, Galle Road",
-        "city": "Colombo",
-        "country": "Sri Lanka",
-        "delivery_address": "No. 46, Galle road, Kalutara South",
-        "delivery_city": "Kalutara",
-        "delivery_country": "Sri Lanka",
-        "custom_1": "",
-        "custom_2": "",
-        hash: createHash("ItemNo12345", total, "LKR"),
-    }
 
     function checkout(e) {
-        window.payhere.startPayment(data);
+        e.preventDefault();
+
+        const data = {
+            "sandbox": true,
+            "merchant_id": merchant_id, // ??
+            "return_url": undefined, // ??
+            "cancel_url": undefined, // ??
+            "notify_url": "http://sample.com/notify", // ??
+            "order_id": userID, // ?
+            "items": "Total Bill", // ?
+            "amount": amount, // ?
+            "currency": "LKR", // ?
+            "first_name": userData.first_name, // ?
+            "last_name": userData.last_name, // ?
+            "email": userData.email, // ?
+            "phone": userData.phone, // ?
+            "address": userData.address, // ?
+            "city": userData.city, // !
+            "country": userData.country, // !
+            "custom_1": "",
+            "custom_2": "",
+            hash: createHash(userID, amount, "LKR"),
+        }
+        console.log(data);
+        if (!error && total > 0 && total == amount) {
+            window.payhere.startPayment(data);
+        } else {
+            alert("Payment can't be done.");
+        }
     }
 
 

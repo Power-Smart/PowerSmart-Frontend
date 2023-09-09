@@ -92,7 +92,7 @@ const BuyingCart = () => {
                             </div>}
                         {ordersStatus === 'succeeded' && groupedOrders &&
                             <div className='flex flex-end w-4/5 justify-end my-4'>
-                                <CheckoutButton userID={user.id} orderID={1} total={totals ? Object.keys(totals).reduce((acc, key) => acc + totals[key], 0).toFixed(2) : 0} />
+                                <CheckoutButton userID={user.id} total={totals ? Object.keys(totals).reduce((acc, key) => acc + totals[key], 0).toFixed(2) : 0} />
                                 {/* <button className='px-8 py-1 bg-[#83BCFF] rounded-md text-black'>Pay</button> */}
                             </div>
                         }
