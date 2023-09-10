@@ -107,7 +107,7 @@ const BuyingCart = () => {
                             </div>}
                         {ordersStatus === 'succeeded' && groupedOrders &&
                             <div className='flex flex-end w-4/5 justify-end my-4'>
-                                <CheckoutButton checkedList={checked} userID={user.id} total={checked ? Object.keys(checked).reduce((acc, key) => acc + checked[key], 0).toFixed(2) : 0} />
+                                <CheckoutButton checkedList={checked} setChecked={setChecked} userID={user.id} total={checked ? Object.keys(checked).reduce((acc, key) => acc + checked[key], 0).toFixed(2) : 0} />
                             </div>
                         }
                     </div>

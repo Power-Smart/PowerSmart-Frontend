@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import crypto from 'crypto-js';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchOrder } from '../../redux/slices/orderSlice';
 import { getOrderCustomerDetailApi, getOrderTotalApi } from '../../api/apiPayment';
 
-const CheckoutButton = ({ userID, total, checkedList }) => {
+const CheckoutButton = ({ userID, total, setChecked, checkedList }) => {
+    const dispatch = useDispatch();
     const merchant_id = import.meta.env.VITE_APP_MERCHANT_ID;
     const [userData, setUserData] = useState({
         first_name: '',
@@ -42,8 +45,17 @@ const CheckoutButton = ({ userID, total, checkedList }) => {
         return hash;
     }
 
+    const encryptPlaceDetails = (placeArray) => {
+        const merchant_secret = import.meta.env.VITE_APP_MERCHANT_SECRET;
+        const hashStr = `${placeArray.join('')}${merchant_secret}`;
+        return crypto.SHA1(hashStr).toString().toUpperCase();
+    }
+
     window.payhere.onCompleted = function onCompleted(orderId) {
+        dispatch(fetchOrder(userID));
+        setChecked({});
         console.log("Payment completed. OrderID:" + orderId);
+
     };
 
     window.payhere.onDismissed = function onDismissed() {
@@ -57,16 +69,18 @@ const CheckoutButton = ({ userID, total, checkedList }) => {
 
     async function checkout(e) {
         e.preventDefault();
+        const notifyURL = import.meta.env.VITE_APP_NOTIFY_URL;
         try {
             const res = await getOrderTotalApi(userID, checkedList);
             const amount = res.data.total;
+            const places = res.data.places;
 
             const data = {
                 "sandbox": true,
                 "merchant_id": merchant_id,
                 "return_url": undefined,
                 "cancel_url": undefined,
-                "notify_url": "http://sample.com/notify",
+                "notify_url": `${notifyURL}/payment/customer/checkout`,
                 "order_id": userID,
                 "items": "Total Bill",
                 "amount": amount,
@@ -78,9 +92,9 @@ const CheckoutButton = ({ userID, total, checkedList }) => {
                 "address": userData.address,
                 "city": userData.city, // !
                 "country": userData.country, // !
-                "custom_1": "",
-                "custom_2": "",
-                hash: createHash(userID, amount, "LKR"),
+                "custom_1": places.toString(),
+                "custom_2": encryptPlaceDetails(places),
+                "hash": createHash(userID, amount, "LKR"),
             }
             console.log(data);
             if (!error && total > 0 && total == amount) {
