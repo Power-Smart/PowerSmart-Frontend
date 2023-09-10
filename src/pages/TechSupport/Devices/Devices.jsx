@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
@@ -6,56 +6,49 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import ButtonBar from '../../../components/Wrappers/ButtonBar'
 import DeviceCard from './DeviceCard'
 import { Link, useParams } from 'react-router-dom'
-import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
-
-
-const RelaySet = [
-    {
-        id: 1,
-        walt: '150',
-        deviceName: 'Fan-01',
-        image: 'https://damro.lk/wp-content/uploads/2019/11/F-56MZ2.jpg'
-    },
-    {
-        id: 3,
-        walt: '50',
-        deviceName: 'Bulb-01',
-        image: 'https://images.pexels.com/photos/1616472/pexels-photo-1616472.jpeg?cs=srgb&dl=pexels-dids-1616472.jpg&fm=jpg'
-    },
-    {
-        id: 3,
-        walt: '95',
-        deviceName: 'Bulb-02',
-        image: 'https://images.pexels.com/photos/1616472/pexels-photo-1616472.jpeg?cs=srgb&dl=pexels-dids-1616472.jpg&fm=jpg'
-    }
-];
-
-
+import InsideRoomSidebar from '../../../components/Sidebar/TechSupport/InsideRoomSidebar'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchDevices, selectDevices, selectDevicesStatus } from '../../../redux/slices/techsupport/deviceSlice'
+import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 
 const Devices = () => {
+    const { customerID, placeID, roomID } = useParams();
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user);
+    const devices = useSelector(selectDevices);
+    const devicesStatus = useSelector(selectDevicesStatus);
+    useEffect(() => {
+        if (user.id) {
+            dispatch(fetchDevices({ userID: user.id, placeID, roomID }));
+        }
+    }, [user, dispatch]);
+
     return (
         <PageWrapper>
-            <RoomSidebar />
+            <InsideRoomSidebar customerID={customerID} placeID={placeID} roomID={roomID} />
             <PageContent>
-                <TopBar />
+                <TopBar title={"Room Devices"} baclLink={`/tech/${customerID}/place/${placeID}/rooms`} />
                 <ContentWrapper>
                     <ButtonBar>
-                        <Link to={`/tech/addDevice`}>
+                        <Link to="add">
                             <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Device</button>
                         </Link>
                     </ButtonBar>
                     <div className='flex flex-wrap'>
                         {
-                            RelaySet.map((relay) => (
+                            devices.map((device, index) => (
                                 <DeviceCard
-                                    key={relay.id}
-                                    id={relay.id}
-                                    walt={relay.walt}
-                                    deviceName={relay.deviceName}
-                                    image={relay.image}
+                                    key={index}
+                                    id={device.device_id}
+                                    deviceName={device.name}
+                                    type={device.type}
+                                    socket={device.socket}
+                                    relay={device.relay_unit_id}
                                 />
                             ))
                         }
+                        {devices.length === 0 && <h2 className=' text-center mx-auto'>No Devices <br /> <nav className='text-gray-500'>click 'Add Device' to add a device</nav></h2>}
+                        {devicesStatus === "loading" && <LoadingSpinner />}
                     </div>
                 </ContentWrapper>
             </PageContent>

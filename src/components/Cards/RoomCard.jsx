@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { TbHomeEdit } from 'react-icons/tb'
 
 
-const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id, device_count = 0, isCustomer }) => {
+const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id, device_count = 0, isCustomer = true, isTechSupport = false, customerID = undefined }) => {
 
     return (
         <div className='text-sm flex flex-col w-[230px] h-[270px] bg-[#1C1C2E] rounded-md shadow-md px-8 py-6 m-5 justify-evenly'>
@@ -16,7 +16,7 @@ const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id,
             </div> */}
 
             <div className='flex flex-col flex-grow mb-3'>
-                <div className=' text-xs text-green-300 flex justify-start items-center'>
+                <div className={'text-xs flex justify-start items-center ' + (is_active ? "text-green-300" : "text-red-300")}>
                     {is_active && <Indicator color="bg-green-400" status={"Online"} />}
                     {!is_active && <Indicator color="bg-red-400" status={"Offline"} />}
                 </div>
@@ -34,6 +34,13 @@ const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id,
 
             {
                 isCustomer ? <Link to={`/places/${place_id}/rooms/${room_id}/controlpanel`}>
+                    <div className='flex flex-col flex-grow justify-end items-center mt-3'>
+                        <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
+                    </div>
+                </Link> : <></>
+            }
+            {
+                isTechSupport ? <Link to={`/tech/${customerID}/place/${place_id}/room/${room_id}/devices`}>
                     <div className='flex flex-col flex-grow justify-end items-center mt-3'>
                         <button className='px-4 py-1 text-sm bg-[#83BCFF] rounded-md text-black'>Go inside</button>
                     </div>
