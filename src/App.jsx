@@ -14,6 +14,8 @@ import {
 } from "react-router-dom";
 
 const router = createBrowserRouter(routesArray);
+import socketIO from 'socket.io-client';
+const socket = socketIO.connect('http://localhost:3010');
 
 
 function App() {

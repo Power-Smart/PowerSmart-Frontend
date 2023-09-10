@@ -13,6 +13,9 @@ import customerCartSlice from "./slices/techsupport/customerCartSlice";
 import customerOrderRequestSlice from "./slices/techsupport/customerOrderRequestSlice";
 import relaySlice from "./slices/techsupport/relaySlice";
 import deviceSlice from "./slices/techsupport/deviceSlice";
+import cusAssginTechSupportSlice from "./slices/customer/CusAssginTechSupport";
+import ChatMsgReceiveSlice from "./slices/customer/ChatMsgReceiveSlice";
+import ChatMsgSendSlice from "./slices/customer/ChatMsgSendSlice";
 
 
 export const store = configureStore({
@@ -28,6 +31,9 @@ export const store = configureStore({
         customerCart: customerCartSlice,
         customerOrderRequests: customerOrderRequestSlice,
         relays: relaySlice,
-        devices: deviceSlice
+        devices: deviceSlice,
+        cusAssginTechSupport: cusAssginTechSupportSlice,
+        chatHistorySendMsg: ChatMsgSendSlice,
+        chatHistoryReceiveMsg: ChatMsgReceiveSlice,
     }
 });
