@@ -7,6 +7,7 @@ import Register from '../pages/Register/Register'
 import Home from '../pages/Home/Home'
 import PageNotFound from "../pages/SpecialPages/PageNotFound";
 import ProfileComplete from '../pages/Register/ProfileComplete'
+import CheckoutButton from '../components/smallComps/CheckoutButton';
 
 export const routesArray = [
     customerRoute,
@@ -24,6 +25,10 @@ export const routesArray = [
     {
         path: "home",
         element: <Home />,
+    },
+    {
+        path: "pay",
+        element: <CheckoutButton />,
     },
     {
         path: "*",
