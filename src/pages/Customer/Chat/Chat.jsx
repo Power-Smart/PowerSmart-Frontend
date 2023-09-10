@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import PageContent from '../../../components/Wrappers/PageContent'
@@ -9,6 +9,8 @@ import './chat.css'
 import ChatProfile from './ChatProfile'
 import NotSelectedChat from './NotSelectedChat'
 import SelectedChat from './SelectedChat'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAssignedTechSupportForCustomer, selectAssignedTechSupportForCustomer } from '../../../redux/slices/customer/CusAssginTechSupport'
 
 
 
@@ -48,17 +50,27 @@ const Chat = () => {
     const [selectedUserPicture, setSelectedUserPicture] = useState('');
 
 
-    const handleSelectUserDisplay = (userID) => {
-        chatList.forEach((chatUser) => {
-            if (chatUser.userID === userID) {
-                setSelectedUser(true)
-                setSelectedUserID(chatUser.userID)
-                setSelectedUserName(chatUser.userName)
-                setSelectedUserPicture(chatUser.profilePicture)
-            }
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user);
+    const assignedTechSupportForCustomer = useSelector(selectAssignedTechSupportForCustomer);
+
+
+    useEffect(() => {
+        if (user.id) {
+            dispatch(fetchAssignedTechSupportForCustomer(user.id));
+        }
+    }, [user, dispatch]);
+
+
+    const handleSelectUserDisplay = (userDetails) => {
+        console.log(userDetails)
+        assignedTechSupportForCustomer.forEach((chatUser) => {
+            setSelectedUser(true)
+            setSelectedUserID(chatUser.user_id)
+            setSelectedUserName(chatUser.userDetails.first_name + ' ' + chatUser.userDetails.last_name)
+            setSelectedUserPicture(chatUser.profile_pic)
         })
     }
-
 
 
 
@@ -70,7 +82,7 @@ const Chat = () => {
 
                     <div className="chat-message-container notSelectedUserPage px-16 py-4 w-full flex flex-col flex-grow mx-auto mt-4">
                         {
-                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture}/>) : (<NotSelectedChat/>)
+                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={selectedUserID} />) : (<NotSelectedChat />)
                         }
                     </div>
 
@@ -82,8 +94,8 @@ const Chat = () => {
                         </div>
                         <div className="chat-list">
                             {
-                                chatList.map((chat) => (
-                                    <ChatProfile profilePicture={chat.profilePicture} userName={chat.userName} lastMessage={chat.lastMessage} id={chat.userID}  onClick={(e) => handleSelectUserDisplay(e.currentTarget.id)} key={chat.userID} />
+                                assignedTechSupportForCustomer.map((chat) => (
+                                    <ChatProfile profilePicture={chat.profile_pic} userName={chat.userDetails.first_name + ' ' + chat.userDetails.last_name} lastMessage={chat.lastMessage} id={chat.userID} onClick={(e) => handleSelectUserDisplay(chat.userDetails)} key={chat.userID} />
                                 ))
                             }
                         </div>
