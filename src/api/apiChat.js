@@ -17,3 +17,13 @@ export const getChatHistoryofCustomerTechSupportReceiverMsgApi = async (customer
         console.log(error);
     }
 }
+
+
+export const sendMsgToTechSupportApi = async (data) => {
+    try {
+        const response = await api.post(`/chat/sendMsgToTechSupport`, data);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
