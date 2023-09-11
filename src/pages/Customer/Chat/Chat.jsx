@@ -42,7 +42,7 @@ const chatList = [
 ]
 
 
-const Chat = () => {
+const Chat = ({ socket }) => {
 
     const [selectedUser, setSelectedUser] = useState(false);
     const [selectedUserID, setSelectedUserID] = useState('');
@@ -63,7 +63,6 @@ const Chat = () => {
 
 
     const handleSelectUserDisplay = (userDetails) => {
-        console.log(userDetails)
         assignedTechSupportForCustomer.forEach((chatUser) => {
             setSelectedUser(true)
             setSelectedUserID(chatUser.user_id)
@@ -71,7 +70,6 @@ const Chat = () => {
             setSelectedUserPicture(chatUser.profile_pic)
         })
     }
-
 
 
     return (
@@ -82,10 +80,9 @@ const Chat = () => {
 
                     <div className="chat-message-container notSelectedUserPage px-16 py-4 w-full flex flex-col flex-grow mx-auto mt-4">
                         {
-                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={selectedUserID} />) : (<NotSelectedChat />)
+                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={selectedUserID} socket={socket} />) : (<NotSelectedChat />)
                         }
                     </div>
-
 
                     <div className="chat-user-list">
                         <div className="search-chat mt-8">

@@ -1,11 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getChatHistoryofCustomerTechSupportSenderMsgApi } from "../../../api/apiChat";
+import { getChatHistoryofCustomerTechSupportSenderMsgApi,sendMsgToTechSupportApi } from "../../../api/apiChat";
 
 
 export const fetchChatHistoryofCustomerTechSupportSenderMsg = createAsyncThunk(
     "chat/fetchChatHistoryofCustomerTechSupport",
     async (data) => {
         const response = await getChatHistoryofCustomerTechSupportSenderMsgApi(data['customerID'], data['techSupportID']);
+        return response.data;
+    }
+);
+
+export const sendMsgToTechSupport = createAsyncThunk(
+    "chat/sendMsgToTechSupport",
+    async (data) => {
+        const response = await sendMsgToTechSupportApi(data);
         return response.data;
     }
 );

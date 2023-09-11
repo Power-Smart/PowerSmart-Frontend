@@ -11,7 +11,6 @@ export const fetchChatHistoryofCustomerTechSupportReceiverMsg = createAsyncThunk
 );
 
 
-
 const initialState = {
     chatHistoryReceiveMsg: [],
     status: "idle",
