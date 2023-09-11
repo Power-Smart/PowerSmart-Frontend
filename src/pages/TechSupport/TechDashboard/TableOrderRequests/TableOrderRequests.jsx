@@ -44,7 +44,7 @@ const TableOrderRequests = () => {
                 </thead>
                 <tbody>
                     {customerOrderRequests.map((data) => (
-                        <TableRow key={data.id} {...data} customerProfilePic={data.customer.profile_pic} name={data.customer.user.first_name + " " + data.customer.user.last_name} />
+                        <TableRow key={data.order_id} {...data} customerProfilePic={data.customer.profile_pic} name={data.customer.user.first_name + " " + data.customer.user.last_name} />
                     ))}
                 </tbody>
 
