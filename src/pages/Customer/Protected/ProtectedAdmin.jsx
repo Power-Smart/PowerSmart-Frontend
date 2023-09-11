@@ -6,9 +6,9 @@ const ProtectedAdmin = () => {
     const navigate = useNavigate();
     const { isLogged, user } = useSelector(state => state.user);
     useEffect(() => {
-        if (!isLogged || user.role != 4) {
-            navigate('/login');
-        }
+        // if (!isLogged || user.role != 4) {
+        //     navigate('/login');
+        // }
     }, [])
     return (
         <>
