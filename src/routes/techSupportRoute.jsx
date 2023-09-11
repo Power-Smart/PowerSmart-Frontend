@@ -18,6 +18,7 @@ import PaymentSummary from '../pages/TechSupport/PaymentSummary/PaymentSummary';
 import Sensors from '../pages/TechSupport/Sensors/Sensors';
 import Chat from '../pages/TechSupport/Chat/Chat';
 import ViewComplaint from '../pages/TechSupport/UserComplaints/viewComplaint';
+import EditRelay from '../pages/TechSupport/Relays/EditRelay';
 
 
 const techSupport = "/tech";
@@ -76,8 +77,12 @@ const techSupportRoute =
             element: <Relays />,
         },
         {
-            path: `${techSupport}/sensors`,
-            element: <Sensors />,
+            path: `${techSupport}/:customerID/place/:placeID/relays/add`,
+            element: <AddRelay />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/relays/update/:relayID`,
+            element: <EditRelay />,
         },
         {
             path: `${techSupport}/addRelays`,
@@ -92,8 +97,16 @@ const techSupportRoute =
             element: <Rooms />,
         },
         {
-            path: `${techSupport}/place/rooms/devices`,
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices`,
             element: <Devices />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/sensor`,
+            element: <Sensors />,
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices/add`,
+            element: <AddDevice />,
         },
         {
             path: `${techSupport}/chat`,

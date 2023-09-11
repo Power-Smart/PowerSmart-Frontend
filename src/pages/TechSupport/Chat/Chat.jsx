@@ -58,9 +58,6 @@ const Chat = () => {
         })
     }
 
-
-
-
     return (
         <PageWrapper>
             <MainSidebar />

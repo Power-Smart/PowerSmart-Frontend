@@ -71,7 +71,7 @@ const AccessCusTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {customers ? customers.map((data) => <AccessCusTableRow {...data} key={data.place_id} />) : "No Customers Assigned Yet!"}
+                    {customers ? customers.map((data, index) => <AccessCusTableRow key={index} {...data} />) : "No Customers Assigned Yet!"}
                 </tbody>
             </table>
         </div>

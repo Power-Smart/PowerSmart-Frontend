@@ -4,21 +4,22 @@ import { useState } from 'react'
 import SidebarWrapper from '../SidebarWrapper'
 import { TbHome2 } from 'react-icons/tb'
 import { GiElectricalResistance } from 'react-icons/gi'
+import { MdElectricalServices, MdSensors } from 'react-icons/md'
 
-const RoomSidebar = ({ placeID, customerID }) => {
+const InsideRoomSidebar = ({ placeID, roomID, customerID }) => {
 
     const [toggle, setToggle] = useState(true);
 
     return (
         <SidebarWrapper toggle={toggle} setToggle={setToggle} profileLink="/tech/profile">
-            <SidebarButton text="Rooms" toggle={toggle} link={`/tech/${customerID}/place/${placeID}/rooms`}>
-                <TbHome2 />
+            <SidebarButton text="Device" toggle={toggle} link={`/tech/${customerID}/place/${placeID}/room/${roomID}/devices`}>
+                <MdElectricalServices />
             </SidebarButton>
-            <SidebarButton text="Relays" toggle={toggle} link={`/tech/${customerID}/place/${placeID}/relays`}>
-                <GiElectricalResistance className='text-xl font-bold' />
+            <SidebarButton text="Sensor Unit" toggle={toggle} link={`/tech/${customerID}/place/${placeID}/room/${roomID}/sensor`}>
+                <MdSensors />
             </SidebarButton>
         </SidebarWrapper>
     )
 }
 
-export default RoomSidebar
+export default InsideRoomSidebar
