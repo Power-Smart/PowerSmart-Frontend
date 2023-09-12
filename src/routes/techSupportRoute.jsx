@@ -18,6 +18,7 @@ import AddRelay from '../pages/TechSupport/Relays/AddRelay';
 import PaymentSummary from '../pages/TechSupport/PaymentSummary/PaymentSummary';
 import Sensors from '../pages/TechSupport/Sensors/Sensors';
 import Chat from '../pages/TechSupport/Chat/Chat';
+import ViewComplaint from '../pages/TechSupport/UserComplaints/viewComplaint';
 import EditRelay from '../pages/TechSupport/Relays/EditRelay';
 
 
@@ -51,6 +52,10 @@ const techSupportRoute =
         {
             path: `${techSupport}/userComplaints`,
             element: <UserComplaints />,
+        },
+        {
+            path: `${techSupport}/viewComplaint/:complaintID`,
+            element: <ViewComplaint />,
         },
         {
             path: `${techSupport}/viewUserComplaint`,
