@@ -1,7 +1,8 @@
 import ProtectedTechSupport from '../pages/Customer/Protected/ProtectedTechSupport';
 import AddDevice from '../pages/TechSupport/Devices/AddDevice'
-import ProfileTechSupport from '../pages/TechSupport/Profile'
-import Profile from '../pages/TechSupport/Profile';
+// import ProfileTechSupport from '../pages/TechSupport/Profile'
+import ProfileTechSupport from '../pages/TechSupport/Profile/Profile';
+// import Profile from '../pages/TechSupport/Profile';
 import TechDashboard from '../pages/TechSupport/TechDashboard/TechDashboard';
 import OrderRequest from '../pages/TechSupport/CusOrderRequsetInfo/OrderRequest';
 import TechMarketPlace from '../pages/TechSupport/TechMarketPlace/TechMarketPlace';

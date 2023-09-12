@@ -9,6 +9,7 @@ import { selectOrders, fetchOrder, selectOrderStatus } from '../../../redux/slic
 import { selectPlaces, fetchPlaces, selectPlacesStatus } from '../../../redux/slices/placesSlice'
 import { useEffect, useState } from 'react'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
+import CheckoutButton from '../../../components/smallComps/CheckoutButton'
 
 const dataSet = [
     {
@@ -42,6 +43,7 @@ const BuyingCart = () => {
     const placesStatus = useSelector(selectPlacesStatus);
     const [groupedOrders, setGroupedOrders] = useState({});
     const [totals, setTotals] = useState({});
+    const [checked, setChecked] = useState({});
 
     useEffect(() => {
         if (user.id && ordersStatus === 'idle') {
@@ -65,6 +67,16 @@ const BuyingCart = () => {
         }
     }, [orders, user, dispatch, places]);
 
+    const onChange = (e, place_id) => {
+        setChecked(checked => {
+            if (e.target.checked) {
+                return { ...checked, [place_id]: totals[place_id] };
+            } else {
+                return { ...checked, [place_id]: 0 };
+            }
+        });
+    };
+
     return (
         <PageWrapper>
             <MainSidebar />
@@ -73,13 +85,17 @@ const BuyingCart = () => {
                 <ContentWrapper>
                     <div className='flex flex-col items-center justify-center w-full h-full'>
                         {ordersStatus === 'loading' && <LoadingSpinner />}
-                        {ordersStatus === 'succeeded' && Object.keys(groupedOrders).map((key) => <CheckoutBox
-                            place_id={key}
-                            key={key}
-                            items={groupedOrders[key]}
-                            place={groupedOrders[key].place}
-                            setTotals={setTotals}
-                        />)}
+                        {ordersStatus === 'succeeded' && Object.keys(groupedOrders).map((key) =>
+                            <CheckoutBox
+                                place_id={key}
+                                key={key}
+                                items={groupedOrders[key]}
+                                place={groupedOrders[key].place}
+                                setTotals={setTotals}
+                                setChecked={setChecked}
+                                onChange={onChange}
+                            />
+                        )}
                         {ordersStatus === 'loading' && !groupedOrders && <h1 className='text-center text-gray-600'>No Orders Yet !</h1>}
                         <hr className='border-gray-800 w-4/5 m-4' />
                         {ordersStatus === 'succeeded' && groupedOrders &&
@@ -87,11 +103,11 @@ const BuyingCart = () => {
                                 <div className='flex items-center'>
                                     <h1 className='px-2'>{"Total"}</h1>
                                 </div>
-                                <div className='px-2'>Rs. {totals ? Object.keys(totals).reduce((acc, key) => acc + totals[key], 0).toFixed(2) : 0}</div>
+                                <div className='px-2'>Rs. {checked ? Object.keys(checked).reduce((acc, key) => acc + checked[key], 0).toFixed(2) : 0}</div>
                             </div>}
                         {ordersStatus === 'succeeded' && groupedOrders &&
                             <div className='flex flex-end w-4/5 justify-end my-4'>
-                                <button className='px-8 py-1 bg-[#83BCFF] rounded-md text-black'>Pay</button>
+                                <CheckoutButton checkedList={checked} setChecked={setChecked} userID={user.id} total={checked ? Object.keys(checked).reduce((acc, key) => acc + checked[key], 0).toFixed(2) : 0} />
                             </div>
                         }
                     </div>
