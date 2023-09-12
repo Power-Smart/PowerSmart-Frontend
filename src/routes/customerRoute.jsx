@@ -13,6 +13,7 @@ import AddRooms from '../pages/Customer/Rooms/AddRooms'
 import UpdateRoom from '../pages/Customer/Rooms/UpdateRoom'
 import UpdatePlace from '../pages/Customer/Places/UpdatePlace'
 import Chat from '../pages/Customer/Chat/Chat'
+import Schedules from '../pages/Customer/Scheduling/schedules'
 
 const customerRoute =
 {
@@ -34,6 +35,10 @@ const customerRoute =
         {
             path: "places/:placeID/rooms/:roomID/controlpanel",
             element: <InsideRoom />,
+        },
+        {
+            path: "places/:placeID/rooms/:roomID/controlpanel/:deviceID/schedules",
+            element: <Schedules />,
         },
         {
             path: "places/:placeID/rooms/:roomID/status",

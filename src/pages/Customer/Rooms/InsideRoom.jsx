@@ -40,7 +40,6 @@ const InsideRoom = () => {
     const user = useSelector(state => state.user.user);
     const rooms = useSelector(selectRooms);
     const room = rooms.find(room => room.room_id == roomID);
-    console.log(room);
     const [deviceData, setDeviceData] = useState([]);
     const [switches, setSwitches] = useState([]);
     const fetchDevicesData = async () => {
@@ -51,6 +50,7 @@ const InsideRoom = () => {
             tempSwitches.push({ "id": device.device_id, "status": device.deviceSwitch.switch_status });
         });
         setSwitches(tempSwitches);
+        console.log(deviceData);
     }
 
 
