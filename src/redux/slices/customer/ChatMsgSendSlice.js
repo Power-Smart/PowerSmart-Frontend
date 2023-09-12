@@ -3,7 +3,7 @@ import { getChatHistoryofCustomerTechSupportSenderMsgApi,sendMsgToTechSupportApi
 
 
 export const fetchChatHistoryofCustomerTechSupportSenderMsg = createAsyncThunk(
-    "chat/fetchChatHistoryofCustomerTechSupport",
+    "chat/fetchChatHistoryofCustomerTechSupportSenderMsg",
     async (data) => {
         const response = await getChatHistoryofCustomerTechSupportSenderMsgApi(data['customerID'], data['techSupportID']);
         return response.data;

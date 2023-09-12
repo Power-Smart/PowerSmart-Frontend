@@ -15,8 +15,8 @@ import UpdatePlace from '../pages/Customer/Places/UpdatePlace'
 import Chat from '../pages/Customer/Chat/Chat'
 
 
-import socketIO from 'socket.io-client';
-const socket = socketIO.connect('http://localhost:3010');
+// import socketIO from 'socket.io-client';
+// const socket = socketIO.connect('http://localhost:3010');
 
 
 const customerRoute =
@@ -70,7 +70,7 @@ const customerRoute =
         },
         {
             path: "chat",
-            element: <Chat socket={socket}/>,
+            element: <Chat/>,
         },
         {
             path: "support",
