@@ -10,7 +10,7 @@ import io from 'socket.io-client'
 
 
 
-const SelectedChat = ({ userName, userProfile, selectedUserID, socket }) => {
+const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
 
     const socketIO = io.connect('http://localhost:3010');
     const dispatch = useDispatch();
@@ -22,9 +22,15 @@ const SelectedChat = ({ userName, userProfile, selectedUserID, socket }) => {
     useEffect(() => {
         if (user.id) {
             dispatch(fetchChatHistoryofCustomerTechSupportSenderMsg({ customerID: user.id, techSupportID: selectedUserID }));
-            // dispatch(fetchChatHistoryofCustomerTechSupportReceiverMsg({ customerID: user.id, techSupportID: selectedUserID }));
+            dispatch(fetchChatHistoryofCustomerTechSupportReceiverMsg({ customerID: user.id, techSupportID: selectedUserID }));
         }
     }, [user, dispatch]);
+
+    useEffect(() => {
+        socketIO.on('receive-message', (message) => {
+            dispatch(fetchChatHistoryofCustomerTechSupportSenderMsg({ customerID: user.id, techSupportID: selectedUserID }));
+        });
+    }, [socketIO, dispatch, user, selectedUserID]);
 
 
 
@@ -33,14 +39,11 @@ const SelectedChat = ({ userName, userProfile, selectedUserID, socket }) => {
     const handleSendMessage = (e) => {
         e.preventDefault();
         let createdDate = new Date();
-        socketIO.emit('send-message', { message: message, senderID: user.id, receiverID: selectedUserID , createdDate: createdDate});
 
         dispatch(sendMsgToTechSupport({ customerID: user.id, techSupportID: selectedUserID, message: message, createdDate: createdDate }));
+        socketIO.emit('send-message', { message: message, senderID: user.id, receiverID: selectedUserID , createdDate: createdDate});
         setMessage('');
     };
-
-    console.log(sendingMsg);
-    // console.log(recivingMsg);
 
 
     return (

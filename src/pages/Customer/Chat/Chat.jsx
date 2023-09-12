@@ -42,7 +42,7 @@ const chatList = [
 ]
 
 
-const Chat = ({ socket }) => {
+const Chat = () => {
 
     const [selectedUser, setSelectedUser] = useState(false);
     const [selectedUserID, setSelectedUserID] = useState('');
@@ -80,7 +80,7 @@ const Chat = ({ socket }) => {
 
                     <div className="chat-message-container notSelectedUserPage px-16 py-4 w-full flex flex-col flex-grow mx-auto mt-4">
                         {
-                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={selectedUserID} socket={socket} />) : (<NotSelectedChat />)
+                            selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={selectedUserID} />) : (<NotSelectedChat />)
                         }
                     </div>
 
