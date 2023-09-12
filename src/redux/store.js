@@ -13,7 +13,7 @@ import customerCartSlice from "./slices/techsupport/customerCartSlice";
 import customerOrderRequestSlice from "./slices/techsupport/customerOrderRequestSlice";
 import relaySlice from "./slices/techsupport/relaySlice";
 import deviceSlice from "./slices/techsupport/deviceSlice";
-
+import techSupportSlice from "./slices/techSupportSlice";
 
 export const store = configureStore({
     reducer: {
@@ -28,6 +28,7 @@ export const store = configureStore({
         customerCart: customerCartSlice,
         customerOrderRequests: customerOrderRequestSlice,
         relays: relaySlice,
-        devices: deviceSlice
+        devices: deviceSlice,
+        techSupport:techSupportSlice
     }
 });

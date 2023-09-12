@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import sidebarGif from '../../assets/images/sidebar.gif'
 
 
-const SidebarWrapper = ({ children, toggle, setToggle, profileLink, isGifActive }) => {
+const SidebarWrapper = ({ children, toggle, setToggle, profileLink, isGifActive,username }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const SidebarWrapper = ({ children, toggle, setToggle, profileLink, isGifActive 
                 <div onClick={profileView} className={'cursor-pointer flex justify-center items-center pt-3 pb-3 text-white mx-auto transition-all hover:bg-white hover:text-black text-center duration-300 ' + (toggle ? 'w-full' : '')}>
                     <div className='px-2'><img src="https://avatars.githubusercontent.com/u/73744585?v=4" alt="" className='w-12 h-12 rounded-full' /></div>
                     <div className="details flex flex-col items-center justify-center">
-                        {toggle && <div className='font-bold'>Kamal Perera</div>}
+                        {toggle && <div className='font-bold'>{username}</div>}
                         {toggle && <div className='font-extralight'>View Profile</div>}
                     </div>
 
