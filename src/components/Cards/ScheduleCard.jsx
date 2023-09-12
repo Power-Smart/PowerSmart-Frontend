@@ -1,8 +1,9 @@
 import { GiCycle } from 'react-icons/gi';
 import { MdLooksOne } from 'react-icons/md';
 import { Switch } from 'antd';
+import { dayConvertor } from '../../utils/Converters';
 
-const ScheduleCard = ({ id, name, switch_on, switch_off, date, repeat }) => {
+const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = true }) => {
     return (
         <div className="flex p-4 mx-5 my-2 bg-[#151528] w-full rounded-md">
             <div className="flex-[1] text-center flex items-center">
@@ -11,13 +12,13 @@ const ScheduleCard = ({ id, name, switch_on, switch_off, date, repeat }) => {
             <div className='flex-[3] flex justify-center items-center'>
                 <div className="flex-[1] text-left flex flex-col justify-center items-center">
                     <h3 className='text-xs mb-1'>Switch ON</h3>
-                    <h1 className="text-3xl mb-3">{switch_on}</h1>
-                    <h3 className='text-2ml'>{date}</h3>
+                    <h1 className="text-3xl mb-2">{time_on}</h1>
+                    <h3 className='text-2ml'>{(repeat ? "Every" : "Nearby") + " " + dayConvertor(day_on)}</h3>
                 </div>
                 <div className="flex-[1] text-left flex flex-col justify-center items-center">
                     <h3 className='text-xs mb-1'>Switch OFF</h3>
-                    <h1 className="text-3xl mb-3">{switch_off}</h1>
-                    <h3 className='text-2ml'>{date}</h3>
+                    <h1 className="text-3xl mb-2">{time_off}</h1>
+                    <h3 className='text-2ml'>{(repeat ? "Every" : "Nearby") + " " + dayConvertor(day_off)}</h3>
                 </div>
             </div>
             <div className='flex-[1] flex justify-between items-center'>
