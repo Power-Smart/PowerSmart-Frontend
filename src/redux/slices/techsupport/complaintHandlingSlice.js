@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllComplaintsApi } from "../../../api/apiComplaintHandling";
+import { getAllComplaintsApi,accpetOrRejectComplaintApi } from "../../../api/apiComplaintHandling";
 
 export const getAllComplaints = createAsyncThunk(
     "complaintHandling/getAllComplaints",
@@ -12,6 +12,20 @@ export const getAllComplaints = createAsyncThunk(
         }
     }
 );
+
+export const accpetOrRejectComplaint = createAsyncThunk(
+    "complaintHandling/accpetOrRejectComplaint",
+    async (updateData, thunkAPI) => {
+        try {
+            const response = await accpetOrRejectComplaintApi(updateData);
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
+        }
+    }
+);
+
+
 
 
 let initialState = {
@@ -34,6 +48,17 @@ export const complaintHandlingSlice = createSlice({
                 state.complaints = action.payload;
             })
             .addCase(getAllComplaints.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            })
+            .addCase(accpetOrRejectComplaint.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(accpetOrRejectComplaint.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.complaints = action.payload;
+            })
+            .addCase(accpetOrRejectComplaint.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });

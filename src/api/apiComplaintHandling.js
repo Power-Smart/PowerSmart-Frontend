@@ -8,3 +8,13 @@ export const getAllComplaintsApi = async (techSupportID) => {
         throw error;
     }
 };
+
+
+export const accpetOrRejectComplaintApi = async (updateData) => {
+    try {
+        const response = await api.patch(`/complaintHandling/accpetOrRejectComplaint`, updateData);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
