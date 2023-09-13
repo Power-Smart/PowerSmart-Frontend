@@ -36,13 +36,21 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
 
     const [message, setMessage] = useState('');
 
-    const handleSendMessage = (e) => {
+    const handleSendMessage = async (e) => {
         e.preventDefault();
-        let createdDate = new Date();
 
-        dispatch(sendMsgToTechSupport({ customerID: user.id, techSupportID: selectedUserID, message: message, createdDate: createdDate }));
-        socketIO.emit('send-message', { message: message, senderID: user.id, receiverID: selectedUserID , createdDate: createdDate});
-        setMessage('');
+        try{
+            let createdDate = new Date();
+
+            const socketReturn =  await socketIO.emit('send-message', {flag:"M", message: message, senderID: user.id, receiverID: selectedUserID , createdDate: createdDate});
+
+            const dispatchReturn =  dispatch(sendMsgToTechSupport({ customerID: user.id, techSupportID: selectedUserID, message: message, createdDate: createdDate }));
+            setMessage('');
+        }catch(error){
+            //
+            console.error("An error occurred:", error);
+        }
+        
     };
 
 
