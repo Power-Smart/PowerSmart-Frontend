@@ -44,7 +44,7 @@ const SwitchCard = ({ id, type, device, validity, schedule = null, status, switc
                     <Link to={`${id}/schedules`} className='px-1 py-1 mb-1 bg-[#83BCFF] rounded-md text-black text-xs'>
                         {"Schedules >"}
                     </Link>
-                    <h3 className='text-xs'>{!schedule ? "Not Scheduled" : "Scheduled"}</h3>
+                    {/* <h3 className='text-xs'>{!schedule ? "Not Scheduled" : "Scheduled"}</h3> */}
                 </div>
             </div>
         </div>

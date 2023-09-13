@@ -47,6 +47,7 @@ const Schedules = () => {
         if (user.id) {
             dispatch(fetchSchedules({ device_id: deviceID, user_id: user.id }));
         }
+        console.log(schedules);
     }, [user, dispatch]);
 
     return (
@@ -68,7 +69,7 @@ const Schedules = () => {
                                     time_off={schedule.schedule.end_time}
                                     day_on={schedule.schedule.start_day}
                                     day_off={schedule.schedule.end_day}
-                                    switch={schedule.switch_status}
+                                    switch_status={schedule.switch_status}
                                 />
                             )) :
                             "No Schedules to display"

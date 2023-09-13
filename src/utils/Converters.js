@@ -1,18 +1,18 @@
 export const dayConvertor = (day) => {
     switch (day) {
-        case 0:
+        case "sun":
             return "Sunday";
-        case 1:
+        case "mon":
             return "Monday";
-        case 2:
+        case "tue":
             return "Tuesday";
-        case 3:
+        case "wed":
             return "Wednesday";
-        case 4:
+        case "thu":
             return "Thursday";
-        case 5:
+        case "fri":
             return "Friday";
-        case 6:
+        case "sat":
             return "Saturday";
         default:
             return "Sunday";
