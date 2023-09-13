@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import RoomSidebar from '../../../components/Sidebar/Customer/RoomSidebar';
 import PageContent from '../../../components/Wrappers/PageContent';
@@ -13,6 +13,9 @@ import TextInput from '../../../components/Forms/TextInput';
 import FormSubmitButton from '../../../components/Forms/FormSubmitButton';
 import { Checkbox, TimePicker, Select, Switch } from 'antd';
 import dayjs from 'dayjs';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSchedule } from '../../../redux/slices/scheduleSlice';
+import { createScheduleApi } from '../../../api/apiSchedules';
 
 const daysOfWeek = [
     {
@@ -47,10 +50,13 @@ const daysOfWeek = [
 
 const AddSchedule = () => {
     const { placeID, roomID, deviceID } = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector(state => state.user.user);
     const timeFormat = 'HH:mm';
     const [formData, setFormData] = useState({
-        status: true,
-        deviceId: deviceID,
+        deviceID,
+        switch_status: true,
         placeId: placeID,
         name: '',
         startTime: dayjs('00:00', timeFormat),
@@ -61,13 +67,21 @@ const AddSchedule = () => {
         scheduleOverride: false,
         automationOverride: false,
         manualOverride: false,
+        status: true,
     });
-    const onChange = (value) => {
-        console.log(`selected ${value}`);
-    };
-    const addSheduleData = (e) => {
+    const addSheduleData = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        try {
+            const res = await createScheduleApi(user.id, formData);
+            if (res.status === 200) {
+                console.log(res.data);
+                navigate(`/places/${placeID}/rooms/${roomID}/controlpanel/${deviceID}/schedules`);
+            } else {
+                throw new Error(res.data);
+            }
+        } catch (err) {
+            alert("can't add schedule now !");
+        }
     }
     const filterOption = (input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
     return (
@@ -83,10 +97,12 @@ const AddSchedule = () => {
                         </FormGroup>
                         <div className='flex justify-between items-center'>
                             <div className='flex'>
-                                <label className='mr-3'>Device state : </label>
+                                <label className='mr-3'>Device status : </label>
                                 <Switch checkedChildren="on"
                                     unCheckedChildren="Off"
-                                    defaultChecked={formData.status}
+                                    onChange={(e) => { setFormData({ ...formData, switch_status: e }) }}
+                                    checked={formData.switch_status}
+                                    defaultChecked={formData.switch_status}
                                 />
                             </div>
                             <Checkbox
@@ -102,8 +118,8 @@ const AddSchedule = () => {
                                         <label className='mr-3 my-1'>Automation Override : </label>
                                     </td>
                                     <td>
-                                        <Switch checkedChildren="on"
-                                            unCheckedChildren="Off"
+                                        <Switch checkedChildren="Allow"
+                                            unCheckedChildren="Deny"
                                             defaultChecked={formData.automationOverride}
                                             onChange={(state) => { setFormData({ ...formData, automationOverride: state }) }}
                                         />
@@ -114,8 +130,8 @@ const AddSchedule = () => {
                                         <label className='mr-3 my-1'>Manual Override : </label>
                                     </td>
                                     <td>
-                                        <Switch checkedChildren="on"
-                                            unCheckedChildren="Off"
+                                        <Switch checkedChildren="Allow"
+                                            unCheckedChildren="Deny"
                                             defaultChecked={formData.manualOverride}
                                             onChange={(state) => { setFormData({ ...formData, manualOverride: state }) }}
                                         />
@@ -126,8 +142,8 @@ const AddSchedule = () => {
                                         <label className='mr-3 my-1'>Schedule Override : </label>
                                     </td>
                                     <td>
-                                        <Switch checkedChildren="on"
-                                            unCheckedChildren="Off"
+                                        <Switch checkedChildren="Allow"
+                                            unCheckedChildren="Deny"
                                             defaultChecked={formData.scheduleOverride}
                                             onChange={(state) => { setFormData({ ...formData, scheduleOverride: state }) }}
                                         />
@@ -140,7 +156,11 @@ const AddSchedule = () => {
                             <h2>Schedule Start</h2>
                             <div className='flex m-2 flex-col'>
                                 <FormRowDual>
-                                    <TimePicker defaultValue={dayjs('00:00', timeFormat)} format={timeFormat} />
+                                    <TimePicker
+                                        defaultValue={dayjs('00:00', timeFormat)}
+                                        format={timeFormat}
+                                        onChange={(time, timeString) => setFormData({ ...formData, startTime: timeString })}
+                                    />
                                     <Select
                                         showSearch
                                         placeholder="Select a day"
@@ -157,7 +177,11 @@ const AddSchedule = () => {
                             <h2>Schedule End</h2>
                             <div className='flex m-2 flex-col'>
                                 <FormRowDual>
-                                    <TimePicker defaultValue={dayjs('00:00', timeFormat)} format={timeFormat} />
+                                    <TimePicker
+                                        defaultValue={dayjs('00:00', timeFormat)}
+                                        format={timeFormat}
+                                        onChange={(time, timeString) => setFormData({ ...formData, endTime: timeString })}
+                                    />
                                     <Select
                                         showSearch
                                         placeholder="Select a day"
@@ -172,7 +196,7 @@ const AddSchedule = () => {
                         </div>
 
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
-                            <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Add'} onClick={addSheduleData} />
+                            <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Add'} onClick={(e) => addSheduleData(e)} />
                             <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Clear'} />
                         </div>
                     </Form>

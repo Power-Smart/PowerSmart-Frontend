@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getSchedulesApi } from "../../api/apiSchedules";
+import { createScheduleApi, getSchedulesApi } from "../../api/apiSchedules";
 
 
 export const fetchSchedules = createAsyncThunk(
@@ -17,15 +17,15 @@ export const fetchSchedules = createAsyncThunk(
 
 export const addSchedule = createAsyncThunk(
     "schedules/addSchedule",
-    async (schedule, thunkAPI) => {
+    async (scheduleData, thunkAPI) => {
         try {
-            // console.log(schedule)
-            // const response = await addRoomApi(schedule);
-            // if (response.status === 201) {
-            //     return response.data;
-            // } else {
-            //     return thunkAPI.rejectWithValue({ error: response.data });
-            // }
+            console.log(scheduleData)
+            const response = await createScheduleApi(scheduleData.user_id, scheduleData.data);
+            if (response.status === 200) {
+                return response.data;
+            } else {
+                return thunkAPI.rejectWithValue({ error: response.data });
+            }
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
         }
@@ -76,11 +76,11 @@ export const scheduleSlice = createSlice({
                 state.error = action.error.message;
             })
             .addCase(addSchedule.pending, (state) => {
-                state.status = "loading"; hedules
+                state.status = "loading";
             })
             .addCase(addSchedule.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                state.schedules.push(action.payload);
+                // state.schedules.push(action.payload);
             })
             .addCase(addSchedule.rejected, (state, action) => {
                 state.status = 'failed';
