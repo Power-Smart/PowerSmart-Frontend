@@ -20,7 +20,7 @@ const UserInquiriesRow = ({ customer_id,complaint_id,date,description,is_solve,c
                 </div>
             </th>
             <td className="px-6 py-4">
-                {description.slice(0, 25) + '...'}
+                {/* {description.slice(0, 25) + '...'} */}
             </td>
             <td className="px-6 py-4">
                 {customer_id}
@@ -39,7 +39,7 @@ const UserInquiriesRow = ({ customer_id,complaint_id,date,description,is_solve,c
                     <Link to={`/tech/viewComplaint/${complaint_id}`}><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>chat</button></Link>
                 </div>
                 <div className="flex items-center justify-center">
-                    <Link to={`/tech/viewComplaint/${complaint_id}`}><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>view</button></Link>
+                    <Link to={`/tech/viewComplaint/${complaint_id}/${customer_id}`}><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>view</button></Link>
                 </div>
             </td>
 

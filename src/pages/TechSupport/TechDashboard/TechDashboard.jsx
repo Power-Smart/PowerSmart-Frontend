@@ -26,7 +26,7 @@ const TechDashboard = () => {
                             </div>
                             <div className='flex flex-col mt-4'>
                                 <h1 className='text-lg font-semibold mb-2'>Services Requests</h1>
-                                <TableOrderStatus />
+                                {/* <TableOrderStatus /> */}
                             </div>
                         </div>
                         <div className='flex flex-col mt-4'>
