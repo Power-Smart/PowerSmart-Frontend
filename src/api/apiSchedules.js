@@ -15,3 +15,8 @@ export const deleteScheduleApi = async (userID, scheduleID) => {
     const response = await api.delete(`/scheduling/delete/${userID}/${scheduleID}`);
     return response;
 }
+
+export const updateScheduleApi = async (userID, scheduleID, scheduleData) => {
+    const response = await api.put(`/scheduling/update/${userID}/${scheduleID}`, scheduleData);
+    return response;
+}

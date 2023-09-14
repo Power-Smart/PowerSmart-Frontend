@@ -2,8 +2,9 @@ import { GiCycle } from 'react-icons/gi';
 import { MdLooksOne } from 'react-icons/md';
 import { Switch } from 'antd';
 import { dayConvertor } from '../../utils/Converters';
+import { Link } from 'react-router-dom';
 
-const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = true, switch_status, onDelete, setVisible }) => {
+const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = true, switch_status, onDelete }) => {
     return (
         <div className="flex p-4 mx-5 my-2 bg-[#151528] w-full rounded-md">
             <div className="flex-[1] text-center flex items-center">
@@ -35,7 +36,7 @@ const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = t
                 </div>
             </div>
             <div className="flex-1 flex flex-col justify-center items-end">
-                <button className='w-20 py-1 m-1 text-sm bg-[#83BCFF] rounded-md text-black'>Edit</button>
+                <Link className='w-20 py-1 m-1 text-sm bg-[#83BCFF] rounded-md text-center text-black' to={`update/${id}`}>Edit</Link>
                 <button className='w-20 py-1 m-1 text-sm bg-[#ff8383] rounded-md text-black' onClick={e => onDelete(e, id, name)}>Delete</button>
             </div>
         </div>
