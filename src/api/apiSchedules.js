@@ -20,3 +20,9 @@ export const updateScheduleApi = async (userID, scheduleID, scheduleData) => {
     const response = await api.put(`/scheduling/update/${userID}/${scheduleID}`, scheduleData);
     return response;
 }
+
+export const updateScheduleStatusApi = async (scheduleID, status) => {
+    const data = { status };
+    const response = await api.put(`/scheduling/update_status/${scheduleID}`, data);
+    return response;
+}

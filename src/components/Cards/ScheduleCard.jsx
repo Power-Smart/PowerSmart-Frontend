@@ -3,8 +3,23 @@ import { MdLooksOne } from 'react-icons/md';
 import { Switch } from 'antd';
 import { dayConvertor } from '../../utils/Converters';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { updateScheduleStatusApi } from '../../api/apiSchedules';
+import { updateScheduleStatus } from '../../redux/slices/scheduleSlice';
 
-const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = true, switch_status, onDelete }) => {
+const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = true, switch_status, onDelete, status, dispatch }) => {
+    const [scheduleStatus, setScheduleStatus] = useState(status);
+    const [switchLoading, setSwitchLoading] = useState(false);
+    const changeStatus = async (checked) => {
+        setSwitchLoading(true);
+        const res = await updateScheduleStatusApi(id, checked);
+        if (res.status === 200) {
+            dispatch(updateScheduleStatus({ id, status: checked }))
+            setScheduleStatus(scheduleStatus => !scheduleStatus);
+            setSwitchLoading(false);
+        }
+    }
+
     return (
         <div className="flex p-4 mx-5 my-2 bg-[#151528] w-full rounded-md">
             <div className="flex-[1] text-center flex items-center">
@@ -32,7 +47,14 @@ const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = t
                     {!repeat && <MdLooksOne className="text-3xl" />}
                 </div>
                 <div className="flex-1 flex justify-center items-center">
-                    <Switch checkedChildren="ON" unCheckedChildren="OFF" defaultChecked />
+                    <Switch
+                        checkedChildren="ON"
+                        unCheckedChildren="OFF"
+                        defaultChecked={status}
+                        checked={scheduleStatus}
+                        onChange={changeStatus}
+                        loading={switchLoading}
+                    />
                 </div>
             </div>
             <div className="flex-1 flex flex-col justify-center items-end">

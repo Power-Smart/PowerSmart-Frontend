@@ -60,7 +60,14 @@ const initialState = {
 export const scheduleSlice = createSlice({
     name: "schedules",
     initialState,
-    reducers: {},
+    reducers: {
+        updateScheduleStatus: (state, action) => {
+            const index = state.schedules.findIndex(
+                (schedule) => schedule.id === action.payload.id
+            )
+            state.schedules[index].schedule.status = action.payload.status;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchSchedules.pending, (state) => {
@@ -103,6 +110,8 @@ export const scheduleSlice = createSlice({
             })
     }
 });
+
+export const { updateScheduleStatus } = scheduleSlice.actions;
 
 export const selectSchedules = (state) => state.schedules.schedules;
 export const selectSchedulesStatus = (state) => state.schedules.status;

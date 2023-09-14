@@ -70,6 +70,8 @@ const Schedules = () => {
                                     day_off={schedule.schedule.end_day}
                                     switch_status={schedule.switch_status}
                                     onDelete={onDelete}
+                                    dispatch={dispatch}
+                                    status={schedule.schedule.status}
                                 />
                             )) :
                             "No Schedules to display"
