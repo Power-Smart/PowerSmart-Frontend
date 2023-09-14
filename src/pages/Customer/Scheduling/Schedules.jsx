@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import { Link, useParams } from 'react-router-dom'
 import RoomSidebar from '../../../components/Sidebar/Customer/RoomSidebar';
@@ -9,39 +9,37 @@ import ButtonBar from '../../../components/Wrappers/ButtonBar';
 import ScheduleCard from '../../../components/Cards/ScheduleCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSchedules, selectSchedules } from '../../../redux/slices/scheduleSlice';
-
-const data = [
-    {
-        id: 1,
-        name: "Schedule 1",
-        switch_on: "10:00 AM",
-        switch_off: "06:00 PM",
-        date: "Wednesday",
-        repeat: true
-    },
-    {
-        id: 2,
-        name: "Schedule 2",
-        switch_on: "10:00 AM",
-        switch_off: "06:00 PM",
-        date: "Everyday",
-        repeat: false
-    },
-    {
-        id: 3,
-        name: "Schedule 3",
-        switch_on: "10:00 AM",
-        switch_off: "06:00 PM",
-        date: "Sunday",
-        repeat: true
-    }
-];
+import DelConfirm from '../../../components/Popups/DelConfirm';
+import { deleteScheduleApi } from '../../../api/apiSchedules';
 
 const Schedules = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user);
     const schedules = useSelector(selectSchedules);
     const { placeID, roomID, deviceID } = useParams();
+    const [visible, setVisible] = useState(false);
+    const [delData, setDelData] = useState({
+        id: null,
+        name: null,
+    });
+
+    const onDelete = (e, id, name) => {
+        e.preventDefault();
+        setVisible(true);
+        setDelData({ id, name });
+    }
+
+    const deleteItem = async (e) => {
+        e.preventDefault();
+        const res = await deleteScheduleApi(user.id, delData.id);
+        if (res.status === 200) {
+            alert('data deleted');
+            dispatch(fetchSchedules({ device_id: deviceID, user_id: user.id }));
+        }
+        else
+            alert('error deleting data');
+        setVisible(false);
+    }
 
     useEffect(() => {
         if (user.id) {
@@ -52,6 +50,7 @@ const Schedules = () => {
 
     return (
         <PageWrapper>
+            <DelConfirm visible={visible} onNo={(e) => setVisible(false)} onYes={e => deleteItem(e)} item={delData.name} />
             <RoomSidebar placeID={placeID} roomID={roomID} deviceID={deviceID} />
             <PageContent>
                 <TopBar title={`Schedules`} baclLink={`/places/${placeID}/rooms/${roomID}/controlpanel`} />
@@ -70,6 +69,8 @@ const Schedules = () => {
                                     day_on={schedule.schedule.start_day}
                                     day_off={schedule.schedule.end_day}
                                     switch_status={schedule.switch_status}
+                                    onDelete={onDelete}
+                                    setVisible={setVisible}
                                 />
                             )) :
                             "No Schedules to display"

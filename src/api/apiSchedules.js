@@ -9,4 +9,9 @@ export const createScheduleApi = async (userID, scheduleData) => {
     const response = await api.post(`/scheduling/create/${userID}`, scheduleData);
     console.log(response)
     return response;
-} 
+}
+
+export const deleteScheduleApi = async (userID, scheduleID) => {
+    const response = await api.delete(`/scheduling/delete/${userID}/${scheduleID}`);
+    return response;
+}

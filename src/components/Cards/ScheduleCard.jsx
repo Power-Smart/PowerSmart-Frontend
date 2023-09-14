@@ -3,7 +3,7 @@ import { MdLooksOne } from 'react-icons/md';
 import { Switch } from 'antd';
 import { dayConvertor } from '../../utils/Converters';
 
-const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = true, switch_status }) => {
+const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = true, switch_status, onDelete, setVisible }) => {
     return (
         <div className="flex p-4 mx-5 my-2 bg-[#151528] w-full rounded-md">
             <div className="flex-[1] text-center flex items-center">
@@ -36,7 +36,7 @@ const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = t
             </div>
             <div className="flex-1 flex flex-col justify-center items-end">
                 <button className='w-20 py-1 m-1 text-sm bg-[#83BCFF] rounded-md text-black'>Edit</button>
-                <button className='w-20 py-1 m-1 text-sm bg-[#ff8383] rounded-md text-black'>Delete</button>
+                <button className='w-20 py-1 m-1 text-sm bg-[#ff8383] rounded-md text-black' onClick={e => onDelete(e, id, name)}>Delete</button>
             </div>
         </div>
     )
