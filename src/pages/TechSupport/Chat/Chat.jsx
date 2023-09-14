@@ -8,7 +8,9 @@ import ChatProfile from './ChatProfile'
 import NotSelectedChat from './NotSelectedChat'
 import SelectedChat from './SelectedChat'
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
-
+import { getTechSupportApi } from '../../../api/apiTechSupport'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCustomerDetailsApi } from '../../../api/apiCutomerDetails'
 
 
 const chatList = [
@@ -45,6 +47,8 @@ const Chat = () => {
     const [selectedUserID, setSelectedUserID] = useState('');
     const [selectedUserName, setSelectedUserName] = useState('');
     const [selectedUserPicture, setSelectedUserPicture] = useState('');
+    const user = useSelector(state => state.user.user);
+    let customersArray = [];
 
 
     const handleSelectUserDisplay = (userID) => {
@@ -58,6 +62,19 @@ const Chat = () => {
         })
     }
 
+    getTechSupportApi(user.id).then((res) => {
+        customersArray = res.data.customers;
+        console.log(customersArray[0]);
+        getCustomerDetailsApi(customersArray[0]).then((res) => {
+            
+        }).catch((err) => {
+            console.log(err);
+        })
+    }).catch((err) => {
+        console.log(err);
+    })
+
+
     return (
         <PageWrapper>
             <MainSidebar />
@@ -69,7 +86,6 @@ const Chat = () => {
                             selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture}/>) : (<NotSelectedChat/>)
                         }
                     </div>
-
 
                     <div className="chat-user-list">
                         <div className="search-chat mt-8">
