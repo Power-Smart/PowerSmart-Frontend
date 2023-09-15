@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
+import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei'
 
 export function Home(props) {
-
+  const groupRef = useRef();
   const { nodes, materials } = useGLTF('/models/home.glb')
+  useFrame((state) => {
+    groupRef.current.rotation.y = groupRef.current.rotation.y + 0.01
+  })
   return (
-    <group {...props} dispose={null}>
-      <group position={props.position} rotation={[-Math.PI / 2, 0, 0]} scale={0.45}>
+    <group {...props} dispose={null} ref={groupRef}>
+      <group position={[-17, -7, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={0.45}>
         {/* <group position={[-0.006, 0, 0.006]} rotation={[-Math.PI / 2, 0, 0]}> */}
-        <group rotation={[Math.PI / 2, 0, 0]} position={props.position}>
+        <group rotation={[Math.PI / 2, 0, 0]} >
           <group position={[33.329, 23.081, -3.01]} rotation={[0, -0.002, 0]} scale={[0.013, 0.31, 0.013]}>
             <mesh geometry={nodes.Object_8.geometry} material={materials.zabor} />
             <mesh geometry={nodes.Object_9.geometry} material={materials.zabor} />
