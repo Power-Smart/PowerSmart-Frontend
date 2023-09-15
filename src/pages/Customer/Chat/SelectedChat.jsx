@@ -15,14 +15,19 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
     const sendingMsg = useSelector(selectChatHistoryofCustomerTechSupportSenderMsg);
     const recivingMsg = useSelector(selectChatHistoryofCustomerTechSupportReceiverMsg);
 
-    const socketIO = io.connect('http://localhost:3010');
-    socketIO.emit("connected", user.id);
 
     const [message, setMessage] = useState('');
 
+    const socketIO = io.connect('http://localhost:3010');
+    socketIO.emit("joinRoom", user.id);
+
+    socketIO.on("receiveEvent", (data) => {
+        console.log(data);
+    });
+
     const handleSendMessage = (e) => {
         e.preventDefault();
-        socketIO.emit("sendEvent", { 
+        socketIO.emit("sendEvent", {
             senderID: user.id,
             receiverID: selectedUserID,
             message: message
@@ -32,7 +37,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
     socketIO.on("receiveEvent", (data) => {
         console.log(data);
     });
-        
+
 
     return (
         <>
