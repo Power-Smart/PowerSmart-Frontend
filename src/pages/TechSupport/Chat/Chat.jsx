@@ -23,11 +23,12 @@ const Chat = () => {
 
     const handleSelectUserDisplay = (userID) => {
         customerDetailsArray.forEach((chatUser) => {
-            if (chatUser.userID === userID) {
+            console.log(chatUser);
+            if (chatUser.user_id == userID) {
                 setSelectedUser(true);
-                setSelectedUserID(chatUser.userID);
-                setSelectedUserName(chatUser.userName);
-                setSelectedUserPicture(chatUser.profilePicture);
+                setSelectedUserID(chatUser.user_id);
+                setSelectedUserName(chatUser.user.first_name + ' ' + chatUser.user.last_name);
+                setSelectedUserPicture(chatUser.profile_pic);
             }
         });
     };
@@ -46,16 +47,15 @@ const Chat = () => {
                             return null;
                         });
                 });
-
                 const customerDetails = await Promise.all(promises);
                 setCustomerDetailsArray(customerDetails); 
             } catch (err) {
                 console.log(err);
             }
         };
-
         fetchData();
     }, [user.id]); 
+
 
     return (
         <PageWrapper>
@@ -63,7 +63,7 @@ const Chat = () => {
             <PageContent>
                 <div className="chat">
                     <div className="chat-message-container notSelectedUserPage px-16 py-4 mt-4">
-                        {selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} />) : (<NotSelectedChat />)}
+                        {selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={setSelectedUserID}/>) : (<NotSelectedChat />)}
                     </div>
                     <div className="chat-user-list">
                         <div className="search-chat mt-8">
@@ -76,7 +76,7 @@ const Chat = () => {
                                     profilePicture={customer.profile_pic}
                                     userName={customer.user.first_name + ' ' + customer.user.last_name}
                                     lastMessage={"lastMessage"}
-                                    id={customer.user_id}
+                                    id={customer.user.user_id}
                                     onClick={(e) => handleSelectUserDisplay(e.currentTarget.id)}
                                     key={index}
                                 />
