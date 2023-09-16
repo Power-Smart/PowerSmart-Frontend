@@ -11,7 +11,7 @@ export const windows_type = [
         label: 'Triple',
         value: 'triple',
     },
-]       
+]
 
 
 export const active_status = [

@@ -6,6 +6,15 @@ import customerSlice from "./slices/customerSlice";
 import placesSlice from "./slices/placesSlice";
 import roomsSlice from "./slices/roomsSlice";
 import orderSlice from "./slices/orderSlice";
+import techCustomersSlice from "./slices/techsupport/techCustomersSlice";
+import techPlacesSlice from "./slices/techsupport/techPlaceSlice";
+import marketPlaceSlice from "./slices/techsupport/marketPlaceSlice";
+import customerCartSlice from "./slices/techsupport/customerCartSlice";
+import customerOrderRequestSlice from "./slices/techsupport/customerOrderRequestSlice";
+import relaySlice from "./slices/techsupport/relaySlice";
+import deviceSlice from "./slices/techsupport/deviceSlice";
+import scheduleSlice from "./slices/scheduleSlice";
+
 
 export const store = configureStore({
     reducer: {
@@ -14,5 +23,13 @@ export const store = configureStore({
         places: placesSlice,
         rooms: roomsSlice,
         orders: orderSlice,
-    },
+        techCustomers: techCustomersSlice,
+        techPlaces: techPlacesSlice,
+        marketPlace: marketPlaceSlice,
+        customerCart: customerCartSlice,
+        customerOrderRequests: customerOrderRequestSlice,
+        relays: relaySlice,
+        devices: deviceSlice,
+        schedules: scheduleSlice,
+    }
 });

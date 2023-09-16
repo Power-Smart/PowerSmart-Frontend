@@ -1,35 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TableRow from './TableRow';
+import { fetchCustomerOrderRequests, selectCustomerOrderRequests, selectCustomerOrderRequestsStatus } from '../../../../redux/slices/techsupport/customerOrderRequestSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const dataset = [
-    {
-        name: 'Kamal Ahmed',
-        profilePicture:'https://avatars.githubusercontent.com/u/73744585?v=4',
-        places: 2,
-        rooms: 4,
-    },
-    {
-        name: 'Pamal Kumar',
-        profilePicture:'https://avatars.githubusercontent.com/u/44749685?v=4',
-        places: 2,
-        rooms: 4,
-    },
-    {
-        name: 'Yamal Qumar',
-        profilePicture:'https://avatars.githubusercontent.com/u/37753777?v=4',
-        places: 2,
-        rooms: 4,
-    },
-    {
-        name: 'Bamal Kumar',
-        profilePicture:'https://avatars.githubusercontent.com/u/73994665?v=4',
-        places: 2,
-        rooms: 4,
-    },
-];
+
 
 
 const TableOrderRequests = () => {
+
+    const dispatch = useDispatch();
+    const customerOrderRequests = useSelector(selectCustomerOrderRequests);
+
+    useEffect(() => {
+        dispatch(fetchCustomerOrderRequests());
+    }, [dispatch])
+
+
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-2 px-6">
 
@@ -49,13 +35,19 @@ const TableOrderRequests = () => {
                             Rooms
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
+                            Devices
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-center">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {dataset.map((data) => <TableRow key={data.id} {...data} />)}
+                    {customerOrderRequests.map((data) => (
+                        <TableRow key={data.id} {...data} customerProfilePic={data.customer.profile_pic} name={data.customer.user.first_name + " " + data.customer.user.last_name} />
+                    ))}
                 </tbody>
+
             </table>
         </div>
     )

@@ -1,14 +1,24 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import DeviceImages from '../../../components/smallComps/DeviceImages';
+import { deleteDevice } from '../../../redux/slices/techsupport/deviceSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-const DeviceCard = ({ id, deviceName, walt, image }) => {
+const DeviceCard = ({ id, deviceName, socket, type, relay }) => {
+    const { placeID, roomID } = useParams();
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user)
+    const deleteDeviceFromRoom = (e) => {
+        e.preventDefault();
+        if (user.id) dispatch(deleteDevice({ userID: user.id, placeID, roomID, deviceID: id }))
+    }
     return (
         <div className="text-sm flex flex-col border-solid border border-secondaryBlue w-[200px] h-auto bg-[#1C1C2E] rounded-3xl shadow-md pb-5 m-5 justify-evenly">
             <div className="bg-white w-[200px] rounded-tr-3xl rounded-tl-3xl">
                 <img
                     className="object-cover h-[100px] w-[200px] rounded-3xl"
-                    src={image}
+                    src={DeviceImages(type)}
                     alt="item"
                 />
             </div>
@@ -17,18 +27,19 @@ const DeviceCard = ({ id, deviceName, walt, image }) => {
                 {deviceName}
             </div>
             <div className="text-center mb-3">
-                <div className="text-sm text-secondaryText">{walt}wh</div>
+                <div className="text-sm text-secondaryText">Relay {relay}</div>
+                <div className="text-sm text-secondaryText">Socket {socket}</div>
             </div>
 
             <div className="flex justify-evenly items-center">
-                <button className="px-4 py-1 w-20 text-sm bg-secondaryBtn rounded-2xl text-black bg-[#FF8383]">
-                    Delete
-                </button>
-                <Link to='#'>
+                <Link to='edit'>
                     <button className="px-4 py-1 w-20 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF]">
                         Edit
                     </button>
                 </Link>
+                <button className="px-4 py-1 w-20 text-sm bg-secondaryBtn rounded-2xl text-black bg-[#FF8383]" onClick={deleteDeviceFromRoom}>
+                    Delete
+                </button>
             </div>
         </div>
     )
