@@ -6,22 +6,71 @@ import PageContent from '../../components/Wrappers/PageContent'
 import { Link, useParams } from 'react-router-dom';
 import './guestUserPage.css';
 import { submitGuestUserSuggest } from '../../api/apiGuestUser';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
+import ReCAPTCHA from "react-google-recaptcha";
+import Swal from 'sweetalert2'
 
 
 const GuestUserPage = () => {
     let [selectedOption, setSelectedOption] = useState('option1');
+    const [captcha, setCaptcha] = useState(false);
 
     let customerID = 1;
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
-        if(selectedOption === 'option1'){
+        if (selectedOption === 'option1') {
             selectedOption = 'High power consumption for less number of People'
-        }else if(selectedOption === 'option2'){
+        } else if (selectedOption === 'option2') {
             selectedOption = 'Excessive energy consumption'
         }
-        submitGuestUserSuggest({customerID:customerID,selectedOption:selectedOption});
     };
+
+    const submitGuestUserSuggest = () => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
+                Swal.fire('Submitted!', 'Your suggestion has been submitted.', 'success');
+            }
+        });
+        // submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
+    }
+
 
     return (
         <div>
@@ -90,8 +139,13 @@ const GuestUserPage = () => {
                                     </label>
 
                                     <div className="flex justify-center mt-10">
+                                        <ReCAPTCHA
+                                            sitekey="6LffHC4oAAAAAAU0WbrF_ZiFExqj7Uw8YbINVzLj"
+                                            onChange={() => setCaptcha(true)}
 
-                                            <button className='px-4 py-1 bg-blue-700 rounded-lg'>Submit</button>
+                                        />
+                                        <button className='px-4 py-1 bg-blue-700 rounded-lg' disabled={!captcha} onClick={submitGuestUserSuggest}>Submit</button>
+
                                     </div>
                                 </div>
                             </div>
