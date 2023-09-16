@@ -68,7 +68,6 @@ const GuestUserPage = () => {
                 Swal.fire('Submitted!', 'Your suggestion has been submitted.', 'success');
             }
         });
-        // submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
     }
 
 
