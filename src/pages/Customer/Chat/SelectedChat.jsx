@@ -1,3 +1,5 @@
+// customer chat page
+
 import React, { useEffect, useState } from 'react';
 import './chat.css';
 import RecivierMessage from './RecivierMessage';
@@ -17,6 +19,14 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
     const socketIO = io.connect('http://localhost:3010');
     socketIO.emit("joinRoom", user.id);
 
+    useEffect(() => {
+        getChatHistoryofCustomerTechSupportReceiverMsgApi(user.id, selectedUserID).then((response) => {
+            setRecivingMsg(response.data);
+        }).catch((error) => {
+            return error;
+        })
+    }, [selectedUserID])
+
 
     useEffect(() => {
         getChatHistoryofCustomerTechSupportSenderMsgApi(user.id, selectedUserID).then((res) => {
@@ -24,11 +34,11 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
         }).catch((err) => {
             console.log(err);
         });
-    }, []);
+    }, [selectedUserID]);
 
 
     socketIO.on("receiveEvent", (data) => {
-        console.log(data);
+        setRecivingMsg([...recivingMsg, { message: data.message }])
     });
 
     const handleSendMessage = (e) => {
@@ -40,7 +50,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
         });
 
         let createdDate = new Date();
-        sendMsgToTechSupportApi({ customerID: user.id, techSupportID: selectedUserID, message: message, createdDate: createdDate })
+        sendMsgToTechSupportApi({ senderID: user.id, receiverID: selectedUserID, message: message, createdDate: createdDate })
         setSendingMsg([...sendingMsg, { message: message }]);
         setMessage('');
     }
@@ -54,7 +64,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
             });
 
             let createdDate = new Date();
-            sendMsgToTechSupportApi({ customerID: user.id, techSupportID: selectedUserID, message: message, createdDate: createdDate })
+            sendMsgToTechSupportApi({ senderID: user.id, receiverID: selectedUserID, message: message, createdDate: createdDate })
             setSendingMsg([...sendingMsg, { message: message }]);
             setMessage('');
         }
