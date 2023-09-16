@@ -18,12 +18,11 @@ const Chat = () => {
     const [selectedUserID, setSelectedUserID] = useState('');
     const [selectedUserName, setSelectedUserName] = useState('');
     const [selectedUserPicture, setSelectedUserPicture] = useState('');
-    const [customerDetailsArray, setCustomerDetailsArray] = useState([]); 
+    const [customerDetailsArray, setCustomerDetailsArray] = useState([]);
     const user = useSelector(state => state.user.user);
 
     const handleSelectUserDisplay = (userID) => {
         customerDetailsArray.forEach((chatUser) => {
-            console.log(chatUser);
             if (chatUser.user_id == userID) {
                 setSelectedUser(true);
                 setSelectedUserID(chatUser.user_id);
@@ -39,7 +38,7 @@ const Chat = () => {
                 const res = await getTechSupportApi(user.id);
                 const customersIndexArray = res.data.customers;
 
-                const promises = customersIndexArray.map((customerID) => {
+                const promises = customersIndexArray.map(async (customerID) => {
                     return getCustomerDetailsApi(customerID)
                         .then((res) => res.data)
                         .catch((err) => {
@@ -48,13 +47,13 @@ const Chat = () => {
                         });
                 });
                 const customerDetails = await Promise.all(promises);
-                setCustomerDetailsArray(customerDetails); 
+                setCustomerDetailsArray(customerDetails);
             } catch (err) {
                 console.log(err);
             }
         };
         fetchData();
-    }, [user.id]); 
+    }, [user.id]);
 
 
     return (
@@ -63,7 +62,7 @@ const Chat = () => {
             <PageContent>
                 <div className="chat">
                     <div className="chat-message-container notSelectedUserPage px-16 py-4 mt-4">
-                        {selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={setSelectedUserID}/>) : (<NotSelectedChat />)}
+                        {selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={selectedUserID}/>) : (<NotSelectedChat />)}
                     </div>
                     <div className="chat-user-list">
                         <div className="search-chat mt-8">
@@ -71,7 +70,7 @@ const Chat = () => {
                             <input type="text" placeholder="Search Chat by Name" />
                         </div>
                         <div className="chat-list">
-                            {customerDetailsArray.map((customer,index) => (
+                            {customerDetailsArray.map((customer, index) => (
                                 <ChatProfile
                                     profilePicture={customer.profile_pic}
                                     userName={customer.user.first_name + ' ' + customer.user.last_name}
