@@ -15,12 +15,12 @@ const GuestUserPage = () => {
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
-        if(selectedOption === 'option1'){
+        if (selectedOption === 'option1') {
             selectedOption = 'High power consumption for less number of People'
-        }else if(selectedOption === 'option2'){
+        } else if (selectedOption === 'option2') {
             selectedOption = 'Excessive energy consumption'
         }
-        submitGuestUserSuggest({customerID:customerID,selectedOption:selectedOption});
+        submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
     };
 
     return (
@@ -36,7 +36,7 @@ const GuestUserPage = () => {
                                         <h3>Customer Order Request Information</h3>
                                     </div>
                                 </div>
-                                <div className="form">
+                                <div className="form" >
 
                                     <label className="inline-flex items-center">
                                         <input
@@ -66,7 +66,7 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option3'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">option 1</span>
+                                        <span className="ml-2">option 3</span>
                                     </label>
                                     <label className="inline-flex items-center">
                                         <input
@@ -76,7 +76,7 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option4'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">Option 1</span>
+                                        <span className="ml-2">Option 4</span>
                                     </label>
                                     <label className="inline-flex items-center">
                                         <input
@@ -86,34 +86,16 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option5'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">Option 1</span>
+                                        <span className="ml-2">Option 5</span>
                                     </label>
 
                                     <div className="flex justify-center mt-10">
 
-                                            <button className='px-4 py-1 bg-blue-700 rounded-lg'>Submit</button>
+                                        <button className='px-4 py-1 bg-blue-700 rounded-lg'>Submit</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="login-page-navigation">
-                                <div className="guestUserPage w-full mx-auto">
-                                    <div className="infoHeader">
-                                        <div className="title">
-                                            <h3>Visit to our system</h3>
-                                        </div>
-                                    </div>
-                                    <div className="form">
-
-                                        <div className="flex justify-center mt-10">
-
-                                            {/* <Link to={`/tech/marketPlace/`}>
-                                                <button className='px-4 py-1 bg-blue-700 rounded-lg'>Submit</button>
-                                            </Link> */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </ContentWrapper>
                 </PageContent>
