@@ -13,6 +13,9 @@ import AddRooms from '../pages/Customer/Rooms/AddRooms'
 import UpdateRoom from '../pages/Customer/Rooms/UpdateRoom'
 import UpdatePlace from '../pages/Customer/Places/UpdatePlace'
 import Chat from '../pages/Customer/Chat/Chat'
+import Schedules from '../pages/Customer/Scheduling/schedules'
+import AddSchedule from '../pages/Customer/Scheduling/AddSchedule'
+import UpdateSchedule from '../pages/Customer/Scheduling/UpdateSchedule'
 
 
 // import socketIO from 'socket.io-client';
@@ -39,6 +42,18 @@ const customerRoute =
         {
             path: "places/:placeID/rooms/:roomID/controlpanel",
             element: <InsideRoom />,
+        },
+        {
+            path: "places/:placeID/rooms/:roomID/controlpanel/:deviceID/schedules",
+            element: <Schedules />,
+        },
+        {
+            path: "places/:placeID/rooms/:roomID/controlpanel/:deviceID/addSchedule",
+            element: <AddSchedule />,
+        },
+        {
+            path: "places/:placeID/rooms/:roomID/controlpanel/:deviceID/schedules/update/:scheduleID",
+            element: <UpdateSchedule />,
         },
         {
             path: "places/:placeID/rooms/:roomID/status",
