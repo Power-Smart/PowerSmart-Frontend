@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Switch } from 'antd';
 import DeviceIcon from '../smallComps/DeviceIcon.jsx';
 import { apiToggleDevice } from '../../api/apiDevices.js';
+import { Link } from 'react-router-dom';
 
 const SwitchCard = ({ id, type, device, validity, schedule = null, status, switch_toggle, setSwitches }) => {
     const [loading, setLoading] = useState((validity === "active_pending"));
@@ -37,11 +38,13 @@ const SwitchCard = ({ id, type, device, validity, schedule = null, status, switc
             <div className='flex sm:flex-row sm:flex-grow sm:justify-between sm:items-end flex-col justify-start items-center'>
                 <div className='flex flex-col sm:items-start items-center'>
                     <h2 className='text-lg'>{device}</h2>
-                    <h3 className='text-xs'>{!schedule ? "Not Scheduled" : "Scheduled"}</h3>
+                    <h3 className=''>ID : {id}</h3>
                 </div>
                 <div className='flex flex-col text-[#83BCFF] justify-end items-end flex-wrap'>
-                    <h2>-</h2>
-                    <h3 className=''>ID : {id}</h3>
+                    <Link to={`${id}/schedules`} className='px-1 py-1 mb-1 bg-[#83BCFF] rounded-md text-black text-xs'>
+                        {"Schedules >"}
+                    </Link>
+                    {/* <h3 className='text-xs'>{!schedule ? "Not Scheduled" : "Scheduled"}</h3> */}
                 </div>
             </div>
         </div>

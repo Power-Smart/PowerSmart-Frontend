@@ -62,8 +62,7 @@ export const userSlice = createSlice({
     },
 });
 
-export const { login, session, logout, updateName, completeProfileInfo } =
-    userSlice.actions;
+export const { login, session, logout, updateName, completeProfileInfo } = userSlice.actions;
 export const selectUserID = (state) => state.user.user.id;
 
 export default userSlice.reducer;

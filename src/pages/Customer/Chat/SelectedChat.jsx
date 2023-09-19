@@ -1,46 +1,75 @@
-import React, { useEffect, useState } from 'react'
-import './chat.css'
-import RecivierMessage from './RecivierMessage'
-import SenderMessage from './SenderMessage'
-import { LuSend } from 'react-icons/lu'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchChatHistoryofCustomerTechSupportReceiverMsg, selectChatHistoryofCustomerTechSupportReceiverMsg } from '../../../redux/slices/customer/ChatMsgReceiveSlice'
-import { fetchChatHistoryofCustomerTechSupportSenderMsg, selectChatHistoryofCustomerTechSupportSenderMsg,sendMsgToTechSupport } from '../../../redux/slices/customer/ChatMsgSendSlice'
-import io from 'socket.io-client'
+// customer chat page
+
+import React, { useEffect, useState } from 'react';
+import './chat.css';
+import RecivierMessage from './RecivierMessage';
+import SenderMessage from './SenderMessage';
+import { LuSend } from 'react-icons/lu';
+import { useDispatch, useSelector } from 'react-redux';
+import io from 'socket.io-client';
+import { getChatHistoryofCustomerTechSupportReceiverMsgApi, getChatHistoryofCustomerTechSupportSenderMsgApi, sendMsgToTechSupportApi } from '../../../api/apiChat';
 
 
-
-const SelectedChat = ({ userName, userProfile, selectedUserID, socket }) => {
+const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
+    const user = useSelector(state => state.user.user);
+    const [message, setMessage] = useState('');
+    const [sendingMsg, setSendingMsg] = useState([]);
+    const [recivingMsg, setRecivingMsg] = useState([]);
 
     const socketIO = io.connect('http://localhost:3010');
-    const dispatch = useDispatch();
-    const user = useSelector(state => state.user.user);
-    const sendingMsg = useSelector(selectChatHistoryofCustomerTechSupportSenderMsg);
-    const recivingMsg = useSelector(selectChatHistoryofCustomerTechSupportReceiverMsg);
+    socketIO.emit("joinRoom", user.id);
+
+    useEffect(() => {
+        getChatHistoryofCustomerTechSupportReceiverMsgApi(user.id, selectedUserID).then((response) => {
+            setRecivingMsg(response.data);
+        }).catch((error) => {
+            return error;
+        })
+    }, [selectedUserID])
 
 
     useEffect(() => {
-        if (user.id) {
-            dispatch(fetchChatHistoryofCustomerTechSupportSenderMsg({ customerID: user.id, techSupportID: selectedUserID }));
-            // dispatch(fetchChatHistoryofCustomerTechSupportReceiverMsg({ customerID: user.id, techSupportID: selectedUserID }));
-        }
-    }, [user, dispatch]);
+        getChatHistoryofCustomerTechSupportSenderMsgApi(user.id, selectedUserID).then((res) => {
+            setSendingMsg(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, [selectedUserID]);
 
 
-
-    const [message, setMessage] = useState('');
+    socketIO.on("receiveEvent", (data) => {
+        setRecivingMsg([...recivingMsg, { message: data.message }])
+    });
 
     const handleSendMessage = (e) => {
         e.preventDefault();
+        socketIO.emit("sendEvent", {
+            senderID: user.id,
+            receiverID: selectedUserID,
+            message: message
+        });
+
         let createdDate = new Date();
-        socketIO.emit('send-message', { message: message, senderID: user.id, receiverID: selectedUserID , createdDate: createdDate});
-
-        dispatch(sendMsgToTechSupport({ customerID: user.id, techSupportID: selectedUserID, message: message, createdDate: createdDate }));
+        sendMsgToTechSupportApi({ senderID: user.id, receiverID: selectedUserID, message: message, createdDate: createdDate })
+        setSendingMsg([...sendingMsg, { message: message }]);
         setMessage('');
-    };
+    }
 
-    console.log(sendingMsg);
-    // console.log(recivingMsg);
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            socketIO.emit("sendEvent", {
+                senderID: user.id,
+                receiverID: selectedUserID,
+                message: message
+            });
+
+            let createdDate = new Date();
+            sendMsgToTechSupportApi({ senderID: user.id, receiverID: selectedUserID, message: message, createdDate: createdDate })
+            setSendingMsg([...sendingMsg, { message: message }]);
+            setMessage('');
+        }
+    }
+
 
 
     return (
@@ -67,13 +96,11 @@ const SelectedChat = ({ userName, userProfile, selectedUserID, socket }) => {
                 }
             </div>
             <div className="chat-send">
-                <input type="text" placeholder="Type a message here" value={message} onChange={(e) => setMessage(e.target.value)} />
+                <input type="text" placeholder="Type a message here" value={message} onChange={(e) => setMessage(e.target.value)} onKeyDown={handleKeyPress} />
                 <button onClick={handleSendMessage}><LuSend /></button>
             </div>
         </>
-
-
-    )
+    );
 }
 
-export default SelectedChat
+export default SelectedChat;

@@ -27,3 +27,12 @@ export const sendMsgToTechSupportApi = async (data) => {
         console.log(error);
     }
 }
+
+export const sendMsgToCustomerApi = async (data) => {
+    try {
+        const response = await api.post(`/chat/sendMsgToCustomer`, data);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
