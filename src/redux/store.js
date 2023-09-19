@@ -20,6 +20,7 @@ import techSupportSlice from "./slices/techSupportSlice";
 import cusAssginTechSupportSlice from "./slices/customer/CusAssginTechSupport";
 import ChatMsgReceiveSlice from "./slices/customer/ChatMsgReceiveSlice";
 import ChatMsgSendSlice from "./slices/customer/ChatMsgSendSlice";
+import scheduleSlice from "./slices/scheduleSlice";
 
 
 export const store = configureStore({
@@ -42,6 +43,6 @@ export const store = configureStore({
         techSupport:techSupportSlice,
         cusAssginTechSupport: cusAssginTechSupportSlice,
         chatHistorySendMsg: ChatMsgSendSlice,
-        chatHistoryReceiveMsg: ChatMsgReceiveSlice,
+        schedules: scheduleSlice,
     }
 });
