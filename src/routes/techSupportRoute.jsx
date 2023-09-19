@@ -32,19 +32,19 @@ const techSupportRoute =
             element: <TechDashboard />,
         },
         {
-            path: `${techSupport}/orderRequest`,
+            path: `${techSupport}/orderRequest/:orderID`,
             element: <OrderRequest />,
         },
         {
-            path: `${techSupport}/marketPlace`,
+            path: `${techSupport}/marketPlace/:customerID`,
             element: <TechMarketPlace />,
         },
         {
-            path: `${techSupport}/selectPlaceRoom`,
+            path: `${techSupport}/selectPlaceRoom/:customerID/:itemID`,
             element: <SelectPlaceRoom />,
         },
         {
-            path: `${techSupport}/paymentSummary`,
+            path: `${techSupport}/paymentSummary/:customerID`,
             element: <PaymentSummary />
         },
         {
@@ -68,7 +68,7 @@ const techSupportRoute =
             element: <AddDevice />,
         },
         {
-            path: `${techSupport}/relays`,
+            path: `${techSupport}/:customerID/place/:placeID/relays`,
             element: <Relays />,
         },
         {
@@ -80,11 +80,11 @@ const techSupportRoute =
             element: <AddRelay />,
         },
         {
-            path: `${techSupport}/places`,
+            path: `${techSupport}/customer/:customerID`,
             element: <Places />,
         },
         {
-            path: `${techSupport}/place/room`,
+            path: `${techSupport}/:customerID/place/:placeID/rooms`,
             element: <Rooms />,
         },
         {

@@ -4,6 +4,7 @@ import TableRow from './TableRow';
 
 const dataset = [
     {
+        id: 1,
         name: 'Kamal Ahmed',
         profilePicture:'https://avatars.githubusercontent.com/u/73744585?v=4',
         places: 2,
@@ -11,6 +12,7 @@ const dataset = [
         status: 'Pending'
     },
     {
+        id: 2,
         name: 'Pamal Kumar',
         profilePicture:'https://avatars.githubusercontent.com/u/44749685?v=4',
         places: 2,
@@ -18,6 +20,7 @@ const dataset = [
         status: 'Resolved'
     },
     {
+        id: 3,
         name: 'Yamal Qumar',
         profilePicture:'https://avatars.githubusercontent.com/u/37753777?v=4',
         places: 2,
@@ -25,6 +28,7 @@ const dataset = [
         status: 'Pending'
     },
     {
+        id: 4,
         name: 'Bamal Kumar',
         profilePicture:'https://avatars.githubusercontent.com/u/73994665?v=4',
         places: 2,

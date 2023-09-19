@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import UserInquiriesRow from "./UserInquiriesRow";
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
+import { useDispatch,useSelector } from "react-redux";
+import { selectComplaints , getAllComplaints} from "../../../redux/slices/techsupport/complaintHandlingSlice";
 
 
 const dataset = [
@@ -42,6 +44,20 @@ const dataset = [
 
 
 const UserComplaints = () => {
+
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user);
+    let techSupportId = user.id;
+    const userComplaints = useSelector(selectComplaints);
+
+    console.log(userComplaints);
+
+    useEffect(() => {
+        dispatch(getAllComplaints(techSupportId));
+    }, [dispatch]);
+
+
+
     return (
         <PageWrapper>
             <MainSidebar />
@@ -77,7 +93,7 @@ const UserComplaints = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {dataset.map((data) => <UserInquiriesRow {...data} />)}
+                                {dataset.map((data) => <UserInquiriesRow {...data} key={data.userID}/>)}
                             </tbody>
                         </table>
                     </div>
