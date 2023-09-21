@@ -71,6 +71,9 @@ const GuestUserPage = () => {
     }
 
 
+        submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
+    };
+
     return (
         <div>
             <PageWrapper>
@@ -84,8 +87,7 @@ const GuestUserPage = () => {
                                         <h3>Customer Order Request Information</h3>
                                     </div>
                                 </div>
-                                <div className="form">
-
+                                <div className="form" >
                                     <label className="inline-flex items-center">
                                         <input
                                             type="radio"
@@ -115,6 +117,7 @@ const GuestUserPage = () => {
                                             onChange={handleOptionChange}
                                         />
                                         <span className="ml-2">option 1</span>
+                                        <span className="ml-2">option 3</span>
                                     </label>
                                     <label className="inline-flex items-center">
                                         <input
@@ -125,6 +128,7 @@ const GuestUserPage = () => {
                                             onChange={handleOptionChange}
                                         />
                                         <span className="ml-2">Option 1</span>
+                                        <span className="ml-2">Option 4</span>
                                     </label>
                                     <label className="inline-flex items-center">
                                         <input
@@ -145,6 +149,12 @@ const GuestUserPage = () => {
                                         />
                                         <button className='px-4 py-1 bg-blue-700 rounded-lg' disabled={!captcha} onClick={submitGuestUserSuggest}>Submit</button>
 
+                                        <span className="ml-2">Option 5</span>
+                                    </label>
+
+                                    <div className="flex justify-center mt-10">
+
+                                        <button className='px-4 py-1 bg-blue-700 rounded-lg'>Submit</button>
                                     </div>
                                 </div>
                             </div>
