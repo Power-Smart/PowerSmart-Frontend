@@ -43,7 +43,6 @@ export const store = configureStore({
         techSupport:techSupportSlice,
         cusAssginTechSupport: cusAssginTechSupportSlice,
         chatHistorySendMsg: ChatMsgSendSlice,
-        chatHistoryReceiveMsg: ChatMsgReceiveSlice,
         schedules: scheduleSlice,
     }
 });

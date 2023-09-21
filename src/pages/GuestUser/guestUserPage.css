@@ -1,8 +1,11 @@
 .guestUserPage-container{
-    display: flex;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-gap: 40px;
+/*     display: flex;
     width: 0px auto;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .guestUserPage {
