@@ -1,0 +1,72 @@
+.guestUserPage-container{
+    display: flex;
+    width: 0px auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.guestUserPage {
+    border: 2px solid #83BCFF;
+    border-radius: 10px;
+    color: white;
+    width: 100%;
+}
+
+.guestUserPage .infoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.guestUserPage .form {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.guestUserPage .form label{
+    margin-bottom: 10px;
+}
+
+.guestUserPage .form .data__field {
+    padding: 7px;
+    background-color: #151528;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guestUserPage .form .data__field input {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+}
+
+.guestUserPage .form .data__field textarea {
+    resize: none;
+    background-color: transparent;
+    width: 80%;
+    padding: 10px;
+    height: 150px;
+}
+
+.guestUserPage .form .data__field textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.guestUserPage .form .data__field textarea::-webkit-scrollbar-track {
+    background-color: #0693F3;
+    border-radius: 3px;
+}
+
+.guestUserPage .form .data__field textarea::-webkit-scrollbar-thumb {
+    background-color: #83BCFF;
+    border-radius: 3px;
+}

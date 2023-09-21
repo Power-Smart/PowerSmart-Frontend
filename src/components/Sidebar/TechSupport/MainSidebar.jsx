@@ -14,12 +14,12 @@ import { MdOutlineReportGmailerrorred } from 'react-icons/md'
 import { FaUserShield } from 'react-icons/fa'
 
 
-const MainSidebar = () => {
+const MainSidebar = ({username}) => {
 
     const [toggle, setToggle] = useState(true);
 
     return (
-        <SidebarWrapper toggle={toggle} setToggle={setToggle} profileLink="/tech/profile">
+        <SidebarWrapper toggle={toggle} setToggle={setToggle} profileLink="/tech/profile" username={username}>
             <SidebarButton text="Dashboard" toggle={toggle} link='/tech/'>
                 <BiTachometer />
             </SidebarButton>
