@@ -26,10 +26,10 @@ const GuestUserPage = () => {
         } else if (selectedOption === 'option2') {
             selectedOption = 'Excessive energy consumption'
         }
+        submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
     };
 
     const submitGuestUserSuggest = () => {
-
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -71,8 +71,6 @@ const GuestUserPage = () => {
     }
 
 
-        submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
-    };
 
     return (
         <div>
@@ -116,7 +114,6 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option3'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">option 1</span>
                                         <span className="ml-2">option 3</span>
                                     </label>
                                     <label className="inline-flex items-center">
@@ -127,7 +124,6 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option4'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">Option 1</span>
                                         <span className="ml-2">Option 4</span>
                                     </label>
                                     <label className="inline-flex items-center">
@@ -138,19 +134,16 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option5'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">Option 1</span>
+                                        <span className="ml-2">Option 5</span>
                                     </label>
 
                                     <div className="flex justify-center mt-10">
                                         <ReCAPTCHA
                                             sitekey="6LffHC4oAAAAAAU0WbrF_ZiFExqj7Uw8YbINVzLj"
                                             onChange={() => setCaptcha(true)}
-
                                         />
                                         <button className='px-4 py-1 bg-blue-700 rounded-lg' disabled={!captcha} onClick={submitGuestUserSuggest}>Submit</button>
-
-                                        <span className="ml-2">Option 5</span>
-                                    </label>
+                                    </div>
 
                                     <div className="flex justify-center mt-10">
 
@@ -185,4 +178,6 @@ const GuestUserPage = () => {
     )
 }
 
-export default GuestUserPage;
+
+
+export default GuestUserPage
