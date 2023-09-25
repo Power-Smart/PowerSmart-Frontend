@@ -1,18 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getCustomerApi, updateCustomerProfileApi } from "../../api/apiUser";
+import { getTechSupportApi, updateTechSupportProfileApi } from "../../api/apiTechSupport";
 
-export const fetchCustomer = createAsyncThunk(
-    "customer/fetchCustomer",
-    async (param) => {
-        const response = await getCustomerApi(param);
+
+export const fetchTechSupport = createAsyncThunk(
+    "techSupport/fetchTechSupport=",
+    async (userID) => {
+        const response = await getTechSupportApi(userID);
         return response.data;
     }
 );
 
-export const updateCustomerProfile = createAsyncThunk(
-    "customer/updateCustomerProfile",
+
+export const updateTechSupportProfile = createAsyncThunk(
+    "techSupport/updateTechSupportProfile",
     async (data, thunkAPI) => {
-        const response = await updateCustomerProfileApi(data);
+        const response = await updateTechSupportProfileApi(data);
         if (response.status === 200) {
             // console.log("response : ", response.data);
             return response.data;
@@ -25,64 +27,52 @@ export const updateCustomerProfile = createAsyncThunk(
 
 
 
+
 const initialState = {
-    points: null,
-    year_subscription: null,
     tel_no: [],
-    address: null,
     is_banned: false,
     profile_pic: null,
-    achievements: [],
-    first_name: "",
-    last_name: "",
-
     status: "idle",
     error: null,
 };
 
+
 export const userSlice = createSlice({
-    name: "customer",
+    name: "techSupport",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchCustomer.pending, (state) => {
+            .addCase(fetchTechSupport.pending, (state) => {
                 state.status = "loading";
             })
-            .addCase(fetchCustomer.fulfilled, (state, action) => {
+            .addCase(fetchTechSupport.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 const data = action.payload;
-                state.points = data.points;
-                state.year_subscription = data.year_subscription;
                 state.tel_no = data.tel_no;
                 state.address = data.address;
                 state.is_banned = data.is_banned;
                 state.profile_pic = data.profile_pic;
-                state.achievements = data.achievements;
-
-                state.first_name = data.first_name;
-                state.last_name = data.last_name;
             })
-            .addCase(fetchCustomer.rejected, (state, action) => {
+            .addCase(fetchTechSupport.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             })
-            .addCase(updateCustomerProfile.pending, (state) => {
+            .addCase(updateTechSupportProfile.pending, (state) => {
                 state.status = "loading";
             })
-            .addCase(updateCustomerProfile.fulfilled, (state, action) => {
+            .addCase(updateTechSupportProfile.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 const data = action.payload;
                 state.tel_no = data.tel_no;
-                state.address = data.address;
             })
-            .addCase(updateCustomerProfile.rejected, (state, action) => {
+            .addCase(updateTechSupportProfile.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });
     },
 });
 
-export const selectCustomer = (state) => state.customer;
+export const selectTechSupport = (state) => state.techSupport;
 
 export default userSlice.reducer;
