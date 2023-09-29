@@ -14,7 +14,7 @@ const HeroHomeModel = () => {
     return (
         <>
             {/* <Controller position={position} setPosition={setPosition} /> */}
-            <Canvas camera={{ position: [10, 10, 15], fov: 100 }}>
+            <Canvas camera={{ position: [10, 10, 15], fov: 100 }} className='lg:h-auto h-60'>
                 <pointLight position={[10, 10, 10]} intensity={1.5} />
                 <Suspense fallback={null}>
                     <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>

@@ -11,9 +11,9 @@ export const Landing = () => {
         <div className='text-black bg-black flex flex-col -z-20'>
             <NavBar />
             <HeroSection />
+            <AboutSection />
             <KeyFeaturesSection />
             <PricingSection />
-            <AboutSection />
             <Footer />
         </div>
     )
