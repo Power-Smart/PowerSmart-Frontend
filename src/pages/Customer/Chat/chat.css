@@ -206,3 +206,28 @@
 .notSelectedUserPage .empty-part .image-part img {
     width: 400px;
 }
+
+
+@media only screen and (max-width: 850px) {
+    .notSelectedUserPage .empty-part {
+        display: none;
+    }
+
+    .chat {
+        display: grid;
+        grid-template-columns:0% 90%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .chat-user-list {
+        background: #0693F3;
+        padding: 10px;
+        border: 2px solid #0693F3;
+        height: 90vh;
+        border-radius: 30px;
+        padding-left: 30px;
+        width: 90%;
+        margin: 30px auto;
+    }
+}

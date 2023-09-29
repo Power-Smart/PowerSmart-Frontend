@@ -85,10 +85,10 @@ const Chat = () => {
                     </div>
 
                     <div className="chat-user-list">
-                        <div className="search-chat mt-8">
+                        {/* <div className="search-chat mt-8">
                             <RiUserSearchLine className='text-xl mx-2 text-[#0E0E1A]' />
                             <input type="text" placeholder="Search Chat by Name" />
-                        </div>
+                        </div> */}
                         <div className="chat-list">
                             {
                                 assignedTechSupportForCustomer.map((chat) => (
