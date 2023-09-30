@@ -14,20 +14,20 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 
 const GuestUserAuth = () => {
-    let [selectedOption, setSelectedOption] = useState('option1');
+    // let [selectedOption, setSelectedOption] = useState('option1');
     const navigate = useNavigate();
 
-    let customerID = 1;
+    // let customerID = 1;
 
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value);
-        if (selectedOption === 'option1') {
-            selectedOption = 'High power consumption for less number of People'
-        } else if (selectedOption === 'option2') {
-            selectedOption = 'Excessive energy consumption'
-        }
-        submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
-    };
+    // const handleOptionChange = (e) => {
+    //     setSelectedOption(e.target.value);
+    //     if (selectedOption === 'option1') {
+    //         selectedOption = 'High power consumption for less number of People'
+    //     } else if (selectedOption === 'option2') {
+    //         selectedOption = 'Excessive energy consumption'
+    //     }
+    //     submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
+    // };
 
     return (
         <div>
@@ -40,6 +40,7 @@ const GuestUserAuth = () => {
                                 onSuccess={credentialResponse => {
                                     const details = jwt_decode(credentialResponse.credential);
                                     navigate('/guest');
+                                    submitGuestUserSuggest({ guest_name: details.name, guest_email: details.email ,profile_pic:details.picture});
                                     console.log(details);
                                 }}
                                 onError={() => {

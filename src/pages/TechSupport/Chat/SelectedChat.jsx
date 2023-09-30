@@ -6,7 +6,9 @@ import SenderMessage from './SenderMessage'
 import { LuSend } from 'react-icons/lu'
 import io from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChatHistoryofCustomerTechSupportReceiverMsgApi, getChatHistoryofCustomerTechSupportSenderMsgApi,sendMsgToCustomerApi } from '../../../api/apiChat';
+import { getChatHistoryofCustomerTechSupportReceiverMsgApi, getChatHistoryofCustomerTechSupportSenderMsgApi, sendMsgToCustomerApi } from '../../../api/apiChat';
+import { Route, Link, Routes, useNavigate } from 'react-router-dom';
+import { BsBackspace } from 'react-icons/bs'
 
 
 const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
@@ -15,6 +17,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
     const [message, setMessage] = useState('');
     const [sendingMsg, setSendingMsg] = useState([]);
     const [recivingMsg, setRecivingMsg] = useState([]);
+    const navigate = useNavigate();
 
 
     const socketIO = io.connect('http://localhost:3010');
@@ -26,7 +29,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
         }).catch((error) => {
             return error;
         })
-    },[selectedUserID])
+    }, [selectedUserID])
 
 
     useEffect(() => {
@@ -62,7 +65,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
                 receiverID: selectedUserID,
                 message: message
             });
-            
+
             let createdDate = new Date();
             sendMsgToCustomerApi({ senderID: user.id, receiverID: selectedUserID, message: message, createdDate: createdDate })
             setSendingMsg([...sendingMsg, { message: message }]);
@@ -70,10 +73,17 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
         }
     }
 
+    const goPreviousChat = () => {
+        navigate(-1);
+    }
+
     return (
         <>
             <div className="chat-header">
-                <div className="profile-image">
+                <div className="profile-image flex flex-row">
+                    <div onClick={goPreviousChat} className={`flex justify-center items-center mr-3 mt-1 backBtn responsiveBackBtn`}>
+                        <BsBackspace className='text-[40px]' />
+                    </div>
                     <img src={userProfile} alt="" />
                 </div>
                 <div className="name">

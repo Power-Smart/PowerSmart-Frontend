@@ -19,6 +19,7 @@ const Chat = () => {
     const [selectedUserName, setSelectedUserName] = useState('');
     const [selectedUserPicture, setSelectedUserPicture] = useState('');
     const [customerDetailsArray, setCustomerDetailsArray] = useState([]);
+
     const user = useSelector(state => state.user.user);
 
     const handleSelectUserDisplay = (userID) => {
@@ -60,28 +61,26 @@ const Chat = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <div className="chat">
+                <div className="chat responsive-chat-container">
                     <div className="chat-message-container notSelectedUserPage px-16 py-4 mt-4">
-                        {selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={selectedUserID}/>) : (<NotSelectedChat />)}
+                        {selectedUser ? (<SelectedChat userName={selectedUserName} userProfile={selectedUserPicture} selectedUserID={selectedUserID} />) : (<NotSelectedChat />)}
                     </div>
-                    <div className="chat-user-list">
-                        {/* <div className="search-chat mt-8">
-                            <RiUserSearchLine className='text-xl mx-2 text-[#0E0E1A]' />
-                            <input type="text" placeholder="Search Chat by Name" />
-                        </div> */}
-                        <div className="chat-list">
-                            {customerDetailsArray.map((customer, index) => (
-                                <ChatProfile
-                                    profilePicture={customer.profile_pic}
-                                    userName={customer.user.first_name + ' ' + customer.user.last_name}
-                                    lastMessage={"lastMessage"}
-                                    id={customer.user.user_id}
-                                    onClick={(e) => handleSelectUserDisplay(e.currentTarget.id)}
-                                    key={index}
-                                />
-                            ))}
+                    {
+                        <div className="chat-user-list responsive-user-list">
+                            <div className="chat-list">
+                                {customerDetailsArray.map((customer, index) => (
+                                    <ChatProfile
+                                        profilePicture={customer.profile_pic}
+                                        userName={customer.user.first_name + ' ' + customer.user.last_name}
+                                        lastMessage={"lastMessage"}
+                                        id={customer.user.user_id}
+                                        onClick={(e) => handleSelectUserDisplay(e.currentTarget.id)}
+                                        key={index}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </PageContent>
         </PageWrapper>
