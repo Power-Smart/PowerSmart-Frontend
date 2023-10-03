@@ -4,9 +4,10 @@ import { IoMdPricetags } from 'react-icons/io';
 import { RiCustomerServiceFill } from 'react-icons/ri';
 import NavBar from './NavBar';
 import HeroHomeModel from '../../components/Landing/HeroHomeModel';
+import Padding from '../../components/smallComps/Padding';
 const HeroSection = () => {
     return (
-        <div className="bg-[url('/images/hero-back.png')] bg-cover">
+        <div className="bg-[url('/images/hero-back-2.jpg')] bg-cover">
             <section className="w-[80%] mx-auto z-10 flex h-screen lg:flex-row flex-col-reverse">
                 <div className='flex flex-col flex-1 justify-center'>
                     <motion.h1
@@ -35,7 +36,8 @@ const HeroSection = () => {
                     </motion.div>
                 </div>
                 <div className='flex flex-col flex-1'>
-                    <div className='flex-1'>
+                    <div className='flex-1 pt-24 lg:px-10 px-5'>
+                        <Padding height='20px' />
                         {/* This work is based on "Energy" (https://sketchfab.com/3d-models/energy-3d999ee4743744fcb5feea9f8c8893ad) by re1monsen 
                         (https://sketchfab.com/re1monsen) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) */}
                         <HeroHomeModel />

@@ -29,10 +29,10 @@ const KeyFeaturesSection = () => {
                 <FeatureComp image={ss2} title='Control Your Place Remotely..' imgRight>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod earum, corrupti, distinctio voluptatum rem nobis qui inventore est quae vitae unde nihil nostrum officia. Ipsam laboriosam dolor earum quam? Harum.
                 </FeatureComp>
+                <Padding />
                 <FeatureComp image={ss4} title='Control Your Place Remotely..' >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod earum, corrupti, distinctio voluptatum rem nobis qui inventore est quae vitae unde nihil nostrum officia. Ipsam laboriosam dolor earum quam? Harum.
                 </FeatureComp>
-                <Padding />
             </div>
         </section>
     )

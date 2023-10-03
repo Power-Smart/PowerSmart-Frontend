@@ -16,9 +16,9 @@ export function Energy(props) {
     })
 
     return (
-        <group {...props} dispose={null} scale={7} >
+        <group {...props} dispose={null} scale={5} >
             <group>
-                <group rotation={[-Math.PI / 2, 0, 0]}>
+                <group rotation={[-Math.PI / 2, 0, -Math.PI / 7]}>
                     <group>
                         <group rotation={[Math.PI / 2, 2, 0]}>
                             <group position={[0, -0.0224, 0]} rotation={[-Math.PI / 2, 0, 0]} ref={groupRef1}>

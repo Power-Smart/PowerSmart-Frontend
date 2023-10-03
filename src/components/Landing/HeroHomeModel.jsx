@@ -4,6 +4,7 @@ import { Environment, ContactShadows, OrbitControls } from '@react-three/drei'
 import { Home } from '../Models/Home'
 import { Energy } from '../Models/Energy'
 import Controller from '../Models/Controller'
+import Padding from '../smallComps/Padding'
 
 const HeroHomeModel = () => {
     const [position, setPosition] = useState({
@@ -15,7 +16,7 @@ const HeroHomeModel = () => {
     return (
         <>
             {/* <Controller position={position} setPosition={setPosition} /> */}
-            <Canvas camera={{ position: [10, 10, 15], fov: 100 }} className='lg:h-auto h-60'>
+            <Canvas camera={{ position: [10, 10, 15], fov: 100 }} className='lg:h-auto h-60 rounded-2xl'>
                 <pointLight position={[10, 10, 10]} intensity={1.5} />
                 <Suspense fallback={null}>
                     <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
@@ -24,7 +25,7 @@ const HeroHomeModel = () => {
                         {/* <Home position={[-7, -6, -1]} /> */}
                         <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
                     </group>
-                    <Environment preset="city" />
+                    <Environment preset="sunset" />
                 </Suspense>
                 <ContactShadows position={[0, -4.5, 0]} scale={20} blur={2} far={4.5} />
             </Canvas>
