@@ -1,7 +1,10 @@
 import React from 'react'
 import ss1 from '/images/screenshots/ss1.png'
 import ss2 from '/images/screenshots/ss2.png'
+import ss4 from '/images/screenshots/ss4.png'
 import { motion } from "framer-motion"
+import FeatureComp from '../../components/Landing/FeatureComp'
+import Padding from '../../components/smallComps/Padding'
 
 const KeyFeaturesSection = () => {
     return (
@@ -19,14 +22,17 @@ const KeyFeaturesSection = () => {
                     className='text-3xl text-center'>We are PowerSmart</motion.h1>
             </div>
             <div className='w-[80%] mx-auto my-16'>
-                <div className='flex my-5'>
-                    <img className='w-96 flex-1 rounded-xl opacity-60 shadow-md drop-shadow-lg' src={ss1} alt="" />
-                    <div className='flex-1 flex flex-col  justify-center px-10'>
-                        <h1 className='text-2xl text-gray-300 rounded-2xl py-2'>Control Your Place Remotely..</h1>
-                        <p className=' text-justify text-sm'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod quos, officiis alias tempore ratione doloremque harum, quibusdam dignissimos quas \
-                            veniam facilis in natus cum perferendis. Enim voluptatem dolorum placeat amet.</p>
-                    </div>
-                </div>
+                <FeatureComp image={ss1} title='Control Your Place Remotely..' >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod earum, corrupti, distinctio voluptatum rem nobis qui inventore est quae vitae unde nihil nostrum officia. Ipsam laboriosam dolor earum quam? Harum.
+                </FeatureComp>
+                <Padding />
+                <FeatureComp image={ss2} title='Control Your Place Remotely..' imgRight>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod earum, corrupti, distinctio voluptatum rem nobis qui inventore est quae vitae unde nihil nostrum officia. Ipsam laboriosam dolor earum quam? Harum.
+                </FeatureComp>
+                <FeatureComp image={ss4} title='Control Your Place Remotely..' >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod earum, corrupti, distinctio voluptatum rem nobis qui inventore est quae vitae unde nihil nostrum officia. Ipsam laboriosam dolor earum quam? Harum.
+                </FeatureComp>
+                <Padding />
             </div>
         </section>
     )

@@ -2,6 +2,7 @@ import React, { Suspense, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, ContactShadows, OrbitControls } from '@react-three/drei'
 import { Home } from '../Models/Home'
+import { Energy } from '../Models/Energy'
 import Controller from '../Models/Controller'
 
 const HeroHomeModel = () => {
@@ -18,7 +19,8 @@ const HeroHomeModel = () => {
                 <pointLight position={[10, 10, 10]} intensity={1.5} />
                 <Suspense fallback={null}>
                     <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
-                        <Home position={[0, 0, 0]} pos={position} />
+                        {/* <Home position={[0, 0, 0]} pos={position} /> */}
+                        <Energy position={[0, 0, 0]} pos={position} />
                         {/* <Home position={[-7, -6, -1]} /> */}
                         <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
                     </group>

@@ -36,6 +36,8 @@ const HeroSection = () => {
                 </div>
                 <div className='flex flex-col flex-1'>
                     <div className='flex-1'>
+                        {/* This work is based on "Energy" (https://sketchfab.com/3d-models/energy-3d999ee4743744fcb5feea9f8c8893ad) by re1monsen 
+                        (https://sketchfab.com/re1monsen) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) */}
                         <HeroHomeModel />
                     </div>
                     <div className='justify-evenly flex-1 items-center lg:flex hidden'>
