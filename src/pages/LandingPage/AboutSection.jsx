@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const AboutSection = () => {
     return (
-        <section className='w-full bg-[url("/images/about_back.jpg")] text-white my-10 py-10 bg-fixed bg-blue-400/10'>
+        <section className='w-full bg-[url("/images/about_back.jpg")] text-white py-10 bg-fixed bg-blue-400/10'>
             <div className='w-[80%] mx-auto'>
                 <div className='flex flex-col justify-around mx-auto'>
                     <div className='flex my-5 items-center lg:w-[80%] left-full bg-gradient-to-r from-slate-700/10 to-slate-900/60 p-4 lg:rounded-full backdrop-blur-lg rounded-xl'>
