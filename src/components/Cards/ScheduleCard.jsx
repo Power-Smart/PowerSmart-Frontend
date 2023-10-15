@@ -25,7 +25,8 @@ const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = t
             <div className="flex-[1] text-center flex items-center">
                 <h1 className="text-2xl mx-3">{name}</h1>
             </div>
-            <div className="flex-[1] text-center flex items-center justify-center">
+            <div className="flex-[1] text-center flex-col flex items-center justify-center">
+                <span>switch</span>
                 {switch_status && <h1 className="text-xl mx-3 text-green-400 text-center">ON</h1>}
                 {!switch_status && <h1 className="text-xl mx-3 text-yellow-400 text-center">OFF</h1>}
             </div>
@@ -42,10 +43,10 @@ const ScheduleCard = ({ id, name, time_on, time_off, day_on, day_off, repeat = t
                 </div>
             </div>
             <div className='flex-[2] flex justify-between items-center'>
-                <div className="flex-1 flex justify-center items-center">
+                {/* <div className="flex-1 flex justify-center items-center">
                     {repeat && <GiCycle className="text-3xl" />}
                     {!repeat && <MdLooksOne className="text-3xl" />}
-                </div>
+                </div> */}
                 <div className="flex-1 flex justify-center items-center">
                     <Switch
                         checkedChildren="ON"
