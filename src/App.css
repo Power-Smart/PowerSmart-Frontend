@@ -39,3 +39,15 @@
 .ant-switch-handle::after {
     color: rgba(131, 188, 255, 1);
 }
+
+.ant-select-selector {
+    background-color: #1C1C2E !important;
+    border: 2px solid #24244c !important;
+    color: white !important;
+}
+
+.ant-select-selection-search-input,
+.ant-select-selection-item,
+.ant-select-arrow {
+    color: white !important;
+}
