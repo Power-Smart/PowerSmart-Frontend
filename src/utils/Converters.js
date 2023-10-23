@@ -18,3 +18,20 @@ export const dayConvertor = (day) => {
             return "Sunday";
     }
 }
+
+export const transformRoomStatus = (roomStatus) => {
+    const temp = [];
+    if (roomStatus.temperature) {
+        temp.push({ title: 'Temperature', value: roomStatus.temperature, measure: '°C' });
+    }
+    if (roomStatus.hummidity_level) {
+        temp.push({ title: 'Humidity', value: roomStatus.hummidity_level, measure: '%' });
+    }
+    if (roomStatus.co2_level) {
+        temp.push({ title: 'Air Quality', value: (roomStatus.co2_level / 300 * 100).toFixed(2), other: `CO2: ${roomStatus.co2_level} ppm` });
+    }
+    if (roomStatus.light_intensity) {
+        temp.push({ title: 'Light', value: roomStatus.light_intensity, measure: 'lux' });
+    }
+    return temp;
+}
