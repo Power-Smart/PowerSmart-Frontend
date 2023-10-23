@@ -30,3 +30,22 @@ export const cities = [
         value: 'city2',
     },
 ];
+
+export const time_zones = [
+    {
+        label: 'Asia/Colombo',
+        value: 'Asia/Colombo',
+    },
+    {
+        label: 'Asia/Kolkata',
+        value: 'Asia/Kolkata',
+    },
+    {
+        label: 'Asia/Dubai',
+        value: 'Asia/Dubai',
+    },
+];
+
+export const selecStyles = {
+    width: '100%',
+}
