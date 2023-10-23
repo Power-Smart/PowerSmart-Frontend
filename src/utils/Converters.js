@@ -35,3 +35,14 @@ export const transformRoomStatus = (roomStatus) => {
     }
     return temp;
 }
+
+export const getDeviceType = (deviceType) => {
+    switch (deviceType) {
+        case "FAN":
+            return "Fan";
+        case "BULB":
+            return "Light Bulb";
+        default:
+            return "Other";
+    }
+}

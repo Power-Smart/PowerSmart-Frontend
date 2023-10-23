@@ -13,6 +13,7 @@ import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { getPlaceEvent } from '../../../api/apiSse'
+import { userSchedulesApi } from '../../../api/apiSchedules'
 
 const Dashboard = () => {
 
@@ -22,10 +23,22 @@ const Dashboard = () => {
     const placesStatus = useSelector(selectPlacesStatus);
     const [roomsData, setRoomsData] = useState([]);
 
+    const [schedules, setSchedules] = useState([]);
+
+    const getScheduleData = async () => {
+        const res = await userSchedulesApi(user.id);
+        if (res.status === 200) {
+            setSchedules(res.data);
+        }
+        else {
+            setSchedules([]);
+        }
+    }
 
     useEffect(() => {
         if (user.id) {
             dispatch(fetchPlaces(user.id));
+            getScheduleData();
         }
         console.log('user id', user.id);
         const eventSource = getPlaceEvent(user.id);
@@ -73,8 +86,13 @@ const Dashboard = () => {
                             </div> */}
 
                             <div className="schedule">
-                                <ScheduleDevice />
-                                <ScheduleDevice />
+                                <div className='h-[290px] overflow-y-scroll'>
+                                    {
+                                        schedules.length > 0 ?
+                                            schedules.map(schedule => <ScheduleDevice key={schedule.schedule_id} {...schedule} />) :
+                                            <h1 className="text-xl mt-4 mb-2">No Schedules</h1>
+                                    }
+                                </div>
                             </div>
 
                             <div className="guest-users">
