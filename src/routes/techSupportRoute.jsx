@@ -54,7 +54,7 @@ const techSupportRoute =
             element: <UserComplaints />,
         },
         {
-            path: `${techSupport}/viewComplaint/:complaintID`,
+            path: `${techSupport}/viewComplaint/:complaintID/:customerID`,
             element: <ViewComplaint />,
         },
         {
