@@ -64,12 +64,12 @@ const viewComplaint = () => {
 
                             <div className="data__field">
                                 <label htmlFor="">Date: </label>
-                                {/* <input type="text" value={particularComplaint.date.substring(0, 10)} disabled /> */}
+                                <input type="text" value={particularComplaint.date.substring(0, 10)} disabled />
                             </div>
 
                             <div className="data__field">
                                 <label htmlFor="">Order Description: </label>
-                                {/* <textarea value={particularComplaint.description} disabled /> */}
+                                <textarea value={particularComplaint.description} disabled />
                             </div>
 
                             <div className="data__field">
