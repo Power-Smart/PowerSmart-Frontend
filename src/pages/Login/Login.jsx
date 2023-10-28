@@ -7,33 +7,37 @@ import { userLogin } from '../../api/apiUser';
 import { login } from '../../redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { session } from '../../redux/slices/userSlice';
 import { fetchCustomer } from '../../redux/slices/customerSlice';
 import { Link } from 'react-router-dom';
-import { antIconNotification } from '../../utils/alerts';
+import { antNotification } from '../../utils/alerts';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [buttonState, setButtonState] = useState(false);
     const [api, contextHolder] = notification.useNotification();
     const { isLogged, user } = useSelector(state => state.user);
 
     const onFinish = async (values) => {
         try {
+            setButtonState(true);
             const response = await userLogin(values.email, values.password);
             // console.log(response);
             dispatch(login(response.data));
             if (response.data.id) {
-                console.log(response.data.id, "jarawa");
                 dispatch(fetchCustomer(response.data.id));
+                setButtonState(false);
                 navigate('/');
             } else {
-                antIconNotification(api, 'topLeft', 'Login Failed !', "Invalid username or password", 'error');
+                antNotification(api, 'topLeft', 'Login Failed !', "Invalid username or password", 'error');
+                setButtonState(false);
             }
         } catch (error) {
-            antIconNotification(api, 'topLeft', 'Login Failed', '', 'error')
+            antNotification(api, 'topLeft', 'Login Failed', '', 'error')
+            setButtonState(false);
         }
     };
 
@@ -129,12 +133,12 @@ const Login = () => {
 
                         <Form.Item className='form__submission'>
                             <div className="login__register">
-                                <Button type="primary" htmlType="submit" className="login-form-button">
+                                <Button type="primary" htmlType="submit" className="login-form-button" disabled={buttonState} >
                                     Log in
                                 </Button><br></br>
                             </div>
                             <div className="google__login">
-                                Need an account?<br /><Link to='/register' >SIGN UP</Link>
+                                Need an account?<br /><Link to='/register' className='text-blue-700'>Sign Up</Link>
                                 {/* Or <a href='#'>Continue With <FcGoogle style={{ display: 'inline', fontSize: '20px' }} /></a> */}
                             </div>
                         </Form.Item>

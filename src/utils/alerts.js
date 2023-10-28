@@ -1,5 +1,5 @@
 
-export const antIconNotification = (api, placement, message, description, type = "info") => { //  "success" | "warning" | 'error'
+export const antNotification = (api, placement, message, description, type = "info") => { //  "success" | "warning" | 'error'
     try {
         api[type]({
             placement,
