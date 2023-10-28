@@ -20,7 +20,7 @@ const AccessCusTableRow = ({ first_name, last_name, user_id, email }) => {
                 {first_name + " " + last_name}
             </td>
             <td className="px-6 py-4 flex justify-around items-center">
-                <Link to={`/tech/chat/${user_id}`} className='mx-2'>
+                <Link to={`/tech/chat`} className='mx-2'>
                     <button className='bg-blue-900 border-none outline-none text-blue-100 font-bold py-2 px-3 text-[14px] cursor-pointer rounded-[10px] text-lg'>
                         <AiFillMessage />
                     </button>
