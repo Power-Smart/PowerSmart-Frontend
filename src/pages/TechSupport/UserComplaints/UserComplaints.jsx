@@ -9,8 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectComplaints, getAllComplaints } from "../../../redux/slices/techsupport/complaintHandlingSlice";
 
 
-
-
 const UserComplaints = () => {
 
     const dispatch = useDispatch();
@@ -23,7 +21,6 @@ const UserComplaints = () => {
     useEffect(() => {
         dispatch(getAllComplaints(techSupportId));
     }, [dispatch]);
-
 
 
     return (
@@ -51,7 +48,6 @@ const UserComplaints = () => {
                                     <th scope="col" className="px-6 py-3">
                                         Action
                                     </th>
-
                                 </tr>
                             </thead>
                             <tbody>
