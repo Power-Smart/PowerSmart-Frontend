@@ -106,6 +106,7 @@ const AddPlace = () => {
                                 style={selecStyles}
                                 onChange={(value) => { setPlace({ ...place, place_type: value }) }}
                                 options={categories}
+                                value={place.place_type}
                             />
                         </FormGroup>
                         <FormRowDual>
@@ -118,6 +119,7 @@ const AddPlace = () => {
                                     style={selecStyles}
                                     onChange={(value) => { setPlace({ ...place, time_zone: value }) }}
                                     options={time_zones}
+                                    value={place.time_zone}
                                 />
                             </FormGroup>
                         </FormRowDual>
@@ -128,6 +130,7 @@ const AddPlace = () => {
                                     style={selecStyles}
                                     onChange={(value) => { setPlace({ ...place, city: value }) }}
                                     options={cities}
+                                    value={place.city}
                                 />
                             </FormGroup>
                             <FormGroup>
@@ -136,6 +139,7 @@ const AddPlace = () => {
                                     style={selecStyles}
                                     onChange={(value) => { setPlace({ ...place, country: value }) }}
                                     options={countries}
+                                    value={place.country}
                                 />
                             </FormGroup>
                         </FormRowDual>
