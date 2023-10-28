@@ -12,6 +12,8 @@ import './viewComplaint.css'
 import { selectComplaints, getAllComplaints, accpetOrRejectComplaint } from "../../../redux/slices/techsupport/complaintHandlingSlice";
 import { fetchCustomer, selectCustomer } from '../../../redux/slices/customerSlice';
 import { useNavigate } from 'react-router-dom';
+import { accpetOrRejectComplaintApi } from '../../../api/apiComplaintHandling'; 
+
 
 
 const viewComplaint = () => {
@@ -33,16 +35,16 @@ const viewComplaint = () => {
 
     const particularComplaint = userComplaints.find((complaint) => complaint.complaint_id == complaintID);
 
-    const [comment, setComment] = useState('');
+
+    const [comment, setComment] = useState(particularComplaint.comment);
 
     const acceptComplaint = () => {
-        // alert('Complaint Accepted');
-        dispatch(accpetOrRejectComplaint({ complaint_id: complaintID, status: 'true', comment: comment }));
+        accpetOrRejectComplaintApi({ complaint_id: complaintID, status: 'true', comment: comment });
         navigate('/tech/userComplaints');
     }
 
     const rejectComplaint = () => {
-        // dispatch(accpetOrRejectComplaint({ complaint_id: complaintID, status: 'false', comment: comment }));
+        accpetOrRejectComplaintApi({ complaint_id: complaintID, status: 'false', comment: comment });
         navigate('/tech/userComplaints');
     }
 
