@@ -6,8 +6,10 @@ export const userLogin = async (email, password) => {
         email,
         password,
     });
-    localStorage.setItem("token", response.data.token);
-    Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
+    if (response.data.id) {
+        localStorage.setItem("token", response.data.token);
+        Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
+    }
     return response;
 };
 

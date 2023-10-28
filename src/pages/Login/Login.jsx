@@ -1,5 +1,5 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, notification } from 'antd';
 import loginPageImage from '../../assets/images/login.png';
 import { FcGoogle } from 'react-icons/fc';
 import './login.css';
@@ -11,21 +11,29 @@ import { useEffect } from 'react';
 import { session } from '../../redux/slices/userSlice';
 import { fetchCustomer } from '../../redux/slices/customerSlice';
 import { Link } from 'react-router-dom';
+import { antIconNotification } from '../../utils/alerts';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [api, contextHolder] = notification.useNotification();
     const { isLogged, user } = useSelector(state => state.user);
 
     const onFinish = async (values) => {
         try {
             const response = await userLogin(values.email, values.password);
+            // console.log(response);
             dispatch(login(response.data));
-            dispatch(fetchCustomer(response.data.id));
-            navigate('/');
+            if (response.data.id) {
+                console.log(response.data.id, "jarawa");
+                dispatch(fetchCustomer(response.data.id));
+                navigate('/');
+            } else {
+                antIconNotification(api, 'topLeft', 'Login Failed !', "Invalid username or password", 'error');
+            }
         } catch (error) {
-            console.log(error);
+            antIconNotification(api, 'topLeft', 'Login Failed', '', 'error')
         }
     };
 
@@ -53,6 +61,7 @@ const Login = () => {
 
     return (
         <div className="login__page">
+            {contextHolder}
             <div className="login__container" >
                 <div className="image">
                     <div className="title">
@@ -80,6 +89,10 @@ const Login = () => {
                                     required: true,
                                     message: 'Please input your Username!',
                                 },
+                                {
+                                    type: 'email',
+                                    message: 'Input a valid email',
+                                }
                             ]}
                         >
                             <Input prefix={<UserOutlined className="site-form-item-icon" />} />
@@ -93,6 +106,10 @@ const Login = () => {
                                     required: true,
                                     message: 'Please input your Password!',
                                 },
+                                // {
+                                //     min: 8,
+                                //     message: 'Password must be at least 8 characters'
+                                // }
                             ]}
                         >
                             <Input
@@ -117,8 +134,8 @@ const Login = () => {
                                 </Button><br></br>
                             </div>
                             <div className="google__login">
-                                Need an account?<Link to='/register' > SIGN UP</Link><br></br>
-                                Or <a href='#'>Continue With <FcGoogle style={{ display: 'inline', fontSize: '20px' }} /></a>
+                                Need an account?<br /><Link to='/register' >SIGN UP</Link>
+                                {/* Or <a href='#'>Continue With <FcGoogle style={{ display: 'inline', fontSize: '20px' }} /></a> */}
                             </div>
                         </Form.Item>
                     </Form>
