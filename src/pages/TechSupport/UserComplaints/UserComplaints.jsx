@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import TopBar from '../../../components/smallComps/TopBar'
@@ -8,20 +8,21 @@ import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import { useDispatch, useSelector } from "react-redux";
 import { selectComplaints, getAllComplaints } from "../../../redux/slices/techsupport/complaintHandlingSlice";
 
-
 const UserComplaints = () => {
-
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user);
     let techSupportId = user.id;
-    const userComplaints = useSelector(selectComplaints);
 
-    console.log(userComplaints);
+    const [userComplaints, setUserComplaints] = useState({ payload: [] }); 
 
     useEffect(() => {
-        dispatch(getAllComplaints(techSupportId));
-    }, [dispatch]);
+        if (userComplaints.payload.length === 0) {
+            dispatch(getAllComplaints(techSupportId))
+                .then(data => setUserComplaints(data));
+        }
+    }, [dispatch, techSupportId, userComplaints]);
 
+    console.log(userComplaints.payload);
 
     return (
         <PageWrapper>
@@ -51,7 +52,7 @@ const UserComplaints = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {userComplaints.map((data) => <UserInquiriesRow {...data} key={data.userID} />)}
+                                {userComplaints.payload.map((data) => <UserInquiriesRow {...data} key={data.userID} />)}
                             </tbody>
                         </table>
                     </div>
@@ -61,4 +62,4 @@ const UserComplaints = () => {
     )
 }
 
-export default UserComplaints
+export default UserComplaints;
