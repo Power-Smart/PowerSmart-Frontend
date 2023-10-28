@@ -8,6 +8,7 @@ import { LuSend } from 'react-icons/lu';
 import { useDispatch, useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import { getChatHistoryofCustomerTechSupportReceiverMsgApi, getChatHistoryofCustomerTechSupportSenderMsgApi, sendMsgToTechSupportApi } from '../../../api/apiChat';
+import { useNavigate } from 'react-router-dom';
 
 
 const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
@@ -15,6 +16,9 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
     const [message, setMessage] = useState('');
     const [sendingMsg, setSendingMsg] = useState([]);
     const [recivingMsg, setRecivingMsg] = useState([]);
+    const [allMessages, setAllMessages] = useState([]);
+    const navigate = useNavigate();
+
 
     const socketIO = io.connect('http://localhost:3010');
     socketIO.emit("joinRoom", user.id);
@@ -36,9 +40,19 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
         });
     }, [selectedUserID]);
 
+    useEffect(() => {
+        const mergedMessages = [...sendingMsg, ...recivingMsg];
+        mergedMessages.sort((a, b) => {
+            return a.chat_id - b.chat_id;
+        });
+        setAllMessages(mergedMessages);
+        console.log(mergedMessages);
+    }, [sendingMsg, recivingMsg]);
+
 
     socketIO.on("receiveEvent", (data) => {
-        setRecivingMsg([...recivingMsg, { message: data.message }])
+        console.log(data);
+        setRecivingMsg([...recivingMsg, { message: data.message, chat_id: data.chat_id }])
     });
 
     const handleSendMessage = (e) => {
@@ -57,20 +71,23 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            socketIO.emit("sendEvent", {
-                senderID: user.id,
-                receiverID: selectedUserID,
-                message: message
-            });
 
-            let createdDate = new Date();
-            sendMsgToTechSupportApi({ senderID: user.id, receiverID: selectedUserID, message: message, createdDate: createdDate })
-            setSendingMsg([...sendingMsg, { message: message }]);
-            setMessage('');
+            let createdDate = new Date().toISOString();
+            sendMsgToTechSupportApi({ senderID: user.id, receiverID: selectedUserID, message: message, createdDate: createdDate }).then((res) => {
+                console.log(res.data);
+                socketIO.emit("sendEvent", {
+                    senderID: user.id,
+                    receiverID: selectedUserID,
+                    message: message,
+                    chat_id: res.data.chat_id
+                });
+                setSendingMsg([...sendingMsg, res.data]);
+                setMessage('');
+            }).catch((err) => {
+                console.log(err);
+            });
         }
     }
-
-
 
     return (
         <>
@@ -83,17 +100,13 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
                 </div>
             </div>
             <div className="chat-body">
-                {
-                    sendingMsg.map((msg) => (
-                        <SenderMessage SendMessageText={msg.message} />
-                    ))
-                }
-
-                {
-                    recivingMsg.map((msg) => (
-                        <RecivierMessage RecivedMessageText={msg.message} />
-                    ))
-                }
+                {allMessages.map((msg, index) => {
+                    if (msg.sender_id === user.id) {
+                        return <SenderMessage key={index} SendMessageText={msg.message} />;
+                    } else {
+                        return <RecivierMessage key={index} RecivedMessageText={msg.message} />;
+                    }
+                })}
             </div>
             <div className="chat-send">
                 <input type="text" placeholder="Type a message here" value={message} onChange={(e) => setMessage(e.target.value)} onKeyDown={handleKeyPress} />
