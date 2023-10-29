@@ -18,7 +18,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import AlertMessage from '../../../components/smallComps/AlertMessage'
 import { selectPlaces } from '../../../redux/slices/placesSlice'
 import SelectInput from '../../../components/Forms/SelectInput'
-import { categories, countries, cities } from './selectItemList'
+import { Select } from 'antd';
+import { categories, countries, cities, time_zones } from './selectItemList'
 
 const UpdatePlace = () => {
     const user = useSelector(state => state.user.user)
@@ -35,6 +36,9 @@ const UpdatePlace = () => {
         address: '',
         postal_code: '',
         time_zone: '',
+        place_type: '',
+        city: '',
+        country: '',
         is_active: false,
     })
     const [alert, setAlert] = useState({
@@ -43,14 +47,10 @@ const UpdatePlace = () => {
         visible: false,
     });
 
-    const selectType = useRef(null);
-    const selectCity = useRef(null);
-    const selectCountry = useRef(null);
-
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(updatePlace({ ...place, place_id: placeID, id: user.id, place_type: selectType.current, city: selectCity.current, country: selectCountry.current }))
+            dispatch(updatePlace({ ...place, place_id: placeID, id: user.id }))
             setAlert({
                 message: 'Place Added Successfully !',
                 type: 'success',
@@ -70,17 +70,19 @@ const UpdatePlace = () => {
 
     const resetForm = (e) => {
         e.preventDefault()
-        setPlace({
-            name: '',
-            address: '',
-            postal_code: '',
-            time_zone: '',
-            is_active: false,
-        })
-        setAlert({
-            message: '',
-            type: 'success',
-            visible: false,
+        places.forEach(place => {
+            if (place.place_id == placeID) {
+                setPlace({
+                    name: place.name,
+                    address: place.address,
+                    postal_code: place.postal_code,
+                    time_zone: place.time_zone,
+                    place_type: place.place_type,
+                    city: place.city,
+                    country: place.country,
+                    is_active: place.is_active,
+                })
+            }
         })
     }
 
@@ -92,14 +94,16 @@ const UpdatePlace = () => {
                     name: place.name,
                     address: place.address,
                     postal_code: place.postal_code,
-                    time_zone: (place.time_zone) ? place.time_zone : '',
+                    time_zone: place.time_zone,
+                    place_type: place.place_type,
+                    city: place.city,
+                    country: place.country,
                     is_active: place.is_active,
                 })
-                selectType.current = place.place_type
-                selectCity.current = place.city
-                selectCountry.current = place.country
             }
         })
+        console.log(places);
+
     }, [places, placeID]);
 
 
@@ -121,27 +125,55 @@ const UpdatePlace = () => {
                             </div>
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={categories} selectedOption={selectType.current} ref={selectType} onChange={(e) => { selectType.current = e.target.value }} />
+                            <Select
+                                defaultValue={categories[0].value}
+                                value={place.place_type}
+                                style={{ width: '100%' }}
+                                onChange={(value) => { setPlace({ ...place, place_type: value }) }}
+                                options={categories}
+                            />
+                            {/* <SelectInput required={true} categories={categories} selectedOption={selectType.current} ref={selectType} onChange={(e) => { selectType.current = e.target.value }} /> */}
                         </FormGroup>
                         <FormRowDual>
                             <FormGroup>
                                 <TextInput type='text' label='Postal Code' required={true} value={place.postal_code} onChange={(e) => { setPlace({ ...place, postal_code: e.target.value }) }} />
                             </FormGroup>
                             <FormGroup>
-                                <TextInput type='text' label='Time Zone' required={true} value={place.time_zone} onChange={(e) => { setPlace({ ...place, time_zone: e.target.value }) }} />
+                                <Select
+                                    defaultValue={time_zones[0].value}
+                                    value={place.time_zone}
+                                    style={{ width: '100%' }}
+                                    onChange={(value) => { setPlace({ ...place, time_zone: value }) }}
+                                    options={time_zones}
+                                />
+                                {/* <TextInput type='text' label='Time Zone' required={true} value={place.time_zone} onChange={(e) => { setPlace({ ...place, time_zone: e.target.value }) }} /> */}
                             </FormGroup>
                         </FormRowDual>
                         <FormRowDual>
                             <FormGroup>
-                                <SelectInput required={true} categories={cities} selectedOption={selectCity.current} ref={selectCity} onChange={(e) => { selectCity.current = e.target.value }} />
+                                <Select
+                                    defaultValue={cities[0].value}
+                                    value={place.city}
+                                    style={{ width: '100%' }}
+                                    onChange={(value) => { setPlace({ ...place, city: value }) }}
+                                    options={cities}
+                                />
+                                {/* <SelectInput required={true} categories={cities} selectedOption={selectCity.current} ref={selectCity} onChange={(e) => { selectCity.current = e.target.value }} /> */}
                             </FormGroup>
                             <FormGroup>
-                                <SelectInput required={true} categories={countries} selectedOption={selectCountry.current} ref={selectCountry} onChange={(e) => { selectCountry.current = e.target.value }} />
+                                <Select
+                                    defaultValue={countries[0].value}
+                                    value={place.country}
+                                    style={{ width: '100%' }}
+                                    onChange={(value) => { setPlace({ ...place, country: value }) }}
+                                    options={countries}
+                                />
+                                {/* <SelectInput required={true} categories={countries} selectedOption={selectCountry.current} ref={selectCountry} onChange={(e) => { selectCountry.current = e.target.value }} /> */}
                             </FormGroup>
                         </FormRowDual>
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
-                            <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Add'} onClick={handleSubmit} />
-                            <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Clear'} onClick={resetForm} />
+                            <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Update'} onClick={handleSubmit} />
+                            <FormSubmitButton backgroundColor={'#CE4444'} urlLink={'register'} buttonText={'Reset'} onClick={resetForm} />
                         </div>
                     </Form>
                 </ContentWrapper>

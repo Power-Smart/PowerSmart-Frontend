@@ -16,6 +16,7 @@ import Chat from '../pages/Customer/Chat/Chat'
 import Schedules from '../pages/Customer/Scheduling/schedules'
 import AddSchedule from '../pages/Customer/Scheduling/AddSchedule'
 import UpdateSchedule from '../pages/Customer/Scheduling/UpdateSchedule'
+import Subscription from '../pages/Customer/Billing/Subscription'
 
 
 // import socketIO from 'socket.io-client';
@@ -90,6 +91,10 @@ const customerRoute =
         {
             path: "support",
             element: <Support />,
+        },
+        {
+            path: "subscribe",
+            element: <Subscription />,
         }
     ]
 };

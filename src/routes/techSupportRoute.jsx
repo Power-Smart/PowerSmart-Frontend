@@ -70,6 +70,10 @@ const techSupportRoute =
             element: <AccessCusAccount />,
         },
         {
+            path: `${techSupport}/accessCusAccount/:customerID`,
+            element: <AccessCusAccount />,
+        },
+        {
             path: `${techSupport}/addDevice`,
             element: <AddDevice />,
         },
@@ -113,6 +117,10 @@ const techSupportRoute =
             path: `${techSupport}/chat`,
             element: <Chat />,
         },
+        {
+            path: `${techSupport}/chat/:customerID`,
+            element: <Chat />,
+        }
     ]
 };
 

@@ -26,8 +26,6 @@ export const accpetOrRejectComplaint = createAsyncThunk(
 );
 
 
-
-
 let initialState = {
     complaints: [],
     status: "idle",

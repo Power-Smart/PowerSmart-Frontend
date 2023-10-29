@@ -11,6 +11,9 @@ import { useEffect } from 'react';
 import './viewComplaint.css'
 import { selectComplaints, getAllComplaints, accpetOrRejectComplaint } from "../../../redux/slices/techsupport/complaintHandlingSlice";
 import { fetchCustomer, selectCustomer } from '../../../redux/slices/customerSlice';
+import { useNavigate } from 'react-router-dom';
+import { accpetOrRejectComplaintApi } from '../../../api/apiComplaintHandling'; 
+
 
 
 const viewComplaint = () => {
@@ -22,7 +25,7 @@ const viewComplaint = () => {
     const { complaintID, customerID } = useParams();
 
     const customer = useSelector(selectCustomer);
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getAllComplaints(techSupportId));
@@ -32,10 +35,17 @@ const viewComplaint = () => {
 
     const particularComplaint = userComplaints.find((complaint) => complaint.complaint_id == complaintID);
 
-    const [comment, setComment] = useState('');
 
-    const acceptOrderRequest = () => {
-        dispatch(accpetOrRejectComplaint({ complaint_id: complaintID, status: 'true', comment: comment }));
+    const [comment, setComment] = useState(particularComplaint.comment);
+
+    const acceptComplaint = () => {
+        accpetOrRejectComplaintApi({ complaint_id: complaintID, status: 'true', comment: comment });
+        navigate('/tech/userComplaints');
+    }
+
+    const rejectComplaint = () => {
+        accpetOrRejectComplaintApi({ complaint_id: complaintID, status: 'false', comment: comment });
+        navigate('/tech/userComplaints');
     }
 
 
@@ -58,18 +68,18 @@ const viewComplaint = () => {
                             </div>
 
                             <div className="data__field">
-                                <label htmlFor="">Customer: </label>
+                                <label htmlFor="">Customer Name: </label>
                                 <input type="text" value={customer.first_name + " " + customer.last_name} disabled />
                             </div>
 
                             <div className="data__field">
                                 <label htmlFor="">Date: </label>
-                                {/* <input type="text" value={particularComplaint.date.substring(0, 10)} disabled /> */}
+                                <input type="text" value={particularComplaint.date.substring(0, 10)} disabled />
                             </div>
 
                             <div className="data__field">
-                                <label htmlFor="">Order Description: </label>
-                                {/* <textarea value={particularComplaint.description} disabled /> */}
+                                <label htmlFor="">Complaint Description: </label>
+                                <textarea value={particularComplaint.description} disabled />
                             </div>
 
                             <div className="data__field">
@@ -79,12 +89,12 @@ const viewComplaint = () => {
 
                             <div className="flex justify-center mt-10">
 
-                                <Link to={`/tech/marketPlace`}>
+                                <Link to={`/tech/chat`}>
                                     <button className='px-4 py-1 bg-green-700 rounded-lg mr-5'>Chat</button>
                                 </Link>
 
-                                <button className='px-4 py-1 bg-red-700 rounded-lg mr-5' onClick={(e) => rejectOrderRequest()} >Reject</button>
-                                <button className='px-4 py-1 bg-blue-700 rounded-lg' onClick={(e) => acceptOrderRequest()} >Accept</button>
+                                <button className='px-4 py-1 bg-red-700 rounded-lg mr-5' onClick={(e) => rejectComplaint()} >Reject</button>
+                                <button className='px-4 py-1 bg-blue-700 rounded-lg' onClick={(e) => acceptComplaint()} >Accept</button>
                             </div>
                         </div>
                     </div>

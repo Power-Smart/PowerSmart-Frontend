@@ -31,6 +31,7 @@ export const sendMsgToTechSupportApi = async (data) => {
 export const sendMsgToCustomerApi = async (data) => {
     try {
         const response = await api.post(`/chat/sendMsgToCustomer`, data);
+        // console.log(response);
         return response;
     } catch (error) {
         console.log(error);
