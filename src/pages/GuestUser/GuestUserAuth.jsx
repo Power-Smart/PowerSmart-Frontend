@@ -5,19 +5,16 @@ import ContentWrapper from '../../components/Wrappers/ContentWrapper';
 import PageContent from '../../components/Wrappers/PageContent'
 import { Link, useParams,useNavigate } from 'react-router-dom';
 import './guestUserPage.css';
-import { submitGuestUserSuggest } from '../../api/apiGuestUser';
+import { insertGuestUser } from '../../api/apiGuestUser';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import ReCAPTCHA from "react-google-recaptcha";
 
 
-
 const GuestUserAuth = () => {
-    let [selectedOption, setSelectedOption] = useState('option1');
     const navigate = useNavigate();
-
-    let customerID = 1;
+    const { customerID, placeID, roomID } = useParams();
 
 
     return (
@@ -30,8 +27,11 @@ const GuestUserAuth = () => {
                             <GoogleLogin
                                 onSuccess={credentialResponse => {
                                     const details = jwt_decode(credentialResponse.credential);
-                                    navigate('/guest');
-                                    submitGuestUserSuggest({ guest_name: details.name, guest_email: details.email ,profile_pic:details.picture});
+                                    insertGuestUser({ guest_name: details.name, guest_email: details.email ,profile_pic:details.picture}).then((res) => {
+                                        navigate(`/guest/${res.data.user_id}/${customerID}/${placeID}/${roomID}`);
+                                    }).catch((err) => {
+                                        console.log(err);
+                                    })
                                     console.log(details);
                                 }}
                                 onError={() => {

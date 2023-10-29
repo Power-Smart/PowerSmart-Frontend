@@ -1,7 +1,12 @@
 import api from ".";
 
-export const submitGuestUserSuggest = async (data) => {
+export const insertGuestUser = async (data) => {
     const response = await api.post(`/guestUser`,data);
+    return response;
+}
+
+export const addGuestUserSuggest = async (data) => {
+    const response = await api.post(`/guestUser/addSuggest`,data);
     return response;
 }
 

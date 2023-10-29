@@ -11,6 +11,8 @@ import SidebarWrapper from '../SidebarWrapper'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCustomer } from '../../../redux/slices/customerSlice'
 import { subValidation } from '../../../utils/validators'
+import {AiOutlineUserSwitch} from 'react-icons/ai'
+
 
 const MainSidebar = () => {
 
@@ -48,6 +50,9 @@ const MainSidebar = () => {
             {!subValidation(customer.year_subscription) && <SidebarButton text="Subscribe" toggle={toggle} link='/subscribe'>
                 <AiFillRocket />
             </SidebarButton>}
+            <SidebarButton text="Guest Request" toggle={toggle} link='/guestSuggest'>
+                <AiOutlineUserSwitch />
+            </SidebarButton>
         </SidebarWrapper>
 
     )
