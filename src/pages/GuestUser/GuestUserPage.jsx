@@ -30,10 +30,8 @@ const GuestUserPage = () => {
 
     const submitSuggest = () => {
         submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
-        
     }
     
-
 
     return (
         <div>

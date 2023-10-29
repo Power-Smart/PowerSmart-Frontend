@@ -19,15 +19,6 @@ const GuestUserAuth = () => {
 
     let customerID = 1;
 
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value);
-        if (selectedOption === 'option1') {
-            selectedOption = 'High power consumption for less number of People'
-        } else if (selectedOption === 'option2') {
-            selectedOption = 'Excessive energy consumption'
-        }
-        submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
-    };
 
     return (
         <div>
