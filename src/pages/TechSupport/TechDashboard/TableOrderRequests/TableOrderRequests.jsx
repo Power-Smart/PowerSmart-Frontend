@@ -4,8 +4,6 @@ import { fetchCustomerOrderRequests, selectCustomerOrderRequests, selectCustomer
 import { useDispatch, useSelector } from 'react-redux';
 
 
-
-
 const TableOrderRequests = () => {
 
     const dispatch = useDispatch();
