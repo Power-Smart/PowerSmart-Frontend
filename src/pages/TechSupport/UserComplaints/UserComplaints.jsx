@@ -1,47 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import UserInquiriesRow from "./UserInquiriesRow";
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
-
-
-const dataset = [
-    {
-        id: 1,
-        complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: '238893',
-        status: 'Pending'
-    },
-    {
-        id: 2,
-        complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: '238894',
-        status: 'Rejected'
-    },
-    {
-        id: 3,
-        complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: '238895',
-        status: 'Solved'
-    },
-    {
-        id: 4,
-        complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: '238896',
-        status: 'Pending'
-    },
-    {
-        id: 5,
-        complaint: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-        userID: '238897',
-        status: 'Solved'
-    }
-];
-
+import { useDispatch, useSelector } from "react-redux";
+import { selectComplaints, getAllComplaints } from "../../../redux/slices/techsupport/complaintHandlingSlice";
 
 const UserComplaints = () => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user);
+    let techSupportId = user.id;
+
+    const [userComplaints, setUserComplaints] = useState({ payload: [] }); 
+
+    useEffect(() => {
+        if (userComplaints.payload.length === 0) {
+            dispatch(getAllComplaints(techSupportId))
+                .then(data => setUserComplaints(data));
+        }
+    }, [dispatch, techSupportId, userComplaints]);
+
+    console.log(userComplaints.payload);
+
     return (
         <PageWrapper>
             <MainSidebar />
@@ -52,12 +34,6 @@ const UserComplaints = () => {
                         <table className="w-full text-sm text-left text-gray-500">
                             <thead className="text-xs text-gray-700 uppercase ">
                                 <tr>
-                                    {/* <th scope="col" className="p-4">
-                            <div className="flex items-center">
-                                <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
-                            </div>
-                        </th> */}
                                     <th scope="col" className="px-6 py-3">
                                         Complaint ID
                                     </th>
@@ -71,13 +47,12 @@ const UserComplaints = () => {
                                         Status
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-
+                                        Action
                                     </th>
-
                                 </tr>
                             </thead>
                             <tbody>
-                                {dataset.map((data) => <UserInquiriesRow {...data} />)}
+                                {userComplaints.payload.map((data) => <UserInquiriesRow {...data} key={data.userID} />)}
                             </tbody>
                         </table>
                     </div>
@@ -87,4 +62,4 @@ const UserComplaints = () => {
     )
 }
 
-export default UserComplaints
+export default UserComplaints;

@@ -1,41 +1,25 @@
-import React from 'react'
 import TableRow from './TableRow';
-
-
-const dataset = [
-    {
-        name: 'Kamal Ahmed',
-        profilePicture:'https://avatars.githubusercontent.com/u/73744585?v=4',
-        places: 2,
-        rooms: 4,
-        status: 'Pending'
-    },
-    {
-        name: 'Pamal Kumar',
-        profilePicture:'https://avatars.githubusercontent.com/u/44749685?v=4',
-        places: 2,
-        rooms: 4,
-        status: 'Resolved'
-    },
-    {
-        name: 'Yamal Qumar',
-        profilePicture:'https://avatars.githubusercontent.com/u/37753777?v=4',
-        places: 2,
-        rooms: 4,
-        status: 'Pending'
-    },
-    {
-        name: 'Bamal Kumar',
-        profilePicture:'https://avatars.githubusercontent.com/u/73994665?v=4',
-        places: 2,
-        rooms: 4,
-        status: 'Resolved'
-    },
-];
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCustomerServiceRequests,selectCustomerServiceRequests } from '../../../../redux/slices/techsupport/customerServiceRequestSlice';
 
 
 
 const TableOrderStatus = () => {
+
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user);
+    let techSupportId = user.id;
+    const customerServiceRequest = useSelector(selectCustomerServiceRequests);
+
+    console.log(customerServiceRequest);
+
+    useEffect(() => {
+        dispatch(getAllCustomerServiceRequests(techSupportId));
+    }, [dispatch]);
+
+
+
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-2 px-6">
 
@@ -55,18 +39,21 @@ const TableOrderStatus = () => {
                             Profile Picture
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
-                            Places
+                            Description
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
-                            Rooms
+                            Date
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
                             Status
                         </th>
+                        <th scope="col" className="px-6 py-3 text-center">
+                            Action
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {dataset.map((data) => <TableRow key={data.id} {...data} />)}
+                    {customerServiceRequest.map((data) => <TableRow key={data.id} {...data} />)}
                 </tbody>
             </table>
         </div>

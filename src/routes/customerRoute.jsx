@@ -18,6 +18,11 @@ import AddSchedule from '../pages/Customer/Scheduling/AddSchedule'
 import UpdateSchedule from '../pages/Customer/Scheduling/UpdateSchedule'
 import Subscription from '../pages/Customer/Billing/Subscription'
 
+
+// import socketIO from 'socket.io-client';
+// const socket = socketIO.connect('http://localhost:3010');
+
+
 const customerRoute =
 {
     path: "/",
@@ -81,7 +86,7 @@ const customerRoute =
         },
         {
             path: "chat",
-            element: <Chat />,
+            element: <Chat/>,
         },
         {
             path: "support",

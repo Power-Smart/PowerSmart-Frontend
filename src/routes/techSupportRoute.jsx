@@ -1,7 +1,8 @@
 import ProtectedTechSupport from '../pages/Customer/Protected/ProtectedTechSupport';
 import AddDevice from '../pages/TechSupport/Devices/AddDevice'
-import ProfileTechSupport from '../pages/TechSupport/Profile'
-import Profile from '../pages/TechSupport/Profile';
+// import ProfileTechSupport from '../pages/TechSupport/Profile'
+import ProfileTechSupport from '../pages/TechSupport/Profile/Profile';
+// import Profile from '../pages/TechSupport/Profile';
 import TechDashboard from '../pages/TechSupport/TechDashboard/TechDashboard';
 import OrderRequest from '../pages/TechSupport/CusOrderRequsetInfo/OrderRequest';
 import TechMarketPlace from '../pages/TechSupport/TechMarketPlace/TechMarketPlace';
@@ -17,6 +18,7 @@ import AddRelay from '../pages/TechSupport/Relays/AddRelay';
 import PaymentSummary from '../pages/TechSupport/PaymentSummary/PaymentSummary';
 import Sensors from '../pages/TechSupport/Sensors/Sensors';
 import Chat from '../pages/TechSupport/Chat/Chat';
+import ViewComplaint from '../pages/TechSupport/UserComplaints/viewComplaint';
 import EditRelay from '../pages/TechSupport/Relays/EditRelay';
 
 
@@ -52,6 +54,10 @@ const techSupportRoute =
             element: <UserComplaints />,
         },
         {
+            path: `${techSupport}/viewComplaint/:complaintID/:customerID`,
+            element: <ViewComplaint />,
+        },
+        {
             path: `${techSupport}/viewUserComplaint`,
             element: <ReviewUserComplaint />,
         },
@@ -61,6 +67,10 @@ const techSupportRoute =
         },
         {
             path: `${techSupport}/accessCusAccount`,
+            element: <AccessCusAccount />,
+        },
+        {
+            path: `${techSupport}/accessCusAccount/:customerID`,
             element: <AccessCusAccount />,
         },
         {
@@ -107,6 +117,10 @@ const techSupportRoute =
             path: `${techSupport}/chat`,
             element: <Chat />,
         },
+        {
+            path: `${techSupport}/chat/:customerID`,
+            element: <Chat />,
+        }
     ]
 };
 

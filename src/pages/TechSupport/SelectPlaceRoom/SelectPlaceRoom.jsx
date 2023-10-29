@@ -24,7 +24,6 @@ const SelectPlaceRoom = () => {
     const marketPlaceStatus = useSelector(selectMarketPlaceStatus)
 
     
-    
     useEffect(() => {
         dispatch(fetchMarketPlaceItems());
     }, [])
