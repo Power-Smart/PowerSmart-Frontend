@@ -4,11 +4,24 @@ import PageContent from '../../../components/Wrappers/PageContent'
 import TopBar from '../../../components/smallComps/TopBar'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import { AiFillRocket } from 'react-icons/ai'
+import { MdDoNotDisturbAlt } from 'react-icons/md'
 import ProfileForm from './Info'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react'
+import { fetchCustomer, selectCustomer } from '../../../redux/slices/customerSlice'
+import { subValidation } from '../../../utils/validators'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
     const user = useSelector((state) => state.user.user);
+    const customer = useSelector(selectCustomer);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (user) {
+            dispatch(fetchCustomer(user.id));
+        }
+    }, [])
 
     return (
         <PageWrapper>
@@ -28,10 +41,17 @@ const Profile = () => {
                             </div>
                         </div>
                         <div>
-                            <div className='w-24 h-24 rounded-lg bg-slate-900 flex flex-col items-center justify-evenly'>
+                            {subValidation(customer.year_subscription) ? <div className='w-24 h-24 rounded-lg bg-slate-900 flex flex-col items-center justify-evenly'>
                                 <AiFillRocket className='text-white text-4xl' />
                                 <h1 className='text-white text-xs '>SUBSCRIBED</h1>
-                            </div>
+                            </div> :
+                                <Link to='/subscribe'>
+                                    <div className='w-24 h-24 rounded-lg bg-slate-900 flex flex-col items-center justify-evenly hover:scale-110 transition-all '>
+                                        <h1 className='text-white text-xs'>NOT</h1>
+                                        <MdDoNotDisturbAlt className='text-white text-3xl' />
+                                        <h1 className='text-white text-xs'>SUBSCRIBED</h1>
+                                    </div>
+                                </Link>}
                         </div>
                     </div>
                     <div>
