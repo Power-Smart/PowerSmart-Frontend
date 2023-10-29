@@ -3,9 +3,9 @@ import PageWrapper from '../../components/Wrappers/PageWrapper'
 import TopBar from '../../components/smallComps/TopBar'
 import ContentWrapper from '../../components/Wrappers/ContentWrapper';
 import PageContent from '../../components/Wrappers/PageContent'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import './guestUserPage.css';
-import { submitGuestUserSuggest } from '../../api/apiGuestUser';
+import { insertGuestUser, addGuestUserSuggest } from '../../api/apiGuestUser';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
@@ -16,8 +16,9 @@ import Swal from 'sweetalert2'
 const GuestUserPage = () => {
     let [selectedOption, setSelectedOption] = useState('option1');
     const [captcha, setCaptcha] = useState(false);
+    const navigate = useNavigate();
+    const { guestID, customerID, placeID, roomID } = useParams();
 
-    let customerID = 1;
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
@@ -25,13 +26,30 @@ const GuestUserPage = () => {
             selectedOption = 'High power consumption for less number of People'
         } else if (selectedOption === 'option2') {
             selectedOption = 'Excessive energy consumption'
+        } else if (selectedOption === 'option3') {
+            selectedOption = 'option 3'
+        } else if (selectedOption === 'option4') {
+            selectedOption = 'Option 4'
+        } else if (selectedOption === 'option5') {
+            selectedOption = 'Option 5'
         }
     };
 
     const submitSuggest = () => {
-        submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
+        addGuestUserSuggest({ guest_id: guestID, customer_id: customerID, place_id: placeID, room_id: roomID, suggestion: selectedOption }).then((res) => {
+            console.log(res);
+            Swal.fire({
+                icon: 'success',
+                title: 'Thank you for your feedback',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            navigate(-1);
+        }).catch((err) => {
+            console.log(err);
+        })
     }
-    
+
 
     return (
         <div>
@@ -114,7 +132,6 @@ const GuestUserPage = () => {
         </div >
     )
 }
-
 
 
 export default GuestUserPage

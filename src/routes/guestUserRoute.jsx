@@ -10,15 +10,15 @@ const guestUserRoute =
     // element: <ProtectedGuestUser/>,
     children: [
         {
-            path:`${guestUser}`,
-            element: <Profile />,
-        },
-        {
-            path: `${guestUser}/auth`,
+            path: `${guestUser}/auth/:customerID/:placeID/:roomID`,
             element: <GuestUserAuth />,
-        },
+        }, 
+        {
+            path: `${guestUser}/:guestID/:customerID/:placeID/:roomID`,
+            element: <Profile />,
+        }
     ]
-    
+
 };
 
 export default guestUserRoute;
