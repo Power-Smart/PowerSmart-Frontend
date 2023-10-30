@@ -10,6 +10,7 @@ import { AiOutlineWarning } from "react-icons/ai"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { accessListApi } from "../../../api/ApiAccessControl"
+import LoadingSpinner from "../../../components/smallComps/LoadingSpinner"
 
 const TechRequests = () => {
     const user = useSelector(state => state.user.user);
@@ -62,9 +63,7 @@ const TechRequests = () => {
                                     />)
                                 }
                             </div> :
-                            <div className="m-2 flex text-xl items-center text-yellow-600/30">
-                                No Requests
-                            </div>}
+                            <LoadingSpinner />}
                     </div>
                 </ContentWrapper>
             </PageContent>
