@@ -5,29 +5,17 @@ import ContentWrapper from '../../components/Wrappers/ContentWrapper';
 import PageContent from '../../components/Wrappers/PageContent'
 import { Link, useParams,useNavigate } from 'react-router-dom';
 import './guestUserPage.css';
-import { submitGuestUserSuggest } from '../../api/apiGuestUser';
+import { insertGuestUser } from '../../api/apiGuestUser';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import ReCAPTCHA from "react-google-recaptcha";
 
 
-
 const GuestUserAuth = () => {
-    let [selectedOption, setSelectedOption] = useState('option1');
     const navigate = useNavigate();
+    const { customerID, placeID, roomID } = useParams();
 
-    let customerID = 1;
-
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value);
-        if (selectedOption === 'option1') {
-            selectedOption = 'High power consumption for less number of People'
-        } else if (selectedOption === 'option2') {
-            selectedOption = 'Excessive energy consumption'
-        }
-        submitGuestUserSuggest({ customerID: customerID, selectedOption: selectedOption });
-    };
 
     return (
         <div>
@@ -39,8 +27,11 @@ const GuestUserAuth = () => {
                             <GoogleLogin
                                 onSuccess={credentialResponse => {
                                     const details = jwt_decode(credentialResponse.credential);
-                                    navigate('/guest');
-                                    submitGuestUserSuggest({ guest_name: details.name, guest_email: details.email ,profile_pic:details.picture});
+                                    insertGuestUser({ guest_name: details.name, guest_email: details.email ,profile_pic:details.picture}).then((res) => {
+                                        navigate(`/guest/${res.data.user_id}/${customerID}/${placeID}/${roomID}`);
+                                    }).catch((err) => {
+                                        console.log(err);
+                                    })
                                     console.log(details);
                                 }}
                                 onError={() => {

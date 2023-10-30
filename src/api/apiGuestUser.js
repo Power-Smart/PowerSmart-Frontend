@@ -1,22 +1,33 @@
 import api from ".";
 
-export const submitGuestUserSuggest = async (data) => {
-    const response = await api.post(`/guestUser`,data);
+export const insertGuestUser = async (data) => {
+    const response = await api.post(`/guestUser`, data);
+    return response;
+}
+
+export const addGuestUserSuggest = async (data) => {
+    const response = await api.post(`/guestUser/addSuggest`, data);
     return response;
 }
 
 export const getGuestUserSuggest = async (customerID) => {
-    try{
-        const response = await api.get(`/guestUser/:${customerID}`);
+    const response = await api.get(`/guestUser/allSuggest/${customerID}`);
+    return response;
+}
 
-        if((response.status >= 200) && (response.status < 300)){
-            return response;
-        }else{
-            throw new Error("Response error"); 
-        }
-    }catch(error){
-        if(error.message === "Response error"){
-            return error.message;
-        }
-    }
+
+export const getAllGuestUsers = async (customerID) => {
+    const response = await api.get(`/guestUser/allGuestUser/${customerID}`);
+    return response;
+    // console.log(response);
+}
+
+export const banAndUnbanGuestUser = async (data) => {
+    const response = await api.post(`/guestUser/banAndUnbanGuestUser`, data);
+    return response;
+}
+
+export const takeActionAndNotWant = async (data) => {
+    const response = await api.post(`/guestUser/takeActionAndNotWant`, data);
+    return response;
 }

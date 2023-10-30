@@ -12,6 +12,8 @@ import { useEffect, useState } from 'react'
 import { selectPlaces } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { emptyRoomsSlice } from '../../../redux/slices/roomsSlice'
+import { Button, QRCode } from 'antd';
+
 
 
 const Rooms = () => {
@@ -23,6 +25,7 @@ const Rooms = () => {
     const user = useSelector(state => state.user.user)
 
     // console.log(user.id);
+    console.log(rooms);
 
     useEffect(() => {
         if (roomsStatus === 'succeeded') {
@@ -37,7 +40,7 @@ const Rooms = () => {
                 place_id: placeID
             }));
         }
-    }, [ user, dispatch]);
+    }, [user, dispatch]);
 
 
     return (
@@ -55,10 +58,8 @@ const Rooms = () => {
                     </ButtonBar>
 
                     <div className='flex flex-wrap px-8 py-2 justify-center'>
-                        {/* Cards */}
-
                         {(roomsStatus === 'loading' || roomsStatus === 'idle') && <LoadingSpinner />}
-                        {(roomsStatus === 'succeeded' && rooms.map((data, index) => (<RoomCard isCustomer={true} key={index} {...data} />)))}
+                        {(roomsStatus === 'succeeded' && rooms.map((data, index) => (<RoomCard isCustomer={true} user_id={user.id} key={index} {...data} />)))}
                         {(roomsStatus === 'succeeded' && rooms.length === 0) && <div className='text-white'>No rooms found</div>}
 
                     </div>
