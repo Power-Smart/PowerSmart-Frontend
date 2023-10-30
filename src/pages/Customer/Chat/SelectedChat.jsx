@@ -20,7 +20,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
     const navigate = useNavigate();
 
 
-    const socketIO = io.connect('http://localhost:3010');
+    const socketIO = io.connect('http://localhost:3001');
     socketIO.emit("joinRoom", user.id);
 
     useEffect(() => {

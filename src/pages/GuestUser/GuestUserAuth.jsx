@@ -3,7 +3,7 @@ import PageWrapper from '../../components/Wrappers/PageWrapper'
 import TopBar from '../../components/smallComps/TopBar'
 import ContentWrapper from '../../components/Wrappers/ContentWrapper';
 import PageContent from '../../components/Wrappers/PageContent'
-import { Link, useParams,useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import './guestUserPage.css';
 import { insertGuestUser } from '../../api/apiGuestUser';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -27,11 +27,24 @@ const GuestUserAuth = () => {
                             <GoogleLogin
                                 onSuccess={credentialResponse => {
                                     const details = jwt_decode(credentialResponse.credential);
-                                    insertGuestUser({ guest_name: details.name, guest_email: details.email ,profile_pic:details.picture}).then((res) => {
-                                        navigate(`/guest/${res.data.user_id}/${customerID}/${placeID}/${roomID}`);
-                                    }).catch((err) => {
-                                        console.log(err);
-                                    })
+                                    insertGuestUser({ customerID: customerID, guest_name: details.name, guest_email: details.email, profile_pic: details.picture })
+                                        .then(async (response) => {
+                                            if (response.status === 200 || response.status === 201) {
+                                                try {
+                                                    console.log(response);
+                                                    const data = response.data
+                                                    navigate(`/guest/${data.user_id}/${customerID}/${placeID}/${roomID}`);
+                                                } catch (error) {
+                                                    console.log("Error parsing JSON response: " + error);
+                                                }
+                                            } else {
+                                                console.log("Error: " + response.status);
+                                            }
+                                        })
+                                        .catch((error) => {
+                                            console.log(error);
+                                        });
+
                                     console.log(details);
                                 }}
                                 onError={() => {

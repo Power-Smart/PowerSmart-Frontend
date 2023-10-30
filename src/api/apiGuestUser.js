@@ -31,3 +31,13 @@ export const takeActionAndNotWant = async (data) => {
     const response = await api.post(`/guestUser/takeActionAndNotWant`, data);
     return response;
 }
+
+export const acceptGuestUserSuggest = async (data) => {
+    const response = await api.post(`/guestUser/sendSMSWhenAcceptGusetUserRequest`, data);
+    return response;
+}
+
+export const rejectGuestUserSuggest = async (data) => {
+    const response = await api.post(`/guestUser/sendSMSWhenRejectGusetUserRequest`, data);
+    return response;
+}
