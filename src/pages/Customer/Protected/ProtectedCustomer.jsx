@@ -46,7 +46,10 @@ const ProtectedCustomer = () => {
         <div className="relative">
             {/* <h1 className="absolute text-xs right-0 top-0 text-white z-50">Customer</h1> */}
             {contextHolder}
-            <Link to="/notifications" className="absolute right-8 bottom-8 z-50 bg-slate-800 rounded-full border-white border-2 shadow-sm cursor-pointer hover:scale-110 hover:rotate-6 transition-all">
+            <Link to="/notifications"
+                className="absolute right-8 bottom-8 z-50 bg-slate-800 rounded-full border-white border-2 shadow-sm cursor-pointer hover:scale-110 hover:rotate-6 transition-all"
+                onClick={() => setNotifications([])}
+            >
                 <IoNotifications className="text-3xl m-2 text-white z-50" />
                 {notifications.length > 0 && <div className="text-xs font-bold text-white p-1 right-2 top-2 rounded-full absolute bg-red-700">{notifications.length}</div>}
             </Link>

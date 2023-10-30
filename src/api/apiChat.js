@@ -37,3 +37,32 @@ export const sendMsgToCustomerApi = async (data) => {
         console.log(error);
     }
 }
+
+// Notification functions
+
+export const getAllNotificationApi = async (id) => {
+    try {
+        const response = await api.get(`/notifications/getNotifications/${id}`);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getFilteredNotificationApi = async (id, type) => {
+    try {
+        const response = await api.get(`/notifications/getNotifications/${id}/${type}`);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateNotificationStatusApi = async (id, status) => {
+    try {
+        const response = await api.put(`/notifications/updateStatus/${id}`, { status });
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
