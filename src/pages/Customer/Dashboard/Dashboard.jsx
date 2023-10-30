@@ -13,6 +13,7 @@ import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { getPlaceEvent } from '../../../api/apiSse'
+import { getGuestUserSuggest } from '../../../api/apiGuestUser'
 import { userSchedulesApi } from '../../../api/apiSchedules'
 
 const Dashboard = () => {
@@ -38,8 +39,15 @@ const Dashboard = () => {
     useEffect(() => {
         if (user.id) {
             dispatch(fetchPlaces(user.id));
+            const allGuestusers = getGuestUserSuggest(user.id);
+            allGuestusers.then((response) => {
+                console.log(response.data)
+            }).catch((error)=>{
+                console.log(error)
+            })
             getScheduleData();
         }
+      
         console.log('user id', user.id);
         const eventSource = getPlaceEvent(user.id);
         eventSource.onmessage = (event) => {
@@ -54,6 +62,9 @@ const Dashboard = () => {
             eventSource.close();
         }
     }, [user, dispatch]);
+
+
+
 
     return (
         <PageWrapper>

@@ -12,6 +12,7 @@
   "dependencies": {
     "@pqina/pintura": "^8.64.1",
     "@pqina/react-pintura": "^9.0.1",
+    "@react-oauth/google": "^0.11.1",
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
     "@reduxjs/toolkit": "^1.9.5",
@@ -36,10 +37,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-filepond": "^7.1.2",
+    "react-google-recaptcha": "^3.1.0",
     "react-icons": "^4.9.0",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.13.0",
-    "sweetalert2": "^11.8.0",
+    "socket.io-client": "^4.7.2",
+    "sweetalert2": "^11.7.28",
     "three": "^0.156.1"
   },
   "devDependencies": {

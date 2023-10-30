@@ -81,7 +81,6 @@ const OrderRequest = () => {
                                     <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
                                 </Link>
                             </div>
-
                         </div>
                     </div>
                 </ContentWrapper>
