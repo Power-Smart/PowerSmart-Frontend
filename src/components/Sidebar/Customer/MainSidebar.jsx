@@ -11,6 +11,7 @@ import SidebarWrapper from '../SidebarWrapper'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCustomer } from '../../../redux/slices/customerSlice'
 import { subValidation } from '../../../utils/validators'
+import { GiLightningFrequency } from 'react-icons/gi'
 
 const MainSidebar = () => {
 
@@ -44,6 +45,9 @@ const MainSidebar = () => {
             </SidebarButton>
             <SidebarButton text="Support" toggle={toggle} link='/support'>
                 <BiSupport />
+            </SidebarButton>
+            <SidebarButton text="Requests" toggle={toggle} link='/techrequests'>
+                <GiLightningFrequency />
             </SidebarButton>
             {!subValidation(customer.year_subscription) && <SidebarButton text="Subscribe" toggle={toggle} link='/subscribe'>
                 <AiFillRocket />

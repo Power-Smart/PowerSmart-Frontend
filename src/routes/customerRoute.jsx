@@ -17,6 +17,7 @@ import Schedules from '../pages/Customer/Scheduling/schedules'
 import AddSchedule from '../pages/Customer/Scheduling/AddSchedule'
 import UpdateSchedule from '../pages/Customer/Scheduling/UpdateSchedule'
 import Subscription from '../pages/Customer/Billing/Subscription'
+import TechRequests from '../pages/Customer/Requests/TechRequests'
 
 const customerRoute =
 {
@@ -90,6 +91,10 @@ const customerRoute =
         {
             path: "subscribe",
             element: <Subscription />,
+        },
+        {
+            path: "techrequests",
+            element: <TechRequests />,
         }
     ]
 };

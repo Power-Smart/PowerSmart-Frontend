@@ -9,13 +9,14 @@ const Thread = ({ topic, description }) => {
             <div className='p-3 flex-1'>
                 <h1 className='font-bold'>{topic}</h1>
                 <hr className=' border-white/10 mb-1 ' />
-                <div className='text-sm'> {description}</div>
+                <div className='text-sm'> {description}
+                </div>
             </div>
             <div className='p-3 w-24 flex flex-row items-center justify-center text-xl'>
-                <div className='flex text-red-500 flex-grow items-center justify-center'>
+                <div className='flex mx-1 p-1 rounded-md text-red-500 bg-red-400/10 flex-grow items-center justify-center'>
                     <RxCross1 className='cursor-pointer' />
                 </div>
-                <div className='flex text-green-500 flex-grow items-center justify-center'>
+                <div className='flex mx-1 p-1 rounded-md text-green-500 bg-green-400/10 flex-grow items-center justify-center'>
                     <AiOutlineCheck className='cursor-pointer' />
                 </div>
             </div>
