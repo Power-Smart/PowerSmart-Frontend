@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiFillMessage } from 'react-icons/ai'
 import { controlAccessApi } from '../../api/ApiAccessControl';
 import Swal from 'sweetalert2'
 
 const RequestThread = ({ tech_support_name, tech_support_id, place_id, place_name, time, type = 1, user_id }) => {
     const [accessType, setAccessType] = useState(type);
+    useEffect(() => {
+        setAccessType(type);
+    }, [type]);
 
     const acceptRequest = async () => {
         Swal.fire({

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { TbHomeEdit } from 'react-icons/tb'
 import Swal from 'sweetalert2'
@@ -10,6 +10,9 @@ import { updatePlace } from '../../redux/slices/techsupport/techPlaceSlice'
 const PlaceCardTech = ({ place_id, place, access_type, customerID, user_id }) => {
     const dispatch = useDispatch();
     const [accessType, setAccessType] = useState(access_type);
+    useEffect(() => {
+        setAccessType(access_type);
+    }, [access_type]);
 
     const requestConfirm = () => {
         Swal.fire({

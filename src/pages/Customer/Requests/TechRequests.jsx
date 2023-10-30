@@ -16,12 +16,21 @@ const TechRequests = () => {
     const [techRequests, setTechRequests] = useState([]);
 
     useEffect(() => {
+        let timeInterval;
+        const getData = async () => {
+            try {
+                const data = await accessListApi(user.id);
+                setTechRequests(data.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
         if (user.id) {
-            accessListApi(user.id).then(res => {
-                setTechRequests(res.data);
-            }).catch(err => {
-                console.log(err);
-            });
+            getData();
+            timeInterval = setInterval(getData, 5000);
+        }
+        return () => {
+            clearInterval(timeInterval);
         }
     }, [user]);
     return (
@@ -49,6 +58,7 @@ const TechRequests = () => {
                                         place_name={item.place_name}
                                         time={item?.updated_at}
                                         type={item.access_type}
+                                        techRequests={techRequests}
                                     />)
                                 }
                             </div> :

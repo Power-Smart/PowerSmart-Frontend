@@ -22,7 +22,12 @@ const Places = () => {
 
   useEffect(() => {
     if (user.id) {
-      dispatch(fetchData({ user_id: user.id, customer_id: customerID }));
+      var timeInterval = setInterval(() => {
+        dispatch(fetchData({ user_id: user.id, customer_id: customerID }));
+      }, 5000);
+    }
+    return () => {
+      clearInterval(timeInterval);
     }
   }, [user, dispatch]);
 

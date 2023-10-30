@@ -11,8 +11,8 @@ import SidebarWrapper from '../SidebarWrapper'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCustomer } from '../../../redux/slices/customerSlice'
 import { subValidation } from '../../../utils/validators'
-import { GiLightningFrequency } from 'react-icons/gi'
-import {AiOutlineUserSwitch} from 'react-icons/ai'
+import { AiOutlineUserSwitch } from 'react-icons/ai'
+import { BsFillShieldLockFill } from 'react-icons/bs'
 
 
 const MainSidebar = () => {
@@ -45,18 +45,18 @@ const MainSidebar = () => {
             <SidebarButton text="Payment" toggle={toggle} link='/payments'>
                 <RiMoneyDollarCircleLine />
             </SidebarButton>
+            <SidebarButton text="Access Control" toggle={toggle} link='/techrequests'>
+                <BsFillShieldLockFill />
+            </SidebarButton>
+            <SidebarButton text="Guest Request" toggle={toggle} link='/guestSuggest'>
+                <AiOutlineUserSwitch />
+            </SidebarButton>
             <SidebarButton text="Support" toggle={toggle} link='/support'>
                 <BiSupport />
-            </SidebarButton>
-            <SidebarButton text="Requests" toggle={toggle} link='/techrequests'>
-                <GiLightningFrequency />
             </SidebarButton>
             {!subValidation(customer.year_subscription) && <SidebarButton text="Subscribe" toggle={toggle} link='/subscribe'>
                 <AiFillRocket />
             </SidebarButton>}
-            <SidebarButton text="Guest Request" toggle={toggle} link='/guestSuggest'>
-                <AiOutlineUserSwitch />
-            </SidebarButton>
         </SidebarWrapper>
 
     )
