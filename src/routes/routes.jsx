@@ -9,6 +9,7 @@ import ProfileComplete from '../pages/Register/ProfileComplete'
 import CheckoutButton from '../components/smallComps/CheckoutButton';
 import guestUserRoute from './guestUserRoute';
 import { Landing } from '../pages/LandingPage/Landing';
+import Notifications from '../pages/Notifications/Notifications';
 
 export const routesArray = [
     customerRoute,
@@ -43,6 +44,10 @@ export const routesArray = [
     {
         path: "/landing",
         element: <Landing />,
+    },
+    {
+        path: "/notifications",
+        element: <Notifications />
     }
 
 ];
