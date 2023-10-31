@@ -19,3 +19,13 @@ export const getAllTechSupportApi = async () => {
         throw error;
     }
 };
+
+export const getAllItemsApi = async () => {
+    try {
+        const response = await api.get("/admin/itemsView");
+        return response;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
