@@ -10,3 +10,12 @@ export const getAllCustomersApi = async () => {
     }
 }; 
 
+export const getAllTechSupportApi = async () => {
+    try {
+        const response = await api.get("/admin/techSupportView");
+        return response;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
