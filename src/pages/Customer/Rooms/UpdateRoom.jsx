@@ -104,7 +104,7 @@ const UpdateRoom = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar title={'Update Rooms'} />
+                <TopBar title={'Update Rooms'} baclLink={`/places/${placeID}/rooms`} />
                 <ContentWrapper>
                     <Form>
                         <AlertMessage message={alert.message} visible={alert.visible} setVisible={setAlert} closable={true} type={alert.type} />

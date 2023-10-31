@@ -84,3 +84,13 @@ export const getAvailableUnitsCount = async (user_id, type) => {
     const response = await api.get(`/assigns/count/${user_id}/${type}`);
     return response;
 }
+
+export const sendAccessRequest = async (user_id, place_id, type) => {
+    if (type === 'request') {
+        const response = await api.get(`/assigns/access/request/${user_id}/${place_id}`);
+        return response;
+    } else {
+        const response = await api.get(`/assigns/access/cancel/${user_id}/${place_id}`);
+        return response;
+    }
+}

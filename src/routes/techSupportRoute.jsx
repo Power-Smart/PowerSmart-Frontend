@@ -20,6 +20,7 @@ import Sensors from '../pages/TechSupport/Sensors/Sensors';
 import Chat from '../pages/TechSupport/Chat/Chat';
 import ViewComplaint from '../pages/TechSupport/UserComplaints/viewComplaint';
 import EditRelay from '../pages/TechSupport/Relays/EditRelay';
+import Notifications from '../pages/Notifications/Notifications';
 
 
 const techSupport = "/tech";
@@ -70,6 +71,10 @@ const techSupportRoute =
             element: <AccessCusAccount />,
         },
         {
+            path: `${techSupport}/accessCusAccount/:customerID`,
+            element: <AccessCusAccount />,
+        },
+        {
             path: `${techSupport}/addDevice`,
             element: <AddDevice />,
         },
@@ -113,6 +118,14 @@ const techSupportRoute =
             path: `${techSupport}/chat`,
             element: <Chat />,
         },
+        {
+            path: `${techSupport}/chat/:customerID`,
+            element: <Chat />,
+        },
+        {
+            path: `${techSupport}/notifications`,
+            element: <Notifications />
+        }
     ]
 };
 

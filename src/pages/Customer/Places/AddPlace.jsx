@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
-import Sidebar from '../../../components/Sidebar/Sidebar'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import Form from '../../../components/Forms/Form'
@@ -12,12 +11,11 @@ import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
 import { FiMapPin } from 'react-icons/fi';
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectCustomer } from '../../../redux/slices/customerSlice'
 import { addPlace } from '../../../redux/slices/placesSlice'
 import { useNavigate } from 'react-router-dom'
 import AlertMessage from '../../../components/smallComps/AlertMessage'
-import SelectInput from '../../../components/Forms/SelectInput'
-import { categories, countries, cities } from './selectItemList'
+import { Select } from 'antd';
+import { categories, countries, cities, time_zones, selecStyles } from './selectItemList'
 
 
 const AddPlace = () => {
@@ -29,7 +27,10 @@ const AddPlace = () => {
         name: '',
         address: '',
         postal_code: '',
-        time_zone: '',
+        time_zone: time_zones[0].value,
+        place_type: categories[0].value,
+        city: cities[0].value,
+        country: countries[0].value,
         is_active: false,
     })
 
@@ -39,22 +40,12 @@ const AddPlace = () => {
         type: 'success',
         visible: false,
     });
-    const selectType = useRef(null);
-    const selectCity = useRef(null);
-    const selectCountry = useRef(null);
-    
 
-    useEffect(() => {
-        selectType.current = categories[0].value;
-        selectCity.current = cities[0].value;
-        selectCountry.current = countries[0].value;
-    }, [])
 
-    
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(addPlace({ ...place, id: user.id, place_type: selectType.current, city: selectCity.current, country: selectCountry.current }))
+            dispatch(addPlace({ ...place, id: user.id }))
             setAlert({
                 message: 'Place Added Successfully !',
                 type: 'success',
@@ -78,12 +69,12 @@ const AddPlace = () => {
             name: '',
             address: '',
             postal_code: '',
-            time_zone: '',
+            time_zone: time_zones[0].value,
+            place_type: categories[0].value,
+            city: cities[0].value,
+            country: countries[0].value,
             is_active: false,
         })
-        selectType.current = categories[0].value;
-        selectCity.current = cities[0].value;
-        selectCountry.current = countries[0].value;
         setAlert({
             message: '',
             type: 'success',
@@ -110,22 +101,46 @@ const AddPlace = () => {
                             </div>
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={categories} ref={selectType} onChange={(e) => { selectType.current = e.target.value }} />
+                            <Select
+                                defaultValue={categories[0].value}
+                                style={selecStyles}
+                                onChange={(value) => { setPlace({ ...place, place_type: value }) }}
+                                options={categories}
+                                value={place.place_type}
+                            />
                         </FormGroup>
                         <FormRowDual>
                             <FormGroup>
                                 <TextInput type='text' label='Postal Code' required={true} value={place.postal_code} onChange={(e) => { setPlace({ ...place, postal_code: e.target.value }) }} />
                             </FormGroup>
                             <FormGroup>
-                                <TextInput type='text' label='Time Zone' required={true} value={place.time_zone} onChange={(e) => { setPlace({ ...place, time_zone: e.target.value }) }} />
+                                <Select
+                                    defaultValue={time_zones[0].value}
+                                    style={selecStyles}
+                                    onChange={(value) => { setPlace({ ...place, time_zone: value }) }}
+                                    options={time_zones}
+                                    value={place.time_zone}
+                                />
                             </FormGroup>
                         </FormRowDual>
                         <FormRowDual>
                             <FormGroup>
-                                <SelectInput required={true} categories={cities} ref={selectCity} onChange={(e) => { selectCity.current = e.target.value }} />
+                                <Select
+                                    defaultValue={cities[0].value}
+                                    style={selecStyles}
+                                    onChange={(value) => { setPlace({ ...place, city: value }) }}
+                                    options={cities}
+                                    value={place.city}
+                                />
                             </FormGroup>
                             <FormGroup>
-                                <SelectInput required={true} categories={countries} ref={selectCountry} onChange={(e) => { selectCountry.current = e.target.value }} />
+                                <Select
+                                    defaultValue={countries[0].value}
+                                    style={selecStyles}
+                                    onChange={(value) => { setPlace({ ...place, country: value }) }}
+                                    options={countries}
+                                    value={place.country}
+                                />
                             </FormGroup>
                         </FormRowDual>
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">

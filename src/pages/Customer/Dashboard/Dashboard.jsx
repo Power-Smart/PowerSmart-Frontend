@@ -14,6 +14,7 @@ import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { getPlaceEvent } from '../../../api/apiSse'
 import { getGuestUserSuggest } from '../../../api/apiGuestUser'
+import { userSchedulesApi } from '../../../api/apiSchedules'
 
 const Dashboard = () => {
 
@@ -23,19 +24,30 @@ const Dashboard = () => {
     const placesStatus = useSelector(selectPlacesStatus);
     const [roomsData, setRoomsData] = useState([]);
 
+    const [schedules, setSchedules] = useState([]);
+
+    const getScheduleData = async () => {
+        const res = await userSchedulesApi(user.id);
+        if (res.status === 200) {
+            setSchedules(res.data);
+        }
+        else {
+            setSchedules([]);
+        }
+    }
 
     useEffect(() => {
         if (user.id) {
             dispatch(fetchPlaces(user.id));
             const allGuestusers = getGuestUserSuggest(user.id);
-
             allGuestusers.then((response) => {
                 console.log(response.data)
-            }).catch((error)=>{
+            }).catch((error) => {
                 console.log(error)
             })
-            
+            getScheduleData();
         }
+
         console.log('user id', user.id);
         const eventSource = getPlaceEvent(user.id);
         eventSource.onmessage = (event) => {
@@ -61,7 +73,7 @@ const Dashboard = () => {
                 <ContentWrapper>
                     <div className="dashboard-container">
                         <div className="left-side">
-                            <DashboardTopHeader />
+                            {/* <DashboardTopHeader /> */}
 
                             {placesStatus === 'loading' && <LoadingSpinner />}
                             {placesStatus === 'succeeded' &&
@@ -85,8 +97,13 @@ const Dashboard = () => {
                             </div> */}
 
                             <div className="schedule">
-                                <ScheduleDevice />
-                                <ScheduleDevice />
+                                <div className='h-[290px] overflow-y-scroll'>
+                                    {
+                                        schedules.length > 0 ?
+                                            schedules.map(schedule => <ScheduleDevice key={schedule.schedule_id} {...schedule} />) :
+                                            <h1 className="text-xl mt-4 mb-2">No Schedules</h1>
+                                    }
+                                </div>
                             </div>
 
                             <div className="guest-users">
@@ -108,7 +125,7 @@ const Dashboard = () => {
                             </div>
 
 
-                            <div className="guest-users">
+                            {/* <div className="guest-users">
                                 <h1 className="text-xl mt-4 mb-2">Guest Users Suggest</h1>
                                 <div className='h-[290px] overflow-y-scroll'>
                                     <GuestUsersSuggest />
@@ -116,7 +133,7 @@ const Dashboard = () => {
                                     <GuestUsersSuggest />
                                     <GuestUsersSuggest />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </ContentWrapper>
