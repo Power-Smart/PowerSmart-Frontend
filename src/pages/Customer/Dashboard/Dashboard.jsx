@@ -12,7 +12,7 @@ import GuestUsersSuggest from './GuestUsersSuggest'
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
 import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from '../../../redux/slices/placesSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
-import { getPlaceEvent } from '../../../api/apiSse'
+import { getPlaceEvent } from '../../../api/apiSse.js'
 import { getGuestUserSuggest } from '../../../api/apiGuestUser'
 import { userSchedulesApi } from '../../../api/apiSchedules'
 
