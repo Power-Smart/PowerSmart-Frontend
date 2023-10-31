@@ -1,4 +1,4 @@
-import './accessCusAccount.css'
+import './AccessCusAccount.css'
 import AccessCusTable from './AccessCusTable';
 import PageWrapper from '../../../components/Wrappers/PageWrapper';
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper';

@@ -1,7 +1,7 @@
 import React from 'react'
 import ss1 from '/images/screenshots/ss1.png'
-import ss2 from '/images/screenshots/ss2.png'
-import ss4 from '/images/screenshots/ss4.png'
+import ss2 from '/images/screenshots/ss1.png'
+import ss4 from '/images/screenshots/ss1.png'
 import { motion } from "framer-motion"
 import FeatureComp from '../../components/Landing/FeatureComp'
 import Padding from '../../components/smallComps/Padding'
