@@ -6,8 +6,10 @@ export const userLogin = async (email, password) => {
         email,
         password,
     });
-    localStorage.setItem("token", response.data.token);
-    Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
+    if (response.data.id) {
+        localStorage.setItem("token", response.data.token);
+        Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
+    }
     return response;
 };
 
@@ -31,6 +33,8 @@ export const getCustomerApi = async (userId) => {
     const response = await api.get(`/user/${userId}`);
     return response;
 };
+
+
 
 export const updateCustomerProfileApi = async (values) => {
     const response = await api.patch(`/user/customer_profile/${values.id}`, {

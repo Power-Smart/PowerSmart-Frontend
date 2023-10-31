@@ -23,6 +23,8 @@ export const updateCustomerProfile = createAsyncThunk(
     }
 );
 
+
+
 const initialState = {
     points: null,
     year_subscription: null,
@@ -31,6 +33,8 @@ const initialState = {
     is_banned: false,
     profile_pic: null,
     achievements: [],
+    first_name: "",
+    last_name: "",
 
     status: "idle",
     error: null,
@@ -55,6 +59,9 @@ export const userSlice = createSlice({
                 state.is_banned = data.is_banned;
                 state.profile_pic = data.profile_pic;
                 state.achievements = data.achievements;
+
+                state.first_name = data.first_name;
+                state.last_name = data.last_name;
             })
             .addCase(fetchCustomer.rejected, (state, action) => {
                 state.status = "failed";

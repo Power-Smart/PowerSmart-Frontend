@@ -1,36 +1,44 @@
 import './register.css'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, notification } from 'antd';
 import registerPageImage from '../../assets/images/register.png'
 import { userRegister } from '../../api/apiUser';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { completeProfileInfo } from '../../redux/slices/userSlice';
+import { antNotification } from '../../utils/alerts';
+import { useState } from 'react';
 
 
 const Register = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [buttonState, setButtonState] = useState(false);
+    const [api, contextHolder] = notification.useNotification();
 
     const onFinish = async (values) => {
         if (values.password !== values.confirmPassword) {
-            alert('Password and Confirm Password do not match')
+            antNotification(api, 'topLeft', "Passwords not match", '', 'error');
         } else {
+            setButtonState(true);
             const response = await userRegister(values);
             console.log(response.data.user.user_id)
             if (response.status === 201) {
+                setButtonState(false);
                 navigate('/register/profileComplete')
                 dispatch(completeProfileInfo(response.data.user.user_id));
                 console.log('Registration Successful')
             } else {
-                console.log('Registration Failed')
+                setButtonState(false);
+                antNotification(api, 'topLeft', "Registration failed", '', 'error');
             }
         }
     };
 
     return (
         <div className="register__page">
+            {contextHolder}
             <div className="login__container" >
                 <div className="login__form">
                     <h1>REGISTER</h1>
@@ -48,7 +56,7 @@ const Register = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'your first name',
+                                    message: 'First name required',
                                 },
                             ]}
                         >
@@ -61,7 +69,7 @@ const Register = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'your last name',
+                                    message: 'Last name required',
                                 },
                             ]}
                         >
@@ -74,8 +82,12 @@ const Register = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your Username!',
+                                    message: 'Email required',
                                 },
+                                {
+                                    type: 'email',
+                                    message: 'Input a valid email',
+                                }
                             ]}
                         >
                             <Input prefix={<UserOutlined className="site-form-item-icon" />} />
@@ -87,8 +99,12 @@ const Register = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your Password!',
+                                    message: 'Password required',
                                 },
+                                // {
+                                //     min: 8,
+                                //     message: 'Password must be at least 8 characters'
+                                // }
                             ]}
                         >
                             <Input
@@ -103,8 +119,12 @@ const Register = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your Password!',
+                                    message: 'Confirm your password',
                                 },
+                                // {
+                                //     min: 8,
+                                //     message: 'Password must be at least 8 characters'
+                                // }
                             ]}
                         >
                             <Input
@@ -116,12 +136,12 @@ const Register = () => {
 
                         <Form.Item className='form__submission'>
                             <div className="login__register">
-                                <Button type="primary" htmlType="submit" className="login-form-button">
+                                <Button type="primary" htmlType="submit" className="login-form-button" disabled={buttonState}>
                                     Register
                                 </Button>
                             </div>
                             <div className="google__login">
-                                Already Logged In?<Link to='/login'> Login</Link>
+                                Already Logged In?<Link to='/login' className='text-blue-400'> Login</Link>
                             </div>
                         </Form.Item>
                     </Form>

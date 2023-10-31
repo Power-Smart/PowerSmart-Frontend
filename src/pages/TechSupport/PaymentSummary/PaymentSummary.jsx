@@ -26,6 +26,10 @@ const PaymentSummary = () => {
         navigate(-1)
     }
 
+    const sentToCustomer = () => {
+        alert("Sent to customer")
+    }
+
 
     return (
         <PageWrapper>
@@ -54,9 +58,9 @@ const PaymentSummary = () => {
                         <div className="button-section flex justify-end align-middle mt-4">
                             <button className='mx-2 px-4 py-2 bg-[#CE4444] rounded-md text-black w-fit font-bold' onClick={(e) => backMarketplace()}>Cancel</button>
 
-                            <Link to="/tech/accessCusAccount">
-                                <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black w-fit font-bold'>Sent to customer</button>
-                            </Link>
+                            {/* <Link to="/tech/accessCusAccount"> */}
+                                <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black w-fit font-bold' onClick={(e) => sentToCustomer()}>Sent to customer</button>
+                            {/* </Link> */}
                         </div>
                     </div>
 

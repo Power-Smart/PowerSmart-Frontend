@@ -1,20 +1,24 @@
 import customerRoute from './customerRoute';
 import adminRoute from './adminRoute';
 import techSupportRoute from './techSupportRoute';
-import stockManagerRoute from "./stockManagerRoute";
 import Login from '../pages/Login/Login'
 import Register from '../pages/Register/Register'
 import Home from '../pages/Home/Home'
 import PageNotFound from "../pages/SpecialPages/PageNotFound";
 import ProfileComplete from '../pages/Register/ProfileComplete'
 import CheckoutButton from '../components/smallComps/CheckoutButton';
+import guestUserRoute from './guestUserRoute';
 import { Landing } from '../pages/LandingPage/Landing';
 
 export const routesArray = [
     customerRoute,
     adminRoute,
     techSupportRoute,
-    stockManagerRoute,
+    guestUserRoute,
+    {
+        path: "/sss",
+        element: <Home />,
+    },
     {
         path: "register",
         element: <Register />,
@@ -42,6 +46,7 @@ export const routesArray = [
     {
         path: "/landing",
         element: <Landing />,
-    }
+    },
+
 
 ];

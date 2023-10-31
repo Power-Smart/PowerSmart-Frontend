@@ -11,6 +11,7 @@ import ComplaintView from "../pages/Admin/ComplaintView/ComplaintView";
 import ComplaintInfo from "../pages/Admin/ComplaintInfo/ComplaintInfo";
 import PaymentView from "../pages/Admin/PaymentView/PaymentView";
 import AdminProfile from "../pages/Admin/Profile/AdminProfile";
+import Notifications from '../pages/Notifications/Notifications';
 
 const adminRoute = {
     path: "/admin",
@@ -63,7 +64,12 @@ const adminRoute = {
         {
             path: "/admin/profile",
             element: <AdminProfile />,
+        },
+        {
+            path: `/admin/notifications`,
+            element: <Notifications />
         }
+
     ]
 };
 

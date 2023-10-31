@@ -16,12 +16,12 @@ export const windows_type = [
 
 export const active_status = [
     {
-        label: 'Active',
-        value: 'true',
+        label: 'Inactive',
+        value: false,
     },
     {
-        label: 'Inactive',
-        value: 'false',
+        label: 'Active',
+        value: true,
     },
 ]
 
