@@ -7,7 +7,7 @@ import StatusCardMd from '../../../components/Cards/StatusCardMd'
 import RoomSidebar from '../../../components/Sidebar/Customer/RoomSidebar'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getRoomStatus } from '../../../api/apiSse'
+import { getRoomStatus } from '../../../api/apiSSE'
 import { transformRoomStatus } from '../../../utils/Converters'
 
 const dataSet = [
