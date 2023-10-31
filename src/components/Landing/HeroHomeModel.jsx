@@ -1,7 +1,6 @@
 import React, { Suspense, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, ContactShadows, OrbitControls } from '@react-three/drei'
-import { Home } from '../Models/Home'
 import { Energy } from '../Models/Energy'
 import Controller from '../Models/Controller'
 import Padding from '../smallComps/Padding'
