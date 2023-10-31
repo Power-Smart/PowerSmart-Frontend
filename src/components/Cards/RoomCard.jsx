@@ -38,7 +38,7 @@ const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id,
                     </div>
                     <label>{name}</label>
                 </div>
-                <div id="myqrcode" className='text-center'>
+                <div id="myqrcode" className='text-center '>
                     <QRCode
                         value={`http://localhost:5173/guest/auth/${user_id}/${place_id}/${room_id}`}
                         bgColor="#fff"
@@ -46,6 +46,7 @@ const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id,
                             marginBottom: 7,
                         }}
                         size={70}
+                        iconSize={300}
                         bordered={false}
                     />
                     <Link to={`http://localhost:5173/guest/auth/${user_id}/${place_id}/${room_id}`} target="_blank">

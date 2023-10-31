@@ -3,24 +3,36 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCustomerServiceRequests, selectCustomerServiceRequests } from '../../../../redux/slices/techsupport/customerServiceRequestSlice';
 import { Link } from 'react-router-dom';
-import { getAllGuestUsers, getGuestUserSuggest } from '../../../../api/apiGuestUser';
-
+import { getAllGuestUsers } from '../../../../api/apiGuestUser';
 
 const TableOrderStatus = () => {
 
     const user = useSelector(state => state.user.user);
     let customerID = user.id;
-    const [allGuestSuggestions, setAllGuestSuggestions] = React.useState([]);
+    const [allGuestUsers, setAllGuestUsers] = React.useState([]);
 
     useEffect(() => {
-        getGuestUserSuggest(customerID).then((res) => {
-            setAllGuestSuggestions(res.data);
-        }).catch((err) => {
-            console.log(err);
-        });
-    }, [customerID]);    
+        getAllGuestUsers(customerID)
+            .then((res) => {
+                const uniqueEmails = new Set();
+                const filteredUsers = res.data.filter((user) => {
+                    if (!uniqueEmails.has(user.email)) {
+                        uniqueEmails.add(user.email);
+                        return true;
+                    }
+                    return false;
+                });
 
-    console.log(allGuestSuggestions);
+                setAllGuestUsers(filteredUsers);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [customerID]);
+
+    console.log(allGuestUsers);
+
+
 
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-2 px-6">
@@ -38,27 +50,21 @@ const TableOrderStatus = () => {
                             Guest User Name
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
-                            Place
+                            Profile Picture
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
-                            Room
-                        </th>
-                        <th scope="col" className="px-6 py-3 text-center">
-                            Suggestion
-                        </th>
-                        <th scope="col" className="px-6 py-3 text-center">
-                            Time
-                        </th>
-                        <th scope="col" className="px-6 py-3 text-center">
-                            Date
+                            Email
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
                             Status
                         </th>
+                        <th scope="col" className="px-6 py-3 text-center">
+                            Action
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {allGuestSuggestions.map((data) => <TableRow key={data.id} {...data} />)}
+                    {allGuestUsers.map((data) => <TableRow key={data.id} {...data} />)}
                 </tbody>
             </table>
         </div>
