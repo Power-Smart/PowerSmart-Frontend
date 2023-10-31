@@ -15,7 +15,10 @@ export const routesArray = [
     adminRoute,
     techSupportRoute,
     guestUserRoute,
-
+    {
+        path: "/sss",
+        element: <Home />,
+    },
     {
         path: "register",
         element: <Register />,
@@ -43,6 +46,7 @@ export const routesArray = [
     {
         path: "/landing",
         element: <Landing />,
-    }
+    },
+
 
 ];

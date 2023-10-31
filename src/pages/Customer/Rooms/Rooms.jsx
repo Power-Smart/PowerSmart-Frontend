@@ -28,18 +28,11 @@ const Rooms = () => {
     console.log(rooms);
 
     useEffect(() => {
-        if (roomsStatus === 'succeeded') {
-            dispatch(emptyRoomsSlice());
-            dispatch(fetchRooms({
-                user_id: user.id,
-                place_id: placeID
-            }));
-        } else if (user.id && placeID && roomsStatus === 'idle') {
-            dispatch(fetchRooms({
-                user_id: user.id,
-                place_id: placeID
-            }));
-        }
+        dispatch(emptyRoomsSlice());
+        dispatch(fetchRooms({
+            user_id: user.id,
+            place_id: placeID
+        }));
     }, [user, dispatch]);
 
 

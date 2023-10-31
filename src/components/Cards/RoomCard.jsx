@@ -62,7 +62,7 @@ const RoomCard = ({ is_active, name, size, type, window_type, place_id, room_id,
             <div className='flex flex-col flex-grow justify-center items-center mt-2'>
                 <div className='text-[#83BCFF] my-1'>{device_count} Devices Working</div>
                 <div className='text-sm'>Room size : {size}</div>
-                <div className='text-sm'>Room type : {type}</div>
+                <div className='text-sm'>Room type : {type ? type : "Normal"}</div>
                 <div className='text-sm'>Window type : {window_type}</div>
             </div>
 

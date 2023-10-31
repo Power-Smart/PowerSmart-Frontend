@@ -19,6 +19,9 @@ import { selectPlaces } from '../../../redux/slices/placesSlice'
 import { useNavigate, useParams } from 'react-router-dom'
 import { windows_type, active_status, room_type } from './RoomSelectItemList'
 import SelectInput from '../../../components/Forms/SelectInput'
+import { Select } from 'antd';
+import { selecStyles } from '../Places/selectItemList'
+
 
 
 
@@ -34,6 +37,9 @@ const AddRooms = () => {
     const [room, setRoom] = useState({
         name: '',
         size: '',
+        active_status: active_status[0].value,
+        room_type: room_type[0].value,
+        windows_type: windows_type[0].value,
     })
 
     const [alert, setAlert] = useState({
@@ -42,23 +48,10 @@ const AddRooms = () => {
         visible: false,
     });
 
-
-    const selectWindowType = useRef(null);
-    const selectActiveStatus = useRef(null);
-    const selectRoomType = useRef(null);
-
-
-    useEffect(() => {
-        selectWindowType.current = windows_type[0].value;
-        selectActiveStatus.current = active_status[0].value;
-        selectRoomType.current = room_type[0].value;
-    }, [])
-
-
     const handleSubmit = (e) => {
         e.preventDefault()
         try {
-            dispatch(addRoom({ ...room, id: user.id, placeID: placeID, windows_type: selectWindowType.current, active_status: selectActiveStatus.current, room_type: selectRoomType.current }))
+            dispatch(addRoom({ ...room, id: user.id, placeID }))
             setAlert({
                 message: 'Room Added Successfully!',
                 type: 'success',
@@ -82,10 +75,10 @@ const AddRooms = () => {
         setRoom({
             name: '',
             size: '',
+            active_status: active_status[0].value,
+            room_type: room_type[0].value,
+            windows_type: windows_type[0].value,
         })
-        selectWindowType.current = windows_type[0].value;
-        selectActiveStatus.current = active_status[0].value;
-        selectRoomType.current = room_type[0].value;
         setAlert({
             message: 'Form Cleaed',
             type: 'success',
@@ -106,16 +99,34 @@ const AddRooms = () => {
                             <TextInput type='text' label='Room Name' required={true} value={room.name} onChange={(e) => setRoom({ ...room, name: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={windows_type} ref={selectWindowType} onChange={(e) => { selectWindowType.current = e.target.value }} />
+                            <Select
+                                defaultValue={windows_type[0].value}
+                                style={selecStyles}
+                                onChange={(e) => setRoom({ ...room, windows_type: e })}
+                                options={windows_type}
+                                value={room.windows_type}
+                            />
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={active_status} ref={selectActiveStatus} onChange={(e) => selectActiveStatus.current = e.target.value} />
+                            <Select
+                                defaultValue={active_status[0].value}
+                                style={selecStyles}
+                                onChange={(e) => setRoom({ ...room, active_status: e })}
+                                options={active_status}
+                                value={room.active_status}
+                            />
                         </FormGroup>
                         <FormGroup>
-                            <TextInput type='number' label='Room Size' required={true} value={room.size} onChange={(e) => setRoom({ ...room, size: e.target.value })} />
+                            <TextInput type='number' label='Room Size ( Ft x Ft )' required={true} value={room.size} onChange={(e) => setRoom({ ...room, size: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={room_type} ref={selectRoomType} onChange={(e) => { selectRoomType.current = e.target.value }} />
+                            <Select
+                                defaultValue={room_type[0].value}
+                                style={selecStyles}
+                                onChange={(e) => setRoom({ ...room, room_type: e })}
+                                options={room_type}
+                                value={room.room_type}
+                            />
                         </FormGroup>
 
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">

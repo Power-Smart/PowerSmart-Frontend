@@ -8,6 +8,8 @@ import { getChatHistoryofCustomerTechSupportReceiverMsgApi, getChatHistoryofCust
 import { useNavigate } from 'react-router-dom';
 import { BsBackspace } from 'react-icons/bs';
 
+const SOCKET_URL = import.meta.env.VITE_APP_SOCKET_URL;
+
 const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
     const user = useSelector(state => state.user.user);
     const [message, setMessage] = useState('');
@@ -16,7 +18,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
     const navigate = useNavigate();
     const [allMessages, setAllMessages] = useState([]);
 
-    const socketIO = io.connect('http://localhost:3001');
+    const socketIO = io.connect(SOCKET_URL);
     socketIO.emit("joinRoom", user.id);
 
     useEffect(() => {
@@ -84,7 +86,7 @@ const SelectedChat = ({ userName, userProfile, selectedUserID }) => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            
+
             let createdDate = new Date().toISOString();
             sendMsgToCustomerApi({
                 senderID: user.id,
