@@ -63,6 +63,7 @@ const CustomerTable = () => {
               <td className="px-6 py-3 text-center">
                 {
                   new Date(customer.year_subscription)
+                    .toISOString()
                     .split("T")[0]
                 }
               </td>
