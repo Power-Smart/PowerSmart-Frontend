@@ -9,6 +9,15 @@ export const getAllCustomerOrderRequestsApi = async () => {
     }
 };
 
+export const addCustomerOrderRequestApi = async (order) => {
+    try {
+        const response = await api.post("/customerOrderRequests/addOrder", order);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const deleteCustomerOrderRequestApi = async (orderID) => {
     try {
         const response = await api.delete(`/customerOrderRequests/deleteOrder/${orderID}`);
