@@ -7,9 +7,10 @@ import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import RoomCard from '../../../components/Cards/RoomCard'
 import { getRoomsByPlace } from '../../../api/apiTechAssigns'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import ButtonBar from '../../../components/Wrappers/ButtonBar'
 
 // const rooms = [
 //     {
@@ -59,6 +60,11 @@ const Rooms = () => {
 
                 {/* Content Area */}
                 <ContentWrapper>
+                    <ButtonBar>
+                        <Link to={`/tech/${customerID}/place/${placeID}/rooms/add`}>
+                            <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black'>Add Room</button>
+                        </Link>
+                    </ButtonBar>
                     <div className='flex flex-wrap px-8 py-2 justify-center'>
                         {/* Cards */}
                         {rooms.length > 0 ?

@@ -104,14 +104,14 @@ export const deviceSlice = createSlice({
             .addCase(updateDevice.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.devices = state.devices.map((device) => {
-                    // if (relay.relay_unit_id === action.payload.relay_unit_id) {
-                    //     return {
-                    //         ...relay,
-                    //         ...action.payload
-                    //     }
-                    // } else {
-                    //     return relay;
-                    // }
+                    if (device.relay_unit_id === action.payload.device_id) {
+                        return {
+                            ...device,
+                            ...action.payload
+                        }
+                    } else {
+                        return device;
+                    }
                 });
             })
             .addCase(updateDevice.rejected, (state, action) => {
