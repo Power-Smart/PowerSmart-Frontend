@@ -90,7 +90,7 @@
     padding: 10px;
     border-radius: 0.5rem;
     height: 90vh;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 
 .place-sets .one-place {

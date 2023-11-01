@@ -24,7 +24,6 @@ export const updateCustomerProfile = createAsyncThunk(
 );
 
 
-
 const initialState = {
     points: null,
     year_subscription: null,
