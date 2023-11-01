@@ -15,6 +15,11 @@ export const getRoomsByPlace = async (user_id, place_id) => {
     return response;
 }
 
+export const addRoomApi = async (user_id, place_id, data) => {
+    const response = await api.post(`/assigns/room/add/${user_id}/${place_id}`, data);
+    return response;
+}
+
 export const getRelayUnitsByPlace = async (user_id, place_id) => {
     const response = await api.get(`/assigns/relayunits/${user_id}/${place_id}`);
     return response;
@@ -77,6 +82,16 @@ export const updateSensorUnit = async (room_id, sensor_unit_id, data) => {
 
 export const getSensorLogs = async (sensor_unit_id, no_of_rows) => {
     const response = await api.get(`/assigns/sensorunit/logs/${sensor_unit_id}/${no_of_rows}`);
+    return response;
+}
+
+export const addSensorUnitApi = async (user_id, room_id, data) => {
+    const response = await api.post(`/assigns/sensorunit/add/${user_id}/${room_id}`, data);
+    return response;
+}
+
+export const deleteSensorUnitApi = async (user_id, place_id, room_id, sensor_unit_id) => {
+    const response = await api.delete(`/assigns/sensorunit/${user_id}/${place_id}/${room_id}/${sensor_unit_id}`);
     return response;
 }
 
