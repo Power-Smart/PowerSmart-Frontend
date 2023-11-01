@@ -18,10 +18,6 @@ const tabListNoTitle = [
         key: 'Feedback',
         label: 'Feedback',
     },
-    {
-        key: 'Contact',
-        label: 'Contact us',
-    },
 ];
 
 const contentListNoTitle = {
