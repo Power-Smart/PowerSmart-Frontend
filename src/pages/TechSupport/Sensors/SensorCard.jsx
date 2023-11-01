@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import KeyValueLabel from '../../../components/Forms/KeyValueLabel';
 import SensorData from './SensorData';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSensorUnitOfRoom, updateSensorUnit } from '../../../api/apiTechAssigns';
+import { deleteSensorUnitApi, getSensorUnitOfRoom, updateSensorUnit } from '../../../api/apiTechAssigns';
 import Form from '../../../components/Forms/Form';
 import FormGroup from '../../../components/Forms/FormGroup';
 import TextInput from '../../../components/Forms/TextInput';
 import { Switch } from 'antd';
+import Swal from 'sweetalert2';
 
-const SensorCard = ({ customerID, placeID, roomID }) => {
+const SensorCard = ({ customerID, placeID, roomID, setHasSensor, setAvilUnitCount }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user);
     const [sensorUnit, setSensorUnit] = useState({});
@@ -17,10 +18,14 @@ const SensorCard = ({ customerID, placeID, roomID }) => {
 
     const getSensorUnitInfo = async () => {
         const data = await getSensorUnitOfRoom(user.id, placeID, roomID)
-        if (data.status === 200)
+        if (data.status === 200) {
             setSensorUnit(data.data);
+        }
+        else { setSensorUnit({}); }
+        if (data.data.sensor_unit_id)
+            setHasSensor(true)
         else
-            setSensorUnit({});
+            setHasSensor(false)
     }
 
     const saveChanges = async () => {
@@ -28,6 +33,25 @@ const SensorCard = ({ customerID, placeID, roomID }) => {
         if (data.status === 200)
             setSensorUnit(data.data);
         setEditToggle(!editToggle);
+    }
+
+    const deleteSensorUnit = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this action!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed && user.id) {
+                await deleteSensorUnitApi(user.id, placeID, roomID, sensorUnit.sensor_unit_id);
+                setSensorUnit({});
+                setHasSensor(false);
+                setAvilUnitCount(prev => prev + 1);
+            }
+        })
     }
 
     useEffect(() => {
@@ -86,7 +110,7 @@ const SensorCard = ({ customerID, placeID, roomID }) => {
                     </button>
                 }
                 {!editToggle &&
-                    <button className="px-4 py-1 m-2 w-20 text-sm bg-secondaryBtn rounded-xl text-black bg-[#FF8383]">
+                    <button className="px-4 py-1 m-2 w-20 text-sm bg-secondaryBtn rounded-xl text-black bg-[#FF8383]" onClick={deleteSensorUnit}>
                         Delete
                     </button>}
             </div>

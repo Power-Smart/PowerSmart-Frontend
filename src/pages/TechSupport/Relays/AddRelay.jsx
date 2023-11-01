@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
 import PageWrapper from '../../../components/Wrappers/PageWrapper'
 import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
@@ -14,6 +14,8 @@ import { addRelayUnitToPlace } from '../../../api/apiTechAssigns'
 import { useDispatch, useSelector } from 'react-redux'
 import { addRelay, selectRelays, selectRelaysStatus } from '../../../redux/slices/techsupport/relaySlice'
 import { relay_types } from '../data'
+import { Select } from 'antd'
+import { selecStyles } from '../../Customer/Places/selectItemList'
 
 const AddRelay = () => {
     const { customerID, placeID } = useParams();
@@ -21,24 +23,20 @@ const AddRelay = () => {
     const user = useSelector(state => state.user.user);
     const relaysStatus = useSelector(selectRelaysStatus);
     const navigate = useNavigate();
-    const categoryRef = useRef(null);
     const [data, setData] = useState({
         name: '',
         description: '',
+        category: relay_types[0].value,
     });
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (categoryRef.current !== "M" && categoryRef.current !== "L") {
-            categoryRef.current = "M";
-        }
         if (user.id) {
             if (data.name === '' || data.description === '') {
                 alert("Please fill all the fields");
                 return;
             }
-            const newRelay = { ...data, category: categoryRef.current };
-            dispatch(addRelay({ data: newRelay, placeID, userID: user.id }));
+            dispatch(addRelay({ data, placeID, userID: user.id }));
             // const response = await addRelayUnitToPlace(user.id, placeID, { ...data, category: categoryRef.current });
             if (relaysStatus === "succeded") {
                 navigate(`/tech/${customerID}/place/${placeID}/relays`);
@@ -53,6 +51,7 @@ const AddRelay = () => {
         setData({
             name: '',
             description: '',
+            category: '',
         })
     }
 
@@ -71,7 +70,14 @@ const AddRelay = () => {
                             <TextInput type='text' label='Description' required={true} value={data.description} onChange={(e) => setData({ ...data, description: e.target.value })} />
                         </FormGroup>
                         <FormGroup>
-                            <SelectInput required={true} categories={relay_types} ref={categoryRef} value={categoryRef.current} onChange={(e) => { categoryRef.current = e.target.value }} />
+                            <Select
+                                defaultValue={relay_types[0].value}
+                                onChange={(e) => { setData({ ...data, category: e }) }}
+                                value={data.category}
+                                options={relay_types}
+                                style={selecStyles}
+                            />
+                            {/* <SelectInput required={true} categories={relay_types} ref={categoryRef} value={categoryRef.current} onChange={(e) => { categoryRef.current = e.target.value }} /> */}
                         </FormGroup>
                         <div className="button-section w-2/3 text-center p-2 m-auto flex space-x-20 align-middle mt-8">
                             <FormSubmitButton backgroundColor={'#0856CD'} urlLink={'register'} buttonText={'Add'} onClick={handleSubmit} />
