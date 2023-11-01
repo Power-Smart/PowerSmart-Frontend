@@ -15,6 +15,11 @@ export const getRoomsByPlace = async (user_id, place_id) => {
     return response;
 }
 
+export const addRoomApi = async (user_id, place_id, data) => {
+    const response = await api.post(`/assigns/room/add/${user_id}/${place_id}`, data);
+    return response;
+}
+
 export const getRelayUnitsByPlace = async (user_id, place_id) => {
     const response = await api.get(`/assigns/relayunits/${user_id}/${place_id}`);
     return response;

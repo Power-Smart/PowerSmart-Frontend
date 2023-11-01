@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import DeviceImages from '../../../components/smallComps/DeviceImages';
 import { deleteDevice } from '../../../redux/slices/techsupport/deviceSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
+import Swal from 'sweetalert2'
 
 const DeviceCard = ({ id, deviceName, socket, type, relay }) => {
     const { placeID, roomID } = useParams();
@@ -11,7 +11,19 @@ const DeviceCard = ({ id, deviceName, socket, type, relay }) => {
     const user = useSelector(state => state.user.user)
     const deleteDeviceFromRoom = (e) => {
         e.preventDefault();
-        if (user.id) dispatch(deleteDevice({ userID: user.id, placeID, roomID, deviceID: id }))
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Delete',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                if (user.id) dispatch(deleteDevice({ userID: user.id, placeID, roomID, deviceID: id }))
+            }
+        })
     }
     return (
         <div className="text-sm flex flex-col border-solid border border-secondaryBlue w-[200px] h-auto bg-[#1C1C2E] rounded-3xl shadow-md pb-5 m-5 justify-evenly">
@@ -32,7 +44,7 @@ const DeviceCard = ({ id, deviceName, socket, type, relay }) => {
             </div>
 
             <div className="flex justify-evenly items-center">
-                <Link to='edit'>
+                <Link to={`edit/${id}`}>
                     <button className="px-4 py-1 w-20 text-sm bg-primaryBtn rounded-2xl text-black bg-[#83BCFF]">
                         Edit
                     </button>

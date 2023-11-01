@@ -11,35 +11,32 @@ import FormSubmitButton from '../../../components/Forms/FormSubmitButton'
 import { FiMapPin } from 'react-icons/fi';
 import FormRowDual from '../../../components/Forms/FormRowDual'
 import MainSidebar from '../../../components/Sidebar/Customer/MainSidebar'
+import RoomSidebar from '../../../components/Sidebar/TechSupport/RoomSidebar'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectCustomer } from '../../../redux/slices/customerSlice.js'
 import { addRoom, selectRoomsStatus } from '../../../redux/slices/roomsSlice'
 import AlertMessage from '../../../components/smallComps/AlertMessage'
 import { selectPlaces } from '../../../redux/slices/placesSlice'
 import { useNavigate, useParams } from 'react-router-dom'
-import { windows_type, active_status, room_type } from './RoomSelectItemList'
+import { windows_type, active_status, room_type } from '../../Customer/Rooms/RoomSelectItemList'
 import SelectInput from '../../../components/Forms/SelectInput'
 import { Select } from 'antd';
-import { selecStyles } from '../Places/selectItemList'
-
-
+import { selecStyles } from '../../Customer/Places/selectItemList'
+import { addRoomApi } from '../../../api/apiTechAssigns'
 
 
 const AddRooms = () => {
-
-    const dispatch = useDispatch();
-    const customer = useSelector(selectCustomer);
     const navigate = useNavigate();
-    const { placeID } = useParams();
+    const { customerID, placeID } = useParams();
     const user = useSelector(state => state.user.user)
 
 
     const [room, setRoom] = useState({
         name: '',
         size: '',
-        active_status: false,
+        active_status: active_status[0].value,
         room_type: room_type[0].value,
-        windows_type: windows_type[0].value,
+        window_type: windows_type[0].value,
     })
 
     const [alert, setAlert] = useState({
@@ -48,15 +45,18 @@ const AddRooms = () => {
         visible: false,
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            dispatch(addRoom({ ...room, id: user.id, placeID }))
-            setAlert({
-                message: 'Room Added Successfully!',
-                type: 'success',
-                visible: true,
-            })
+            const res = await addRoomApi(user.id, +placeID, { ...room, id: customerID });
+            if (res.status === 201) {
+                setAlert({
+                    message: 'Room Added Successfully!',
+                    type: 'success',
+                    visible: true,
+                })
+                navigate(`/tech/${customerID}/place/${placeID}/rooms`)
+            }
         }
         catch (error) {
             console.log(error);
@@ -66,7 +66,6 @@ const AddRooms = () => {
                 visible: true,
             })
         }
-        navigate(-1)
     }
 
 
@@ -75,9 +74,9 @@ const AddRooms = () => {
         setRoom({
             name: '',
             size: '',
-            active_status: false,
+            active_status: active_status[0].value,
             room_type: room_type[0].value,
-            windows_type: windows_type[0].value,
+            window_type: windows_type[0].value,
         })
         setAlert({
             message: 'Form Cleaed',
@@ -89,7 +88,7 @@ const AddRooms = () => {
 
     return (
         <PageWrapper>
-            <MainSidebar />
+            <RoomSidebar customerID={customerID} placeID={placeID} />
             <PageContent>
                 <TopBar title={'Add Rooms'} baclLink={`/places/${placeID}/rooms`} />
                 <ContentWrapper>
@@ -102,12 +101,12 @@ const AddRooms = () => {
                             <Select
                                 defaultValue={windows_type[0].value}
                                 style={selecStyles}
-                                onChange={(e) => setRoom({ ...room, windows_type: e })}
+                                onChange={(e) => setRoom({ ...room, window_type: e })}
                                 options={windows_type}
-                                value={room.windows_type}
+                                value={room.window_type}
                             />
                         </FormGroup>
-                        {/* <FormGroup>
+                        <FormGroup>
                             <Select
                                 defaultValue={active_status[0].value}
                                 style={selecStyles}
@@ -115,7 +114,7 @@ const AddRooms = () => {
                                 options={active_status}
                                 value={room.active_status}
                             />
-                        </FormGroup> */}
+                        </FormGroup>
                         <FormGroup>
                             <TextInput type='number' label='Room Size ( Ft x Ft )' required={true} value={room.size} onChange={(e) => setRoom({ ...room, size: e.target.value })} />
                         </FormGroup>

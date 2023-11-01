@@ -21,7 +21,8 @@ import Chat from '../pages/TechSupport/Chat/Chat';
 import ViewComplaint from '../pages/TechSupport/UserComplaints/viewComplaint';
 import EditRelay from '../pages/TechSupport/Relays/EditRelay';
 import Notifications from '../pages/Notifications/Notifications';
-
+import AddRooms from '../pages/TechSupport/Rooms/AddRooms';
+import EditDevice from '../pages/TechSupport/Devices/EditDevice';
 
 const techSupport = "/tech";
 
@@ -115,6 +116,11 @@ const techSupportRoute =
             element: <AddDevice />,
         },
         {
+            // tech/ 1 / place / 9 / room / 6 / devices / edit / 19
+            path: `${techSupport}/:customerID/place/:placeID/room/:roomID/devices/edit/:deviceID`,
+            element: <EditDevice />,
+        },
+        {
             path: `${techSupport}/chat`,
             element: <Chat />,
         },
@@ -125,6 +131,10 @@ const techSupportRoute =
         {
             path: `${techSupport}/notifications`,
             element: <Notifications />
+        },
+        {
+            path: `${techSupport}/:customerID/place/:placeID/rooms/add`,
+            element: <AddRooms />,
         }
     ]
 };

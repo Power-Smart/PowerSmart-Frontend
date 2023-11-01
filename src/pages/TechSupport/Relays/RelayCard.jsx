@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
 import { deleteRelay } from '../../../redux/slices/techsupport/relaySlice';
+import Swal from 'sweetalert2';
 
 const RelayCard = ({ id, name, type, image, description }) => {
     const { customerID, placeID } = useParams();
@@ -9,7 +10,19 @@ const RelayCard = ({ id, name, type, image, description }) => {
     const user = useSelector(state => state.user.user)
     const deleteRelayUnit = (e) => {
         e.preventDefault();
-        if (user.id) dispatch(deleteRelay({ userID: user.id, placeID, relayID: id }))
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "The linked devices also be deleted !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Delete',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                if (user.id) dispatch(deleteRelay({ userID: user.id, placeID, relayID: id }))
+            }
+        })
     }
 
     return (
