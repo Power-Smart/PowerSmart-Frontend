@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PageWrapper from '../../components/Wrappers/PageWrapper'
 import MainSidebar from '../../components/Sidebar/Customer/MainSidebar'
+import TechMainSidebar from '../../components/Sidebar/TechSupport/MainSidebar'
+import AdminSidebar from '../../components/Sidebar/Admin/AdminSidebar'
 import PageContent from '../../components/Wrappers/PageContent'
 import TopBar from '../../components/smallComps/TopBar'
 import ContentWrapper from '../../components/Wrappers/ContentWrapper'
@@ -39,9 +41,13 @@ const Notifications = () => {
 
     return (
         <PageWrapper>
-            <MainSidebar />
+            {user.role == 1 && <MainSidebar />}
+            {user.role == 2 && <TechMainSidebar />}
+            {user.role == 4 && <AdminSidebar />}
             <PageContent >
-                <TopBar title="Notifications" baclLink='/' />
+                {user.role == 1 && <TopBar title="Notifications" baclLink='/' />}
+                {user.role == 2 && <TopBar title="Notifications" baclLink='/tech' />}
+                {user.role == 4 && <TopBar title="Notifications" baclLink='/admin' />}
                 <ContentWrapper>
                     <ButtonBar>
                     </ButtonBar>
