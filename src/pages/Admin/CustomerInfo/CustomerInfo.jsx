@@ -75,3 +75,16 @@ const CustomerInfo = () => {
 }
 
 export default CustomerInfo
+
+{/* <td className="px-6 py-4">{profile_pic}</td>
+<td className="px-6 py-4">{user_id}</td>
+<td className="px-6 py-4">{first_name}</td>
+<td className="px-6 py-4">{last_name}</td>
+<td className="px-6 py-4">{email}</td>
+<td className="px-6 py-4">{points}</td>
+<td className="px-6 py-4">{year_subscription}</td>
+<td className="px-6 py-4">{tel_no}</td>
+<td className="px-6 py-4">{address}</td>
+<td className="px-6 py-4">{is_banned}</td>
+<td className="px-6 py-4">{achievements}</td>
+<td className="px-6 py-4">{createdAt}</td> */}
