@@ -85,6 +85,16 @@ export const getSensorLogs = async (sensor_unit_id, no_of_rows) => {
     return response;
 }
 
+export const addSensorUnitApi = async (user_id, room_id, data) => {
+    const response = await api.post(`/assigns/sensorunit/add/${user_id}/${room_id}`, data);
+    return response;
+}
+
+export const deleteSensorUnitApi = async (user_id, place_id, room_id, sensor_unit_id) => {
+    const response = await api.delete(`/assigns/sensorunit/${user_id}/${place_id}/${room_id}/${sensor_unit_id}`);
+    return response;
+}
+
 export const getAvailableUnitsCount = async (user_id, type) => {
     const response = await api.get(`/assigns/count/${user_id}/${type}`);
     return response;
