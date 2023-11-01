@@ -8,13 +8,17 @@ import PageNotFound from "../pages/SpecialPages/PageNotFound";
 import ProfileComplete from '../pages/Register/ProfileComplete'
 import CheckoutButton from '../components/smallComps/CheckoutButton';
 import guestUserRoute from './guestUserRoute';
+import { Landing } from '../pages/LandingPage/Landing';
 
 export const routesArray = [
     customerRoute,
     adminRoute,
     techSupportRoute,
     guestUserRoute,
-
+    {
+        path: "/sss",
+        element: <Home />,
+    },
     {
         path: "register",
         element: <Register />,
@@ -38,6 +42,11 @@ export const routesArray = [
     {
         path: "/register/profileComplete",
         element: <ProfileComplete />,
-    }
+    },
+    {
+        path: "/landing",
+        element: <Landing />,
+    },
+
 
 ];

@@ -14,6 +14,7 @@ import { fetchPlaces, selectPlaces, selectPlacesStatus, selectPlacesError } from
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
 import { getPlaceEvent } from '../../../api/apiSse'
 import { getGuestUserSuggest } from '../../../api/apiGuestUser'
+import { userSchedulesApi } from '../../../api/apiSchedules'
 
 const Dashboard = () => {
 
@@ -23,19 +24,30 @@ const Dashboard = () => {
     const placesStatus = useSelector(selectPlacesStatus);
     const [roomsData, setRoomsData] = useState([]);
 
+    const [schedules, setSchedules] = useState([]);
+
+    const getScheduleData = async () => {
+        const res = await userSchedulesApi(user.id);
+        if (res.status === 200) {
+            setSchedules(res.data);
+        }
+        else {
+            setSchedules([]);
+        }
+    }
 
     useEffect(() => {
         if (user.id) {
             dispatch(fetchPlaces(user.id));
             const allGuestusers = getGuestUserSuggest(user.id);
-
             allGuestusers.then((response) => {
                 console.log(response.data)
-            }).catch((error)=>{
+            }).catch((error) => {
                 console.log(error)
             })
-            
+            getScheduleData();
         }
+
         console.log('user id', user.id);
         const eventSource = getPlaceEvent(user.id);
         eventSource.onmessage = (event) => {
@@ -53,6 +65,18 @@ const Dashboard = () => {
 
 
 
+    const [allGuestSuggestions, setAllGuestSuggestions] = React.useState([]);
+
+    useEffect(() => {
+        getGuestUserSuggest(user.id).then((res) => {
+            setAllGuestSuggestions(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, [user.id]);    
+
+    console.log(allGuestSuggestions);
+
 
     return (
         <PageWrapper>
@@ -61,20 +85,22 @@ const Dashboard = () => {
                 <ContentWrapper>
                     <div className="dashboard-container">
                         <div className="left-side">
-                            <DashboardTopHeader />
+                            {/* <DashboardTopHeader /> */}
 
                             {placesStatus === 'loading' && <LoadingSpinner />}
-                            {placesStatus === 'succeeded' &&
+                            {
+                                placesStatus === 'succeeded' &&
                                 <div className="place-sets my-4">
                                     {places.length > 0 && places.map((place, index) => (
                                         <div className="one-place" key={index}>
-                                            <h1 className="text-2x mx-4 my-3">{place.name}</h1>
+                                            <h1 className="text-[19px] mx-4 my-3 font-bold">{place.name}</h1>
                                             <div className="place-details">
                                                 <PlaceCarousel place_id={place.place_id} isActive={place.is_active} rooms={roomsData.filter(room => +room.place_id === place.place_id)} />
                                             </div>
                                         </div>
                                     ))}
-                                </div>}
+                                </div>
+                            }
                         </div>
 
                         <div className="right-side">
@@ -85,11 +111,17 @@ const Dashboard = () => {
                             </div> */}
 
                             <div className="schedule">
-                                <ScheduleDevice />
-                                <ScheduleDevice />
+                            {/* <h1 className="text-xl mt-4 mb-2">Guest Users Suggest</h1> */}
+                                <div className='h-[360px] overflow-y-scroll'>
+                                    {
+                                        schedules.length > 0 ?
+                                            schedules.map(schedule => <ScheduleDevice key={schedule.schedule_id} {...schedule} />) :
+                                            <h1 className="text-xl mt-4 mb-2">No Schedules</h1>
+                                    }
+                                </div>
                             </div>
 
-                            <div className="guest-users">
+                            {/* <div className="guest-users">
                                 <h1 className="text-xl mt-4 mb-2">Tech Support Request</h1>
 
                                 <div className="one-guest-user text-sm">
@@ -105,16 +137,15 @@ const Dashboard = () => {
                                         <button className="reject"><VscChromeClose /></button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
 
                             <div className="guest-users">
                                 <h1 className="text-xl mt-4 mb-2">Guest Users Suggest</h1>
-                                <div className='h-[290px] overflow-y-scroll'>
-                                    <GuestUsersSuggest />
-                                    <GuestUsersSuggest />
-                                    <GuestUsersSuggest />
-                                    <GuestUsersSuggest />
+                                <div className='h-[290px] overflow-y-scroll'>   
+                                    {
+                                        allGuestSuggestions.map((guestUserSuggest, index) => <GuestUsersSuggest key={index} {...guestUserSuggest} />)
+                                    }
                                 </div>
                             </div>
                         </div>

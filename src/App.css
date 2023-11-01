@@ -6,7 +6,7 @@
 /* Track */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
-    /* border-radius: 10px; */
+    border-radius: 10px;
 }
 
 /* Handle */
@@ -39,3 +39,43 @@
 .ant-switch-handle::after {
     color: rgba(131, 188, 255, 1);
 }
+
+.ant-select-selector {
+    background-color: #1C1C2E !important;
+    border: 2px solid #24244c !important;
+    color: white !important;
+}
+
+.ant-select-selection-search-input,
+.ant-select-selection-item,
+.ant-select-arrow {
+    color: white !important;
+}
+
+.ant-notification-notice {
+    background-color: #24244c !important;
+}
+
+.ant-notification-notice-message {
+    color: white !important;
+}
+
+.ant-notification-notice-description {
+    color: rgb(208, 208, 208) !important;
+}
+
+
+.ant-notification-close-icon,
+.anticon-close {
+    color: white !important;
+}
+
+.login-form-button:disabled {
+    background-color: gray;
+    color: #1C1C2E;
+}
+
+/* ant-notification-notice ant-notification-notice-error css-dev-only-do-not-override-14wwjjs ant-notification-notice-closable
+ant-notification-notice-content
+ant-notification-notice-with-icon
+anticon-close-circle ant-notification-notice-icon ant-notification-notice-icon-error */

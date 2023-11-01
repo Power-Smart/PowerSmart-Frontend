@@ -94,7 +94,7 @@ const AddSchedule = () => {
                         <FormGroup>
                             <TextInput type='text' label='Name' required={true} value={formData.name} onChange={(e) => { setFormData({ ...formData, name: e.target.value }) }} />
                         </FormGroup>
-                        <div className='flex justify-between items-center'>
+                        <div className='flex justify-start items-center'>
                             <div className='flex'>
                                 <label className='mr-3'>Device status : </label>
                                 <Switch checkedChildren="on"
@@ -104,10 +104,10 @@ const AddSchedule = () => {
                                     defaultChecked={formData.switch_status}
                                 />
                             </div>
-                            <Checkbox
+                            {/* <Checkbox
                                 defaultChecked={formData.repeat}
                                 onChange={(e) => { setFormData({ ...formData, repeat: e.target.checked }) }}
-                            ><h1 className='text-white text-lg'>Recurring</h1></Checkbox>
+                            ><h1 className='text-white text-lg'>Recurring</h1></Checkbox> */}
                         </div>
                         <hr className='my-5 border-gray-700 mx-5' />
                         <table className='table-auto mx-auto'>

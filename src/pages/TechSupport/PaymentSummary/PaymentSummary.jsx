@@ -8,22 +8,29 @@ import { Link , useNavigate} from 'react-router-dom'
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import { useSelector } from 'react-redux'
 import { selectCustomerCart } from '../../../redux/slices/techsupport/customerCartSlice'
-
+import { sendCustomerPaymentSummaryApi } from '../../../api/apiMarketPlace'
+import { useParams } from 'react-router-dom'
 
 const PaymentSummary = () => {
 
     const customerCartItems = useSelector(selectCustomerCart);
     const totalSelectedItems = customerCartItems.length;
+    const user = useSelector(state => state.user.user);
+    let techSupportId = user.id;
     let totalItemPrice = 0;
+    const { customerID } = useParams();
 
     customerCartItems.map((data) => {
         return totalItemPrice = totalItemPrice + data.price;
     })
 
     const navigate = useNavigate();
-
     const backMarketplace = () => {
         navigate(-1)
+    }
+
+    const sentToCustomer = () => {
+        sendCustomerPaymentSummaryApi({...customerCartItems, customerID: customerID, techSupportId: techSupportId})
     }
 
 
@@ -31,9 +38,9 @@ const PaymentSummary = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar title={'Add Relay'} />
+                {/* <TopBar title={'Add Relay'} /> */}
                 <ContentWrapper>
-                    <div className="mb-8 border-b-[1px] border-[#707070]">
+                    <div className="mb-8 border-b-[1px] border-[#707070] mt-5">
                         <p className="text-xl font-bold pb-2">Selected {totalSelectedItems} Items</p>
                     </div>
 
@@ -54,9 +61,9 @@ const PaymentSummary = () => {
                         <div className="button-section flex justify-end align-middle mt-4">
                             <button className='mx-2 px-4 py-2 bg-[#CE4444] rounded-md text-black w-fit font-bold' onClick={(e) => backMarketplace()}>Cancel</button>
 
-                            <Link to="/tech/accessCusAccount">
-                                <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black w-fit font-bold'>Sent to customer</button>
-                            </Link>
+                            {/* <Link to="/tech/accessCusAccount"> */}
+                                <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black w-fit font-bold' onClick={(e) => sentToCustomer()}>Sent to customer</button>
+                            {/* </Link> */}
                         </div>
                     </div>
 

@@ -20,6 +20,7 @@ import Sensors from '../pages/TechSupport/Sensors/Sensors';
 import Chat from '../pages/TechSupport/Chat/Chat';
 import ViewComplaint from '../pages/TechSupport/UserComplaints/viewComplaint';
 import EditRelay from '../pages/TechSupport/Relays/EditRelay';
+import Notifications from '../pages/Notifications/Notifications';
 
 
 const techSupport = "/tech";
@@ -38,11 +39,11 @@ const techSupportRoute =
             element: <OrderRequest />,
         },
         {
-            path: `${techSupport}/marketPlace/:customerID`,
+            path: `${techSupport}/marketPlace/:orderID/:customerID`,
             element: <TechMarketPlace />,
         },
         {
-            path: `${techSupport}/selectPlaceRoom/:customerID/:itemID`,
+            path: `${techSupport}/selectPlaceRoom/:customerID/:itemID/:orderID`,
             element: <SelectPlaceRoom />,
         },
         {
@@ -67,6 +68,10 @@ const techSupportRoute =
         },
         {
             path: `${techSupport}/accessCusAccount`,
+            element: <AccessCusAccount />,
+        },
+        {
+            path: `${techSupport}/accessCusAccount/:customerID`,
             element: <AccessCusAccount />,
         },
         {
@@ -113,6 +118,14 @@ const techSupportRoute =
             path: `${techSupport}/chat`,
             element: <Chat />,
         },
+        {
+            path: `${techSupport}/chat/:customerID`,
+            element: <Chat />,
+        },
+        {
+            path: `${techSupport}/notifications`,
+            element: <Notifications />
+        }
     ]
 };
 

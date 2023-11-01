@@ -53,7 +53,7 @@ const TableOrderStatus = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {customerServiceRequest.map((data) => <TableRow key={data.id} {...data} />)}
+                {customerServiceRequest && customerServiceRequest.map((data) => <TableRow key={data.service_id} {...data} />)}
                 </tbody>
             </table>
         </div>

@@ -1,5 +1,5 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, notification } from 'antd';
 import loginPageImage from '../../assets/images/login.png';
 import { FcGoogle } from 'react-icons/fc';
 import './login.css';
@@ -7,25 +7,37 @@ import { userLogin } from '../../api/apiUser';
 import { login } from '../../redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { session } from '../../redux/slices/userSlice';
 import { fetchCustomer } from '../../redux/slices/customerSlice';
 import { Link } from 'react-router-dom';
+import { antNotification } from '../../utils/alerts';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [buttonState, setButtonState] = useState(false);
+    const [api, contextHolder] = notification.useNotification();
     const { isLogged, user } = useSelector(state => state.user);
 
     const onFinish = async (values) => {
         try {
+            setButtonState(true);
             const response = await userLogin(values.email, values.password);
+            // console.log(response);
             dispatch(login(response.data));
-            dispatch(fetchCustomer(response.data.id));
-            navigate('/');
+            if (response.data.id) {
+                dispatch(fetchCustomer(response.data.id));
+                setButtonState(false);
+                navigate('/');
+            } else {
+                antNotification(api, 'topLeft', 'Login Failed !', "Invalid username or password", 'error');
+                setButtonState(false);
+            }
         } catch (error) {
-            console.log(error);
+            antNotification(api, 'topLeft', 'Login Failed', '', 'error')
+            setButtonState(false);
         }
     };
 
@@ -53,6 +65,7 @@ const Login = () => {
 
     return (
         <div className="login__page">
+            {contextHolder}
             <div className="login__container" >
                 <div className="image">
                     <div className="title">
@@ -80,6 +93,10 @@ const Login = () => {
                                     required: true,
                                     message: 'Please input your Username!',
                                 },
+                                {
+                                    type: 'email',
+                                    message: 'Input a valid email',
+                                }
                             ]}
                         >
                             <Input prefix={<UserOutlined className="site-form-item-icon" />} />
@@ -93,6 +110,10 @@ const Login = () => {
                                     required: true,
                                     message: 'Please input your Password!',
                                 },
+                                // {
+                                //     min: 8,
+                                //     message: 'Password must be at least 8 characters'
+                                // }
                             ]}
                         >
                             <Input
@@ -112,13 +133,13 @@ const Login = () => {
 
                         <Form.Item className='form__submission'>
                             <div className="login__register">
-                                <Button type="primary" htmlType="submit" className="login-form-button">
+                                <Button type="primary" htmlType="submit" className="login-form-button" disabled={buttonState} >
                                     Log in
                                 </Button><br></br>
                             </div>
                             <div className="google__login">
-                                Need an account?<Link to='/register' > SIGN UP</Link><br></br>
-                                Or <a href='#'>Continue With <FcGoogle style={{ display: 'inline', fontSize: '20px' }} /></a>
+                                Need an account?<br /><Link to='/register' className='text-blue-700'>Sign Up</Link>
+                                {/* Or <a href='#'>Continue With <FcGoogle style={{ display: 'inline', fontSize: '20px' }} /></a> */}
                             </div>
                         </Form.Item>
                     </Form>
