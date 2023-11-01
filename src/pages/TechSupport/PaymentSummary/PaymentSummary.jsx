@@ -8,26 +8,29 @@ import { Link , useNavigate} from 'react-router-dom'
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import { useSelector } from 'react-redux'
 import { selectCustomerCart } from '../../../redux/slices/techsupport/customerCartSlice'
-
+import { sendCustomerPaymentSummaryApi } from '../../../api/apiMarketPlace'
+import { useParams } from 'react-router-dom'
 
 const PaymentSummary = () => {
 
     const customerCartItems = useSelector(selectCustomerCart);
     const totalSelectedItems = customerCartItems.length;
+    const user = useSelector(state => state.user.user);
+    let techSupportId = user.id;
     let totalItemPrice = 0;
+    const { customerID } = useParams();
 
     customerCartItems.map((data) => {
         return totalItemPrice = totalItemPrice + data.price;
     })
 
     const navigate = useNavigate();
-
     const backMarketplace = () => {
         navigate(-1)
     }
 
     const sentToCustomer = () => {
-        alert("Sent to customer")
+        sendCustomerPaymentSummaryApi({...customerCartItems, customerID: customerID, techSupportId: techSupportId})
     }
 
 
@@ -35,9 +38,9 @@ const PaymentSummary = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar title={'Add Relay'} />
+                {/* <TopBar title={'Add Relay'} /> */}
                 <ContentWrapper>
-                    <div className="mb-8 border-b-[1px] border-[#707070]">
+                    <div className="mb-8 border-b-[1px] border-[#707070] mt-5">
                         <p className="text-xl font-bold pb-2">Selected {totalSelectedItems} Items</p>
                     </div>
 

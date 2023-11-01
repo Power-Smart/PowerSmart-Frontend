@@ -18,9 +18,9 @@ const ScheduleDevice = ({ schedule_id, name, status, start_time, end_time, start
             <div className="time-details text-center">
                 {status ? <h1 className=' text-xs text-green-500 '>Activated</h1> :
                     <h1 className=' text-xs text-red-500 '>Disabled</h1>}
-                <h1 className="text-base ">{dayConvertor(start_day)} {start_time.slice(0, 5).replace(':', " : ")}</h1>
+                <h1 className="text-base ">{dayConvertor(start_day)} {start_time ? start_time.slice(0, 5).replace(':', " : ") : ""}</h1>
                 <h1 className='text-gray-500 text-sm'> t o</h1>
-                <h1 className="text-base ">{dayConvertor(end_day)} {end_time.slice(0, 5).replace(':', " : ")}</h1>
+                <h1 className="text-base ">{dayConvertor(end_day)} {end_time ? end_time.slice(0, 5).replace(':', " : ") : ""}</h1>
             </div>
         </div>
     )

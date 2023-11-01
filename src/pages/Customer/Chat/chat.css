@@ -105,7 +105,7 @@
 
 
 .chat-user-list {
-    background: #0693F3;
+    background: #1C1C2E;
     padding: 10px;
     border: 2px solid #0693F3;
     height: 100vh;
@@ -161,7 +161,7 @@
 }
 
 .one-chat .chat-details h3 {
-    color: #0E0E1A;
+    color: #fff;
     font-weight: 600;
     font-size: 17px;
 }

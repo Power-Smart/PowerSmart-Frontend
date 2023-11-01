@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Tag } from "antd";
-import { getAllComplaintsApi } from "../../../api/apiAdmin";
+import { getAllPaymentsApi } from "../../../api/apiAdmin";
 
-const ComplaintsTable = () => {
-  const [complaints, setComplaints] = useState([]);
+const PaymentsTable = () => {
+  const [payments, setPayments] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAllComplaintsApi();
-        setComplaints(response.data);
+        const response = await getAllPaymentsApi();
+        setPayments(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -24,17 +24,17 @@ const ComplaintsTable = () => {
       <table className="w-full text-sm text-white">
         <thead className="text-xs text-gray-400 uppercase">
           <tr>
-            <th scope="col" className="px-2 py-3">
-              Complaint Id
+            <th scope="col" className="px-0 py-3">
+              Payment Id
             </th>
             <th scope="col" className="px-0 py-3">
               Customer Id
             </th>
-            <th scope="col" className="px-0 py-3">
-              Tech Support Id
+            <th scope="col" className="px-6 py-3 text-center">
+              Type
             </th>
             <th scope="col" className="px-6 py-3 text-center">
-              Description
+              Amount
             </th>
             <th scope="col" className="px-6 py-3 text-center">
               Status
@@ -42,13 +42,13 @@ const ComplaintsTable = () => {
             <th scope="col" className="px-6 py-3 text-center">
               Timestamp
             </th>
-            <th scope="col" className="px-2 py-3 text-center"></th>
+            <th scope="col" className="px-0 py-3 text-center"></th>
           </tr>
         </thead>
         <tbody>
-          {complaints.map((complaint) => {
+          {payments.map((payment) => {
             // Parse the timestamp string into a Date object
-            const createdAt = new Date(complaint.createdAt);
+            const createdAt = new Date(payment.createdAt);
 
             // Format the date and time components
             const year = createdAt.getFullYear();
@@ -63,27 +63,21 @@ const ComplaintsTable = () => {
 
             return (
               <tr
-                key={complaint.complaint_id}
+                key={payment.payment_id}
                 className="border-b hover:bg-gray-800"
               >
-                <td className="px-6 py-3">{complaint.complaint_id}</td>
-                <td className="px-6 py-3">{complaint.customer_id}</td>
-                <td className="px-6 py-3">
-                  {complaint.assign_tech_support_id}
-                </td>
-                <td className="px-6 py-3 text-left">
-                  {complaint.description.length > 100
-                    ? `${complaint.description.slice(0, 180)}...`
-                    : complaint.description}
-                </td>
+                <td className="px-6 py-3">{payment.payment_id}</td>
+                <td className="px-6 py-3">{payment.user_id}</td>
+                <td className="px-6 py-3">{payment.type}</td>
+                <td className="px-6 py-3 text-center">{payment.amount}</td>
                 <td className="px-6 py-3 text-center">
-                  <Tag color={complaint.is_solve ? "#87d068" : "#f50"}>
-                    {complaint.is_solve ? "Solved" : "Pending"}
+                  <Tag color={payment.is_banned ? "#f50" : "#87d068"}>
+                    {payment.is_banned ? "Pending" : "Paid"}
                   </Tag>
                 </td>
                 <td className="px-6 py-3 text-center">{formattedTimestamp}</td>
-                <td className="px-2 py-3">
-                  <Link to={`./${complaint.complaint_id}`}>
+                <td className="px-0 py-3">
+                  <Link to={`./${payment.payment_id}`}>
                     <button className="text-white bg-gray-900 px-4 py-2 rounded hover:bg-gray-700">
                       View
                     </button>
@@ -98,16 +92,15 @@ const ComplaintsTable = () => {
   );
 };
 
-export default ComplaintsTable;
+export default PaymentsTable;
 
-// complaint_id
-// customer_id
-// assign_tech_support_id
-// description
-// date
-// is_solve
-// comment
+// payment_id
+// amount
+// type
+// user_id
 // createdAt
 // updatedAt
-// user_id
-// tech_support_id
+// payhere_id
+// method
+// status
+// currency

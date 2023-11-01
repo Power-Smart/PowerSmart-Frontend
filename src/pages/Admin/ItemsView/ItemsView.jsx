@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 import { Button } from "antd";
 import Table from "./Table";
 
-const TechSupportView = () => {
+const ItemsView = () => {
   return (
     <PageWrapper>
       <AdmninSidebar />
       <PageContent>
-        <TopBar title="Tech Support" />
+        <TopBar title="Items" />
         <ContentWrapper>
           <ButtonBar>
             <Link to="./add">
@@ -29,5 +29,4 @@ const TechSupportView = () => {
   );
 };
 
-export default TechSupportView;
-
+export default ItemsView;

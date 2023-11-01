@@ -28,14 +28,14 @@ const SelectedItem = ({ itemID, itemName, itemPrice, place, room, count, itemDev
                 </div>
             </div>
 
-            <div className="place-room text-center flex justify-center items-center flex-col">
+            {/* <div className="place-room text-center flex justify-center items-center flex-col">
                 <div>
                     <h1>{place}</h1>
                 </div>
                 <div>
                     <h1>{room}</h1>
                 </div>
-            </div>
+            </div> */}
 
             {/* <div className="select-item-count flex flex-row justify-between items-center w-20">
                 <div className="decrement border border-[#006DFF] rounded-md p-1">

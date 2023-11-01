@@ -65,6 +65,18 @@ const Dashboard = () => {
 
 
 
+    const [allGuestSuggestions, setAllGuestSuggestions] = React.useState([]);
+
+    useEffect(() => {
+        getGuestUserSuggest(user.id).then((res) => {
+            setAllGuestSuggestions(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, [user.id]);    
+
+    console.log(allGuestSuggestions);
+
 
     return (
         <PageWrapper>
@@ -76,17 +88,19 @@ const Dashboard = () => {
                             {/* <DashboardTopHeader /> */}
 
                             {placesStatus === 'loading' && <LoadingSpinner />}
-                            {placesStatus === 'succeeded' &&
+                            {
+                                placesStatus === 'succeeded' &&
                                 <div className="place-sets my-4">
                                     {places.length > 0 && places.map((place, index) => (
                                         <div className="one-place" key={index}>
-                                            <h1 className="text-2x mx-4 my-3">{place.name}</h1>
+                                            <h1 className="text-[19px] mx-4 my-3 font-bold">{place.name}</h1>
                                             <div className="place-details">
                                                 <PlaceCarousel place_id={place.place_id} isActive={place.is_active} rooms={roomsData.filter(room => +room.place_id === place.place_id)} />
                                             </div>
                                         </div>
                                     ))}
-                                </div>}
+                                </div>
+                            }
                         </div>
 
                         <div className="right-side">
@@ -97,7 +111,8 @@ const Dashboard = () => {
                             </div> */}
 
                             <div className="schedule">
-                                <div className='h-[290px] overflow-y-scroll'>
+                            {/* <h1 className="text-xl mt-4 mb-2">Guest Users Suggest</h1> */}
+                                <div className='h-[360px] overflow-y-scroll'>
                                     {
                                         schedules.length > 0 ?
                                             schedules.map(schedule => <ScheduleDevice key={schedule.schedule_id} {...schedule} />) :
@@ -106,7 +121,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
 
-                            <div className="guest-users">
+                            {/* <div className="guest-users">
                                 <h1 className="text-xl mt-4 mb-2">Tech Support Request</h1>
 
                                 <div className="one-guest-user text-sm">
@@ -122,18 +137,17 @@ const Dashboard = () => {
                                         <button className="reject"><VscChromeClose /></button>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            {/* <div className="guest-users">
-                                <h1 className="text-xl mt-4 mb-2">Guest Users Suggest</h1>
-                                <div className='h-[290px] overflow-y-scroll'>
-                                    <GuestUsersSuggest />
-                                    <GuestUsersSuggest />
-                                    <GuestUsersSuggest />
-                                    <GuestUsersSuggest />
-                                </div>
                             </div> */}
+
+
+                            <div className="guest-users">
+                                <h1 className="text-xl mt-4 mb-2">Guest Users Suggest</h1>
+                                <div className='h-[290px] overflow-y-scroll'>   
+                                    {
+                                        allGuestSuggestions.map((guestUserSuggest, index) => <GuestUsersSuggest key={index} {...guestUserSuggest} />)
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </ContentWrapper>
