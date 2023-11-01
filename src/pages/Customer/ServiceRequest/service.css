@@ -1,0 +1,20 @@
+.total {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    position: relative;
+    right: 10%;
+}
+
+.total .form{
+    width: 60vw;
+}
+
+.introduction{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: fit-content;
+    position: relative;
+    right: 50%;
+    width: 400px;
+    margin-left: 50px;
+}

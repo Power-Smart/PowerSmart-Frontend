@@ -55,7 +55,7 @@ const MainSidebar = () => {
             <SidebarButton text="Support" toggle={toggle} link='/support'>
                 <BiSupport />
             </SidebarButton>
-            <SidebarButton text="Service Request" toggle={toggle} link='/serviceRequest'>
+            <SidebarButton text="Request" toggle={toggle} link='/serviceRequest'>
                 <BsShop />
             </SidebarButton>
             {!subValidation(customer.year_subscription) && <SidebarButton text="Subscribe" toggle={toggle} link='/subscribe'>

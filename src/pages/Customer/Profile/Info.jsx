@@ -17,6 +17,7 @@ const Info = () => {
     const user = useSelector((state) => state.user.user)
     const customer = useSelector(selectCustomer)
     const [editToggle, setEditToggle] = useState(false)
+    
     const [data, setData] = useState({
         id: 0,
         first_name: '',

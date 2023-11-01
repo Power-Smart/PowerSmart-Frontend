@@ -50,8 +50,8 @@ const TableRow = ({ suggest_id, guest_name, place_name, room_name, suggest_descr
                 <div className="flex items-center justify-center">
                     <button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]' onClick={() => takeAction()}>Accept</button>
                 </div>
-                <div className="flex items-center justify-center">
-                    <button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]' onClick={() => notWant()}>Reject</button>
+                <div className="flex items-center justify-center ml-2">
+                    <button className='bg-red-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]' onClick={() => notWant()}>Reject</button>
                 </div>
             </td>
 
