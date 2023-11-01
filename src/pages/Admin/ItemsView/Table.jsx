@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Image, Space } from "antd";
@@ -40,7 +41,7 @@ const ItemsTable = () => {
             <th scope="col" className="px-6 py-3 text-center">
               Quantity
             </th>
-            <th scope="col" className="pl-6 pr-0 py-3 text-center"></th>
+            <th scope="col" className="pl-6 py-3 text-center"></th>
           </tr>
         </thead>
         <tbody>
@@ -92,3 +93,4 @@ export default ItemsTable;
 // item_img
 // user_id
 // createdAt
+

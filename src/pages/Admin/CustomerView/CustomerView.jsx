@@ -20,3 +20,4 @@ const CustomerView = () => {
 };
 
 export default CustomerView;
+
