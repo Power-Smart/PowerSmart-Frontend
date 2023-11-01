@@ -1,97 +1,88 @@
-import "./Table.css";
-import TableRow from "./TableRow";
-import { IoSearchCircle } from "react-icons/io5";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Avatar, Tag, Space } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { getAllTechSupportApi } from "../../../api/apiAdmin";
 
-const dataset = [
-  {
-    id: "#413656",
-    email: "neil.sims@flowbite.com",
-    name: "John Doe",
-    status: "Active",
-  },
-  {
-    id: "#413656",
-    email: "neil.sims@flowbite.com",
-    name: "Alice Smith",
-    status: "Disabled",
-  },
-  {
-    id: "#413656",
-    email: "neil.sims@flowbite.com",
-    name: "Emily Brown",
-    status: "Active",
-  },
-  {
-    id: "#413656",
-    email: "neil.sims@flowbite.com",
-    name: "Michael Davis",
-    status: "Pending",
-  },
-  {
-    id: "#413656",
-    email: "neil.sims@flowbite.com",
-    name: "Oliver Thompson",
-    status: "Active",
-  },
-];
+const TechSupportTable = () => {
+  const [techSupport, setTechSupport] = useState([]);
 
-const Table = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAllTechSupportApi();
+        setTechSupport(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-gradient-to-b dark:from-gray-950 dark:to-transparent py-12 px-8">
-      <div className="search__filer_sort">
-        <div className="search__filter">
-          <div className="search__icon">
-            <IoSearchCircle className="text-blue-600 w-8 h-8" />
-          </div>
-          <input
-            type="text"
-            placeholder="Search Tech Support Name"
-            className="search__input"
-          />
-        </div>
-        <div className="sort__filter">
-          <div className="sort">
-            <select name="sort" id="sort" className="sort__select">
-              <option value="Sort By" hidden defaultChecked>
-                Sort By
-              </option>
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
-            </select>
-          </div>
-          <div className="filter">
-            <select name="filter" id="filter" className="filter__select">
-              <option value="Filter By" hidden defaultChecked>
-                Filter By
-              </option>
-              <option value="pending">Pending</option>
-              <option value="resolved">Resolved</option>
-              <option value="rejected">Rejected</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <table className="w-full text-sm text-left text-gray-500">
-        <thead className="text-xs text-gray-700 uppercase ">
+    <div className="relative overflow-x-auto py-2">
+      <table className="w-full text-sm text-white">
+        <thead className="text-xs text-gray-400 uppercase">
           <tr>
-            <th scope="col" className="px-6 py-3">
-              TechSupport ID
+            <th scope="col" className="px-6 py-3 text-center"></th>
+            <th scope="col" className="px-0 py-3">
+              Id
             </th>
-            <th scope="col" className="px-6 py-3">
-              TechSupport Name
+            <th scope="col" className="px-6 py-3 text-center">
+              Name
             </th>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-3 text-center">
+              Email
+            </th>
+            <th scope="col" className="px-6 py-3 text-center">
+              Tel No
+            </th>
+            <th scope="col" className="px-6 py-3 text-center">
               Status
             </th>
-            <th scope="col" className="px-6 py-3">
-              Action
-            </th>
+            <th scope="col" className="pl-6 py-3 text-center"></th>
           </tr>
         </thead>
         <tbody>
-          {dataset.map((data) => (
-            <TableRow {...data} />
+          {techSupport.map((techSupport) => (
+            <tr
+              key={techSupport.user_id}
+              className="border-b hover:bg-gray-800"
+            >
+              <td className="px-6 py-3">
+                <div className="w-8 h-8 mx-auto">
+                  <Avatar icon={<UserOutlined />} />
+                </div>
+              </td>
+              <td className="px-0 py-3">{techSupport.user_id}</td>
+              <td className="px-6 py-3">
+                {`${techSupport.first_name} ${techSupport.last_name}`}
+              </td>
+              <td className="px-6 py-3">{techSupport.email}</td>
+              <td className="px-6 py-3 text-center">
+                {techSupport.tel_no.map((tel, index) => (
+                  <div key={index}>{tel}</div>
+                ))}
+              </td>
+              <td className="px-6 py-3 text-center">
+                <Tag color={techSupport.is_banned ? "#f50" : "#87d068"}>
+                  {techSupport.is_banned ? "Banned" : "Active"}
+                </Tag>
+              </td>
+              <td className="pl-6 py-3">
+                <Space>
+                  <Link to={`./${techSupport.user_id}`}>
+                    <button className="text-white bg-gray-900 px-4 py-2 rounded hover:bg-gray-700">
+                      View
+                    </button>
+                  </Link>
+                  <button className="text-white bg-gray-900 px-4 py-2 rounded hover:bg-gray-700">
+                    Update
+                  </button>
+                </Space>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>
@@ -99,4 +90,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default TechSupportTable;
