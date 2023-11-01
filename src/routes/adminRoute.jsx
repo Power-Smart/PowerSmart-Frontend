@@ -11,6 +11,7 @@ import ComplaintInfo from "../pages/Admin/ComplaintInfo/ComplaintInfo";
 import PaymentsView from "../pages/Admin/PaymentsView/PaymentsView";
 import PaymentInfo from "../pages/Admin/PaymentInfo/PaymentInfo";
 import AdminProfile from "../pages/Admin/Profile/AdminProfile";
+import Notifications from '../pages/Notifications/Notifications';
 
 const adminRoute = {
   path: "/admin",
@@ -69,6 +70,7 @@ const adminRoute = {
       element: <AdminProfile />,
     },
   ],
+    
 };
 
 export default adminRoute;

@@ -86,7 +86,9 @@ export const placesSlice = createSlice({
             .addCase(updatePlace.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 const index = state.places.findIndex(
-                    (place) => place.id === action.payload.id
+                    (place) => {
+                        return place.place_id == action.payload.place_id
+                    }
                 );
                 state.places[index] = {
                     room_count: state.places[index].room_count,

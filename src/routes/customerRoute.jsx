@@ -13,6 +13,15 @@ import AddRooms from '../pages/Customer/Rooms/AddRooms'
 import UpdateRoom from '../pages/Customer/Rooms/UpdateRoom'
 import UpdatePlace from '../pages/Customer/Places/UpdatePlace'
 import Chat from '../pages/Customer/Chat/Chat'
+import Schedules from '../pages/Customer/Scheduling/schedules'
+import AddSchedule from '../pages/Customer/Scheduling/AddSchedule'
+import UpdateSchedule from '../pages/Customer/Scheduling/UpdateSchedule'
+import Subscription from '../pages/Customer/Billing/Subscription'
+import TechRequests from '../pages/Customer/Requests/TechRequests'
+import GuestUserSuggest from '../pages/Customer/GuestUserSuggest/GuestUserSuggest'
+import Notifications from '../pages/Notifications/Notifications';
+import ServiceRequest from '../pages/Customer/ServiceRequest/ServiceRequest'
+
 
 const customerRoute =
 {
@@ -34,6 +43,18 @@ const customerRoute =
         {
             path: "places/:placeID/rooms/:roomID/controlpanel",
             element: <InsideRoom />,
+        },
+        {
+            path: "places/:placeID/rooms/:roomID/controlpanel/:deviceID/schedules",
+            element: <Schedules />,
+        },
+        {
+            path: "places/:placeID/rooms/:roomID/controlpanel/:deviceID/addSchedule",
+            element: <AddSchedule />,
+        },
+        {
+            path: "places/:placeID/rooms/:roomID/controlpanel/:deviceID/schedules/update/:scheduleID",
+            element: <UpdateSchedule />,
         },
         {
             path: "places/:placeID/rooms/:roomID/status",
@@ -70,6 +91,26 @@ const customerRoute =
         {
             path: "support",
             element: <Support />,
+        },
+        {
+            path: "subscribe",
+            element: <Subscription />,
+        },
+        {
+            path: "techrequests",
+            element: <TechRequests />,
+        },
+        {
+            path: "guestSuggest",
+            element: <GuestUserSuggest />,
+        },
+        {
+            path: "notifications",
+            element: <Notifications />
+        },
+        {
+            path: "serviceRequest",
+            element: <ServiceRequest />
         }
     ]
 };

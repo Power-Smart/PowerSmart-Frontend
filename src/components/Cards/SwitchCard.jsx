@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Switch } from 'antd';
 import DeviceIcon from '../smallComps/DeviceIcon.jsx';
 import { apiToggleDevice } from '../../api/apiDevices.js';
+import { Link } from 'react-router-dom';
 
-const SwitchCard = ({ id, type, device, validity, schedule = null, status, switch_toggle, setSwitches }) => {
+const SwitchCard = ({ id, type, device, validity, schedule = null, status, switch_toggle, setSwitches, is_active = false }) => {
     const [loading, setLoading] = useState((validity === "active_pending"));
     const deviceSwitch = async (state) => {
         setLoading(true);
@@ -25,24 +26,28 @@ const SwitchCard = ({ id, type, device, validity, schedule = null, status, switc
         <div className='mx-auto drop-shadow text-sm flex flex-col justify-between md:w-[230px] md:h-[150px] w-[200px] h-[150px] bg-[#0E0E1A] md:rounded-xl rounded-md shadow-md px-6 py-6 m-5'>
             <div className='flex justify-between flex-grow flex-wrap'>
                 <DeviceIcon type={type} />
-                <Switch className='toggle-switch'
+                {is_active ? <Switch className='toggle-switch'
                     checkedChildren="on"
                     unCheckedChildren="Off"
                     defaultChecked={switch_toggle.status}
                     checked={switch_toggle.status}
                     loading={loading}
-                    onChange={deviceSwitch} />
+                    onChange={deviceSwitch}
+                /> :
+                    <div className='text-xs text-red-400'>Disabled</div>}
             </div>
 
             <div className='flex sm:flex-row sm:flex-grow sm:justify-between sm:items-end flex-col justify-start items-center'>
                 <div className='flex flex-col sm:items-start items-center'>
                     <h2 className='text-lg'>{device}</h2>
-                    <h3 className='text-xs'>{!schedule ? "Not Scheduled" : "Scheduled"}</h3>
-                </div>
-                <div className='flex flex-col text-[#83BCFF] justify-end items-end flex-wrap'>
-                    <h2>-</h2>
                     <h3 className=''>ID : {id}</h3>
                 </div>
+                {is_active && <div className='flex flex-col text-[#83BCFF] justify-end items-end flex-wrap'>
+                    <Link to={`${id}/schedules`} className='px-1 py-1 mb-1 bg-[#83BCFF] rounded-md text-black text-xs'>
+                        {"Schedules >"}
+                    </Link>
+                    {/* <h3 className='text-xs'>{!schedule ? "Not Scheduled" : "Scheduled"}</h3> */}
+                </div>}
             </div>
         </div>
     )

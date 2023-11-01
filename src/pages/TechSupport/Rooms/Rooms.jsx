@@ -24,7 +24,7 @@ import { useSelector, useDispatch } from 'react-redux'
 //     },
 //     {
 //         place_id: 2,
-//         room_id: 2,
+//         room_id: 2,  
 //         name: 'Room 2',
 //         is_active: true,
 //         device_count: 7,

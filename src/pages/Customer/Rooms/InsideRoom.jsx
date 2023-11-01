@@ -40,7 +40,6 @@ const InsideRoom = () => {
     const user = useSelector(state => state.user.user);
     const rooms = useSelector(selectRooms);
     const room = rooms.find(room => room.room_id == roomID);
-    console.log(room);
     const [deviceData, setDeviceData] = useState([]);
     const [switches, setSwitches] = useState([]);
     const fetchDevicesData = async () => {
@@ -51,6 +50,7 @@ const InsideRoom = () => {
             tempSwitches.push({ "id": device.device_id, "status": device.deviceSwitch.switch_status });
         });
         setSwitches(tempSwitches);
+        console.log(deviceData);
     }
 
 
@@ -68,11 +68,11 @@ const InsideRoom = () => {
             <PageContent >
                 <TopBar image="https://avatars.githubusercontent.com/u/73744585?v=4" title="Inside Room" baclLink={`/places/${placeID}/rooms`} />
                 <ContentWrapper>
-                    <div className='m-4 py-4 px-8 border-[#0693F3] border-2 rounded-lg bg-[#151528]'>
+                    {deviceData.length > 0 ? <div className='m-4 py-4 px-8 border-[#0693F3] border-2 rounded-lg bg-[#151528]'>
                         <div className='p-3'>
                             <div className={`flex items-center ` + (room.is_active ? "text-green-400" : "text-red-400")}>
                                 <Indicator color={room.is_active ? `bg-green-400` : `bg-red-400`} />
-                                <div className='text-sm'>{room.is_active ? "Online" : "Offline"}</div>
+                                <div className='text-sm'>{room.is_active ? "Active" : "Disabled"}</div>
                             </div>
                             <h1 className='text-xl mt-2'>{room.name} Room</h1>
                         </div>
@@ -89,12 +89,14 @@ const InsideRoom = () => {
                                         switch_toggle={switches.find(switches => switches.id === device.device_id)}
                                         setSwitches={setSwitches}
                                         type={device.type}
+                                        is_active={device.is_active}
                                         schedule={device.schedule}
                                     />
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    </div> :
+                        <div className='m-4 py-4 px-8 text-center'>No Devices Found</div>}
                 </ContentWrapper>
             </PageContent>
         </PageWrapper>

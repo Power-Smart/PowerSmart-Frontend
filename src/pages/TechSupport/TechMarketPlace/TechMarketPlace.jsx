@@ -16,7 +16,7 @@ import { selectCustomerCart,selectCustomerCartStatus } from '../../../redux/slic
 
 const TechMarketPlace = () => {
 
-    const { customerID } = useParams();
+    const { customerID,orderID } = useParams();
     const dispatch = useDispatch();
     const marketPlaceItem = useSelector(selectMarketPlaceItems);
     const marketPlaceStatus = useSelector(selectMarketPlaceStatus);
@@ -36,6 +36,8 @@ const TechMarketPlace = () => {
         })
     }
 
+    console.log(marketPlaceItem);
+
 
     return (
         <PageWrapper>
@@ -50,7 +52,7 @@ const TechMarketPlace = () => {
                             {(marketPlaceStatus === 'succeeded' && marketPlaceItem.length === 0) && <h1>No Items</h1>}
                             {(marketPlaceStatus === 'succeeded') && marketPlaceItem.map((data, index) => {
                                 if (data.is_build_in_package) {
-                                    return <ItemCard key={index} {...data} addDel={false} />
+                                    return <ItemCard key={index} {...data} orderID={orderID} addDel={false} />
                                 }
                             })}
                         </div>
@@ -61,7 +63,7 @@ const TechMarketPlace = () => {
                             {(marketPlaceStatus === 'succeeded' && marketPlaceItem.length === 0) && <h1>No Items</h1>}
                             {(marketPlaceStatus === 'succeeded') && marketPlaceItem.map((data, index) => {
                                 if (!data.is_build_in_package) {
-                                    return <ItemCard key={index} {...data} addDel={false} />
+                                    return <ItemCard key={index} {...data} addDel={false} orderID={orderID}/>
                                 }
                             })}
                     </div>

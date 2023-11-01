@@ -1,0 +1,98 @@
+.requestInfoBox {
+    border: 2px solid #83BCFF;
+    border-radius: 10px;
+    color: white;
+}
+
+.requestInfoBox .infoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.requestInfoBox .form {
+    padding: 30px;
+}
+
+
+.requestInfoBox .form .data__field input {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+}
+
+.requestInfoBox .form .data__field textarea {
+    resize: none;
+    background-color: transparent;
+    width: 80%;
+    padding: 10px;
+    height: 150px;
+}
+
+.requestInfoBox .form .data__field textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.requestInfoBox .form .data__field textarea::-webkit-scrollbar-track {
+    background-color: #0693F3;
+    border-radius: 3px;
+}
+
+.requestInfoBox .form .data__field textarea::-webkit-scrollbar-thumb {
+    background-color: #83BCFF;
+    border-radius: 3px;
+}
+
+
+.requestInfoBox {
+    border: 2px solid #83BCFF;
+    border-radius: 10px;
+    color: white;
+}
+
+.requestInfoBox .infoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.requestInfoBox .form {
+    padding: 30px;
+}
+
+
+.requestInfoBox .form .data__field input {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    width: 80%;
+}
+
+.requestInfoBox .form .data__field textarea {
+    resize: none;
+    background-color: transparent;
+    width: 80%;
+    padding: 10px;
+    height: 150px;
+}
+
+.requestInfoBox .form .data__field textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.requestInfoBox .form .data__field textarea::-webkit-scrollbar-track {
+    background-color: #0693F3;
+    border-radius: 3px;
+}
+
+.requestInfoBox .form .data__field textarea::-webkit-scrollbar-thumb {
+    background-color: #83BCFF;
+    border-radius: 3px;
+}
