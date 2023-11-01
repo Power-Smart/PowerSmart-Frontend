@@ -13,6 +13,7 @@ import { fetchCustomer } from '../../../redux/slices/customerSlice'
 import { subValidation } from '../../../utils/validators'
 import { AiOutlineUserSwitch } from 'react-icons/ai'
 import { BsFillShieldLockFill } from 'react-icons/bs'
+import {BsShop} from 'react-icons/bs'
 
 
 const MainSidebar = () => {
@@ -33,7 +34,7 @@ const MainSidebar = () => {
             <SidebarButton text="Dashboard" toggle={toggle} link='/'>
                 <AiOutlineHome />
             </SidebarButton>
-            <SidebarButton text="Places" toggle={toggle} link='/places'>
+            <SidebarButton text="Place" toggle={toggle} link='/places'>
                 <MdOutlinePlace />
             </SidebarButton>
             {/* <SidebarButton text="Complaints" toggle={toggle} link='/Complaints'>
@@ -53,6 +54,9 @@ const MainSidebar = () => {
             </SidebarButton>
             <SidebarButton text="Support" toggle={toggle} link='/support'>
                 <BiSupport />
+            </SidebarButton>
+            <SidebarButton text="Service Request" toggle={toggle} link='/serviceRequest'>
+                <BsShop />
             </SidebarButton>
             {!subValidation(customer.year_subscription) && <SidebarButton text="Subscribe" toggle={toggle} link='/subscribe'>
                 <AiFillRocket />

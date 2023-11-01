@@ -35,6 +35,7 @@
     height: 55px;
     border-radius: 50%;
     object-fit: cover;
+    margin-right: 10px;
 }
 
 .right-side .one-guest-user {
@@ -43,7 +44,7 @@
     margin-bottom: 1rem;
     background-color: #151528;
     padding: 7px;
-    justify-content: space-around;
+    justify-content:left;
     border-radius: 0.5rem;
 }
 
@@ -73,7 +74,7 @@
 
 .dashboard-container {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 69% 31%;
     grid-gap: 2rem;
 }
 
@@ -88,8 +89,8 @@
     background-color: #151528;
     padding: 10px;
     border-radius: 0.5rem;
-    height: 52vh;
-    overflow-y: scroll !important;
+    height: 90vh;
+    /* overflow-y: scroll; */
 }
 
 .place-sets .one-place {

@@ -39,11 +39,11 @@ const techSupportRoute =
             element: <OrderRequest />,
         },
         {
-            path: `${techSupport}/marketPlace/:customerID`,
+            path: `${techSupport}/marketPlace/:orderID/:customerID`,
             element: <TechMarketPlace />,
         },
         {
-            path: `${techSupport}/selectPlaceRoom/:customerID/:itemID`,
+            path: `${techSupport}/selectPlaceRoom/:customerID/:itemID/:orderID`,
             element: <SelectPlaceRoom />,
         },
         {

@@ -35,9 +35,9 @@ const OrderRequest = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TopBar title={'Profile'} />
+                {/* <TopBar title={'Profile'} /> */}
                 <ContentWrapper>
-                    <div className="requestInfoBox w-full mx-auto">
+                    <div className="requestInfoBox w-full mx-auto mt-6">
                         <div className="infoHeader">
                             <div className="title">
                                 <h3>Customer Order Request Information</h3>
@@ -77,7 +77,7 @@ const OrderRequest = () => {
                             <div className="flex justify-center mt-10">
                                 <button className='px-4 py-1 bg-red-700 rounded-lg mr-5' onClick={(e) => rejectOrderRequest()} >Reject</button>
 
-                                <Link to={`/tech/marketPlace/${orderID}`}>
+                                <Link to={`/tech/marketPlace/${orderID}/${particularOrder[0].customer.user.user_id}`}>
                                     <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
                                 </Link>
                             </div>

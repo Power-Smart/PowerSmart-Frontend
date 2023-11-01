@@ -9,9 +9,9 @@ const TableRow = ({ customer_id, num_of_places,num_of_rooms,name,num_of_devices,
             <td className="px-6 py-3 text-center font-bold text-white">
                 {name}
             </td>
-            <td className="px-6 py-3 text-center flex justify-center items-center">
+            {/* <td className="px-6 py-3 text-center flex justify-center items-center">
                 <img className="w-10 h-10 rounded-full" src={customerProfilePic} alt="Jese image" />
-            </td>
+            </td> */}
             <td className="px-6 py-3 text-center">
                 {num_of_rooms}
             </td>

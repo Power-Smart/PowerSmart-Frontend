@@ -14,7 +14,7 @@ const ChatProfile = ({ profilePicture, userName, lastMessage, onClick = undefine
                     <h3>{userName}</h3>
                 </div>
                 <div className="last-message">
-                    <p>{lastMessage}</p>
+                    {/* <p>{lastMessage}</p> */}
                 </div>
             </div>
         </div>
