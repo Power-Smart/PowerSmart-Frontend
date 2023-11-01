@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Avatar, Tag, Space } from "antd";
-import { UserOutlined } from "@ant-design/icons";
-import { getAllTechSupportApi } from "../../../api/apiAdmin";
+import { Image, Space } from "antd";
+import { getAllItemsApi } from "../../../api/apiAdmin";
 
-const TechSupportTable = () => {
-  const [techSupport, setTechSupport] = useState([]);
+const ItemsTable = () => {
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAllTechSupportApi();
-        setTechSupport(response.data);
+        const response = await getAllItemsApi();
+        setItems(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -30,55 +29,48 @@ const TechSupportTable = () => {
               Id
             </th>
             <th scope="col" className="px-6 py-3 text-center">
+              Code
+            </th>
+            <th scope="col" className="px-6 py-3 text-center">
               Name
             </th>
             <th scope="col" className="px-6 py-3 text-center">
-              Email
+              Price
             </th>
             <th scope="col" className="px-6 py-3 text-center">
-              Tel No
+              Quantity
             </th>
-            <th scope="col" className="px-6 py-3 text-center">
-              Status
-            </th>
-            <th scope="col" className="pl-6 py-3 text-center"></th>
+            <th scope="col" className="pl-6 pr-0 py-3 text-center"></th>
           </tr>
         </thead>
         <tbody>
-          {techSupport.map((techSupport) => (
-            <tr
-              key={techSupport.user_id}
-              className="border-b hover:bg-gray-800"
-            >
+          {items.map((item) => (
+            <tr key={item.item_id} className="border-b hover:bg-gray-800">
               <td className="px-6 py-3">
                 <div className="w-8 h-8 mx-auto">
-                  <Avatar icon={<UserOutlined />} />
+                  <Image
+                    width={35}
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                  />
                 </div>
               </td>
-              <td className="px-0 py-3">{techSupport.user_id}</td>
-              <td className="px-6 py-3">
-                {`${techSupport.first_name} ${techSupport.last_name}`}
-              </td>
-              <td className="px-6 py-3">{techSupport.email}</td>
-              <td className="px-6 py-3 text-center">
-                {techSupport.tel_no.map((tel, index) => (
-                  <div key={index}>{tel}</div>
-                ))}
-              </td>
-              <td className="px-6 py-3 text-center">
-                <Tag color={techSupport.is_banned ? "#f50" : "#87d068"}>
-                  {techSupport.is_banned ? "Banned" : "Active"}
-                </Tag>
-              </td>
+              <td className="px-0 py-3">{item.item_id}</td>
+              <td className="px-6 py-3">{item.item_code}</td>
+              <td className="px-6 py-3">{item.name}</td>
+              <td className="px-6 py-3 text-center">{item.price}</td>
+              <td className="px-6 py-3 text-center">{item.quantity}</td>
               <td className="pl-6 py-3">
                 <Space>
-                  <Link to={`./${techSupport.user_id}`}>
+                  <Link to={`./${item.item_id}`}>
                     <button className="text-white bg-gray-900 px-4 py-2 rounded hover:bg-gray-700">
                       View
                     </button>
                   </Link>
                   <button className="text-white bg-gray-900 px-4 py-2 rounded hover:bg-gray-700">
                     Update
+                  </button>
+                  <button className="text-white bg-gray-900 px-4 py-2 rounded hover:bg-gray-700">
+                    Delete
                   </button>
                 </Space>
               </td>
@@ -90,4 +82,13 @@ const TechSupportTable = () => {
   );
 };
 
-export default TechSupportTable;
+export default ItemsTable;
+
+// item_id
+// name
+// price
+// description
+// quantity
+// item_img
+// user_id
+// createdAt

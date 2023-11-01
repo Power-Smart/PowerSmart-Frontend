@@ -9,7 +9,9 @@ import TextInput from "../../../components/Forms/TextInput";
 import FormTitle from "../../../components/Forms/FormTitle";
 import FormSubmitButton from "../../../components/Forms/FormSubmitButton";
 import AdmninSidebar from "../../../components/Sidebar/Admin/AdminSidebar";
-import { addTechSupport } from "../../../api/apiAdmin";
+
+// Import the addTechSupport function from the API file
+import { addTechSupport } from "../../../api/apiTechSupportAdd";
 
 const TechSupportAdd = () => {
   const [techSupportData, setTechSupportData] = useState({

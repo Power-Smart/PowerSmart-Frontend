@@ -1,29 +1,25 @@
-import Table from "./Table";
-import "./StockManagerView.css";
 import PageWrapper from "../../../components/Wrappers/PageWrapper";
+import AdmninSidebar from "../../../components/Sidebar/Admin/AdminSidebar";
 import PageContent from "../../../components/Wrappers/PageContent";
 import TopBar from "../../../components/smallComps/TopBar";
-import Sidebar from "../../../components/Sidebar/Sidebar";
 import ContentWrapper from "../../../components/Wrappers/ContentWrapper";
-import AdmninSidebar from "../../../components/Sidebar/Admin/AdminSidebar";
 import ButtonBar from "../../../components/Wrappers/ButtonBar";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
+import Table from "./Table";
 
-const StockManagerView = () => {
+const ItemsView = () => {
   return (
     <PageWrapper>
       <AdmninSidebar />
       <PageContent>
-        <TopBar
-          image="https://avatars.githubusercontent.com/u/73744585?v=4"
-          title="Stock Managers"
-        />
+        <TopBar title="Items" />
         <ContentWrapper>
           <ButtonBar>
             <Link to="./add">
-              <button className="mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black">
+              <Button type="primary" className="mx-2 border-inherit">
                 Add New
-              </button>
+              </Button>
             </Link>
           </ButtonBar>
           <Table />
@@ -33,4 +29,4 @@ const StockManagerView = () => {
   );
 };
 
-export default StockManagerView;
+export default ItemsView;
