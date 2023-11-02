@@ -32,8 +32,12 @@ const PaymentSummary = () => {
     const sentToCustomer = async (e) => {
         e.preventDefault();
         const res = await sendCustomerPaymentSummaryApi({ customerCartItems, customerID, techSupportID: user.id, orderID })
-        if (res.status === 200) {
-            navigate(`/tech/accessCusAccount/${customerID}`)
+        try {
+            if (res.status === 200) {
+                navigate(`/tech`)
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 

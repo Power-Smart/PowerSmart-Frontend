@@ -24,6 +24,7 @@ import Notifications from '../pages/Notifications/Notifications';
 import AddRooms from '../pages/TechSupport/Rooms/AddRooms';
 import EditDevice from '../pages/TechSupport/Devices/EditDevice';
 import AddSensor from '../pages/TechSupport/Sensors/AddSensor';
+import OrderRequests from '../pages/TechSupport/CustomerOrderRequests/OrderRequests';
 
 const techSupport = "/tech";
 
@@ -141,6 +142,10 @@ const techSupportRoute =
             path: `${techSupport}/:customerID/place/:placeID/rooms/add`,
             element: <AddRooms />,
         },
+        {
+            path: `${techSupport}/orderRequests`,
+            element: <OrderRequests />,
+        }
     ]
 };
 
