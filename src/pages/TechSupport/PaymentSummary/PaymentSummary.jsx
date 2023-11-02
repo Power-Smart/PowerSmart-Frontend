@@ -4,10 +4,10 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper'
 import TopBar from '../../../components/smallComps/TopBar'
 import PageContent from '../../../components/Wrappers/PageContent'
 import SelectedItem from './SelectedItem'
-import { Link , useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import { useSelector } from 'react-redux'
-import { selectCustomerCart } from '../../../redux/slices/techsupport/customerCartSlice'
+import { selectCustomerCart, selectCustomer } from '../../../redux/slices/techsupport/customerCartSlice'
 import { sendCustomerPaymentSummaryApi } from '../../../api/apiMarketPlace'
 import { useParams } from 'react-router-dom'
 
@@ -15,13 +15,13 @@ const PaymentSummary = () => {
 
     const customerCartItems = useSelector(selectCustomerCart);
     const totalSelectedItems = customerCartItems.length;
+    const orderID = useSelector(selectCustomer);
     const user = useSelector(state => state.user.user);
-    let techSupportId = user.id;
     let totalItemPrice = 0;
     const { customerID } = useParams();
 
-    customerCartItems.map((data) => {
-        return totalItemPrice = totalItemPrice + data.price;
+    customerCartItems.forEach((data) => {
+        totalItemPrice = totalItemPrice + data.price;
     })
 
     const navigate = useNavigate();
@@ -29,8 +29,16 @@ const PaymentSummary = () => {
         navigate(-1)
     }
 
-    const sentToCustomer = () => {
-        sendCustomerPaymentSummaryApi({...customerCartItems, customerID: customerID, techSupportId: techSupportId})
+    const sentToCustomer = async (e) => {
+        e.preventDefault();
+        const res = await sendCustomerPaymentSummaryApi({ customerCartItems, customerID, techSupportID: user.id, orderID })
+        try {
+            if (res.status === 200) {
+                navigate(`/tech`)
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 
@@ -62,7 +70,7 @@ const PaymentSummary = () => {
                             <button className='mx-2 px-4 py-2 bg-[#CE4444] rounded-md text-black w-fit font-bold' onClick={(e) => backMarketplace()}>Cancel</button>
 
                             {/* <Link to="/tech/accessCusAccount"> */}
-                                <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black w-fit font-bold' onClick={(e) => sentToCustomer()}>Sent to customer</button>
+                            <button className='mx-2 px-4 py-2 bg-[#83BCFF] rounded-md text-black w-fit font-bold' onClick={sentToCustomer}>Sent to customer</button>
                             {/* </Link> */}
                         </div>
                     </div>

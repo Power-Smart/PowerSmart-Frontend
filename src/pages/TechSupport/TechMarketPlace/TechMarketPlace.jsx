@@ -10,24 +10,36 @@ import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchMarketPlaceItems, selectMarketPlaceStatus, selectMarketPlaceItems } from '../../../redux/slices/techsupport/marketPlaceSlice'
 import LoadingSpinner from '../../../components/smallComps/LoadingSpinner'
-import { selectCustomerCart,selectCustomerCartStatus } from '../../../redux/slices/techsupport/customerCartSlice'
+import { removeAll, selectCustomerCart, selectCustomerCartStatus, setCustomer, selectCustomer } from '../../../redux/slices/techsupport/customerCartSlice'
 
 
 
 const TechMarketPlace = () => {
 
-    const { customerID,orderID } = useParams();
+    const { customerID, orderID } = useParams();
     const dispatch = useDispatch();
     const marketPlaceItem = useSelector(selectMarketPlaceItems);
     const marketPlaceStatus = useSelector(selectMarketPlaceStatus);
+    const marketplaceCustomer = useSelector(selectCustomer);
     const customerCartItems = useSelector(selectCustomerCart);
     let totalPrice = 0;
     let itemsNumbers = 0;
 
 
+
     useEffect(() => {
         dispatch(fetchMarketPlaceItems());
-    }, [dispatch]);
+        if (!marketplaceCustomer) {
+            dispatch(removeAll());
+            console.log('here');
+            dispatch(setCustomer(orderID));
+        } else if (marketplaceCustomer !== orderID) {
+            dispatch(removeAll());
+            console.log(marketplaceCustomer);
+            dispatch(setCustomer(orderID));
+        }
+        console.log(marketplaceCustomer)
+    }, []);
 
     if (customerCartItems.length > 0) {
         customerCartItems.map((data) => {
@@ -43,7 +55,7 @@ const TechMarketPlace = () => {
         <PageWrapper>
             <MainSidebar />
             <PageContent>
-                <TechSupportTopBar title={'Market Place'} customerID={customerID} totalPrice={totalPrice} itemsNumbers={itemsNumbers}/>
+                <TechSupportTopBar title={'Market Place'} customerID={customerID} totalPrice={totalPrice} itemsNumbers={itemsNumbers} />
                 <ContentWrapper>
                     <div className='flex flex-col justify-center text-left '>
                         <h1 className='text-2xl font-bold'>Built in packages</h1>
@@ -60,12 +72,12 @@ const TechMarketPlace = () => {
                     <div className='flex flex-col justify-center my-8'>
                         <h1 className='text-2xl font-bold'>Sensors and Relays</h1>
                         {(marketPlaceStatus === 'loading' || marketPlaceStatus === 'idle') && <LoadingSpinner />}
-                            {(marketPlaceStatus === 'succeeded' && marketPlaceItem.length === 0) && <h1>No Items</h1>}
-                            {(marketPlaceStatus === 'succeeded') && marketPlaceItem.map((data, index) => {
-                                if (!data.is_build_in_package) {
-                                    return <ItemCard key={index} {...data} addDel={false} orderID={orderID}/>
-                                }
-                            })}
+                        {(marketPlaceStatus === 'succeeded' && marketPlaceItem.length === 0) && <h1>No Items</h1>}
+                        {(marketPlaceStatus === 'succeeded') && marketPlaceItem.map((data, index) => {
+                            if (!data.is_build_in_package) {
+                                return <ItemCard key={index} {...data} addDel={false} orderID={orderID} />
+                            }
+                        })}
                     </div>
                 </ContentWrapper>
             </PageContent>

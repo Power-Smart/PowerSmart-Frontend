@@ -5,18 +5,21 @@ import ContentWrapper from '../../../components/Wrappers/ContentWrapper';
 import MainSidebar from '../../../components/Sidebar/TechSupport/MainSidebar';
 import TopBar from '../../../components/smallComps/TopBar';
 import PageContent from '../../../components/Wrappers/PageContent';
-import { Link,useParams } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchCustomerOrderRequests, deleteCustomerOrderRequest,selectCustomerOrderRequests, selectCustomerOrderRequestsStatus } from '../../../redux/slices/techsupport/customerOrderRequestSlice';
+import { fetchCustomerOrderRequests, deleteCustomerOrderRequest, selectCustomerOrderRequests, selectCustomerOrderRequestsStatus } from '../../../redux/slices/techsupport/customerOrderRequestSlice';
+import { acceptCustomerOrderRequestApi } from '../../../api/apiCustomerOrderRequest';
 
 
 
 const OrderRequest = () => {
 
     const { orderID } = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const customerOrderRequests = useSelector(selectCustomerOrderRequests);
+    const user = useSelector((state) => state.user.user);
 
 
     useEffect(() => {
@@ -28,6 +31,15 @@ const OrderRequest = () => {
 
     const rejectOrderRequest = () => {
         dispatch(deleteCustomerOrderRequest(orderID));
+    }
+
+    const acceptOrderReq = (e) => {
+        e.preventDefault();
+        acceptCustomerOrderRequestApi(orderID, user.id, particularOrder[0].customer.user.user_id).then((res) => {
+            navigate(`/tech/marketPlace/${orderID}/${particularOrder[0].customer.user.user_id}`);
+        }).catch((err) => {
+            console.log(err);
+        })
     }
 
 
@@ -55,8 +67,8 @@ const OrderRequest = () => {
                             </div>
 
                             <div className="data__field">
-                                <label htmlFor="">Number of Places: </label>
-                                <input type="text" value={particularOrder[0].num_of_places} disabled />
+                                <label htmlFor="">Place: </label>
+                                <input type="text" value={particularOrder[0].place_id} disabled />
                             </div>
 
                             <div className="data__field">
@@ -77,9 +89,9 @@ const OrderRequest = () => {
                             <div className="flex justify-center mt-10">
                                 <button className='px-4 py-1 bg-red-700 rounded-lg mr-5' onClick={(e) => rejectOrderRequest()} >Reject</button>
 
-                                <Link to={`/tech/marketPlace/${orderID}/${particularOrder[0].customer.user.user_id}`}>
-                                    <button className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
-                                </Link>
+                                {/* <Link to={`/tech/marketPlace/${orderID}/${particularOrder[0].customer.user.user_id}`}> */}
+                                <button onClick={acceptOrderReq} className='px-4 py-1 bg-blue-700 rounded-lg'>Accept</button>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>

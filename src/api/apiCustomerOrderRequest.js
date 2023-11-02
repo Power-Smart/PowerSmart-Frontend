@@ -27,3 +27,11 @@ export const deleteCustomerOrderRequestApi = async (orderID) => {
     }
 };
 
+export const acceptCustomerOrderRequestApi = async (orderID, userID, customerID) => {
+    try {
+        const response = await api.put(`/customerOrderRequests/acceptOrder/${orderID}/${userID}/${customerID}`);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+};

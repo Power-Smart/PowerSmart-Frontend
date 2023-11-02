@@ -23,10 +23,32 @@ export const removeItems = createAsyncThunk(
     }
 );
 
+export const setCustomer = createAsyncThunk(
+    "customerCart/setCustomer",
+    async (customerID, thunkAPI) => {
+        try {
+            return customerID;
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
+        }
+    }
+);
+
+export const removeAll = createAsyncThunk(
+    "customerCart/removeAll",
+    async (id, thunkAPI) => {
+        try {
+            return id;
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
+        }
+    }
+);
 
 
 let initialState = {
     customerCart: [],
+    customer: 0,
     status: "idle",
     error: null,
 };
@@ -58,11 +80,18 @@ export const customerCartSlice = createSlice({
             .addCase(removeItems.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
-            })
+            }).addCase(setCustomer.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.customer = action.payload;
+            }).addCase(removeAll.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.customerCart = [];
+            });
     }
 });
 
 export const selectCustomerCart = (state) => state.customerCart.customerCart;
+export const selectCustomer = (state) => state.customerCart.customer;
 export const selectCustomerCartStatus = (state) => state.customerCart.status;
 export default customerCartSlice.reducer;
 

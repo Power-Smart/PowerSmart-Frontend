@@ -67,15 +67,16 @@ const ServiceRequest = () => {
             });
     }, []);
 
-    const filteredCustomerOrderRequests = customerOrderRequests.filter(
-        customerOrderRequest => customerOrderRequest.user_id === customerID
-    );
 
-    useEffect(() => {
-        if (filteredCustomerOrderRequests.is_tech_support_assigned === true) {
-            setAcceptOrderRequest(true);
-        }
-    }, [filteredCustomerOrderRequests]);
+    // const filteredCustomerOrderRequests = customerOrderRequests.filter(
+    //     customerOrderRequest => customerOrderRequest.user_id === customerID
+    // );
+    // console.log(customerOrderRequests[0].user_id, customerID);
+    // useEffect(() => {
+    //     if (filteredCustomerOrderRequests.is_tech_support_assigned === true) {
+    //         setAcceptOrderRequest(true);
+    //     }
+    // }, [filteredCustomerOrderRequests]);
 
 
     return (

@@ -14,7 +14,7 @@ import { MdOutlineReportGmailerrorred } from 'react-icons/md'
 import { FaUserShield } from 'react-icons/fa'
 
 
-const MainSidebar = ({username}) => {
+const MainSidebar = ({ username }) => {
 
     const [toggle, setToggle] = useState(true);
 
@@ -30,6 +30,9 @@ const MainSidebar = ({username}) => {
                 <BsChatDots />
             </SidebarButton>
             <SidebarButton text="Customers" toggle={toggle} link='/tech/accessCusAccount'>
+                <FaUserShield />
+            </SidebarButton>
+            <SidebarButton text="Orders" toggle={toggle} link='/tech/orderRequests'>
                 <FaUserShield />
             </SidebarButton>
         </SidebarWrapper>

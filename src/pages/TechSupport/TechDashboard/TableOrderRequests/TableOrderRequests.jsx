@@ -27,7 +27,7 @@ const TableOrderRequests = () => {
                             Profile Picture
                         </th> */}
                         <th scope="col" className="px-6 py-3 text-center">
-                            Places
+                            Place ID
                         </th>
                         <th scope="col" className="px-6 py-3 text-center">
                             Rooms
