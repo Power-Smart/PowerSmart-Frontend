@@ -27,11 +27,11 @@ const GuestUserPage = () => {
         } else if (selectedOption === 'option2') {
             selectedOption = 'Excessive energy consumption'
         } else if (selectedOption === 'option3') {
-            selectedOption = 'option 3'
+            selectedOption = 'Power Outage'
         } else if (selectedOption === 'option4') {
-            selectedOption = 'Option 4'
+            selectedOption = 'Possible malfunctioning in electrical devices'
         } else if (selectedOption === 'option5') {
-            selectedOption = 'Option 5'
+            selectedOption = 'Other'
         }
     };
 
@@ -93,7 +93,7 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option3'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">option 3</span>
+                                        <span className="ml-2">Power Outage</span>
                                     </label>
                                     <label className="inline-flex items-center">
                                         <input
@@ -103,7 +103,7 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option4'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">Option 4</span>
+                                        <span className="ml-2">Possible malfunctioning in electrical devices</span>
                                     </label>
                                     <label className="inline-flex items-center">
                                         <input
@@ -113,7 +113,7 @@ const GuestUserPage = () => {
                                             checked={selectedOption === 'option5'}
                                             onChange={handleOptionChange}
                                         />
-                                        <span className="ml-2">Option 5</span>
+                                        <span className="ml-2">Other</span>
                                     </label>
 
                                     <div className="flex justify-center mt-7 flex-col">
