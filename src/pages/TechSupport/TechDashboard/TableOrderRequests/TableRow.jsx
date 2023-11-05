@@ -23,20 +23,20 @@ const TableRow = ({ user_id, place_id, num_of_rooms, name, num_of_devices, custo
             </td>
             {!is_tech_support_assigned && <td className="px-6 py-3 text-center">
                 {/* <a href="/tech/orderRequest" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a> */}
-                <Link to={`/tech/orderRequest/${order_id}`}><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>view</button></Link>
+                <Link to={`/tech/orderRequest/${order_id}`}><button className='bg-blue-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[80px]'>view</button></Link>
 
             </td>}
             {is_tech_support_assigned && !is_order_completed && <td className="px-6 py-3 text-center">
                 {/* <a href="/tech/orderRequest" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a> */}
                 <Link to={`/tech/marketPlace/${order_id}/${user_id}`}>
-                    <button className='bg-orange-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>Accepted</button>
+                    <button className='bg-orange-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[80px]'>Accepted</button>
                 </Link>
 
             </td>}
             {is_tech_support_assigned && is_order_completed && <td className="px-6 py-3 text-center">
                 {/* <a href="/tech/orderRequest" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a> */}
                 <Link to={`/tech/customer/${user_id}`}>
-                    <button className='bg-green-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[65px]'>Completed</button>
+                    <button className='bg-green-700 border-none outline-none text-white py-[2px] px-[7px] text-[14px] cursor-pointer rounded-[10px] w-[80px]'>Completed</button>
                 </Link>
 
             </td>}

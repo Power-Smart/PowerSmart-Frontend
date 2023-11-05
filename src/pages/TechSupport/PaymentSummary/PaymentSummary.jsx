@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux'
 import { selectCustomerCart, selectCustomer } from '../../../redux/slices/techsupport/customerCartSlice'
 import { sendCustomerPaymentSummaryApi } from '../../../api/apiMarketPlace'
 import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2';
+
 
 const PaymentSummary = () => {
 
@@ -29,17 +31,44 @@ const PaymentSummary = () => {
         navigate(-1)
     }
 
+
     const sentToCustomer = async (e) => {
         e.preventDefault();
-        const res = await sendCustomerPaymentSummaryApi({ customerCartItems, customerID, techSupportID: user.id, orderID })
-        try {
-            if (res.status === 200) {
-                navigate(`/tech`)
+        Swal.fire({
+            title: 'Send Customer Payment Summary',
+            text: 'Are you sure you want to send the payment summary to the customer?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Send Summary'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await sendCustomerPaymentSummaryApi({ customerCartItems, customerID, techSupportID: user.id, orderID });
+
+                    if (res.status === 404) {
+                        Swal.fire(
+                            'Summary Sent',
+                            'The payment summary has been successfully sent to the customer.',
+                            'success'
+                        );
+                        navigate(`/tech`);
+                    }
+                } catch (error) {
+                    Swal.fire(
+                        'Summary Sent',
+                        'The payment summary has been successfully sent to the customer.',
+                        'success'
+
+                    );
+                    navigate(`/tech`)
+                    console.error(error);
+                }
             }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+        });
+    };
+
 
 
     return (

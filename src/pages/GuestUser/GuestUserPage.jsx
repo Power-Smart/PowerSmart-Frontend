@@ -35,20 +35,44 @@ const GuestUserPage = () => {
         }
     };
 
-    const submitSuggest = () => {
-        addGuestUserSuggest({ guest_id: guestID, customer_id: customerID, place_id: placeID, room_id: roomID, suggestion: selectedOption }).then((res) => {
-            console.log(res);
-            Swal.fire({
-                icon: 'success',
-                title: 'Thank you for your feedback',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            navigate(-1);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
+
+
+    const submitSuggest = async (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Submit Feedback',
+            text: 'Are you sure you want to submit your feedback?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Submit Feedback'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await addGuestUserSuggest({ guest_id: guestID, customer_id: customerID, place_id: placeID, room_id: roomID, suggestion: selectedOption });
+                    if (res.status === 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Feedback Submitted',
+                            text: 'Thank you for your feedback. It has been successfully submitted.',
+                            showConfirmButton: false,
+                        });
+                        navigate(-1);
+                    }
+                } catch (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Something went wrong while submitting your feedback. Please try again.',
+                    });
+                    console.error(error);
+                }
+            }
+        });
+    };
+
+
 
 
     return (

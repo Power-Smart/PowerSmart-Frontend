@@ -24,16 +24,16 @@ const TechDashboard = () => {
                                 <h1 className='text-lg font-semibold mb-2'>Request Order</h1>
                                 <TableOrderRequests />
                             </div>
-                            <div className='flex flex-col mt-4'>
+                            {/* <div className='flex flex-col mt-4'>
                                 <h1 className='text-lg font-semibold mb-2'>Services Requests</h1>
                                 <TableOrderStatus />
-                            </div>
+                            </div> */}
                         </div>
                         <div className='flex flex-col mt-4'>
                             <div className='flex justify-around items-center flex-col'>
                                 <DashboardCard title='Order Request' number={12} icon={<TbDeviceSdCard className='text-2xl' />} />
-                                <DashboardCard title='Product Request' number={12} icon={<TbDeviceSdCard className='text-2xl' />} />
-                                <DashboardCard title='Service Request' number={12} icon={<TbDeviceSdCard className='text-2xl' />} />
+                                {/* <DashboardCard title='Product Request' number={20} icon={<TbDeviceSdCard className='text-2xl' />} /> */}
+                                <DashboardCard title='Service Request' number={5} icon={<TbDeviceSdCard className='text-2xl' />} />
                             </div>
                             <h1 className='text-base text-center font-semibold mb-2 mt-7'>Customer Feedback</h1>
                             <FeedbackSection />

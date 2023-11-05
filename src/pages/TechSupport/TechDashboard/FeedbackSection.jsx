@@ -71,7 +71,7 @@ const FeedbackSection = () => {
 
     return (
         <div>
-            <div className="rating-sectuion text-center mb-4 bg-[#0856CD] py-3 px-2 rounded-lg h-fit">
+            <div className="rating-sectuion text-center mb-4 bg-[#24244c] py-3 px-2 rounded-lg h-fit">
                 <div className="rating-number mb-4">
                     <h1 className='text-5xl font-bold'>{totalRatingPercentage}</h1>
                 </div>

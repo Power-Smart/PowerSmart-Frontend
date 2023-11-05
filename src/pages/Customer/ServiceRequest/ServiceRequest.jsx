@@ -13,6 +13,8 @@ import FormSubmitButton from '../../../components/Forms/FormSubmitButton';
 import TopBar from '../../../components/smallComps/TopBar';
 import { getPlacesApi } from '../../../api/apiPlaces';
 import { addCustomerOrderRequestApi, getAllCustomerOrderRequestsApi } from '../../../api/apiCustomerOrderRequest';
+import Swal from 'sweetalert2'
+
 
 const ServiceRequest = () => {
     const user = useSelector(state => state.user.user);
@@ -41,21 +43,51 @@ const ServiceRequest = () => {
         label: place.name,
     }));
 
-    const requestOrder = () => {
-        addCustomerOrderRequestApi({
-            customer_id: customerID,
-            place_id: place,
-            order_description: orderDescription,
-            number_of_rooms: numberOfRooms,
-            number_of_devices: numberOfDevices,
-        })
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.error(err);
-            });
+
+    const requestOrder = async () => {
+        Swal.fire({
+            title: 'Service Request Confirmation',
+            text: 'Are you sure you want to submit the service request?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Submit Request'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await addCustomerOrderRequestApi({
+                        customer_id: customerID,
+                        place_id: place,
+                        order_description: orderDescription,
+                        number_of_rooms: numberOfRooms,
+                        number_of_devices: numberOfDevices,
+                    });
+                    Swal.fire(
+                        'Request Submitted',
+                        'Your service request has been submitted successfully.',
+                        'success'
+                    );
+    
+                    setPlace('Select Place Type');
+                    setOrderDescription('');
+                    setNumberOfRooms('');
+                    setNumberOfDevices('');
+                    console.log(response);
+                } catch (err) {
+                    Swal.fire(
+                        'Error!',
+                        'Something went wrong while submitting your request.',
+                        'error'
+                    );
+                    console.error(err);
+                }
+            }
+        });
     };
+    
+    
+    
 
     useEffect(() => {
         getAllCustomerOrderRequestsApi()
